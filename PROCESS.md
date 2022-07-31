@@ -15,6 +15,7 @@ npm install file-loader url-loader html-loader -D // 文件处理，url-loader�
 npm install style-loader css-loader -D // 样式处理
 npm install sass sass-loader node-sass -D // sass相关
 
+npm install typescript ts-loader -D // ts相关
 npm install babel-loader @babel/core @babel/preset-env -D // babel可以把es6转成es5
 // npm install @babel/plugin-proposal-decorators -D // ----------- class 的装饰器语法，注意两者的顺序 -------- 在前
 // npm install @babel/plugin-proposal-class-properties -D // -- 支持解析 class 语法，proposal是提案的意思 - 在后
@@ -51,4 +52,5 @@ npm install cross-env -D
 - npm 打包发布流程 https://juejin.cn/post/6994746118135349262
 - npm 发布相关 https://blog.51cto.com/u_15328720/3401308
 - 环境变量区别 https://juejin.cn/post/6844904023791796237#heading-0
+- tsconfig.json https://www.pengfeixc.com/blogs/javascript/tsconfig
 - 构建过程 https://juejin.cn/post/6950905030635421710
