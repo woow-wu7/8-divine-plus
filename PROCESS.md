@@ -33,6 +33,14 @@ npm install cross-env -D
 ```
 1
 报错: Error: Cannot find module 'vue-loader/lib/plugin'
-原因: 在 webpack.config.js 中，这样的写法会报错 ---- const VueLoaderPlugin = require("vue-loader/lib/plugin");
-解决： 在 webpack.config.js 中，这样写 ------------ const { VueLoaderPlugin } = require("vue-loader");
+原因: 在 webpack.config.js 中，这样的写法会报错 -- const VueLoaderPlugin = require("vue-loader/lib/plugin");
+解决： 在 webpack.config.js 中，这样写 ---------- const { VueLoaderPlugin } = require("vue-loader");
+
+2
+问题
+  问题：process.cwd() 和 __dirname 的区别？
+  回答：
+  - process.cwd(): 指的是 ( webpack命令文件 - 所在的文件夹 )，命令在 package.json的scripts中，所以所在的文件夹是 ( 8-divine-plus )
+  - __dirname: 指的是 ( __dirname当前文件所在的文件夹 )
+  详见: build/webpack.config.prod.js
 ```

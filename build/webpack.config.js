@@ -51,7 +51,7 @@ console.log("process.env.HOST_ENV", process.env.HOST_ENV);
 module.exports = {
   mode: "development",
   entry: {
-    main: path.resolve(__dirname, "../examples/main.js"), // 测试组件库
+    main: path.resolve(__dirname, "../examples/main.js"), // 组件库 测试入口
   },
   output: {
     path: path.resolve(__dirname, "../dist"),
