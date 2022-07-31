@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --config build/webpack.config.js",
     "serve": "cnpm run dev",
     "start": "cnpm run dev",
-    "build": "webpack --config build/webpack.config.js"
+    "dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js",
+    "build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js",
+    "test:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js --mode=development",
+    "#build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js --mode=production这里页可以指定mode，但是没必要，因为我们在webpack配置文件中已经设置了mode"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +33,7 @@
     "vue-template-compiler": "^2.7.8",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.9.3"
+    "webpack-dev-server": "^4.9.3",
+    "webpack-merge": "^5.8.0"
   }
 }

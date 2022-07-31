@@ -49,23 +49,6 @@ console.log("process.env.HOST_ENV", process.env.HOST_ENV);
 // resolve.extensions 当import省略后缀时，先找.js文件，再找.css文件
 
 module.exports = {
-  mode: "development",
-  entry: {
-    main: path.resolve(__dirname, "../examples/main.js"), // 测试组件库
-  },
-  output: {
-    path: path.resolve(__dirname, "../dist"),
-    filename: "[name].[chunkhash].js",
-  },
-  devtool: "eval-source-map",
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, "../dist"), // 静态服务需要加载的文件目录
-    },
-    port: 7777,
-    compress: true,
-    hot: true,
-  },
   resolve: {
     alias: {
       "@image": path.resolve(__dirname, "../examples"), // @image === 根/examples/
