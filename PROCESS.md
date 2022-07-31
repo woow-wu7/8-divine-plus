@@ -43,4 +43,12 @@ npm install cross-env -D
   - process.cwd(): 指的是 ( webpack命令文件 - 所在的文件夹 )，命令在 package.json的scripts中，所以所在的文件夹是 ( 8-divine-plus )
   - __dirname: 指的是 ( __dirname当前文件所在的文件夹 )
   详见: build/webpack.config.prod.js
+  文章: https://www.jianshu.com/p/a80c59abd1fb
 ```
+
+# 资料
+
+- npm 打包发布流程 https://juejin.cn/post/6994746118135349262
+- npm 发布相关 https://blog.51cto.com/u_15328720/3401308
+- 环境变量区别 https://juejin.cn/post/6844904023791796237#heading-0
+- 构建过程 https://juejin.cn/post/6950905030635421710
