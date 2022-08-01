@@ -1,5 +1,5 @@
 <template>
-  <section class="dv-divider">divider</section>
+  <section :class="[ns.b()]">divider</section>
 </template>
 
 <script lang="ts">
@@ -8,4 +8,7 @@ export default {
 };
 </script>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useNamespace } from "../../hooks/useNamespace";
+const ns = useNamespace("divider");
+</script>

@@ -157,9 +157,7 @@ module.exports = {
       "process.env.HOST_ENV": JSON.stringify(process.env.HOST_ENV), // 同步 node 和 browser 中的 HOST_ENV 环境变量
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // require("unplugin-vue-components/webpack")({
-    //   /* options */
-    // }),
+    // require("unplugin-vue-components/webpack")({}),
   ],
   optimization: {
     moduleIds: "named",

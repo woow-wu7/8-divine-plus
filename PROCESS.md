@@ -52,13 +52,9 @@ module: { rules: [{
 报错: 找不到名称“process”。是否需要为节点安装类型定义? 请尝试使用 `npm i --save-dev @types/node`，然后将 “node” 添加到类型字段。ts(2591)
 解决:
 - 2.1 npm i --save-dev @types/node
-- 2.2 { "compilerOptions": { typ"es": ["node"] } }
+- 2.2 { "compilerOptions": { "types": ["node"] } }
 
 4
-报错: <script> and <script setup> must have the same language type.
-解决:
-
-5
 问题
   问题: process.cwd() 和 __dirname 的区别？
   回答:
