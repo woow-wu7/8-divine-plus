@@ -1,7 +1,22 @@
 <template>
   <section class="app">
-    <p>组件测试</p>
-    <DvDivider></DvDivider>
+    <div class="divider">
+      <div>divider测试</div>
+      <DvDivider direction="horizontal">
+        <template v-slot:default>center</template>
+      </DvDivider>
+      <DvDivider
+        direction="horizontal"
+        contentPosition="left"
+        borderStyle="dashed"
+      >
+        <template v-slot:default>left</template>
+      </DvDivider>
+      <DvDivider direction="horizontal" contentPosition="right">
+        <template v-slot:default>right</template>
+      </DvDivider>
+      <div>divider测试</div>
+    </div>
   </section>
 </template>
 

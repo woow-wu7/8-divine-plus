@@ -1,7 +1,7 @@
 import { ref, unref } from "vue";
 
 const defaultNamespace = "dv";
-const statePrefix = "is--";
+const statePrefix = "is-";
 
 // bem
 const _bem = (
