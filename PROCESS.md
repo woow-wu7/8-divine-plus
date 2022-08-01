@@ -62,6 +62,13 @@ module: { rules: [{
   - __dirname: 指的是 ( __dirname当前文件所在的文件夹 )
   详见: build/webpack.config.prod.js
   文章: https://www.jianshu.com/p/a80c59abd1fb
+
+5
+问题: @import '~@/aa/bb' 中的 ~ 波浪号是什么意思？
+回答:
+  - 变量: 当 @import 的路径中包含 ~ 时，表示的后面是一个变量
+  - 查找顺序：该变量首先会去 ( webpack 的 resolve.alias 中查找 )，没有才会去 ( node_modules ) 中查找
+  - 链接：https://segmentfault.com/q/1010000010879017
 ```
 
 # 资料

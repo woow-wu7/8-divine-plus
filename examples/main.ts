@@ -1,6 +1,8 @@
 import { createApp } from "vue";
 import App from "./app.vue";
+
 import DivinePlus from "../packages/components/index";
+import "../packages/theme-chalk/index.scss";
 
 const app = createApp(App);
 
