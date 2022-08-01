@@ -1,5 +1,5 @@
 <template>
-  <section :class="[ns.b(), ns.m(direction)]">
+  <section :class="[ns.b(), ns.m(direction)]" :style="borderStyle">
     <div
       v-if="slots?.default && direction === 'horizontal'"
       :class="[ns.e('text'), ns.is(contentPosition)]"
@@ -35,5 +35,17 @@ const props = defineProps({
       return "center";
     },
   },
+  borderStyle: {
+    type: String as PropType<"solid" | "dotted" | "dashed">,
+    default() {
+      return "solid";
+    },
+  },
+});
+
+const borderStyle = computed(() => {
+  return {
+    "border-style": props.borderStyle,
+  };
 });
 </script>
