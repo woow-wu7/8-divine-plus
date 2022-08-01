@@ -21,6 +21,7 @@ npm install babel-loader @babel/core @babel/preset-env -D // babel可以把es6�
 // npm install @babel/plugin-proposal-class-properties -D // -- 支持解析 class 语法，proposal是提案的意思 - 在后
 
 npm install cross-env -D
+npm install @types/node -D // 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 ```
 
 ### (2) 目录结构
@@ -29,7 +30,7 @@ npm install cross-env -D
 
 ```
 
-### (3) vue3 和 webpack5 遇到的一些问题
+### (3) vue3 和 webpack5 和 ts 遇到的一些问题
 
 ```
 1
@@ -38,6 +39,12 @@ npm install cross-env -D
 解决： 在 webpack.config.js 中，这样写 ---------- const { VueLoaderPlugin } = require("vue-loader");
 
 2
+报错：找不到名称“process”。是否需要为节点安装类型定义? 请尝试使用 `npm i --save-dev @types/node`，然后将 “node” 添加到类型字段。ts(2591)
+解决：
+- 2.1 npm i --save-dev @types/node
+- 2.2 { "compilerOptions": { typ"es": ["node"] } }
+
+3
 问题
   问题：process.cwd() 和 __dirname 的区别？
   回答：

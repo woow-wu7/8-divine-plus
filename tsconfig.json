@@ -12,22 +12,12 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env"],
+    "types": ["node"], // 只有node的包声明文件会自动引入，其他模块的声明文件不会自动引入
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "src/router/index.ts",
-    "index.d.ts",
-    "src/components/JoyoCard/JoyoCardItem/index.ts",
-    "src/components/JoyoCard/JoyoCardItem/index.ts"
-  ],
+  "include": ["examples/*"],
   "exclude": ["node_modules"]
 }

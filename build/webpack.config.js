@@ -51,7 +51,7 @@ console.log("process.env.HOST_ENV", process.env.HOST_ENV);
 module.exports = {
   mode: "development",
   entry: {
-    main: path.resolve(__dirname, "../examples/main.js"), // 组件库 测试入口
+    main: path.resolve(__dirname, "../examples/main.ts"), // 组件库 测试入口
   },
   output: {
     path: path.resolve(__dirname, "../dist"),
@@ -70,7 +70,7 @@ module.exports = {
     alias: {
       "@image": path.resolve(__dirname, "../examples"), // @image === 根/examples/
     },
-    extensions: [".js", ".css", ".less", "*"], // import时省略后缀时，先找.js文件，再找.css文件 注意：'*' 表示所有类型的文件
+    extensions: [".ts", ".js", ".css", ".less", "*"], // import时省略后缀时，先找.js文件，再找.css文件 注意：'*' 表示所有类型的文件
   },
   module: {
     noParse: /jquery|lodash/, // module.noParse 不去解析jquery或lodash的依赖关系，因为它们俩都没有依赖其他库，从而提高构建速度
@@ -150,6 +150,9 @@ module.exports = {
       "process.env.HOST_ENV": JSON.stringify(process.env.HOST_ENV), // 同步 node 和 browser 中的 HOST_ENV 环境变量
     }),
     new webpack.HotModuleReplacementPlugin(),
+    // require("unplugin-vue-components/webpack")({
+    //   /* options */
+    // }),
   ],
   optimization: {
     moduleIds: "named",

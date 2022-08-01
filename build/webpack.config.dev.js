@@ -81,7 +81,7 @@ module.exports = merge(base, {
   target: "web",
 
   entry: {
-    index: "./examples/main.js",
+    index: "./examples/main.ts",
   },
 
   output: {
