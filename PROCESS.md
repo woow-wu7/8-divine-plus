@@ -34,20 +34,34 @@ npm install @types/node -D // 解决ts环境在模块中访问 process 时变量
 
 ```
 1
-报错: Error: Cannot find module 'vue-loader/lib/plugin'
-原因: 在 webpack.config.js 中，这样的写法会报错 -- const VueLoaderPlugin = require("vue-loader/lib/plugin");
-解决： 在 webpack.config.js 中，这样写 ---------- const { VueLoaderPlugin } = require("vue-loader");
+vue项目添加ts支持
+- 说明: 本项目是通过 webpack 构建，所以需要修改 webpack 配置
+- 官网: https://v3.cn.vuejs.org/guide/typescript-support.html#%E6%8E%A8%E8%8D%90%E9%85%8D%E7%BD%AE
+module: { rules: [{
+  test: /\.tsx?$/,
+  loader: 'ts-loader',
+  options: { appendTsSuffixTo: [/\.vue$/] }
+}]}
 
 2
-报错：找不到名称“process”。是否需要为节点安装类型定义? 请尝试使用 `npm i --save-dev @types/node`，然后将 “node” 添加到类型字段。ts(2591)
-解决：
+报错: Error: Cannot find module 'vue-loader/lib/plugin'
+原因: 在 webpack.config.js 中，这样的写法会报错 -- const VueLoaderPlugin = require("vue-loader/lib/plugin");
+解决: 在 webpack.config.js 中，这样写 ---------- const { VueLoaderPlugin } = require("vue-loader");
+
+3
+报错: 找不到名称“process”。是否需要为节点安装类型定义? 请尝试使用 `npm i --save-dev @types/node`，然后将 “node” 添加到类型字段。ts(2591)
+解决:
 - 2.1 npm i --save-dev @types/node
 - 2.2 { "compilerOptions": { typ"es": ["node"] } }
 
-3
+4
+报错: <script> and <script setup> must have the same language type.
+解决:
+
+5
 问题
-  问题：process.cwd() 和 __dirname 的区别？
-  回答：
+  问题: process.cwd() 和 __dirname 的区别？
+  回答:
   - process.cwd(): 指的是 ( webpack命令文件 - 所在的文件夹 )，命令在 package.json的scripts中，所以所在的文件夹是 ( 8-divine-plus )
   - __dirname: 指的是 ( __dirname当前文件所在的文件夹 )
   详见: build/webpack.config.prod.js

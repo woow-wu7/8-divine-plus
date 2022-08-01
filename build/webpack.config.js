@@ -63,7 +63,7 @@ module.exports = {
       directory: path.resolve(__dirname, "../dist"), // 静态服务需要加载的文件目录
     },
     port: 7777,
-    compress: true,
+    compress: false,
     hot: true,
   },
   resolve: {
@@ -103,7 +103,14 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: [{ loader: "ts-loader" }],
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              appendTsSuffixTo: [/\.vue$/],
+            },
+          },
+        ],
         exclude: "/node-modules/",
       },
       {

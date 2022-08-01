@@ -1,8 +1,10 @@
 import { createApp } from "vue";
 import App from "./app.vue";
+import DivinePlus from "../packages/components/index";
 
 const app = createApp(App);
 
+app.use(DivinePlus); // 注册插件
 app.mount("#app");
 
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
