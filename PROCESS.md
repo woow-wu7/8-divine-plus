@@ -21,7 +21,7 @@ npm install babel-loader @babel/core @babel/preset-env -D // babel可以把es6�
 npm install cross-env -D
 npm install @types/node -D // 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 
-// 文档相关
+// 说明文档相关
 // 查看: vuepress最新的版本: npm view vuepress versions
 // 安装: 指定版本的vuepress: npm install vuepress@2.0.0-beta.49 -D
 // 版本: vuepress2.0才支持vue3。需要注意的是目前处于维护阶段，使用 vue3+vite 构建的使用 vitePress
