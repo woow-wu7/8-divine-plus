@@ -1,0 +1,69 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add -D vuepress
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion Tech Preview.app/Contents/Public:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/wuxia/work/personal/back_end/config/maven/apache-maven-3.8.4/bin:/Users/wuxia/work/personal/back_end/config/maven/apache-maven-3.8.4/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.13.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/wuxia/Library/Caches/Yarn/v6/npm-ms-2.0.0-5608aeadfc00be6c2901df5f9861788de0d597c8-integrity/node_modules/ms/index.js' -> '/Users/wuxia/work/personal/front_end/8-divine-plus/node_modules/body-parser/node_modules/ms/index.js'
+
+npm manifest: 
+  {
+    "name": "8-divine-plus",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "serve": "cnpm run dev",
+      "start": "cnpm run dev",
+      "dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js",
+      "build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js",
+      "test:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js --mode=development",
+      "#build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js --mode=production这里页可以指定mode，但是没必要，因为我们在webpack配置文件中已经设置了mode",
+      "docs:dev": "vuepress dev docs",
+      "docs:build": "vuepress build docs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@babel/core": "^7.18.9",
+      "@babel/preset-env": "^7.18.9",
+      "@types/node": "^18.6.3",
+      "babel-loader": "^8.2.5",
+      "cross-env": "^7.0.3",
+      "css-loader": "^6.7.1",
+      "file-loader": "^6.2.0",
+      "html-loader": "^4.1.0",
+      "html-webpack-plugin": "^5.5.0",
+      "node-sass": "^7.0.1",
+      "sass": "^1.54.0",
+      "sass-loader": "^13.0.2",
+      "style-loader": "^3.3.1",
+      "ts-loader": "^9.3.1",
+      "typescript": "^4.7.4",
+      "url-loader": "^4.1.1",
+      "vue": "^3.2.37",
+      "vue-loader": "^17.0.0",
+      "vue-template-compiler": "^2.7.8",
+      "webpack": "^5.74.0",
+      "webpack-cli": "^4.10.0",
+      "webpack-dev-server": "^4.9.3",
+      "webpack-merge": "^5.8.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
