@@ -4,7 +4,7 @@ const { containerPlugin } = require("@vuepress/plugin-container");
 const { backToTopPlugin } = require("@vuepress/plugin-back-to-top");
 const {
   registerComponentsPlugin,
-} = require("@vuepress/plugin-register-components");
+} = require("@vuepress/plugin-register-components"); // 注册组件
 
 // 1
 // head
