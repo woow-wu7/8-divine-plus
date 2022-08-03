@@ -1,6 +1,6 @@
 # divine-plus
 
-一个 vue3 组件库
+基于 vue3 + webpack5 + ts + vuepress2 构建的组件库
 
 # 掘金
 
