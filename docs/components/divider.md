@@ -1,4 +1,4 @@
-# divider
+# divider2
 
 区隔内容的分割线
 
@@ -6,7 +6,7 @@
 
 对不同段落的文本进行分割
 
-<DvDivider />
+<Divider />
 
 <details>
 <summary>查看源代码</summary>
