@@ -9,7 +9,7 @@
 <DvDivider />
 
 <details>
-<summary>展开代码</summary>
+<summary>查看源代码</summary>
 
 ```vue
 <template>
