@@ -31,6 +31,7 @@ npm install vuepress@2.0.0-beta.49 -D
 npm install @vuepress/plugin-container@next -D
 npm install @vuepress/plugin-back-to-top@next -D
 npm install @vuepress/plugin-register-components@next -D
+npm install @vuepress/plugin-docsearch@next -D
 ```
 
 ### (2) 目录结构
