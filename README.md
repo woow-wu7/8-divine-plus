@@ -1,4 +1,4 @@
-# divine-plus
+# Divine-Plus
 
 基于 vue3 + webpack5 + ts + vuepress2 构建的组件库
 
