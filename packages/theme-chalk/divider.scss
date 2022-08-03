@@ -3,7 +3,6 @@
 
 // .el-divider
 @include b(divider) {
-  background-color: $--border-color-base;
   position: relative;
 
   //.el-divider--horizontal 横向
@@ -14,7 +13,7 @@
 
     height: 0;
     border: 0px;
-    border-top: 1px solid rgb(78, 78, 78);
+    border-top: 1px #dcdfe6;
   }
 
   //.el-divider--vertical 纵向
