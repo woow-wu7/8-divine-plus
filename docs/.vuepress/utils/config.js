@@ -3,6 +3,7 @@ const { path } = require("@vuepress/utils");
 const { containerPlugin } = require("@vuepress/plugin-container"); // 容器提示
 const { backToTopPlugin } = require("@vuepress/plugin-back-to-top"); // 回到顶部
 const { docsearchPlugin } = require("@vuepress/plugin-docsearch"); // 搜索
+const { gitPlugin } = require("@vuepress/plugin-git"); // git
 const {
   registerComponentsPlugin,
 } = require("@vuepress/plugin-register-components"); // 注册组件
@@ -61,6 +62,9 @@ const plugins = [
     docsearchPlugin({
       apiKey: "<API_KEY>",
       indexName: "<INDEX_NAME>",
+    }),
+    gitPlugin({
+      contributors: true,
     }),
   ],
 ];

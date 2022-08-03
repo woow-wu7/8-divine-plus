@@ -32,6 +32,7 @@ npm install @vuepress/plugin-container@next -D // 容器
 npm install @vuepress/plugin-back-to-top@next -D // 回到顶部
 npm install @vuepress/plugin-register-components@next -D // 注册组件
 npm install @vuepress/plugin-docsearch@next -D // 搜索
+npm install  @vuepress/plugin-git@next -D // git
 ```
 
 ### (2) 目录结构
