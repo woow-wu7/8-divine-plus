@@ -1,7 +1,8 @@
 import { App } from "vue";
 import Divider from "./divider/index.vue";
+import Button from "./button/index.vue";
 
-const components = [Divider];
+const components = [Divider, Button];
 
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册

@@ -1,0 +1,28 @@
+<template>
+  <div class="divider">
+    <DvDivider direction="horizontal">
+      <template v-slot:default>center</template>
+    </DvDivider>
+    <DvDivider
+      direction="horizontal"
+      contentPosition="left"
+      borderStyle="dashed"
+    >
+      <template v-slot:default>left</template>
+    </DvDivider>
+    <DvDivider direction="horizontal" contentPosition="right">
+      <template v-slot:default>right</template>
+    </DvDivider>
+  </div>
+</template>
+
+<script setup lang="ts">
+import DvDivider from "../../../packages/components/divider/index.vue";
+import "../../../packages/theme-chalk/divider.scss";
+</script>
+<style>
+.divider {
+  border: 1px solid #f0f0f0;
+  padding: 20px;
+}
+</style>

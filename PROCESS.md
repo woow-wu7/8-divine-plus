@@ -21,11 +21,16 @@ npm install babel-loader @babel/core @babel/preset-env -D // babel可以把es6�
 npm install cross-env -D
 npm install @types/node -D // 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 
+
+---
 // 说明文档相关
 // 查看: vuepress最新的版本: npm view vuepress versions
 // 安装: 指定版本的vuepress: npm install vuepress@2.0.0-beta.49 -D
 // 版本: vuepress2.0才支持vue3。需要注意的是目前处于维护阶段，使用 vue3+vite 构建的使用 vitePress
 npm install vuepress@2.0.0-beta.49 -D
+npm install @vuepress/plugin-container@next -D
+npm install @vuepress/plugin-back-to-top@next -D
+npm install @vuepress/plugin-register-components@next -D
 ```
 
 ### (2) 目录结构
@@ -77,9 +82,14 @@ module: { rules: [{
 
 # 资料
 
-- npm 打包发布流程 https://juejin.cn/post/6994746118135349262
-- npm 发布相关 https://blog.51cto.com/u_15328720/3401308
 - 环境变量区别 https://juejin.cn/post/6844904023791796237#heading-0
 - tsconfig.json https://www.pengfeixc.com/blogs/javascript/tsconfig
 - 构建过程 https://juejin.cn/post/6950905030635421710
-- vuepress2 https://juejin.cn/post/7096011121160618020
+- npm
+  - 打包发布流程 https://juejin.cn/post/6994746118135349262
+  - 发布相关 https://blog.51cto.com/u_15328720/3401308
+- vuepress2
+  - 官网: https://juejin.cn/post/7096011121160618020
+  - 教程: https://github.com/Lee-Tanghui/vuepress-element-doc
+  - 教程: https://juejin.cn/post/7089313579169480711
+  - 插件: https://blog.csdn.net/sinat_31213021/article/details/119385175

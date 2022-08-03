@@ -19,6 +19,6 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["examples/*", "vue.config.js"],
+  "include": ["examples/*", "vue.config.js", "docs/*"],
   "exclude": ["node_modules"]
 }
