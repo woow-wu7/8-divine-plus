@@ -7,7 +7,7 @@ module.exports = {
   // 站点配置
   lang: "zh-CN",
   title: "DivinePlus",
-  description: "基于 vue3 + webpack5 + ts + vuepress2 构建的UI组件库",
+  description: "vue3 + webpack5 + ts + vuepress2 组件库",
   head,
   theme,
   plugins,

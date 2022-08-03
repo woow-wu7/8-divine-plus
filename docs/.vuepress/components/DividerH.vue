@@ -1,5 +1,5 @@
 <template>
-  <div class="divider">
+  <div class="divider-horizontal">
     <DvDivider direction="horizontal">
       <template v-slot:default>center</template>
     </DvDivider>
@@ -21,7 +21,7 @@ import DvDivider from "../../../packages/components/divider/index.vue";
 import "../../../packages/theme-chalk/divider.scss";
 </script>
 <style>
-.divider {
+.divider-horizontal {
   border: 1px solid #f0f0f0;
   padding: 20px;
 }

@@ -6,7 +6,9 @@
 
 对不同段落的文本进行分割
 
-<Divider />
+### 水平方向
+
+<DividerH />
 
 <details>
 <summary>查看源代码</summary>
@@ -24,9 +26,25 @@
     >
       <template v-slot:default>left</template>
     </DvDivider>
-    <DvDivider direction="horizontal" contentPosition="right">
-      <template v-slot:default>right</template>
-    </DvDivider>
+  </div>
+</template>
+```
+
+</details>
+
+### 垂直方向
+
+<DividerV />
+
+<details>
+<summary>查看源代码</summary>
+
+```vue
+<template>
+  <div class="divider">
+    <span>left</span>
+    <DvDivider direction="vertical"></DvDivider>
+    <span>right</span>
   </div>
 </template>
 ```

@@ -25,7 +25,7 @@ const head = [
 // 顶部导航
 const navbar = [
   {
-    text: "主页",
+    text: "首页",
     link: "/",
   },
   {

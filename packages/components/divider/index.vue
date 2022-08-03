@@ -44,8 +44,10 @@ const props = defineProps({
 });
 
 const borderStyle = computed(() => {
-  return {
-    "border-style": props.borderStyle,
-  };
+  return props.direction === "horizontal"
+    ? {
+        "border-style": props.borderStyle,
+      }
+    : {};
 });
 </script>
