@@ -28,10 +28,10 @@ npm install @types/node -D // 解决ts环境在模块中访问 process 时变量
 // 安装: 指定版本的vuepress: npm install vuepress@2.0.0-beta.49 -D
 // 版本: vuepress2.0才支持vue3。需要注意的是目前处于维护阶段，使用 vue3+vite 构建的使用 vitePress
 npm install vuepress@2.0.0-beta.49 -D
-npm install @vuepress/plugin-container@next -D
-npm install @vuepress/plugin-back-to-top@next -D
-npm install @vuepress/plugin-register-components@next -D
-npm install @vuepress/plugin-docsearch@next -D
+npm install @vuepress/plugin-container@next -D // 容器
+npm install @vuepress/plugin-back-to-top@next -D // 回到顶部
+npm install @vuepress/plugin-register-components@next -D // 注册组件
+npm install @vuepress/plugin-docsearch@next -D // 搜索
 ```
 
 ### (2) 目录结构
