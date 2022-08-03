@@ -1,4 +1,4 @@
-<template><div><h1 id="divider2" tabindex="-1"><a class="header-anchor" href="#divider2" aria-hidden="true">#</a> divider2</h1>
+<template><div><h1 id="divider" tabindex="-1"><a class="header-anchor" href="#divider" aria-hidden="true">#</a> divider</h1>
 <p>区隔内容的分割线</p>
 <h2 id="基本用法" tabindex="-1"><a class="header-anchor" href="#基本用法" aria-hidden="true">#</a> 基本用法</h2>
 <p>对不同段落的文本进行分割</p>

@@ -36,11 +36,7 @@ const navbar = [
 // 3
 // 侧边导航
 const sidebar = {
-  "/components/": [
-    "/components/",
-    "/components/divider.md",
-    "/components/button.md",
-  ],
+  "/components/": ["/components/", "/components/divider.md"],
 };
 
 // theme
