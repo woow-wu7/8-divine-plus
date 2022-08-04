@@ -47,5 +47,9 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "highlight.js": "^11.6.0",
+    "vue3-markdown-it": "^1.0.10"
   }
 }

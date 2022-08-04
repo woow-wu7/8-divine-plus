@@ -1,11 +1,12 @@
 import {
   setupDevtoolsPlugin
-} from "./chunk-QIGTB33O.js";
+} from "./chunk-OYF5NPBX.js";
 import {
   computed,
   defineComponent,
   getCurrentInstance,
   h,
+  init_vue_runtime_esm_bundler,
   inject,
   nextTick,
   onActivated,
@@ -18,11 +19,29 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-25W477WF.js";
-import "./chunk-HEVGPZ4D.js";
-import "./chunk-JRATMO35.js";
+} from "./chunk-NZ4YPKVX.js";
+import "./chunk-GC47D7MG.js";
+import {
+  init_define_DOCSEARCH_OPTIONS,
+  init_define_EXTERNAL_LINK_ICON_LOCALES,
+  init_define_MZ_ZOOM_OPTIONS
+} from "./chunk-LZIJNQ2F.js";
+
+// dep:vue-router
+init_define_DOCSEARCH_OPTIONS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_MZ_ZOOM_OPTIONS();
+
+// node_modules/_vue-router@4.1.3@vue-router/dist/vue-router.esm-bundler.js
+init_define_DOCSEARCH_OPTIONS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_MZ_ZOOM_OPTIONS();
 
 // node_modules/_vue-router@4.1.3@vue-router/dist/vue-router.mjs
+init_define_DOCSEARCH_OPTIONS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_MZ_ZOOM_OPTIONS();
+init_vue_runtime_esm_bundler();
 var isBrowser = typeof window !== "undefined";
 function isESModule(obj) {
   return obj.__esModule || obj[Symbol.toStringTag] === "Module";

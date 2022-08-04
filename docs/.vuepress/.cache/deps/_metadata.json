@@ -1,50 +1,56 @@
 {
   "hash": "40024d29",
-  "browserHash": "96e69e8c",
+  "browserHash": "e1e10e34",
   "optimized": {
     "@vue/devtools-api": {
       "src": "../../../../node_modules/_@vue_devtools-api@6.2.1@@vue/devtools-api/lib/esm/index.js",
       "file": "@vue_devtools-api.js",
-      "fileHash": "34ed5a12",
+      "fileHash": "be043201",
       "needsInterop": false
     },
     "@vuepress/shared": {
       "src": "../../../../node_modules/_@vuepress_shared@2.0.0-beta.49@@vuepress/shared/dist/index.js",
       "file": "@vuepress_shared.js",
-      "fileHash": "186b0928",
+      "fileHash": "a34da766",
       "needsInterop": false
     },
     "@vueuse/core": {
       "src": "../../../../node_modules/_@vueuse_core@8.9.4@@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "fd96d875",
+      "fileHash": "67485a1b",
       "needsInterop": false
     },
     "vue": {
       "src": "../../../../node_modules/_vue@3.2.37@vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "20648437",
+      "fileHash": "62d4e98f",
       "needsInterop": false
     },
     "vue-router": {
       "src": "../../../../node_modules/_vue-router@4.1.3@vue-router/dist/vue-router.esm-bundler.js",
       "file": "vue-router.js",
-      "fileHash": "9582740b",
+      "fileHash": "d503f7ce",
       "needsInterop": false
+    },
+    "vue3-markdown-it": {
+      "src": "../../../../node_modules/_vue3-markdown-it@1.0.10@vue3-markdown-it/dist/vue3-markdown-it.umd.min.js",
+      "file": "vue3-markdown-it.js",
+      "fileHash": "3094a547",
+      "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-QIGTB33O": {
-      "file": "chunk-QIGTB33O.js"
+    "chunk-OYF5NPBX": {
+      "file": "chunk-OYF5NPBX.js"
     },
-    "chunk-25W477WF": {
-      "file": "chunk-25W477WF.js"
+    "chunk-NZ4YPKVX": {
+      "file": "chunk-NZ4YPKVX.js"
     },
-    "chunk-HEVGPZ4D": {
-      "file": "chunk-HEVGPZ4D.js"
+    "chunk-GC47D7MG": {
+      "file": "chunk-GC47D7MG.js"
     },
-    "chunk-JRATMO35": {
-      "file": "chunk-JRATMO35.js"
+    "chunk-LZIJNQ2F": {
+      "file": "chunk-LZIJNQ2F.js"
     }
   }
 }

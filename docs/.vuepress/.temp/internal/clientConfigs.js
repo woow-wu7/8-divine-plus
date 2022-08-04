@@ -7,6 +7,7 @@ import clientConfig5 from '/Users/wuxia/work/personal/front_end/8-divine-plus/no
 import clientConfig6 from '/Users/wuxia/work/personal/front_end/8-divine-plus/node_modules/_@vuepress_plugin-back-to-top@2.0.0-beta.49@@vuepress/plugin-back-to-top/lib/client/config.js'
 import clientConfig7 from '/Users/wuxia/work/personal/front_end/8-divine-plus/docs/.vuepress/.temp/register-components/clientConfig.162cfed8.js'
 import clientConfig8 from '/Users/wuxia/work/personal/front_end/8-divine-plus/node_modules/_@vuepress_plugin-docsearch@2.0.0-beta.49@@vuepress/plugin-docsearch/lib/client/config.js'
+import clientConfig9 from '/Users/wuxia/work/personal/front_end/8-divine-plus/docs/.vuepress/client.js'
 
 export const clientConfigs = [
   clientConfig0,
@@ -18,4 +19,5 @@ export const clientConfigs = [
   clientConfig6,
   clientConfig7,
   clientConfig8,
+  clientConfig9,
 ]

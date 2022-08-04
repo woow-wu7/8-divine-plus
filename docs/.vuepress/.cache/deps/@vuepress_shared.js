@@ -1,11 +1,25 @@
 import {
+  init_shared_esm_bundler,
   isArray,
   isFunction,
   isString
-} from "./chunk-HEVGPZ4D.js";
-import "./chunk-JRATMO35.js";
+} from "./chunk-GC47D7MG.js";
+import {
+  init_define_DOCSEARCH_OPTIONS,
+  init_define_EXTERNAL_LINK_ICON_LOCALES,
+  init_define_MZ_ZOOM_OPTIONS
+} from "./chunk-LZIJNQ2F.js";
+
+// dep:@vuepress_shared
+init_define_DOCSEARCH_OPTIONS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_MZ_ZOOM_OPTIONS();
 
 // node_modules/_@vuepress_shared@2.0.0-beta.49@@vuepress/shared/dist/index.js
+init_define_DOCSEARCH_OPTIONS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_MZ_ZOOM_OPTIONS();
+init_shared_esm_bundler();
 var resolveHeadIdentifier = ([
   tag,
   attrs,

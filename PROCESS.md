@@ -32,7 +32,10 @@ npm install @vuepress/plugin-container@next -D // 容器
 npm install @vuepress/plugin-back-to-top@next -D // 回到顶部
 npm install @vuepress/plugin-register-components@next -D // 注册组件
 npm install @vuepress/plugin-docsearch@next -D // 搜索
-npm install  @vuepress/plugin-git@next -D // git
+npm install @vuepress/plugin-git@next -D // git
+
+npm install vue3-markdown-it -S // markdown
+npm install highlight.js -S
 ```
 
 ### (2) 目录结构
@@ -92,6 +95,11 @@ module: { rules: [{
   - 发布相关 https://blog.51cto.com/u_15328720/3401308
 - vuepress2
   - 官网: https://juejin.cn/post/7096011121160618020
+  - 教程: https://www.cnblogs.com/wangdashi/p/16308107.html
   - 教程: https://github.com/Lee-Tanghui/vuepress-element-doc
   - 教程: https://juejin.cn/post/7089313579169480711
   - 插件: https://blog.csdn.net/sinat_31213021/article/details/119385175
+- 参考 ui 组件库
+  - element-plus https://github.com/element-plus/element-plus
+  - fes-design https://github.com/WeBankFinTech/fes-design
+  - mzl-ui https://github.com/Ningstyle/mzl-ui#readme

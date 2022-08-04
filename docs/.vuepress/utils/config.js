@@ -58,6 +58,7 @@ const plugins = [
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, "../components"),
+      ComponentWrap: path.resolve(__dirname, "../theme/ComponentWrap.vue"),
     }),
     docsearchPlugin({
       apiKey: "<API_KEY>",

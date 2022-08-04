@@ -9,4 +9,6 @@ export const pagesComponents = {
   "v-106e46c0": defineAsyncComponent(() => import(/* webpackChunkName: "v-106e46c0" */"/Users/wuxia/work/personal/front_end/8-divine-plus/docs/.vuepress/.temp/pages/components/divider.html.vue")),
   // path: /404.html
   "v-3706649a": defineAsyncComponent(() => import(/* webpackChunkName: "v-3706649a" */"/Users/wuxia/work/personal/front_end/8-divine-plus/docs/.vuepress/.temp/pages/404.html.vue")),
+  // path: /.vuepress/components/aa.html
+  "v-6982cbc6": defineAsyncComponent(() => import(/* webpackChunkName: "v-6982cbc6" */"/Users/wuxia/work/personal/front_end/8-divine-plus/docs/.vuepress/.temp/pages/.vuepress/components/aa.html.vue")),
 }

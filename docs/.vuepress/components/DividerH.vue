@@ -1,5 +1,33 @@
 <template>
-  <div class="divider-horizontal">
+  <Wrap>
+    <template v-slot:components>
+      <DvDivider direction="horizontal">
+        <template v-slot:default>center</template>
+      </DvDivider>
+      <DvDivider
+        direction="horizontal"
+        contentPosition="left"
+        borderStyle="dashed"
+      >
+        <template v-slot:default>left</template>
+      </DvDivider>
+      <DvDivider direction="horizontal" contentPosition="right">
+        <template v-slot:default>right</template>
+      </DvDivider>
+    </template>
+  </Wrap>
+</template>
+
+<script setup lang="ts">
+import Wrap from "../theme/ComponentWrap.vue";
+
+import DvDivider from "../../../packages/components/divider/index.vue";
+import "../../../packages/theme-chalk/divider.scss";
+
+import Markdown from "vue3-markdown-it";
+import "highlight.js/styles/monokai.css";
+
+const aa = `<div class="divider">
     <DvDivider direction="horizontal">
       <template v-slot:default>center</template>
     </DvDivider>
@@ -10,15 +38,7 @@
     >
       <template v-slot:default>left</template>
     </DvDivider>
-    <DvDivider direction="horizontal" contentPosition="right">
-      <template v-slot:default>right</template>
-    </DvDivider>
-  </div>
-</template>
-
-<script setup lang="ts">
-import DvDivider from "../../../packages/components/divider/index.vue";
-import "../../../packages/theme-chalk/divider.scss";
+  </div>`;
 </script>
 <style>
 .divider-horizontal {
