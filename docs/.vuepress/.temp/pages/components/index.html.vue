@@ -6,4 +6,13 @@
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>npm install divine-plus
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="yarn" tabindex="-1"><a class="header-anchor" href="#yarn" aria-hidden="true">#</a> yarn</h2>
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>yarn add divine-plus
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></div></template>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="其他" tabindex="-1"><a class="header-anchor" href="#其他" aria-hidden="true">#</a> 其他</h2>
+<CodeGroup>
+  <CodeGroupItem title="yarn">
+<div class="language-bash ext-sh"><pre v-pre class="language-bash"><code><span class="token function">yarn</span> <span class="token function">add</span> divine-plus
+</code></pre></div>  </CodeGroupItem>
+  <CodeGroupItem title="npm" active>
+<div class="language-bash ext-sh"><pre v-pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> divine-plus
+</code></pre></div>  </CodeGroupItem>
+</CodeGroup>
+</div></template>

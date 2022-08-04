@@ -14,6 +14,7 @@
 import { ref } from "vue";
 
 const visible = ref(false);
+
 defineProps({
   code: String,
 });

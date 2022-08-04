@@ -15,3 +15,23 @@ npm install divine-plus
 ```
 yarn add divine-plus
 ```
+
+## 其他
+
+<CodeGroup>
+  <CodeGroupItem title="yarn">
+
+```bash:no-line-numbers
+yarn add divine-plus
+```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="npm" active>
+
+```bash:no-line-numbers
+npm install divine-plus
+```
+
+  </CodeGroupItem>
+</CodeGroup>
