@@ -34,8 +34,10 @@ npm install @vuepress/plugin-register-components@next -D // 注册组件
 npm install @vuepress/plugin-docsearch@next -D // 搜索
 npm install @vuepress/plugin-git@next -D // git
 
-npm install vue3-markdown-it -S // markdown
-npm install highlight.js -S
+
+---
+npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
+npm install vue-router@4 -S // router,用于 breadcrumb
 ```
 
 ### (2) 目录结构

@@ -14,7 +14,6 @@
     "docs:build": "vuepress build docs"
   },
   "keywords": [],
-
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -49,5 +48,8 @@
     "webpack-dev-server": "^4.9.3",
     "webpack-merge": "^5.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.6",
+    "vue-router": "^4.1.3"
+  }
 }
