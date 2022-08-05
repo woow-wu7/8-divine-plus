@@ -1,2 +1,6 @@
 # 忽略 node_modules
 node_modules
+
+# vuepress2 .cache .temp
+docs/.vuepress/.temp
+docs/.vuepress/.cache

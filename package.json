@@ -14,7 +14,7 @@
     "docs:build": "vuepress build docs"
   },
   "keywords": [],
-  "author": "",
+
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -31,6 +31,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "markdown-loader": "^8.0.0",
     "node-sass": "^7.0.1",
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
@@ -48,8 +49,5 @@
     "webpack-dev-server": "^4.9.3",
     "webpack-merge": "^5.8.0"
   },
-  "dependencies": {
-    "highlight.js": "^11.6.0",
-    "vue3-markdown-it": "^1.0.10"
-  }
+  "dependencies": {}
 }

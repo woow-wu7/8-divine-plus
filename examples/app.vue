@@ -16,6 +16,7 @@
         <template v-slot:default>right</template>
       </DvDivider>
       <div>divider测试</div>
+      <v-md-preview text="# 111"></v-md-preview>
     </div>
   </section>
 </template>

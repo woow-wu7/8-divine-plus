@@ -24,10 +24,8 @@ import Wrap from "../theme/ComponentWrap.vue";
 import DvDivider from "../../../packages/components/divider/index.vue";
 import "../../../packages/theme-chalk/divider.scss";
 
-import Markdown from "vue3-markdown-it";
-import "highlight.js/styles/monokai.css";
-
-const aa = `<div class="divider">
+const aa = `
+ <div class="divider">
     <DvDivider direction="horizontal">
       <template v-slot:default>center</template>
     </DvDivider>
@@ -38,7 +36,8 @@ const aa = `<div class="divider">
     >
       <template v-slot:default>left</template>
     </DvDivider>
-  </div>`;
+  </div>
+`;
 </script>
 <style>
 .divider-horizontal {

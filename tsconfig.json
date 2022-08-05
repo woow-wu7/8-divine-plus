@@ -17,7 +17,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "allowJs": true
   },
   "include": ["examples/*", "vue.config.js", "docs/*"],
   "exclude": ["node_modules"]
