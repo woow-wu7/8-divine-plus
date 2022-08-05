@@ -6,10 +6,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import DvDivider from "../../../packages/components/divider/index.vue";
-import "../../../packages/theme-chalk/divider.scss";
-</script>
+<script setup lang="ts"></script>
 <style>
 .divider-vertical {
   border: 1px solid #f0f0f0;

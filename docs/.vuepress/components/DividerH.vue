@@ -20,9 +20,6 @@
 
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
-
-import DvDivider from "../../../packages/components/divider/index.vue";
-import "../../../packages/theme-chalk/divider.scss";
 </script>
 <style>
 .divider-horizontal {

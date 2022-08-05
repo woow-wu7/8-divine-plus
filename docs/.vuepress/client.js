@@ -5,6 +5,6 @@ import "../../packages/theme-chalk/index.scss";
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
-    app.use(DivinePlus);
+    app.use(DivinePlus, router);
   },
 });

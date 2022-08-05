@@ -40,14 +40,9 @@ const props = defineProps({
 });
 
 const instance = getCurrentInstance()!;
-const router = instance.appContext.config.globalProperties.$router as Router;
+const router = instance.appContext.config?.globalProperties?.$router as Router;
 
 const onClick = () => {
-  console.log("2", 2);
-  console.log("props.to", props.to);
-  console.log("router", router);
-  console.log("instance", instance.appContext.config.globalProperties);
-
   if (!props.to || !router) return;
   props.replace ? router.replace(props.to) : router.push(props.to);
 };

@@ -56,8 +56,8 @@
     // - 1. 最后一个元素hover时不做变化
     // - 2. 最后一个元素的分隔符不显示
     &:last-child {
-      .el-breadcrumb__inner,
-      .el-breadcrumb__inner a {
+      .dv-breadcrumb__inner,
+      .dv-breadcrumb__inner a {
         &,
         &:hover {
           font-weight: normal;
@@ -66,7 +66,7 @@
         }
       }
 
-      .el-breadcrumb__separator {
+      .dv-breadcrumb__separator {
         display: none;
       }
     }
