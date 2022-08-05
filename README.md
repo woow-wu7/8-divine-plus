@@ -16,7 +16,7 @@
 
 ### (1) 8-divine
 
-- [8-divine](https://github.com/woow-wu7/8-divine)
+- [8-divine 源码仓库-vue2 组件库](https://github.com/woow-wu7/8-divine)
 
 ### (2) element-ui 源码分析 [element-ui^2]
 
