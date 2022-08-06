@@ -68,6 +68,11 @@ const onClick = () => {
 // - 用法
 //  - 渲染一个“元组件”为动态组件。依 is 的值，来决定哪个组件被渲染。
 //  - 在本组件中，通过 ICON名 来渲染 ICON组件
+// - 注意
+//  - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  - 这里之所以可以通过 component 来渲染icon，是因为我们通过注册了所有icon
+//  - 声明：所有icon组件：installIcons(app)
+//  - 注册：app.use()
 
 // ---
 // getCurrentInstance()!
