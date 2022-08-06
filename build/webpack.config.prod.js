@@ -14,11 +14,9 @@ const base = require("./webpack.config.base");
 
 module.exports = merge(base, {
   mode: process.env.NODE_ENV,
-  target: "web",
-  entry: path.resolve(__dirname, "../index.js"), // 组件库入口
+  entry: path.resolve(__dirname, "../packages/components/index.ts"), // 组件库入口
   output: {
     path: path.resolve(process.cwd(), "dist"), // 等价于 path: path.resolve(__dirname, "../dist")
-
     filename: "divine-plus.js",
     library: {
       name: "divine-plus", // 配置导出库的名称，如使用require引入，这里就是require("8divine")

@@ -24,6 +24,6 @@ export const installIcons = (app: App) => {
   }
 };
 
-export const installRouter = (app: App) => {
-  app.use(router);
-};
+// export const installRouter = (app: App) => {
+//   app.use(router);
+// };
