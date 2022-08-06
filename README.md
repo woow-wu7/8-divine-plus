@@ -4,6 +4,9 @@
 
 ![8-divine-plus](docs/.vuepress/public//img/divine.jpg)
 
+## Homepage
+[官网链接-说明文档](http://120.53.220.141:8090/)
+
 ## Usage
 
 ```js
