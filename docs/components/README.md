@@ -4,19 +4,7 @@
 divinePlus 基于 vue3 + webpack5 + ts + vuepress2 构建
 :::
 
-## npm
-
-```
-npm install divine-plus
-```
-
-## yarn
-
-```
-yarn add divine-plus
-```
-
-## 其他
+## Install
 
 <CodeGroup>
   <CodeGroupItem title="yarn">
@@ -35,3 +23,21 @@ npm install divine-plus
 
   </CodeGroupItem>
 </CodeGroup>
+
+## Usage
+
+```js
+// install
+npm install divine-plus -S
+```
+
+```js
+// main.ts
+
+import DivinePlus from "divine-plus";
+import "divine-plus/packages/theme-chalk/index.scss";
+
+const app = createApp(App);
+app.use(DivinePlus);
+app.mount("#app");
+```

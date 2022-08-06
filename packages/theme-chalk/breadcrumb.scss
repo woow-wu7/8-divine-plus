@@ -52,6 +52,12 @@
       }
     }
 
+    @include e(component) {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+    }
+
     // .el-breadcrumb__item:last-child
     // - 1. 最后一个元素hover时不做变化
     // - 2. 最后一个元素的分隔符不显示

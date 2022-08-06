@@ -43,7 +43,43 @@ npm install vue-router@4 -S // router,用于 breadcrumb
 ### (2) 目录结构
 
 ```
-
+.
+├── Dockerfile
+├── PROCESS.md
+├── README.md
+├── build
+│   ├── webpack.config.base.js
+│   ├── webpack.config.dev.js
+│   ├── webpack.config.js
+│   └── webpack.config.prod.js
+├── docs
+│   └── .vuepress
+│   │   ├── config.js
+│   │   ├── client.js
+│   │   ├── components
+│   │   ├── theme
+│   │   ├── utils
+│   │   ├── public
+│   ├── README.md
+│   └── components
+├── examples
+│   ├── app.vue
+│   ├── main.ts
+│   └── shims-vue.d.ts
+├── global.d.ts
+├── package.json
+├── packages
+│   ├── components
+│   ├── hooks
+│   ├── router
+│   ├── theme-chalk
+│   └── utils
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── test
+├── tsconfig.json
+└── yarn-error.log
 ```
 
 ### (3) vue3 和 webpack5 和 ts 遇到的一些问题
@@ -85,6 +121,13 @@ module: { rules: [{
   - 变量: 当 @import 的路径中包含 ~ 时，表示的后面是一个变量
   - 查找顺序：该变量首先会去 ( webpack 的 resolve.alias 中查找 )，没有才会去 ( node_modules ) 中查找
   - 链接：https://segmentfault.com/q/1010000010879017
+
+6
+tree
+命令:
+  - tree -I node_modules -L 2
+  - -I 表示忽略 node_modules 文件夹
+  - -L 表示只显示2层关系
 ```
 
 # 资料

@@ -4,6 +4,26 @@
 
 ![8-divine-plus](docs/.vuepress/public//img/divine.jpg)
 
+## Usage
+
+```js
+// install
+npm install divine-plus -S
+```
+
+```js
+// main.ts
+
+import DivinePlus from "divine-plus";
+import "divine-plus/packages/theme-chalk/index.scss";
+
+const app = createApp(App);
+app.use(DivinePlus);
+app.mount("#app");
+```
+
+![8-divine-plus](docs/.vuepress/public/img/usage.png)
+
 # 掘金
 
 [[封装 01-设计模式] 设计原则 和 工厂模式(简单抽象方法) 适配器模式 装饰器模式](https://juejin.cn/post/6950958974854234119)  

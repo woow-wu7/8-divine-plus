@@ -41,6 +41,7 @@ const sidebar = {
     "/components/",
     "/components/divider.md",
     "/components/breadcrumb.md",
+    "/components/container.md",
   ],
 };
 
@@ -58,7 +59,7 @@ const plugins = [
   [
     backToTopPlugin(),
     containerPlugin({
-      type: "tip",
+      type: "tip", // tip是提示的意思
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, "../components"),
