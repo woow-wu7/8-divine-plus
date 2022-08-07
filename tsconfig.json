@@ -12,14 +12,14 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "types": ["node"], // 只有node的包声明文件会自动引入，其他模块的声明文件不会自动引入
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["packages/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "allowJs": true
   },
-  "include": ["examples/*", "vue.config.js", "docs/*"],
+  "include": ["packages/*", "examples/*", "docs/*", "vue.config.js"],
   "exclude": ["node_modules"]
 }

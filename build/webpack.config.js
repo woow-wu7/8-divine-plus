@@ -75,7 +75,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "@image": path.resolve(__dirname, "../examples"), // @image === 根/examples/
+      "@": path.resolve(__dirname, "../packages"),
     },
     extensions: [".ts", ".js", ".css", ".less", "*"], // import时省略后缀时，先找.js文件，再找.css文件 注意：'*' 表示所有类型的文件
   },
