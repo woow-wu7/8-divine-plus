@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "author": "woow_wu7",
+  "homepage": "http://120.53.220.141:8090/",
   "scripts": {
     "serve": "cnpm run dev",
     "start": "cnpm run dev",
@@ -13,7 +15,12 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "keywords": [],
+  "keywords": [
+    "vue3",
+    "typescript",
+    "webpack5",
+    "vuepress2"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.9",
