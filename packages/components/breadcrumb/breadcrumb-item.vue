@@ -84,5 +84,3 @@ const onClick = () => {
 // - 官网
 //  - https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance
 </script>
-
-<style lang="scss" scoped></style>

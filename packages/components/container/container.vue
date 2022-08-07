@@ -1,5 +1,7 @@
 <template>
-  <section :class="[ns.b(), ns.is('vertical', isVertical)]"></section>
+  <section :class="[ns.b(), ns.is('vertical', isVertical)]">
+    <slot></slot>
+  </section>
 </template>
 
 <script lang="ts">
@@ -33,16 +35,10 @@ const isVertical = computed(() => {
   if (slots && slots.default) {
     const vNodes: VNode[] = slots.default();
 
-    vNodes.some((vNode) => {
+    return vNodes.some((vNode) => {
       const tag = (vNode.type as Component).name;
-      if (tag === "DvHeader" || tag === "DvFooter") {
-        return true;
-      } else {
-        return false;
-      }
+      return tag === "DvHeader" || tag === "DvFooter";
     });
   }
 });
 </script>
-
-<style lang="scss" scoped></style>

@@ -34,5 +34,3 @@ const props = defineProps({
 
 provide(breadcrumbKey, props); // 供 breadcrumb-item 消费
 </script>
-
-<style lang="scss" scoped></style>

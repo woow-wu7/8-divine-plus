@@ -65,7 +65,7 @@ export const useNamespace = (block: string) => {
   // - 有两个以上的参数:
   //    - 比如 ns.is('vertical', isVertical)
   //    - 第一个参数是 modifier ---> is-modifier
-  //    - 第二个参数是 boolean ----> state的取值
+  //    - 第二个参数是 boolean ----> state的取值，表示是否存在 is-modifier 这个 class，如果是false则该class属性没有被声明
   const is: {
     (name: string, state: boolean | undefined): string;
     (name: string): string;
