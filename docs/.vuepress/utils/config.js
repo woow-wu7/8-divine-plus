@@ -39,9 +39,9 @@ const navbar = [
 const sidebar = {
   "/components/": [
     "/components/",
-    "/components/divider.md",
-    "/components/breadcrumb.md",
     "/components/container.md",
+    "/components/breadcrumb.md",
+    "/components/divider.md",
   ],
 };
 
