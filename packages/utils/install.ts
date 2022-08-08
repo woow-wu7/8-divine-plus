@@ -1,12 +1,16 @@
 import { App } from "vue";
 import Divider from "../components/divider/index.vue";
+
 import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
 import BreadcrumbItem from "../components/breadcrumb/breadcrumb-item.vue";
+
 import Container from "../components/container/container.vue";
 import Header from "../components/container/header.vue";
 import Footer from "../components/container/footer.vue";
-import Main from "../components/container/main.vue";
 import Aside from "../components/container/aside.vue";
+import Main from "../components/container/main.vue";
+
+import Badge from "../components/badge/index.vue";
 
 // 图标库，用于 breadcrumb 组件的 separator-icon
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
@@ -24,6 +28,8 @@ const components = [
   Footer,
   Aside,
   Main,
+
+  Badge,
 ];
 
 // 插件声明：声明所有插件

@@ -41,6 +41,7 @@ const sidebar = {
     "/components/",
     "/components/container.md",
     "/components/breadcrumb.md",
+    "/components/badge.md",
     "/components/divider.md",
   ],
 };
