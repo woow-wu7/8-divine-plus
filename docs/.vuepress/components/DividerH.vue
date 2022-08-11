@@ -1,5 +1,5 @@
 <template>
-  <Wrap>
+  <Wrap :md="html">
     <template v-slot:components>
       <DvDivider direction="horizontal">
         <template v-slot:default>center</template>
@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
+import { html } from "../../components/divider-h-docs.md";
 </script>
 <style>
 .divider-horizontal {

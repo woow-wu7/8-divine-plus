@@ -11,7 +11,9 @@ const {
 
 // vite相关
 const { viteBundler } = require("@vuepress/bundler-vite");
-const mdPlugin = require("vite-plugin-markdown"); // 需要通过commenJs方式引用
+const mdPlugin = require("vite-plugin-markdown");
+const hljs = require("highlight.js/lib/core");
+hljs.registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 
 // 1
 // head
@@ -87,6 +89,17 @@ const bundler = viteBundler({
     plugins: [
       mdPlugin.plugin({
         mode: ["html"],
+        markdownIt: {
+          highlight: function (str, lang) {
+            if (lang && hljs.getLanguage(lang)) {
+              try {
+                return hljs.highlight(str, { language: "xml" }).value;
+              } catch (__) {}
+            }
+
+            return hljs.highlight(str, { language: "xml" }).value;
+          },
+        },
       }),
     ],
   },

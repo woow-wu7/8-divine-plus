@@ -10,46 +10,9 @@
 
 <DividerH />
 
-<details>
-<summary>查看源代码</summary>
-
-```vue
-<template>
-  <div class="divider">
-    <DvDivider direction="horizontal">
-      <template v-slot:default>center</template>
-    </DvDivider>
-    <DvDivider
-      direction="horizontal"
-      contentPosition="left"
-      borderStyle="dashed"
-    >
-      <template v-slot:default>left</template>
-    </DvDivider>
-  </div>
-</template>
-```
-
-</details>
-
 ### 垂直方向
 
 <DividerV />
-
-<details>
-<summary>查看源代码</summary>
-
-```vue
-<template>
-  <div class="divider">
-    <span>left</span>
-    <DvDivider direction="vertical"></DvDivider>
-    <span>right</span>
-  </div>
-</template>
-```
-
-</details>
 
 ## Divider 组件属性
 

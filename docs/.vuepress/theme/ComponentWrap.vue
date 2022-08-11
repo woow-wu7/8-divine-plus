@@ -5,16 +5,29 @@
     </header>
     <footer v-if="true" @click="visible = !visible">
       <span>查看代码</span>
+      <component
+        :is="ArrowRight"
+        :class="['arrow', { 'is-down': visible }]"
+      ></component>
     </footer>
-    <main v-if="visible" v-html="md"></main>
+
+    <main v-if="visible">
+      <template v-if="hasMd">
+        <slot name="md"></slot>
+      </template>
+      <div v-else v-html="md"></div>
+    </main>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, useSlots, computed } from "vue";
 import Markdown from "vue3-markdown-it";
+import { ArrowRight } from "@element-plus/icons-vue";
 
 const visible = ref(false);
+const slots = useSlots();
+const hasMd = computed(() => slots?.md?.()?.length);
 
 defineProps({
   code: String,
@@ -39,9 +52,21 @@ defineProps({
   }
   footer {
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
   main {
-    background: rgb(66, 66, 66);
+    background: #141414;
+  }
+
+  .arrow {
+    margin-left: 10px;
+    height: 16px;
+    width: 16px;
+    transition: all 0.3s;
+  }
+  .is-down {
+    transform: rotate(90deg);
   }
 }
 </style>

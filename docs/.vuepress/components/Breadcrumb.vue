@@ -1,5 +1,5 @@
 <template>
-  <Wrap>
+  <Wrap :md="html">
     <template v-slot:components>
       <DvBreadcrumb :separator-icon="ArrowRight">
         <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
@@ -9,7 +9,7 @@
     </template>
   </Wrap>
 
-  <Wrap>
+  <Wrap :md="html">
     <template v-slot:components>
       <DvBreadcrumb>
         <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
@@ -23,6 +23,7 @@
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
 import { ArrowRight } from "@element-plus/icons-vue";
+import { html } from "../../components/breadcrumb-docs.md";
 </script>
 <style>
 .divider-horizontal {

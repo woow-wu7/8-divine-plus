@@ -6,25 +6,6 @@
 
 <Breadcrumb/>
 
-<details>
-<summary>查看源代码</summary>
-
-```vue
-<DvBreadcrumb :separator-icon="ArrowRight">
-  <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
-  <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
-  <DvBreadcrumbItem>详情</DvBreadcrumbItem>
-</DvBreadcrumb>
-
-<DvBreadcrumb>
-  <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
-  <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
-  <DvBreadcrumbItem>详情</DvBreadcrumbItem>
-</DvBreadcrumb>
-```
-
-</details>
-
 ## Breadcrumb 组件属性
 
 | 属性           | 描述           | 类型               | 可选值 | 默认值 |

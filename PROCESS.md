@@ -46,12 +46,14 @@ npm install @vuepress/plugin-git@next -D // git
 
 2. js语法高亮
 npm install highlight.js -D
-npm install "@highlightjs/vue-plugin" -D
+npm install @highlightjs/vue-plugin -D
 
 
 3. 将 md 转成 html
 - docs: vite环境
   - npm install vite-plugin-markdown -D
+  - npm install highlight.js -D
+  - npm install @highlightjs/vue-plugin -D
 - examples: webpack环境
   - npm install html-loader markdown-loader -D
 ```
