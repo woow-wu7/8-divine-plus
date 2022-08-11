@@ -1,4 +1,4 @@
-const { head, theme, plugins } = require("./utils/config.js");
+const { head, theme, plugins, bundler } = require("./utils/config.js");
 
 // 1. head 注入到当前页面的 HTML <head> 中的标签
 // 2. theme 主题和它的配置
@@ -11,4 +11,5 @@ module.exports = {
   head,
   theme,
   plugins,
+  bundler,
 };

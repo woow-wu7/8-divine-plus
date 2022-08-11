@@ -3,20 +3,22 @@
     <header>
       <slot name="components"></slot>
     </header>
-    <main v-if="visible">
-      <slot name="md"></slot>
-    </main>
-    <footer v-if="false" @click="visible = !visible">查看代码</footer>
+    <footer v-if="true" @click="visible = !visible">
+      <span>查看代码</span>
+    </footer>
+    <main v-if="visible" v-html="md"></main>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
+import Markdown from "vue3-markdown-it";
 
 const visible = ref(false);
 
 defineProps({
   code: String,
+  md: String,
 });
 </script>
 
@@ -37,6 +39,9 @@ defineProps({
   }
   footer {
     cursor: pointer;
+  }
+  main {
+    background: rgb(66, 66, 66);
   }
 }
 </style>

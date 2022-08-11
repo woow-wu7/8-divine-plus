@@ -45,11 +45,15 @@
         <button>按钮</button>
       </DvBadge>
     </section>
+
+    <!-- 测试 md-loader 把 markdown 转成 HTML -->
+    <div v-html="ContainerMd"></div>
   </section>
 </template>
 
 <script setup>
 import { ArrowRight } from "@element-plus/icons-vue";
+import ContainerMd from "../docs/components/container.md";
 </script>
 
 <style lang="scss" scoped>

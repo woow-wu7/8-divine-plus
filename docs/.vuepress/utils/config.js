@@ -1,3 +1,4 @@
+// vuepress2
 const { defaultTheme } = require("vuepress");
 const { path } = require("@vuepress/utils");
 const { containerPlugin } = require("@vuepress/plugin-container"); // 容器提示
@@ -7,6 +8,10 @@ const { gitPlugin } = require("@vuepress/plugin-git"); // git
 const {
   registerComponentsPlugin,
 } = require("@vuepress/plugin-register-components"); // 注册组件
+
+// vite相关
+const { viteBundler } = require("@vuepress/bundler-vite");
+const mdPlugin = require("vite-plugin-markdown"); // 需要通过commenJs方式引用
 
 // 1
 // head
@@ -76,8 +81,21 @@ const plugins = [
   ],
 ];
 
+// bundler
+const bundler = viteBundler({
+  viteOptions: {
+    plugins: [
+      mdPlugin.plugin({
+        mode: ["html"],
+      }),
+    ],
+  },
+  vuePluginOptions: {},
+});
+
 module.exports = {
   head,
   theme,
   plugins,
+  bundler,
 };

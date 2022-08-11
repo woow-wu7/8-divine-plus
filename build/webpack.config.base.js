@@ -99,7 +99,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
-        exclude: /node_modules/,
+        // exclude: /node_modules/, // 这里不加入该行代码是因为 highlight.js/styles/stackoverflow-light.css 需要用css-loader来处理
       },
       {
         test: /\.s[ac]ss$/i,
@@ -126,6 +126,16 @@ module.exports = {
           },
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.md$/,
+        use: [
+          { loader: "html-loader" },
+          { loader: "markdown-loader", options: {} },
+        ],
+        // markdown-loader
+        // - 用于: example 时的 md 处理
+        // - 注意: 和 docs 构建没有关系
       },
     ],
   },

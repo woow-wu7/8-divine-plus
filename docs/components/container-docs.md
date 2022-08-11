@@ -1,5 +1,6 @@
+```vue
 <template>
-  <Wrap :md="html">
+  <Wrap>
     <template v-slot:components>
       <div class="block">
         <div>Header测试</div>
@@ -13,14 +14,12 @@
         </DvContainer>
       </div>
     </template>
-    <template v-slot:md></template>
   </Wrap>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
 import { ArrowRight } from "@element-plus/icons-vue";
-import { html } from "../../components/container-docs.md";
 </script>
 
 <style lang="scss">
@@ -48,3 +47,4 @@ import { html } from "../../components/container-docs.md";
   background: #d9ecff;
 }
 </style>
+```

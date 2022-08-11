@@ -4,6 +4,13 @@ import App from "./app.vue";
 import DivinePlus from "../packages/components/index";
 import "../packages/theme-chalk/index.scss";
 
+// hightlight.js
+// @highlightjs/vue-plugin
+import "highlight.js/styles/stackoverflow-light.css";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import hljsVuePlugin from "@highlightjs/vue-plugin";
+
 // contrast
 // import ElementPlus from "element-plus";
 // import "element-plus/dist/index.css";
@@ -14,10 +21,13 @@ import "../packages/theme-chalk/index.scss";
 // app.use(Breadcrumb);
 // app.use(Divider);
 
+hljs.registerLanguage("javascript", javascript);
+
 const app = createApp(App);
 
 app.use(DivinePlus); // 注册插件
 // app.use(ElementPlus);
+app.use(hljsVuePlugin);
 
 app.mount("#app");
 

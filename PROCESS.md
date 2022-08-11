@@ -10,20 +10,29 @@ npm install webpack -D
 npm install webpack-cli -D
 npm install webpack-dev-server -D
 npm install webpack-merge -D // 合并 webpack 配置
-npm install vue-loader vue-template-compiler html-webpack-plugin -D // vue组件处理 和 html模版处理
-npm install file-loader url-loader html-loader -D // 文件处理，url-loader通过limit处理成base64的图片
-npm install style-loader css-loader -D // 样式处理
-npm install sass sass-loader node-sass -D // sass相关
 
-npm install typescript ts-loader -D // ts相关
-npm install babel-loader @babel/core @babel/preset-env -D // babel可以把es6转成es5
+npm install vue-loader vue-template-compiler html-webpack-plugin -D // -- vue组件处理 和 html模版处理
+npm install file-loader url-loader -D // ------------------------------- 文件处理，url-loader通过limit处理成base64的图片
+npm install style-loader css-loader -D // ------------------------------ 样式处理
+npm install sass sass-loader node-sass -D // --------------------------- sass相关
+npm install html-loader markdown-loader -D // -------------------------- md 转成 html
+
+npm install typescript ts-loader -D // --------------------------------- ts相关
+npm install babel-loader @babel/core @babel/preset-env -D // ----------- babel可以把es6转成es5
 
 npm install cross-env -D
 npm install @types/node -D // 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 
 
 ---
-// 说明文档相关
+npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
+npm install vue-router@4 -S // router,用于 breadcrumb
+```
+
+```说明文档
+说明文档相关
+
+1. vuepress2
 // 查看: vuepress最新的版本: npm view vuepress versions
 // 安装: 指定版本的vuepress: npm install vuepress@2.0.0-beta.49 -D
 // 版本: vuepress2.0才支持vue3。需要注意的是目前处于维护阶段，使用 vue3+vite 构建的使用 vitePress
@@ -35,9 +44,16 @@ npm install @vuepress/plugin-docsearch@next -D // 搜索
 npm install @vuepress/plugin-git@next -D // git
 
 
----
-npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
-npm install vue-router@4 -S // router,用于 breadcrumb
+2. js语法高亮
+npm install highlight.js -D
+npm install "@highlightjs/vue-plugin" -D
+
+
+3. 将 md 转成 html
+- docs: vite环境
+  - npm install vite-plugin-markdown -D
+- examples: webpack环境
+  - npm install html-loader markdown-loader -D
 ```
 
 ### (2) 目录结构

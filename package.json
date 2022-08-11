@@ -26,6 +26,7 @@
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "@element-plus/icons-vue": "^2.0.6",
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@types/node": "^18.6.3",
     "@vuepress/plugin-back-to-top": "^2.0.0-beta.49",
     "@vuepress/plugin-container": "^2.0.0-beta.49",
@@ -36,6 +37,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
+    "highlight.js": "^11.6.0",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
     "markdown-loader": "^8.0.0",
@@ -46,6 +48,7 @@
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
     "url-loader": "^4.1.1",
+    "vite-plugin-md": "^0.20.2",
     "vue": "^3.2.37",
     "vue-loader": "^17.0.0",
     "vue-router": "^4.1.3",
@@ -56,5 +59,8 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "vite-plugin-markdown": "^2.1.0"
   }
 }

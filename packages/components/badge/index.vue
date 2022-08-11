@@ -79,6 +79,7 @@ const slots = useSlots();
 defineExpose({
   content,
 });
-</script>
 
-<style lang="scss" scoped></style>
+// sup 上标
+// sub 下标
+</script>
