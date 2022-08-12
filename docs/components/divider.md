@@ -1,4 +1,4 @@
-# divider
+# Divider
 
 区隔内容的分割线
 

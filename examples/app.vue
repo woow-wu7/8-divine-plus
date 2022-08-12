@@ -25,6 +25,11 @@
         <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
         <DvBreadcrumbItem>详情</DvBreadcrumbItem>
       </DvBreadcrumb>
+      <DvBreadcrumb style="margin-top: 18px">
+        <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
+        <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
+        <DvBreadcrumbItem>详情</DvBreadcrumbItem>
+      </DvBreadcrumb>
     </section>
 
     <section class="block">
@@ -37,6 +42,16 @@
         </DvContainer>
         <DvFooter class="footer">footer</DvFooter>
       </DvContainer>
+    </section>
+
+    <section class="block">
+      <h4>Row,Col 测试</h4>
+      <el-row :gutter="20">
+        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="6"><div class="grid-content ep-bg-purple" /></el-col>
+      </el-row>
     </section>
 
     <section class="block">

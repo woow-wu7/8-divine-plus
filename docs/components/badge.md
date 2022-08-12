@@ -1,4 +1,4 @@
-# badge
+# Badge
 
 徽章
 

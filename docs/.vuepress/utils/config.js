@@ -39,6 +39,17 @@ const navbar = [
     text: "组件",
     link: "/components",
   },
+  {
+    text: "GitHub",
+    link: "https://github.com/woow-wu7/8-divine-plus",
+  },
+  {
+    text: "博客",
+    children: [
+      { text: "掘金", link: "https://juejin.cn/user/1063982989065799/posts" },
+      { text: "简书", link: "https://www.jianshu.com/u/70c8a3b8bb44" },
+    ],
+  },
 ];
 
 // 3
@@ -47,6 +58,7 @@ const sidebar = {
   "/components/": [
     "/components/",
     "/components/container.md",
+    "/components/layout.md",
     "/components/breadcrumb.md",
     "/components/badge.md",
     "/components/divider.md",

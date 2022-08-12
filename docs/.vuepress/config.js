@@ -8,6 +8,7 @@ module.exports = {
   lang: "zh-CN",
   title: "DivinePlus",
   description: "vue3 + webpack5 + ts + vuepress2 组件库",
+  open: false,
   head,
   theme,
   plugins,
