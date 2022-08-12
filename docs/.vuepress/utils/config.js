@@ -1,21 +1,20 @@
 // vuepress2
 const { defaultTheme } = require("vuepress");
 const { path } = require("@vuepress/utils");
-const { containerPlugin } = require("@vuepress/plugin-container"); // 容器提示
-const { backToTopPlugin } = require("@vuepress/plugin-back-to-top"); // 回到顶部
-const { docsearchPlugin } = require("@vuepress/plugin-docsearch"); // 搜索
-const { gitPlugin } = require("@vuepress/plugin-git"); // git
+const { containerPlugin } = require("@vuepress/plugin-container");
+const { backToTopPlugin } = require("@vuepress/plugin-back-to-top");
+const { docsearchPlugin } = require("@vuepress/plugin-docsearch");
+const { gitPlugin } = require("@vuepress/plugin-git");
 const {
   registerComponentsPlugin,
 } = require("@vuepress/plugin-register-components"); // 注册组件
 
-// vite相关
+// vite
 const { viteBundler } = require("@vuepress/bundler-vite");
 const mdPlugin = require("vite-plugin-markdown");
 const hljs = require("highlight.js/lib/core");
 hljs.registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 
-// 1
 // head
 // 注入到当前页面的 HTML <head> 中的标签
 const head = [
@@ -28,8 +27,6 @@ const head = [
   ],
 ];
 
-// 2
-// 顶部导航
 const navbar = [
   {
     text: "首页",
@@ -52,8 +49,6 @@ const navbar = [
   },
 ];
 
-// 3
-// 侧边导航
 const sidebar = {
   "/components/": [
     "/components/",
@@ -65,16 +60,12 @@ const sidebar = {
   ],
 };
 
-// theme
-// 主题配置
 const theme = defaultTheme({
   home: "/",
   navbar,
   sidebar,
 });
 
-// 4
-// plugins
 const plugins = [
   [
     backToTopPlugin(),
@@ -95,7 +86,6 @@ const plugins = [
   ],
 ];
 
-// bundler
 const bundler = viteBundler({
   viteOptions: {
     plugins: [
