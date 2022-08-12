@@ -1,4 +1,8 @@
-import { App } from "vue";
+import type { App, Component } from "vue";
+// 图标库，用于 breadcrumb 组件的 separator-icon
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+// import router from "../router/index";
+
 import Divider from "../components/divider/index.vue";
 
 import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
@@ -12,10 +16,12 @@ import Main from "../components/container/main.vue";
 
 import Badge from "../components/badge/index.vue";
 
-// 图标库，用于 breadcrumb 组件的 separator-icon
-import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-
-import router from "../router/index";
+// 注意
+// 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context只在webpack环境中存在
+// - 1. docs，使用 vite 构建
+// - 2. examples，使用 webpack 构建
+// import { requireComps } from "./requireContext";
+// const components = requireComps();
 
 const components = [
   Divider,
@@ -35,8 +41,8 @@ const components = [
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册
 export const installComponents = (app: App) => {
-  components.forEach((comp) => {
-    app.component(comp.name, comp);
+  components.forEach((comp: Component) => {
+    app.component(comp.name as string, comp);
   });
 };
 

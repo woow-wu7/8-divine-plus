@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
-import { html } from "../../components/divider-h-docs.md";
+import { html } from "../../components/divider-h-code.md";
 </script>
 <style>
 .divider-horizontal {

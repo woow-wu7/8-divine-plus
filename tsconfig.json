@@ -5,21 +5,21 @@
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node", // 以上是 vue 推荐的配置
-
-    "skipLibCheck": true,
+    "skipLibCheck": true, // 略过声明检查
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
-    "types": ["node"], // 只有node的包声明文件会自动引入，其他模块的声明文件不会自动引入
     "baseUrl": ".",
     "paths": {
       "@/*": ["packages/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
-    "allowJs": true
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "types": ["node", "webpack-env"] // 1. 只有 node 和 webpack-env 的包声明文件会自动引入，其他模块的声明文件不会自动引入 2. webpack-env这里主要用于 require.context 的ts类型
   },
-  "include": ["packages/*", "examples/*", "docs/*", "vue.config.js"],
+  "include": ["packages/*", "examples/*", "docs/*", "utils/*", "vue.config.js", "packages/components/shims-vue.d.ts"],
   "exclude": ["node_modules"]
 }

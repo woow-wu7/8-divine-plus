@@ -22,7 +22,6 @@
 
 <script setup lang="ts">
 import { ref, useSlots, computed } from "vue";
-import Markdown from "vue3-markdown-it";
 import { ArrowRight } from "@element-plus/icons-vue";
 
 const visible = ref(false);

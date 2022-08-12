@@ -41,19 +41,37 @@
 
     <section class="block">
       <h4>Badge 测试</h4>
-      <DvBadge value="7">
-        <button>按钮</button>
-      </DvBadge>
+      <dv-badge :value="12" class="item">
+        <button size="small">评论</button>
+      </dv-badge>
+      <dv-badge :value="199" :max="88" class="item">
+        <button size="small">评论</button>
+      </dv-badge>
+      <dv-badge :value="199" :max="88" isDot class="item">
+        <button size="small">评论</button>
+      </dv-badge>
+      <dv-badge :value="199" :max="88" type="primary" class="item">
+        <button size="small">评论</button>
+      </dv-badge>
+      <dv-badge :value="199" :max="88" type="success" class="item">
+        <button size="small">评论</button>
+      </dv-badge>
+      <dv-badge value="文本" :max="88" type="warning" class="item">
+        <button size="small">评论</button>
+      </dv-badge>
     </section>
 
     <!-- 测试 md-loader 把 markdown 转成 HTML -->
-    <div v-html="ContainerMd"></div>
+    <section>
+      <div v-html="ContainerMd"></div>
+      <highlightjs language="javascript" code="var x = 5;" />
+    </section>
   </section>
 </template>
 
 <script setup>
 import { ArrowRight } from "@element-plus/icons-vue";
-import ContainerMd from "../docs/components/container.md";
+import ContainerMd from "../docs/components/container-code.md";
 </script>
 
 <style lang="scss" scoped>
@@ -85,5 +103,9 @@ import ContainerMd from "../docs/components/container.md";
 .aside {
   height: 160px;
   background: #d9ecff;
+}
+
+.item {
+  margin-right: 30px;
 }
 </style>

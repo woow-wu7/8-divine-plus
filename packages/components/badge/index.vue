@@ -69,6 +69,7 @@ const content = computed<string>(() => {
     return props.value! < props.max! ? `${props.value}` : `${props.max}+`;
   }
 
+  console.log("props.value", props.value);
   // string
   return `${props.value}`;
 });

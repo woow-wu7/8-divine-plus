@@ -28,6 +28,7 @@
     "@element-plus/icons-vue": "^2.0.6",
     "@highlightjs/vue-plugin": "^2.1.0",
     "@types/node": "^18.6.3",
+    "@types/webpack-env": "^1.17.0",
     "@vuepress/plugin-back-to-top": "^2.0.0-beta.49",
     "@vuepress/plugin-container": "^2.0.0-beta.49",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.49",

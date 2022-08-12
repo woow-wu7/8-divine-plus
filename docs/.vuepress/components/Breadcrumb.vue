@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
 import { ArrowRight } from "@element-plus/icons-vue";
-import { html } from "../../components/breadcrumb-docs.md";
+import { html } from "../../components/breadcrumb-code.md";
 </script>
 <style>
 .divider-horizontal {

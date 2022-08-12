@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
-import { html } from "../../components/divider-v-docs.md";
+import { html } from "../../components/divider-v-code.md";
 </script>
 <style>
 .divider-vertical {

@@ -20,7 +20,7 @@
 <script setup>
 import Wrap from "../theme/ComponentWrap.vue";
 import { ArrowRight } from "@element-plus/icons-vue";
-import { html } from "../../components/container-docs.md";
+import { html } from "../../components/container-code.md";
 </script>
 
 <style lang="scss">

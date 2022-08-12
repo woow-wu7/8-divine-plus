@@ -51,11 +51,11 @@ npm install @highlightjs/vue-plugin -D
 
 3. 将 md 转成 html
 - docs: vite环境
-  - npm install vite-plugin-markdown -D
-  - npm install highlight.js -D
-  - npm install @highlightjs/vue-plugin -D
+  - npm install vite-plugin-markdown -D // ----------- 将md文件转成各种类型
+  - npm install highlight.js -D // ------------------- 语法高亮
+  - npm install @highlightjs/vue-plugin -D // -------- 包装组件
 - examples: webpack环境
-  - npm install html-loader markdown-loader -D
+  - npm install html-loader markdown-loader -D // ---- 将 md 转成 html
 ```
 
 ### (2) 目录结构
@@ -146,6 +146,13 @@ tree
   - tree -I node_modules -L 2
   - -I 表示忽略 node_modules 文件夹
   - -L 表示只显示2层关系
+
+7
+报错: ts报错类型“NodeRequire”上不存在属性“context”
+解决:
+ - 1. npm install @types/webpack-env -D
+ - 2. 在 tsconfig.json 中 types 数组中添加 "webpack-env" 去自动引入 "@types/webpack-env" 包
+ - 3. 在 tsconfig.json 中 include 数组中添加 webpack语法所在的 ts 文件
 ```
 
 # 资料
@@ -153,6 +160,8 @@ tree
 - 环境变量区别 https://juejin.cn/post/6844904023791796237#heading-0
 - tsconfig.json https://www.pengfeixc.com/blogs/javascript/tsconfig
 - 构建过程 https://juejin.cn/post/6950905030635421710
+- webpack
+  - require.context https://webpack.js.org/guides/dependency-management/#requirecontext
 - npm
   - 打包发布流程 https://juejin.cn/post/6994746118135349262
   - 发布相关 https://blog.51cto.com/u_15328720/3401308
