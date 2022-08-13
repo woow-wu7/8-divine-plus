@@ -1,22 +1,33 @@
 <template>
   <section class="component-wrap">
-    <header>
-      <slot name="components"></slot>
+    <header v-if="slots?.title || slot?.subtitle">
+      <div class="header__title">
+        <slot name="title"> </slot>
+      </div>
+      <div class="header__subtitle">
+        <slot name="subtitle"></slot>
+      </div>
     </header>
-    <footer v-if="true" @click="visible = !visible">
-      <span>查看代码</span>
-      <component
-        :is="ArrowRight"
-        :class="['arrow', { 'is-down': visible }]"
-      ></component>
-    </footer>
 
-    <main v-if="visible">
-      <template v-if="hasMd">
-        <slot name="md"></slot>
-      </template>
-      <div v-else v-html="md"></div>
+    <main>
+      <slot name="components"></slot>
     </main>
+
+    <footer>
+      <div class="footer__tool" v-if="true" @click="visible = !visible">
+        <span>查看代码</span>
+        <component
+          :is="ArrowRight"
+          :class="['arrow', { 'is-down': visible }]"
+        ></component>
+      </div>
+      <div class="footer__code" v-if="visible">
+        <template v-if="hasMd">
+          <slot name="md"></slot>
+        </template>
+        <div v-else v-html="md"></div>
+      </div>
+    </footer>
   </section>
 </template>
 
@@ -47,15 +58,31 @@ defineProps({
   }
 
   header {
+    padding-bottom: 0px;
+
+    .header__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #3eaf7c;
+    }
+    .header__subtitle {
+      margin-top: 20px;
+    }
+  }
+
+  main {
     border-top: 0;
   }
+
   footer {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  main {
-    background: #141414;
+    .footer__tool {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .footer__code {
+      background: #141414;
+    }
   }
 
   .arrow {
@@ -64,6 +91,7 @@ defineProps({
     width: 16px;
     transition: all 0.3s;
   }
+
   .is-down {
     transform: rotate(90deg);
   }

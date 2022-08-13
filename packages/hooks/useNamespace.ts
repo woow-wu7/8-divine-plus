@@ -13,7 +13,7 @@ const _bem = (
 ) => {
   let cls = `${ns}-${block}`;
   if (suffixBlock) {
-    cls += `${suffixBlock}`;
+    cls += `-${suffixBlock}`;
   }
   if (element) {
     cls += `__${element}`;
@@ -74,6 +74,11 @@ export const useNamespace = (block: string) => {
     return name && state ? `${statePrefix}${name}` : "";
   };
 
+  const isM = (modifier: string, isShow: boolean) => {
+    const cls = modifier ? _bem(unref(namespace), block, "", "", modifier) : "";
+    return isShow ? `${cls}` : "";
+  };
+
   // for css var
   // --el-xxx: value;
   const cssVar = (object: Record<string, string>) => {
@@ -107,7 +112,10 @@ export const useNamespace = (block: string) => {
     em,
     bm,
     bem,
+
     is,
+    isM,
+
     // css
     cssVar,
     cssVarName,

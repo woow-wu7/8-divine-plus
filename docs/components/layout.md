@@ -7,14 +7,19 @@
 - Row
 - Col
 
+# 基本使用
+
+<Layout/>
+
 # Row 组件属性
 
-| 属性    | 描述                         | 类型   | 可选值                                      | 默认值 |
-| ------- | ---------------------------- | ------ | ------------------------------------------- | ------ |
-| gutter  | 栅格间隔                     | number | -                                           | 0      |
-| tag     | 自定义元素标签               | string | -                                           | div    |
-| justify | flex 布局下的 - 水平排列方式 | string | start/end/center/space-around/space-between | div    |
-| align   | flex 布局下的 - 垂直排列方式 | string | top/middle/bottom                           | div    |
+| 属性    | 描述                                  | 类型   | 可选值                                      | 默认值 |
+| ------- | ------------------------------------- | ------ | ------------------------------------------- | ------ |
+| gutter  | 栅格间隔                              | number | -                                           | 0      |
+| tag     | 自定义元素标签                        | string | -                                           | div    |
+| type    | 布局模式，可选 flex，现代浏览器下有效 | string | -                                           | -      |
+| justify | flex 布局下的 - 水平排列方式          | string | start/end/center/space-around/space-between | div    |
+| align   | flex 布局下的 - 垂直排列方式          | string | top/middle/bottom                           | div    |
 
 # Col 组件属性
 

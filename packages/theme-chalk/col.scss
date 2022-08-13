@@ -5,6 +5,10 @@
 [class*="dv-col-"] {
   float: left;
   box-sizing: border-box;
+  @include when(guttered) {
+    display: block;
+    min-height: 1px;
+  }
 }
 
 .dv-col-0 {
