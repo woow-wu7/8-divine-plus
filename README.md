@@ -26,6 +26,8 @@ app.use(DivinePlus);
 app.mount("#app");
 ```
 
+> 注意: 不要使用 cnpm 安装，vuepress 依赖 vite 很容易出错
+
 ![8-divine-plus](docs/.vuepress/public/img/usage.png)
 
 ## Blog
