@@ -4,6 +4,9 @@ import App from "./app.vue";
 import DivinePlus from "../packages/components/index";
 import "../packages/theme-chalk/index.scss";
 
+// import DivinePlus from "divine-plus";
+// import DivinePlus from "../dist/divine-plus";
+
 // hightlight.js
 // @highlightjs/vue-plugin
 import "highlight.js/styles/stackoverflow-light.css";

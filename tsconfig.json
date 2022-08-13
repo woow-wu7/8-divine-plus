@@ -20,6 +20,15 @@
     "experimentalDecorators": true,
     "types": ["node", "webpack-env"] // 1. 只有 node 和 webpack-env 的包声明文件会自动引入，其他模块的声明文件不会自动引入 2. webpack-env这里主要用于 require.context 的ts类型
   },
-  "include": ["packages/*", "examples/*", "docs/*", "utils/*", "vue.config.js", "packages/components/shims-vue.d.ts"],
+  "include": [
+    "packages/*",
+    "examples/*",
+    "docs/*",
+    "utils/*",
+    "vue.config.js",
+    "packages/components/shims-vue.d.ts"
+  ],
+  // 因为: 这里不去用 ts 解析 node_modules 中的文件
+  // 所以: node_module 中需要提供 js 文件
   "exclude": ["node_modules"]
 }

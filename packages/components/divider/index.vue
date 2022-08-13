@@ -1,7 +1,7 @@
 <template>
   <section :class="[ns.b(), ns.m(direction)]" :style="borderStyle">
     <div
-      v-if="slots?.default && direction === 'horizontal'"
+      v-if="slots.default && direction === 'horizontal'"
       :class="[ns.e('text'), ns.is(contentPosition)]"
     >
       <slot name="default"></slot>

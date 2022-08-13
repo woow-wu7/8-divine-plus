@@ -14,7 +14,9 @@ const base = require("./webpack.config.base");
 
 module.exports = merge(base, {
   mode: process.env.NODE_ENV,
-  entry: path.resolve(__dirname, "../packages/components/index.ts"), // 组件库入口
+  entry: {
+    main: path.resolve(__dirname, "../packages/components/index.ts"),
+  }, // 组件库入口
   output: {
     path: path.resolve(process.cwd(), "dist"), // 等价于 path: path.resolve(__dirname, "../dist")
     filename: "divine-plus.js",
