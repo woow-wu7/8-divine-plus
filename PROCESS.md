@@ -155,6 +155,15 @@ tree
  - 3. 在 tsconfig.json 中 include 数组中添加 webpack语法所在的 ts 文件
 ```
 
+```
+1
+报错：Cannot read property 'isCE' of null in remote component with slot using Module Federation
+解决：
+  - 1. chainWebpack(config) { config.resolve.symlinks(false) config.resolve.alias.set( 'vue', path.resolve('./node_modules/vue')) }
+  - 2. 除了1，可以直接像本项目一样，在webpack中修改
+  - https://github.com/vuejs/core/issues/4344
+```
+
 # 资料
 
 - 环境变量区别 https://juejin.cn/post/6844904023791796237#heading-0

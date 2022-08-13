@@ -1,6 +1,6 @@
 {
   "name": "divine-plus",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "vue3-ui",
   "author": "woow_wu7",
   "homepage": "http://120.53.220.141:8090/",
@@ -27,7 +27,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "divine-plus": "^1.0.3",
+    "divine-plus": "^1.0.6",
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "@element-plus/icons-vue": "^2.0.6",

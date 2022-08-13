@@ -50,8 +50,11 @@ console.log("process.env.HOST_ENV", process.env.HOST_ENV);
 
 module.exports = {
   resolve: {
+    // https://github.com/vuejs/core/issues/4344
+    symlinks: false,
     alias: {
       "@": path.resolve(__dirname, "../packages"),
+      vue: path.resolve(__dirname, "../node_modules/vue"),
     },
     extensions: [".ts", ".js", ".css", ".less", "*"], // import时省略后缀时，先找.js文件，再找.css文件 注意：'*' 表示所有类型的文件
   },
