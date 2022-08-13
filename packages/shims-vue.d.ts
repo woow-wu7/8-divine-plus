@@ -8,6 +8,3 @@ declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
-
-declare module "8-divine-plus";
-declare module "divine-plus";

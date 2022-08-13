@@ -1393,9 +1393,15 @@
   "version" "0.7.31"
 
 "@types/node@*", "@types/node@^18.6.3":
+<<<<<<< HEAD
   "integrity" "sha512-LJgzOEwWuMTBxHzgBR/fhhBOWrvBjvO+zPteUgbbuQi80rYIZHrk1mNbRUqPZqSLP2H7Rwt1EFLL/tNLD1Xx/w=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-18.7.3.tgz"
   "version" "18.7.3"
+=======
+  "integrity" "sha512-ce7MIiaYWCFv6A83oEultwhBXb22fxwNOQf5DIxWA4WXvDQ7K+L0fbWl/YOfCzlR5B/uFkSnVBhPcOfOECcWvA=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-18.7.2.tgz"
+  "version" "18.7.2"
+>>>>>>> cf5621d2e4bac29479a2cbaa910047d0429b6fa1
 
 "@types/normalize-package-data@^2.4.0":
   "integrity" "sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw=="
@@ -2907,6 +2913,16 @@
   dependencies:
     "path-type" "^4.0.0"
 
+<<<<<<< HEAD
+=======
+"divine-plus@^1.0.8":
+  "integrity" "sha512-EMkJjaT+NQ4f9Fop4QFAPkCoJk01LW7I0KGwk7k7gyIsl0M9hrxNhvEWPauM+SHOiMFkvCPNWDpeKlm1IOWepg=="
+  "resolved" "https://registry.npmjs.org/divine-plus/-/divine-plus-1.0.9.tgz"
+  "version" "1.0.9"
+  dependencies:
+    "vite-plugin-markdown" "^2.1.0"
+
+>>>>>>> cf5621d2e4bac29479a2cbaa910047d0429b6fa1
 "dns-equal@^1.0.0":
   "integrity" "sha512-z+paD6YUQsk+AbGCEM4PrOXSss5gd66QfcVBFTKR/HpFL9jCqikS94HYwKww6fQyO7IxrIIyUu+g0Ka9tUS2Cg=="
   "resolved" "https://registry.npmjs.org/dns-equal/-/dns-equal-1.0.0.tgz"

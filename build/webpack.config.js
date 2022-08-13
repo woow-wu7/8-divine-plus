@@ -137,7 +137,7 @@ module.exports = {
             options: {},
           },
         ],
-        exclude: /node_modules/,
+        // exclude: /node_modules/, 注释掉是因为我们的ui组件库发布到了npm
       },
       {
         test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
