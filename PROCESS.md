@@ -15,6 +15,8 @@ npm install vue-loader vue-template-compiler html-webpack-plugin -D // -- vue组
 npm install file-loader url-loader -D // ------------------------------- 文件处理，url-loader通过limit处理成base64的图片
 npm install style-loader css-loader -D // ------------------------------ 样式处理
 npm install sass sass-loader node-sass -D // --------------------------- sass相关
+npm install mini-css-extract-plugin -D // ------------------------------ 单独抽离成css文件，以便引入组件库的css，因为css和组件时单独打包的
+npm install postcss-loader autoprefixer - D //-------------------------- 添加浏览器的前缀，可单独配置 postcss.config.js；autoprefixer需要在package.json中设置 browserslist
 npm install html-loader markdown-loader -D // -------------------------- md 转成 html
 
 npm install typescript ts-loader -D // --------------------------------- ts相关
@@ -158,10 +160,10 @@ tree
 ```
 1
 报错：Cannot read property 'isCE' of null in remote component with slot using Module Federation
+原因: 打包时打了vue代码，因为 ( vue项目-使用组件库 ) 和 ( 插件组件库项目-组件库 ) 的vue版本不一致导致的问题
 解决：
-  - 1. chainWebpack(config) { config.resolve.symlinks(false) config.resolve.alias.set( 'vue', path.resolve('./node_modules/vue')) }
-  - 2. 除了1，可以直接像本项目一样，在webpack中修改
-  - https://github.com/vuejs/core/issues/4344
+  - 1. webpack打包时，通过 externals 不去打包 vue
+  - 2. vite构建同理
 ```
 
 # 资料
@@ -174,6 +176,10 @@ tree
 - npm
   - 打包发布流程 https://juejin.cn/post/6994746118135349262
   - 发布相关 https://blog.51cto.com/u_15328720/3401308
+- package.json
+  - exports: https://zhuanlan.zhihu.com/p/159202959
+  - files: https://juejin.cn/post/6844903975825702926#heading-8
+  - &和&&: https://www.jianshu.com/p/c96fdba92c44
 - vuepress2
   - 官网: https://juejin.cn/post/7096011121160618020
   - 教程: https://www.cnblogs.com/wangdashi/p/16308107.html

@@ -2,16 +2,6 @@ const path = require("path");
 const { merge } = require("webpack-merge");
 const base = require("./webpack.config.base");
 
-// 1
-// process.cwd() 和 __dirname 的区别 ?
-// 1.1
-// process.cwd()
-// - 返回 Node.js 进程的当前工作目录，即 ( 执行命令的文件所在的文件夹 )
-// - 这里webpack命令是在 package.json 文件中执行的，所在的文件夹是 8-divine-plus
-// 1.2
-// __dirname
-// - 返回 源代码所在的目录文件夹，即当 ( 前文件所在的目录 )， 这里源代码文件就是webpack.config.prod.js，所在文件夹就是 build
-
 module.exports = merge(base, {
   mode: process.env.NODE_ENV,
   entry: {
@@ -29,4 +19,24 @@ module.exports = merge(base, {
     // libraryTarget: "umd", // 配置以何种方式导出库 -> 将被 output.library.type 代替
     // umdNamedDefine: true, // -------------------> 将被 output.library.umdNamedDefine 代替，当使用 libraryTarget: "umd" 时，设置 output.umdNamedDefine 为 true 将命名由 UMD 构建的 AMD 模块。否则将使用一个匿名的 define。
   },
+
+  externals: {
+    vue: "vue",
+  },
 });
+
+// 1
+// process.cwd() 和 __dirname 的区别 ?
+// 1.1
+// process.cwd()
+// - 返回 Node.js 进程的当前工作目录，即 ( 执行命令的文件所在的文件夹 )
+// - 这里webpack命令是在 package.json 文件中执行的，所在的文件夹是 8-divine-plus
+// 1.2
+// __dirname
+// - 返回 源代码所在的目录文件夹，即当 ( 前文件所在的目录 )， 这里源代码文件就是webpack.config.prod.js，所在文件夹就是 build
+
+// 2
+// externals
+// - 报错：打包后使用组件库报错 Uncaught TypeError: Cannot read properties of null (reading 'isCE')
+// - 解决：通过 webpack 构建时，通过 externals 不打包 vue
+// - vite 同理

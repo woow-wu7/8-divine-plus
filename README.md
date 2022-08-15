@@ -19,7 +19,7 @@ npm install divine-plus -S
 // main.ts
 
 import DivinePlus from "divine-plus";
-import "divine-plus/packages/theme-chalk/index.scss";
+import "divine-plus/css/index.css";
 
 const app = createApp(App);
 app.use(DivinePlus);

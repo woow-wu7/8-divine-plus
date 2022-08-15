@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // 0
 // const VueLoaderPlugin = require("vue-loader/lib/plugin"); // 注意：这样的写法会抱错，需要改成最新的下面的写法
@@ -102,18 +103,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          // "style-loader", // 使用了 MiniCssExtractPlugin.loader 就不需要使用 style-loader 了
+          MiniCssExtractPlugin.loader,
+          { loader: "css-loader" },
+          { loader: "postcss-loader" },
+        ],
         // exclude: /node_modules/, // 这里不加入该行代码是因为 highlight.js/styles/stackoverflow-light.css 需要用css-loader来处理
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "sass-loader",
-            options: {},
-          },
+          // "style-loader", // 使用了 MiniCssExtractPlugin.loader 就不需要使用 style-loader 了
+          MiniCssExtractPlugin.loader,
+          { loader: "css-loader" },
+          { loader: "postcss-loader" },
+          { loader: "sass-loader" },
         ],
         exclude: /node_modules/,
       },
@@ -148,6 +153,10 @@ module.exports = {
       title: "divine-plus",
       template: "public/index.html",
       filename: "index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "css/main.css", // 指定被打包后的文件夹，和文件名
+      // filename: 'main.css', 抽离出来的css文件名
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
