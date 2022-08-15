@@ -12,6 +12,7 @@
 
 ```js
 // install
+
 npm install divine-plus -S
 ```
 
