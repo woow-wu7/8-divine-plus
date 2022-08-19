@@ -11,3 +11,4 @@ declare module "*.vue" {
 
 declare module "8-divine-plus";
 declare module "divine-plus";
+declare module "*.md";

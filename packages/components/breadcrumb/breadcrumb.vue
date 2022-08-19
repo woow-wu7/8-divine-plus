@@ -25,7 +25,7 @@ const props = defineProps({
     },
   },
   separatorIcon: {
-    type: [String, Function],
+    type: [String, Function, Object],
     default() {
       return "";
     },

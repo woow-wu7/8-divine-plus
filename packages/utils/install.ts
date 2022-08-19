@@ -16,6 +16,7 @@ import Main from "../components/container/main.vue";
 import Row from "../components/row/index.vue";
 import Col from "../components/col/index.vue";
 import Badge from "../components/badge/index.vue";
+import Backtop from "../components/backtop/index.vue";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context只在webpack环境中存在
@@ -40,6 +41,7 @@ const components = [
   Col,
 
   Badge,
+  Backtop,
 ];
 
 // 插件声明：声明所有插件

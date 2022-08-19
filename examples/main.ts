@@ -1,11 +1,11 @@
 import { createApp } from "vue";
 import App from "./app.vue";
 
-// import DivinePlus from "../packages/components/index";
-// import "../packages/theme-chalk/index.scss";
+import DivinePlus from "../packages/components/index";
+import "../packages/theme-chalk/index.scss";
 
-import DivinePlus from "divine-plus";
-import "divine-plus/css/index.css";
+// import DivinePlus from "divine-plus";
+// import "divine-plus/css/index.css";
 
 // hightlight.js
 // @highlightjs/vue-plugin

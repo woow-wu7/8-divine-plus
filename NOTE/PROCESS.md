@@ -29,6 +29,7 @@ npm install @types/node -D // 解决ts环境在模块中访问 process 时变量
 ---
 npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
 npm install vue-router@4 -S // router,用于 breadcrumb
+npm install @vueuse/core -D // hooks
 ```
 
 ```说明文档
