@@ -5,18 +5,18 @@ import type { App, Component } from "vue";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 // component
-import Divider from "../components/divider/index.vue";
-import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
-import BreadcrumbItem from "../components/breadcrumb/breadcrumb-item.vue";
-import Container from "../components/container/container.vue";
-import Header from "../components/container/header.vue";
-import Footer from "../components/container/footer.vue";
-import Aside from "../components/container/aside.vue";
-import Main from "../components/container/main.vue";
-import Row from "../components/row/index.vue";
-import Col from "../components/col/index.vue";
-import Badge from "../components/badge/index.vue";
-import Backtop from "../components/backtop/index.vue";
+import Divider from "@/components/divider/index.vue";
+import Breadcrumb from "@/components/breadcrumb/breadcrumb.vue";
+import BreadcrumbItem from "@/components/breadcrumb/breadcrumb-item.vue";
+import Container from "@/components/container/container.vue";
+import Header from "@/components/container/header.vue";
+import Footer from "@/components/container/footer.vue";
+import Aside from "@/components/container/aside.vue";
+import Main from "@/components/container/main.vue";
+import Row from "@/components/row/index.vue";
+import Col from "@/components/col/index.vue";
+import Badge from "@/components/badge/index.vue";
+import Backtop from "@/components/backtop/index.vue";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context只在webpack环境中存在

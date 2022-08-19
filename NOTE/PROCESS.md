@@ -106,6 +106,36 @@ npm install @highlightjs/vue-plugin -D
 ### (3) vue3 和 webpack5 和 ts 遇到的一些问题
 
 ```
+[1]
+---
+报错：Cannot read property 'isCE' of null in remote component with slot using Module Federation
+原因: 打包时打了vue代码，因为 ( vue项目-使用组件库 ) 和 ( 插件组件库项目-组件库 ) 的vue版本不一致导致的问题
+解决：
+  - 1. webpack打包时，通过 externals 不去打包 vue
+  - 2. vite构建同理
+```
+
+```
+[2]
+别名设置
+---
+1.webpack设置
+resolve: { alias: {  "@": path.resolve(__dirname, "../packages") } }
+
+2.typescript设置
+- 问题：为什么设置了webpack的别名alias后，ts会报错找不到模块，并且vscode也不跳转？
+- 回答：因为 webpack 设置别名后，typescript并不知道设置了别名，所以要设置 tsconfig.json
+- 设置：需要在 tsconfig.json 中设置三个地方 ( baseUrl paths includes )
+"baseUrl": "."
+"paths": { "@/*": ["packages/*"] } -- 表示路径映射，相对于baseUrl，注意@/和packages/后面的*号，如果缺少了还是会报错！！！
+"include": [ "packages/*"] ---------- 表示编译器需要包含的文件夹
+
+3.测试详见 packages/utils
+4.之前react项目设置别名资料 https://github.com/woow-wu7/7-react-admin-ts
+```
+
+```
+[其他]
 1
 vue项目添加ts支持
 - 说明: 本项目是通过 webpack 构建，所以需要修改 webpack 配置
@@ -156,15 +186,6 @@ tree
  - 1. npm install @types/webpack-env -D
  - 2. 在 tsconfig.json 中 types 数组中添加 "webpack-env" 去自动引入 "@types/webpack-env" 包
  - 3. 在 tsconfig.json 中 include 数组中添加 webpack语法所在的 ts 文件
-```
-
-```
-1
-报错：Cannot read property 'isCE' of null in remote component with slot using Module Federation
-原因: 打包时打了vue代码，因为 ( vue项目-使用组件库 ) 和 ( 插件组件库项目-组件库 ) 的vue版本不一致导致的问题
-解决：
-  - 1. webpack打包时，通过 externals 不去打包 vue
-  - 2. vite构建同理
 ```
 
 # 资料
