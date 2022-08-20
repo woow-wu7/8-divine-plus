@@ -132,6 +132,13 @@ resolve: { alias: {  "@": path.resolve(__dirname, "../packages") } }
 
 3.测试详见 packages/utils
 4.之前react项目设置别名资料 https://github.com/woow-wu7/7-react-admin-ts
+
+5.扩展
+遇到问题：当不通过别名，直接通过相对路径也报错找不到模块的解决方案
+如何解决：
+eg: backup组件
+- a. 在 components 文件夹下编写 index.d.ts
+- b. 在 package.json 中 include 添加路径  "packages/components/*"
 ```
 
 ```

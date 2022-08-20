@@ -22,8 +22,9 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed, PropType, useSlots } from "vue";
+import { computed, useSlots } from "vue";
 import { useNamespace } from "../../hooks/useNamespace";
+import { definePropType } from "../../utils/definePropType";
 
 const ns = useNamespace("badge");
 
@@ -44,9 +45,9 @@ const props = defineProps({
     },
   },
   type: {
-    type: String as PropType<
-      "primary" | "success" | "warning" | "danger" | "info"
-    >,
+    type: definePropType<"primary" | "success" | "warning" | "danger" | "info">(
+      String
+    ),
     default() {
       return "danger";
     },

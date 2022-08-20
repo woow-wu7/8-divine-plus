@@ -20,10 +20,10 @@ export default {
 
 <script setup lang="ts">
 import { computed, watch, reactive, onMounted } from "vue";
-import type { PropType } from "vue";
-import { CaretTop } from "@element-plus/icons-vue";
 import { useEventListener, useThrottleFn } from "@vueuse/core";
+import { CaretTop } from "@element-plus/icons-vue";
 import { useNamespace } from "../../hooks/useNamespace";
+import { definePropType } from "../../utils/definePropType";
 import { easeInOutCubic } from "./utils";
 import type { State } from "./utils";
 
@@ -31,9 +31,12 @@ const ns = useNamespace("backtop");
 
 const props = defineProps({
   target: {
-    type: [String, Object, Function] as PropType<
-      string | HTMLElement | (() => HTMLElement)
-    >,
+    // type: [String, Object, Function] as PropType< string | HTMLElement | (() => HTMLElement) >
+    type: definePropType<string | HTMLElement | (() => HTMLElement)>([
+      String,
+      Object,
+      Function,
+    ]),
     default() {
       return "#app";
     },

@@ -78,7 +78,7 @@
 
     <section class="block backtop" ref="app">
       <h4>Backtop 测试</h4>
-      <p>test</p>
+      <p>向下滚动试试</p>
       <p>test</p>
       <p>test</p>
       <p>test</p>
@@ -146,8 +146,8 @@
   </section>
 </template>
 
-<script setup lang="ts">
-import { reactive, ref, onMounted } from "vue";
+<script setup>
+import { reactive, ref } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 
@@ -169,7 +169,7 @@ const onBeforeEnter = () => {
 
 // 在元素被插入到 DOM 之后的下一帧被调用
 // 用这个来开始进入动画
-const onEnter = (el: HTMLElement, done: () => void) => {
+const onEnter = (el, done) => {
   // 调用回调函数 done 表示过渡结束
   // 如果与 CSS 结合使用，则这个回调是可选参数
   console.log("enter");
@@ -178,18 +178,18 @@ const onEnter = (el: HTMLElement, done: () => void) => {
 };
 
 // 当进入过渡完成时调用。
-const onAfterEnter = (el: HTMLElement) => {
+const onAfterEnter = (el) => {
   console.log("afterEnter");
 };
-const onEnterCancelled = (el: HTMLElement) => {
+const onEnterCancelled = (el) => {
   console.log("enterCancelled");
 };
 // 在 leave 钩子之前调用
 // 大多数时候，你应该只会用到 leave 钩子
-function onBeforeLeave(el: HTMLElement) {}
+function onBeforeLeave(el) {}
 // 在离开过渡开始时调用
 // 用这个来开始离开动画
-function onLeave(el: HTMLElement, done: () => void) {
+function onLeave(el, done) {
   // 调用回调函数 done 表示过渡结束
   // 如果与 CSS 结合使用，则这个回调是可选参数
   done();
@@ -197,10 +197,10 @@ function onLeave(el: HTMLElement, done: () => void) {
 
 // 在离开过渡完成、
 // 且元素已从 DOM 中移除时调用
-function onAfterLeave(el: HTMLElement) {}
+function onAfterLeave(el) {}
 
 // 仅在 v-show 过渡中可用
-function onLeaveCancelled(el: HTMLElement) {}
+function onLeaveCancelled(el) {}
 </script>
 
 <style lang="scss" scoped>
