@@ -6,7 +6,7 @@
 
 ## Homepage
 
-[官网链接-说明文档](http://120.53.220.141:8090/)
+[官网链接 - 说明文档](http://120.53.220.141:8090/)
 
 ## Usage
 
@@ -30,6 +30,10 @@ app.mount("#app");
 > 注意: 不要使用 cnpm 安装，vuepress 依赖 vite 很容易出错
 
 ![8-divine-plus](docs/.vuepress/public/img/usage.png)
+
+
+## Discussions
+[GitHub Discussions - 讨论区链接](https://github.com/woow-wu7/8-divine-plus/discussions)
 
 ## Blog
 
