@@ -16,6 +16,7 @@
   </section>
 </template>
 <script lang="ts">
+// 注意: 这里不能使用 defineComponent 来声明，比如: export default defineComponent({ name: 'DvBadge', }
 export default {
   name: "DvBadge",
 };

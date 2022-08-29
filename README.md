@@ -31,8 +31,8 @@ app.mount("#app");
 
 ![8-divine-plus](docs/.vuepress/public/img/usage.png)
 
-
 ## Discussions
+
 [GitHub Discussions - 讨论区链接](https://github.com/woow-wu7/8-divine-plus/discussions)
 
 ## Blog

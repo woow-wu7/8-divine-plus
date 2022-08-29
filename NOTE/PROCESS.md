@@ -2,7 +2,7 @@
 
 ### (1) 安装依赖
 
-```
+```安装依赖
 npm init -y // -y 可以生成默认的package.json配置
 npm install vue -D // 这里 -D 是因为是 vue 组件库并不是vue项目，安装默认是 v3 版本
 
@@ -33,7 +33,7 @@ npm install @vueuse/core -D // hooks
 ```
 
 ```说明文档
-说明文档相关
+组件库说明文档相关
 
 1. vuepress2
 // 查看: vuepress最新的版本: npm view vuepress versions

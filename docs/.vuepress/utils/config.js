@@ -56,6 +56,7 @@ const sidebar = {
     "/components/layout.md",
     "/components/breadcrumb.md",
     "/components/badge.md",
+    "/components/tag.md",
     "/components/divider.md",
     "/components/backtop.md",
   ],
@@ -75,7 +76,9 @@ const plugins = [
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, "../components"),
-      ComponentWrap: path.resolve(__dirname, "../theme/ComponentWrap.vue"),
+      components: {
+        ComponentWrap: path.resolve(__dirname, "../theme/ComponentWrap.vue"),
+      },
     }),
     docsearchPlugin({
       apiKey: "<API_KEY>",
@@ -105,6 +108,11 @@ const bundler = viteBundler({
         },
       }),
     ],
+    // resolve: {
+    //   alias: {
+    //     "@": "../../../packages/components",
+    //   },
+    // },
   },
   vuePluginOptions: {},
 });
