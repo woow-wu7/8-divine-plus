@@ -33,7 +33,6 @@ npm install divine-plus -S
 
 ```js
 // main.ts
-
 import DivinePlus from "divine-plus";
 import "divine-plus/css/index.scss";
 
