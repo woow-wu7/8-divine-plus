@@ -6,9 +6,9 @@
 性能优化
 
 1
-proxy 代替 Object.defineProps
+Proxy 代替 Object.defineProps
 - 原理
-  - Object.defineProps监听的是对象中的某个属性，如果要监听整个对象，就需要通过循环遍历对象的所有属性来实现，并且对新增删除属性无法监听
+  - Object.defineProps 监听的是对象中的某个 ( 属性 )，如果要监听整个对象，就需要通过循环遍历对象的所有属性来实现，并且对新增删除属性无法监听
 - 解决:
   - 对象属性添加，删除无法响应式
   - 数组下标修改值，通过length修改数组长度都无法响应式
@@ -26,13 +26,13 @@ tree-shaking，减少打包体积
 3
 PatchFlag 和 hoistStatic
 - vue2
-  - parse -------> 将 template 转成 ast
-  - optimize ----> 将 静态节点 和 静态根节点 打上标记，在diff时不做diff算法对比；vue2中template有10个p标签，但只有一个p是动态节点即存在变量，vue2整个模版中的元素都会重渲染
-  - generate ----> 将 ast 转成 render 函数
+  - parse -----> 将 template 转成 ast
+  - optimize --> 将 静态节点 和 静态根节点 打上标记，在diff时不做diff算法对比；vue2中template有10个p标签，但只有一个p是动态节点即存在变量，vue2整个组件模版中的元素都会重渲染
+  - generate --> 将 ast 转成 render 函数
 - vue3
   - 动态节点 - PatchFlag
     - 在vue2中如果一个template中有10个p标签，但只有一个p是动态节点即只有一个p标签存在变量
-      - vue2 也会整个整个模版中的元素都会渲染，即 ----------------------------- ( vue2的更新是组件级别的 )
+      - vue2 也会整个组件模版中的元素都会渲染，即 ----------------------------- ( vue2的更新是组件级别的 )
       - vue3 则只会更新模版中打上PatchFlag标记的标签，而不会重渲染整个template -- ( vue3的更新是元素级别的 )
   - 静态节点 - hoistStatic
     - hoistStatic静态节点提升，hoist是提升的意思
