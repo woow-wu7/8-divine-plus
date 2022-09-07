@@ -212,7 +212,7 @@ Object.defineProperty 的缺点
 
 - key 的作用：用于 diff 算法中的唯一标记
 - index 作用为 key 的缺点：
-  - 描述：比如当渲染 list 为 3 个 input 框，在每个 input 框中输入 123，删除 2，3 的 input 框会变成 2
+  - 描述：比如当渲染 list 为 3 个 input 框，在每个 input 框中输入 123，当我们删除 2 时，此时 3 的 input 框会变成 2
   - 原因：因为删除 2 后，原来 3 的 index 变成了 2，(key) 和 (css 选择器 input) 都没变，认为还是之前的 2
 - 总结
   - 在 静态列表 中，可以使用 index 作为 key
