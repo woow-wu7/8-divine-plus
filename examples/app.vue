@@ -1,4 +1,10 @@
 <template>
+  <!-- 第一个根节点 -->
+  <section>
+    <section class="block">vue3可以有多个根节点了</section>
+  </section>
+
+  <!-- 第二个根节点 -->
   <section class="app">
     <section class="block">
       <h4>Divider测试</h4>

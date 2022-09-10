@@ -20,7 +20,8 @@ Proxy 代替 Object.defineProps
 2
 tree-shaking，减少打包体积
 - 比如:
-  - 内置组件 Transition KeepAlive Teleport Suspense TransitionGroup 在项目中如果没有使用到，就不会打包
+  - 内置组件: Transition KeepAlive Teleport Suspense TransitionGroup 在项目中如果没有使用到，就不会打包
+  - 指令: v-model 在项目中如果没有使用到，也不会打包
 
 
 3
@@ -30,11 +31,11 @@ PatchFlag 和 hoistStatic
   - optimize --> 将 静态节点 和 静态根节点 打上标记，在diff时不做diff算法对比；vue2中template有10个p标签，但只有一个p是动态节点即存在变量，vue2整个组件模版中的元素都会重渲染
   - generate --> 将 ast 转成 render 函数
 - vue3
-  - 动态节点 - PatchFlag
+  - 动态节点 - PatchFlag 动态节点标记
     - 在vue2中如果一个template中有10个p标签，但只有一个p是动态节点即只有一个p标签存在变量
       - vue2 也会整个组件模版中的元素都会渲染，即 ----------------------------- ( vue2的更新是组件级别的 )
       - vue3 则只会更新模版中打上PatchFlag标记的标签，而不会重渲染整个template -- ( vue3的更新是元素级别的 )
-  - 静态节点 - hoistStatic
+  - 静态节点 - hoistStati c静态节点提升
     - hoistStatic静态节点提升，hoist是提升的意思
     - 当使用hoistStatic时，所有 静态的节点都被提升到render方法之外
     - 这意味着，他们只会在应用启动的时候被创建一次，而后随着每次的渲染被不停地复用
@@ -44,17 +45,26 @@ PatchFlag 和 hoistStatic
 cacheHandler 事件监听缓存
 - 默认情况下 ( @click等事件 ) 会被认为是 ( 动态变量 )，所以每次 ( 视图更新时会去追踪事件的变化 )
 - 但是正常情况下，视图渲染前后，事件一般都不会变化的，是不需要去追踪变化的，所以vue3做了 ( 事件缓存优化 )
+- 类比于 React 中的 ( useMemo/useCallback 去缓存函数 )
 
 
 5
+Fragment
+- Vue2中的template模版中 只能有 ( 一个 ) ( 根 ) 节点
+- Vue3中的template模版中 可以有 ( 多个 ) ( 根 ) 节点
+- 这个和react的升级保持一致，react16以后也支持多个根节点
+
+
+6
 其他
 - 更好的代码管理方式: monorepo
 - 类型系统: typescript
 
 
-6
+7
 资料
-https://juejin.cn/post/6844904199726055437#heading-3
+- https://juejin.cn/post/6844904199726055437#heading-3
+- https://www.bilibili.com/video/BV1ke411W7WB?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 ```
 
 # (二) 内置组件
@@ -99,7 +109,7 @@ css过渡class
   - 2. transform可以触发 ( GPU硬件加速 )
 ```
 
-# 其他
+# (三) 其他
 
 ```
 1
