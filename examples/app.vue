@@ -1,16 +1,4 @@
 <template>
-  <!-- 第一个根节点 -->
-  <div>
-    <section class="block">vue3可以有多个根节点了</section>
-  </div>
-
-  <!-- 第二个根节点 -->
-  <!-- 测试 v-model -->
-  <section class="block">
-    <p>vue3中v-model的改变</p>
-    <VModelTestFather></VModelTestFather>
-  </section>
-
   <!-- 第三个根节点 -->
   <div class="app">
     <section class="block">
@@ -190,6 +178,18 @@
       <highlightjs language="javascript" code="var x = 5;" />
     </section>
   </div>
+
+  <!-- 第一个根节点 -->
+  <div>
+    <section class="block">vue3可以有多个根节点了</section>
+  </div>
+
+  <!-- 第二个根节点 -->
+  <!-- 测试 v-model -->
+  <section class="block">
+    <p>vue3中v-model的改变</p>
+    <VModelTestFather></VModelTestFather>
+  </section>
 </template>
 
 <script setup>
