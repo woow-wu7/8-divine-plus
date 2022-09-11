@@ -61,7 +61,7 @@ Fragment
 - 类型系统: typescript
 - v-model: 在 api 写法上的变化也要注意
   - 用于组件上-默认: v-model="aaa" props->modelValue emit->update:modelValue
-  - 用于组件上-自定义: v-model:aaa="xxx" props->aaa emit->update:aaa
+  - 用于组件上-自定义属性: v-model:aaa="xxx" props->aaa emit->update:aaa
 
 
 7
