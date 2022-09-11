@@ -35,7 +35,7 @@ PatchFlag 和 hoistStatic
     - 在vue2中如果一个template中有10个p标签，但只有一个p是动态节点即只有一个p标签存在变量
       - vue2 也会整个组件模版中的元素都会渲染，即 ----------------------------- ( vue2的更新是组件级别的 )
       - vue3 则只会更新模版中打上PatchFlag标记的标签，而不会重渲染整个template -- ( vue3的更新是元素级别的 )
-  - 静态节点 - hoistStati c静态节点提升
+  - 静态节点 - hoistStatic 静态节点提升
     - hoistStatic静态节点提升，hoist是提升的意思
     - 当使用hoistStatic时，所有 静态的节点都被提升到render方法之外
     - 这意味着，他们只会在应用启动的时候被创建一次，而后随着每次的渲染被不停地复用
@@ -59,6 +59,9 @@ Fragment
 其他
 - 更好的代码管理方式: monorepo
 - 类型系统: typescript
+- v-model: 在 api 写法上的变化也要注意
+  - 用于组件上-默认: v-model="aaa" props->modelValue emit->update:modelValue
+  - 用于组件上-自定义: v-model:aaa="xxx" props->aaa emit->update:aaa
 
 
 7
