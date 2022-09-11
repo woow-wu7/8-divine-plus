@@ -1,11 +1,18 @@
 <template>
   <!-- 第一个根节点 -->
-  <section>
+  <div>
     <section class="block">vue3可以有多个根节点了</section>
-  </section>
+  </div>
 
   <!-- 第二个根节点 -->
-  <section class="app">
+  <!-- 测试 v-model -->
+  <section class="block">
+    <p>vue3中v-model的改变</p>
+    <VModelTestFather></VModelTestFather>
+  </section>
+
+  <!-- 第三个根节点 -->
+  <div class="app">
     <section class="block">
       <h4>Divider测试</h4>
       <DvDivider direction="horizontal">
@@ -182,13 +189,14 @@
       <div v-html="ContainerMd"></div>
       <highlightjs language="javascript" code="var x = 5;" />
     </section>
-  </section>
+  </div>
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
+import VModelTestFather from "./components/v-model-test-father.vue";
 
 const state = reactive({
   showTestTransition: false,
