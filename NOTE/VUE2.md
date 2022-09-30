@@ -112,6 +112,7 @@ nextTick
 1. 作用
   - 在下次DOM更新循环结束后，执行延时回调
   - 在 ( 修改数据 ) 后，立即使用 nextTick 获取 ( 更新后的DOM )
+  - 当你在 Vue 中更改响应式状态时，最终的 DOM 更新并不是同步生效的，而是由 Vue 将它们缓存在一个队列中，直到下一个“tick”才一起执行，这样是为了确保每个组件无论发生多少状态改变，都仅执行一次更新
 2. 原理
   - 利用从 微任务 到 宏任务 的逐渐降级
   - promise -> mutationObserver -> setImmediate -> setTimeout
@@ -124,14 +125,18 @@ nextTick
       - setTimeout
       - setInterval
       - setImmediate
-      - requestAnimationFrame
+      - requestAnimationFrame 帧动画 ( 精确，流畅，tab隐藏就回结束 )
 3. 使用
   - 1. 传入参数回调，在参数回调中获取最新的DOM ------------ 参数回调
   - 2. 返回一个promise，可以通过then的方式获取最新的DOM --- promise
+  - 3. 可以使用 async 函数做包装 ----------------------- vue3中可以使用async
   - Vue.nextTick(function () { // DOM 更新了 })
   - Vue.nextTick().then(function () { // DOM 更新了 })
+  - methods: { async increment() { await nextTick() // DOM 此时已经更新 } }
 4. 案列
   - https://github.com/woow-wu7/vue2-research/blob/master/src/views/Loading.vue
+5. 官网说明
+  - https://cn.vuejs.org/api/general.html#nexttick
 ```
 
 ### (6) Object.defineProperty 的缺点
@@ -152,7 +157,8 @@ Object.defineProperty 的缺点
   - 长度：修改数组长度时，不会响应式
 - 解决
   - Vue.set()
-  - 利用 vue 重写的 7 种数组方法
+  - vm.$set()
+  - 利用 vue 重写的 7 种数组方法，然后手动的处触发响应式
     - push pop unshift shift splice
     - sort reverse
 ```
@@ -180,7 +186,7 @@ Object.defineProperty 的缺点
 
 - `总流程：el或template --> AST+optimize+generate --> render() --> createElement生成vnode --> vm.$update --> patch --> diff --> 生成真实的DOM`
 - 分类：treeDiff componentDiff elementDiff
-- 总体：逐层比较，深度优先遍历
+- 总体：**逐层比较，深度优先遍历**
   - 1. 节点是组件，走 componentDiff
        - 判断组件类型是否一样，根据组件名称和组件类型判断
          - 类型一样，按原策略逐层比较
@@ -231,8 +237,11 @@ Object.defineProperty 的缺点
   - 原理：
     - 通过给 ( HTML 元素节点添加唯一的属性 )，然后通过 ( css 属性选择器 ) 选中该节点
     - 1. 在 html 的 css 选择器对应的标签节点中，添加自定义属性 ( data-v-hash 值 )
-    - 2. 在 css 选择器 - 添加 ( 属性选择器 ) - ( a[data-v-hash 值] )
+    - 2. 在 css 选择器 - 添加 ( **属性选择器** ) - ( a[data-v-hash 值] )
     - 3. 这样就可以选中唯一的 ( 类 class 的选中的节点 - 并且属性是 data-v-hash 值的 ) 节点
+- 扩展
+  - **css 选择器的权重**
+  - !important > 内联(行内)样式 > id > ( class 类, 伪类, 属性选择器 ) > ( 标签元素选择器，伪元素选择器 ) > ( 通配符选择器，关系型选择器 )
 - 案例
 
 ```
@@ -342,6 +351,9 @@ v-show -> 运行时阶段，控制样式，相当于该元素 ( 默认的display
     - 回答：
       - 因为 vue 是基于 ( 模版 )，即在 ( 模版编译阶段 ) 就知道哪些节点不需要做 diff 算法比对，因为静态节点和静态根节点不需要做 diff 算法
       - 即模版编译节点的 optimize 阶段要做的事情
+  - 扩展
+    - patchFlag: vue3 对动态节点做了优化，做 pathFlag 标记动态节点，更新组件 template 中的动态节点部分，而不是真个组件一起更新
+    - 连接: NOTE/VUE3.md
 - 3. generate
   - 代码生成阶段
   - 主要做的事情：
@@ -408,7 +420,7 @@ target.addEventListener(type, listener|具有handleEvent方法的对象[, useCap
 ### (13) $attrs 和 $listeners
 
 - vm.$attrs
-  - 包含：没有在 ( props ) 中声明的 ( attribute ) 属性，( 比如传入了 3 个属性，而子组件中 props 只声明了一个属性，则另外两个在$attrs 中 )
+  - 包含：没有在 ( props ) 中声明的 ( attribute ) 属性，( 比如传入了 3 个属性，而子组件中 props 只声明了一个属性，则另外两个在 $attrs 中 )
   - 不包含：style 和 class
   - 传入组件内部：可以通过 v-bind="$attrs" 传入内部组件——在创建高级别的组件时非常有用
   - 案例：本项目/test-vue/$attrs/$attrs-$listeners.html
@@ -470,6 +482,7 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
   - 在父子组件都添加了scoped时，父组件就不能通过 ( class类名 )，来选中 ( 子组件除了根元素以外的其他元素 )，因为 hash 不一样
 - 如何解决
   - 通过 >>> /deep/ ::v-deep :deep() 来解决
+  - 推荐使用 :deep(css选择器) {}
 ---
 (1) deep
 - 表现
@@ -479,6 +492,13 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
   - scss 是 :deep(){}
 - 写法
   - 写法上一共有 4 种写法
+
+<!-- 写法4 使用:deep(<inner-selector>) -->
+<style lang="scss" scoped>
+  :deep(.ant-card-head-title){
+    background: yellowgreen;
+  }
+</style>
 
 <!-- 写法1 使用::v-deep -->
 <style lang="scss" scoped>
@@ -500,18 +520,18 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
   background: yellowgreen;
 }
 </style>
-
-<!-- 写法4 使用:deep(<inner-selector>) -->
-<style lang="scss" scoped>
-  :deep(.ant-card-head-title){
-    background: yellowgreen;
-  }
-</style>
-
-
 ---
 (2) 在vue文件中，使用不带 scope 的 style
 ```
+
+### (18) 虚拟 DOM 的优缺点？
+
+- 优点
+  - 跨平台 ( node 和浏览器中都可以，node 中没有真实的 DOM，便于实现服务端渲染等 )
+  - 保证性能下限
+  - 无需手动操作 DOM
+- 缺点
+  - 无法进行极致优化
 
 # 相关链接
 

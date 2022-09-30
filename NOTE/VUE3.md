@@ -54,18 +54,24 @@ Fragment
 - Vue3中的template模版中 可以有 ( 多个 ) ( 根 ) 节点
 - 这个和react的升级保持一致，react16以后也支持多个根节点
 
-
 6
+删除了一些不常用的api
+- filters
+  - 原因: 因为可以使用 计算属性 等来完成同样的功能
+  - 连接: https://v3-migration.vuejs.org/breaking-changes/props-data.html
+
+7
 其他
 - 更好的代码管理方式: monorepo
 - 类型系统: typescript
 - compositionAPI 和 optionsAPI
+  - compositionAPI 来取代 mixin 复用逻辑优势明显
 - v-model: 在 api 写法上的变化也要注意
   - 用于组件上-默认: v-model="aaa" props->modelValue emit->update:modelValue
   - 用于组件上-自定义属性: v-model:aaa="xxx" props->aaa emit->update:aaa
 
 
-7
+8
 资料
 - https://juejin.cn/post/6844904199726055437#heading-3
 - https://www.bilibili.com/video/BV1ke411W7WB?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
@@ -110,7 +116,7 @@ css过渡class
 性能
 - transform 和 opacity
   - 1. 以上两个属性在动画中 ( 不影响DOM结构 )，不会发生 ( 重排 )，性能优秀
-  - 2. transform可以触发 ( GPU硬件加速 )
+  - 2. transform可以触发 ( GPU硬件加速，并且不会影响重排回流，因为是新生成的图层，和普通的图层不影响 )
 ```
 
 # (三) 其他
@@ -121,7 +127,7 @@ css过渡class
 ---
 
 命令式 - imperative
-- 主要思想: 命令式编程的主要思想是关注计算机执行的步骤，即一步一步告诉计算机先做什么再做什么
+- 主要思想: 命令式编程的主要思想是关注计算机执行的步骤，即 ( 一步一步 ) 告诉计算机先做什么再做什么
 
 声明式 - Declarative
 - 声明式编程是以数据结构的形式来表达程序执行的逻辑
