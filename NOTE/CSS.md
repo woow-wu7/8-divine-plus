@@ -1,7 +1,5 @@
 # CSS
 
-- 链接 https://github.com/woow-wu7/6-penetrate/tree/main/2-FRONTEND/CSS
-
 ## 一些单词
 
 ```
@@ -10,6 +8,7 @@ orient 朝向 向东
 unordered 无序的 adj // ordered有序的
 parallelogram 平行四边形
 paint 油漆 绘制 // repaint重绘 reflow重排
+aspect 外观
 ```
 
 ## (1) position
@@ -20,7 +19,7 @@ paint 油漆 绘制 // repaint重绘 reflow重排
 - absolute 绝对定位，相对于 - 距离最近的具有定位属性的父元素
   - 问题: 什么是具有 定位属性 的父元素？
   - 回答: 就是除了 position: static 以外的定位属性都可以
-- **fixed** 基于窗口定位 - `注意transform的影响`
+- **fixed** 基于窗口定位 - `注意transform的影响，如果祖先元素设置了transform属性，则fixed定位基于该祖先元素，而不是视口即整个窗口定位`
 - **sticky** 粘性定位
 
 ### (1.1) position: sticky 粘性定位
@@ -78,6 +77,24 @@ border: 100px solid transparent;
 border-bottom: 100px solid red;
 ```
 
+### (4.1) css 画扇形
+
+```
+css实现扇形
+- css实现扇形的方式和实现三角形的方式差不多
+- css三角形的基础上 + border-radius: 100%;
+---
+
+#sector {
+  width: 0;
+  height: 0;
+  border: 100px solid transparent;
+  border-bottom: 100px solid red;
+
+  border-radius: 100%;
+}
+```
+
 ### (5) 盒模型
 
 - 标准盒模型
@@ -95,7 +112,7 @@ border-bottom: 100px solid red;
 - 实现
   - 1. 给 div 盒子设置 ( 伪元素 - 相当于当前元素的第一个子元素，不在 DOM 中 )，( 高度 1px，绝对定位在盒子底部 )
   - 2. 通过 @media screen and (-webkit-min-device-pixel-ratio: 2) 命中几倍屏
-  - 3. 然后通过 transform: scaleY(0.5) 缩放 伪元素
+  - 3. 然后通过 transform: scaleY(0.5) 缩放 伪元素 ( 2 倍屏缩小 0.5，3 倍屏缩小 0.333 )
 
 ```
 .container {
@@ -345,17 +362,20 @@ display: -webkit-box;
   - y-angle 垂直倾斜的角度
 - 详细：https://juejin.cn/post/7029703494877577246
 
-## (19) repaint 重绘 和 reflow 重排(回流)
+## (19) repaint 重绘 和 reflow 重排(回流) 和 合成
 
 - repaint 重绘
   - 对 DOM 的修改只导致了 ( 样式 ) 的变化，并没有改变 ( 几何属性 )，浏览器不需要从新计算几何样式，而是从新绘制新的样式，这个过程叫做重绘 repaint
+  - 跳过了 ( 布局树 ) 和 ( 建图层树 )
 - reflow 重排
   - 对 DOM 的修改引发了 DOM 几何尺寸的变化(宽高，隐藏等)，浏览器需要 ( 重新计算 ) 元素的几何属性
   - 同时 ( 其他元素的集合属性 和 位置也将受到影响 )，浏览器需要重新将计算结果绘制出来，这个过程叫做回流 reflow
+- composite 合成
+  - 就是更改了一个既不要 ( 布局 layout ) 也不要 ( 绘制 paint ) 的属性，那么渲染引擎会跳过布局和绘制，直接执行后续的 ( 合成 composite ) 操作，这个过程就叫合成
 - 特点
   - reflow 一定会 repaint
   - repaint 不会定会 reflow
-- 常见的会引起 ( 重排-回流 ) 的操作有哪些？
+- **常见的会引起 ( 重排-回流 ) 的操作有哪些？**
   - 页面首次渲染
   - 浏览器窗口大小变化
   - 元素尺寸和位置变化 width height position
@@ -364,6 +384,11 @@ display: -webkit-box;
   - 添加/删除元素
   - 激活 css 伪类
   - offsetWidth, width, clientWidth, scrollTop/scrollHeight 的计算， 会使浏览器将渐进回流队列 Flush，立即执行回流
+- **只会 composite 合成的属性，不会重绘重排回流**
+  - transform
+  - opacity
+  - filter
+  - 所以动画最好使用 transform opacity 等属性来实现，结合 32 一起看
 
 ## (20) sticky-footer 效果
 
@@ -523,6 +548,7 @@ width: 100%;
 aspect-ration: 4/3;
 // 宽高比4:3
 // aspect-ratio: <width-ratio>/<height-ratio>
+// aspect 是外观的意思
 ```
 
 ## (29) :nth-of-type 伪类
@@ -553,7 +579,7 @@ word-break: break-all; 单词内换行
 
 - 原因
   - 因为 GPU 进程会为其开启一个新的复合图层(也叫 GPU 硬件加速)，不会影响默认复合图层（就是普通文档流），即脱离了文档流，所以并不会影响周边的 DOM 结构，而属性的改变也会交给 GPU 处理，不会进行重排
-  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
+  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画 transform，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
 - 对比
   - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
   - 结合 19 一起看
