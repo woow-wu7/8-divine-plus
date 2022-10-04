@@ -131,7 +131,7 @@ export const processResponse = (response: any, axiosInstance: any) => {
 # 资料
 
 - 链接
-  -
+  - https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/JS/11-refresh-token/refresh-token.md
 - refresh-token 的原理
   - https://blog.51cto.com/u_15082391/4521181
 - 请求前拦截处理和请求后拦截处理的优缺点
