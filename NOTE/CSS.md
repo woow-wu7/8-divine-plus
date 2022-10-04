@@ -631,3 +631,16 @@ NodeList 和 HTMLCollection 的区别？
 - HTMLCollection -- 没有 forEach，只能使用 for 循环遍历
 - NodeList -------- forEach
 ```
+
+### (35) html 和 xml 的区别 ?
+
+```
+html和xml的区别
+---
+
+1. html中不区分大小写，xml中严格区分大小写
+2. html中属性可以不带值，xml中属性必须有值
+3. html中的标签是预定义的固有标签，不可扩展，xml中的标签不是固定的，可以自定义，可以扩展
+4. html是用来显示数据的，xml是用来描述数据，存储数据的
+
+```
