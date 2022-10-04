@@ -570,3 +570,38 @@ word-break: break-all; 单词内换行
 - 总结
   - offsetHeight 比 clientHeight 多了 border 的高度
   - **注意: ( 上下都有 border，padding，所以是两倍 )**
+
+## (34) HTMLCollection 和 NodeList 的区别 ？
+
+```
+NodeList 和 HTMLCollection 的区别？
+---
+
+1. 动态集合 和 静态集合
+- HTMLCollection 是动态集合，DOM树 ( 新增 和 删除 ) 可以感知，但是能感知 ( 修改 )
+- NodeList ----- 是静态集合，DOM树 ( 新增 和 删除 ) 无法感知，但是能感知 ( 修改 )
+
+2. 子节点类型
+- HTMLCollection 只能包含元素节点
+- NodeList ----- 可以包含任意类型的节点
+
+3. 查询的方法
+- HTMLCollection -- document.getElementsByTagName()
+- NodeList -------- document.querySelectorAll()
+
+// (1)
+// 如何记忆：
+// - 多对多
+//    - getElementsByTagName 比  querySelectorAll 长
+//    - HTMLCollection 比 NodeList 长
+// - elements
+//    - HTMLCollection中只包含element元素节点，而 getElementsByTagName 名字中包含了 Elements
+
+// (2)
+// Node.childNodes 返回 NodeList
+// Element.children 返回 HTMLCollection
+
+4. 方法
+- HTMLCollection -- 没有 forEach，只能使用 for 循环遍历
+- NodeList -------- forEach
+```
