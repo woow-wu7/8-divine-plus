@@ -1,5 +1,7 @@
 # CSS
 
+- 链接 https://github.com/woow-wu7/6-penetrate/tree/main/2-FRONTEND/CSS
+
 ## 一些单词
 
 ```
@@ -546,3 +548,25 @@ aspect-ration: 4/3;
 word-wrap: break-word; 整个单词一起换行
 word-break: break-all; 单词内换行
 ```
+
+## (32) transform 为什么不会引起 回流(重排) ？
+
+- 原因
+  - 因为 GPU 进程会为其开启一个新的复合图层(也叫 GPU 硬件加速)，不会影响默认复合图层（就是普通文档流），即脱离了文档流，所以并不会影响周边的 DOM 结构，而属性的改变也会交给 GPU 处理，不会进行重排
+  - 使 GPU 进程开启一个新的复合图层的方式还有 3D 动画，过渡动画，以及 opacity 属性，还有一些标签，这些都可以创建新的复合图层。这些方式叫做硬件加速方式
+- 对比
+  - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
+  - 结合 19 一起看
+- 扩展
+  - 还有哪些属性不会引起 reflow 和 repaint
+    - transform
+    - opacity
+    - filter
+
+## (33) Element.offsetHeight 和 Element.clientHeight
+
+- Element.clientHeight = ( 自身高度 ) + ( padding ) + ( 滚动条高度 )
+- Element.offsetHeight = ( 自身高度 ) + ( padding ) + ( 滚动条高度 ) + ( border 的高度 )
+- 总结
+  - offsetHeight 比 clientHeight 多了 border 的高度
+  - **注意: ( 上下都有 border，padding，所以是两倍 )**
