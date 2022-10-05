@@ -537,7 +537,8 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
 
 - [链接-vue2 源码分析-provide 和 inject](https://github.com/woow-wu7/7-vue2-source-code-analysis/blob/main/src/core/instance/inject.js#L18:17)
 - [链接-资料](http://www.kangchangyi.com/article/Vue/provide%E3%80%81inject%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html#%E5%8E%9F%E7%90%86)
-- [vue2 官网](https://cn.vuejs.org/api/options-composition.html#provide)
+- [vue2 官网](https://v2.cn.vuejs.org/v2/api/#provide-inject)
+- [vue3 官网](https://cn.vuejs.org/api/options-composition.html#inject)
 
 ```
 原理解析
