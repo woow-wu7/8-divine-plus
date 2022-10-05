@@ -70,6 +70,10 @@ Fragment
   - 用于组件上-默认: v-model="aaa" props->modelValue emit->update:modelValue
   - 用于组件上-自定义属性: v-model:aaa="xxx" props->aaa emit->update:aaa
 - 生命周期钩子命名上的变化
+- provide和inject
+  - vue2只能在option-api中通过配置项的方式使用
+  - vue3还可以直接从vue中获取 provide 和 inject 函数
+  - 详情请查看 本项目/NOTE/VUE2.md/
 
 8
 资料
