@@ -1,5 +1,5 @@
 <template>
-  <!-- 第三个根节点 -->
+  <!-- 第一个根节点 -->
   <div class="app">
     <section class="block">
       <h4>Divider测试</h4>
@@ -111,7 +111,7 @@
     </section>
 
     <section class="block backtop" ref="app">
-      <h4>Backtop 测试</h4>
+      <h4 class="backtop-title">Backtop 测试</h4>
       <p>向下滚动试试</p>
       <p>test</p>
       <p>test</p>
@@ -179,16 +179,23 @@
     </section>
   </div>
 
-  <!-- 第一个根节点 -->
+  <!-- 第二个根节点 -->
   <div>
     <section class="block">vue3可以有多个根节点了</section>
   </div>
 
-  <!-- 第二个根节点 -->
+  <!-- 第三个根节点 -->
   <!-- 测试 v-model -->
   <section class="block">
     <p>vue3中v-model的改变</p>
     <VModelTestFather></VModelTestFather>
+  </section>
+
+  <!-- 第四个根节点 -->
+  <!-- 测试 provide 和 inject -->
+  <section class="block">
+    <h3>provide 和 inject</h3>
+    <ProviderTest></ProviderTest>
   </section>
 </template>
 
@@ -197,6 +204,7 @@ import { reactive, ref } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
+import ProviderTest from "./components/provide-test.vue";
 
 const state = reactive({
   showTestTransition: false,

@@ -533,6 +533,28 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
 - 缺点
   - 无法进行极致优化
 
+### (19) provide 和 inject 的原理？
+
+- [链接-vue2 源码分析-provide 和 inject](https://github.com/woow-wu7/7-vue2-source-code-analysis/blob/main/src/core/instance/inject.js#L18:17)
+- [链接-资料](http://www.kangchangyi.com/article/Vue/provide%E3%80%81inject%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html#%E5%8E%9F%E7%90%86)
+- [vue2 官网](https://cn.vuejs.org/api/options-composition.html#provide)
+
+```
+原理解析
+---
+
+1. 在 option 每个组件配置中可以声明 provide 选项对象
+    - key是要传入inject中对应的key
+    - value是可以被inject获取的值
+2. 在初始化时，Vue 会在每个 vm 挂载 _provided 对象，即 vm._provided
+    - key和value都和provide中的一一对应
+3. 在初始化时，Vue 会遍历组件中的 inject 中的 key，会去当前组件父组件的 vm._provided 找
+    - 找到，直接返回
+    - 没有找到，则通过 vm.$parent 继续往上找，直到找到根组件为止
+      - 找到后将值返回作为inject的返回值
+      - 没有找到则使用默认值作为inject的返回值
+```
+
 # 相关链接
 
 - https:github.com/woow-wu7/7-vue2-source-code-analysis/blob/main/src/core/observer/watcher.js
