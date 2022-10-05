@@ -95,6 +95,13 @@ css实现扇形
 }
 ```
 
+### (4.2) css 画箭头
+- 请看17
+```
+border-top + border-right
+transform: rotate(45deg)
+```
+
 ### (5) 盒模型
 
 - 标准盒模型
