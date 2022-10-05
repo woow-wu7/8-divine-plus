@@ -549,7 +549,7 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
     - value是可以被inject获取的值
 2. 在初始化时，Vue 会在每个 vm 挂载 _provided 对象，即 vm._provided
     - key和value都和provide中的一一对应
-3. 在初始化时，Vue 会遍历组件中的 inject 中的 key，会去当前组件父组件的 vm._provided 找
+3. 在初始化时，Vue 会遍历组件中的 inject (数组或对象) 中的 key，会去当前组件父组件的 vm._provided 找
     - 找到，直接返回
     - 没有找到，则通过 vm.$parent 继续往上找，直到找到根组件为止
       - 找到后将值返回作为inject的返回值
