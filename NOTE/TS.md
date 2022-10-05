@@ -2,7 +2,7 @@
 
 - [掘金-Typescript](https://juejin.cn/post/6999807282343051277#heading-1)
 - [掘金-封装 06-从 0 开始封装一个 VUE3-UI 组件库](https://juejin.cn/post/7131232733841817631#heading-7)
-- [github-6penetrate]()
+- [github-6penetrate](https://github.com/woow-wu7/6-penetrate/tree/main/2-FRONTEND/TS)
 
 ```
 type 类型别名 VS interface 接口
