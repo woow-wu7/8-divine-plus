@@ -73,7 +73,8 @@ Fragment
 - provide和inject
   - vue2只能在option-api中通过配置项的方式使用
   - vue3还可以直接从vue中获取 provide 和 inject 函数
-  - 详情请查看 本项目/NOTE/VUE2.md/
+  - 详情请查看 本项目/NOTE/VUE2.md/19
+- watch watchEffect(callback)
 
 8
 资料
