@@ -100,6 +100,38 @@ computedWatcher
   - deep：表示深度监听
   - immediate：表示立即执行 callback，不用等到 key 变化时才去执行
   - sync：表示 ( 同步 watch 对象中的 handler 先执行 )，( 普通的 watch 对象的 handler 后执行 )
+- **watch 注意点**
+  - 2022-10-06
+  - 遇到问题: **当 watch 的值是一个嵌套的对象时，修改改对象的属性，watch 的回调是不会执行的**
+  - 如何解决:
+    - 1. 可以使用 watch 的对象模式，并设置 deep:true
+    - 2. 在设置 watch 对象的 key 时，直接 a.b.c 取到需要改变的属性
+  - 扩展: **data 的响应式不受嵌套对象深度的影响，即嵌套多深修改属性都会响应式**
+
+```
+watch 注意点
+---
+
+data() {
+  return {
+    obj: {
+      obj2: {
+        age: 10,
+      },
+    },
+  };
+},
+watch: {
+  "obj.obj2.age": function () { console.log(111); }, // --- age变化，watch回调会执行
+  "obj.obj2": {
+    handler: function () { console.log(222); }, // -------- age变化，watch回调不会执行
+  },
+  "obj.obj2": {
+    handler: function () { console.log(333); }, // -------- age变化，watch回调会执行，因为设置了 deep: true
+    deep: true
+  }
+}
+```
 
 ### (5) nextTick
 
@@ -541,7 +573,7 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
 - [vue3 官网](https://cn.vuejs.org/api/options-composition.html#inject)
 
 ```
-原理解析
+provide 和 inject 原理解析
 ---
 
 1. 在 option 每个组件配置中可以声明 provide 选项对象
@@ -554,6 +586,15 @@ vue中，当父子组件都添加了scoped时，如何在父组件中修改子�
     - 没有找到，则通过 vm.$parent 继续往上找，直到找到根组件为止
       - 找到后将值返回作为inject的返回值
       - 没有找到则使用默认值作为inject的返回值
+```
+
+```
+provide 和 inject 注意点
+---
+
+遇到问题: provide和inject并不保证响应式
+解决方案: provide的属性值用 computed 进行包装
+官网说明: https://cn.vuejs.org/guide/components/provide-inject.html#working-with-reactivity
 ```
 
 # 相关链接
