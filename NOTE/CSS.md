@@ -665,7 +665,11 @@ html和xml的区别
 
 ### (36) 【HTML 的 img 标签的 srcset 属性】 和 【css 的 image-set()】
 
+- [链接](https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/CSS/README.md)
+- [链接](https://juejin.cn/post/6844903702810066958)
+
 ```
+1
 srcset
 ---
 
@@ -675,8 +679,10 @@ srcset
   - 2. x: 根据屏幕的像素密度x，加载不同大小的图片
 - 上面的代码表示
   - 浏览器宽度达到 800px 则加载 middle.jpg ，达到 1400px 则加载 big.jpg
+```
 
-
+```
+2
 background-image: image-set()
 ---
 
