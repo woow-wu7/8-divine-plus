@@ -705,3 +705,4 @@ body {
   - 3. 轮播图的滚动和暂停
   - 本项目/2-FRONTEND/CSS/27-transitionend.html
 - 资料: https://juejin.cn/post/7143051955810598926
+- 资料: transition 小技巧 https://juejin.cn/post/7149531766045278244
