@@ -64,6 +64,7 @@ Fragment
     - 透传组件属性
     - $attrs: 组件上不在props中的属性可以通过 $attrs 来获取
     - $listeners: 组件上 v-on 事件可以通过 $listeners 来获取
+    - $slots/$scopedSlots: 透传插槽
   - vue3
     - 废除了 $listeners，而是直接通过 $attrs 来统一获取 ( 不在props, emit, v-on事件 )
 
