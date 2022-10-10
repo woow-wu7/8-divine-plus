@@ -449,7 +449,7 @@ target.addEventListener(type, listener|具有handleEvent方法的对象[, useCap
 - 3. 键盘事件同理
 ```
 
-### (13) $attrs 和 $listeners
+### (13) $attrs 和 $listeners 和 $slots/$scopedSlots
 
 - vm.$attrs
   - 包含：没有在 ( props ) 中声明的 ( attribute ) 属性，( 比如传入了 3 个属性，而子组件中 props 只声明了一个属性，则另外两个在 $attrs 中 )
@@ -467,7 +467,7 @@ target.addEventListener(type, listener|具有handleEvent方法的对象[, useCap
 - 扩展
   - 问题：vue 传递数据的方式
   - 回答：
-    - props $attrs $listeners
+    - props $attrs $listeners $slots/$scopedSlots
     - vm.$emit
     - provide/inject -------- 不是响应式的
     - context

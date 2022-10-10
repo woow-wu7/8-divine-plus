@@ -67,6 +67,7 @@ Fragment
     - $slots/$scopedSlots: 透传插槽
   - vue3
     - 废除了 $listeners，而是直接通过 $attrs 来统一获取 ( 不在props, emit, v-on事件 )
+    - 保留了 $attrs 和 $slots，注意 $attrs 的变化
 
 7
 其他
