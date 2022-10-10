@@ -59,6 +59,13 @@ Fragment
 - filters
   - 原因: 因为可以使用 计算属性 等来完成同样的功能
   - 连接: https://v3-migration.vuejs.org/breaking-changes/props-data.html
+- $listeners
+  - vue2
+    - 透传组件属性
+    - $attrs: 组件上不在props中的属性可以通过 $attrs 来获取
+    - $listeners: 组件上 v-on 事件可以通过 $listeners 来获取
+  - vue3
+    - 废除了 $listeners，而是直接通过 $attrs 来统一获取 ( 不在props, emit, v-on事件 )
 
 7
 其他
