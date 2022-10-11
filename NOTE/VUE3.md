@@ -11,7 +11,7 @@ Proxy 代替 Object.defineProps
   - Object.defineProps 监听的是对象中的某个 ( 属性 )，如果要监听整个对象，就需要通过循环遍历对象的所有属性来实现，并且对新增删除属性无法监听
 - 解决:
   - 对象属性添加，删除无法响应式
-  - 数组下标修改值，通过length修改数组长度都无法响应式
+  - 数组下标修改值，通过length修改数组长度都无法响应式 - ( push pop shift unshift splice sort reverse 这原型7种方法因为Vue重写后手动vue.set，所以能实现响应式 )
 - 兼容性:
   - proxy 无法兼容ie
   - Object.defineProps 兼容ie8以上的版本
