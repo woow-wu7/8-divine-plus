@@ -66,8 +66,10 @@ Fragment
     - $listeners: 组件上 v-on 事件可以通过 $listeners 来获取
     - $slots/$scopedSlots: 透传插槽
   - vue3
-    - 废除了 $listeners，而是直接通过 $attrs 来统一获取 ( 不在props, emit, v-on事件 )
+    - 废除了 $listeners，而是直接通过 ( $attrs ) 来统一获取 ( 不在props, emit, v-on事件 )
     - 保留了 $attrs 和 $slots，注意 $attrs 的变化
+- $children
+  - vue3中删除了$children，可以使用 template Refs 代替
 
 7
 其他
@@ -92,7 +94,12 @@ Fragment
 - https://www.bilibili.com/video/BV1ke411W7WB?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 ```
 
-# (二) 内置组件
+# (二) setup 和 created 谁先执行？
+
+- setup 先于 beforeCreate 和 created 选项式钩子函数执行
+- setup 配置对象中是没有 onBeforeCreate() onCreated() 两个钩子函数
+
+# (三) 内置组件
 
 ### transition
 
@@ -134,7 +141,7 @@ css过渡class
   - 2. transform可以触发 ( GPU硬件加速，并且不会影响重排回流，因为是新生成的图层，和普通的图层不影响 )
 ```
 
-# (三) 其他
+# (四) 其他
 
 ```
 1

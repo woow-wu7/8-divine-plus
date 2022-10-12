@@ -300,17 +300,25 @@ loading[data-v-ffa58c1c] {
 
 ### (10) vue2 中 v-if 和 v-for 的优先级
 
-- `注意：在vue3中修改了优先级顺序，v-if > v-for 了，所以在vue3中可以把 v-if 和 v-for 写在一起了`，
-- ( v-if,v-for ) 指令的处理发生在 ( 模版编译阶段 )
-- 优先级：当 v-if 和 v-for 一起使用时，优先级 ( v-for > v-if )
-- 原因
-  - 因为
-    - 在源码中，在进行 if 判断的时候，v-for 是比 v-if 先进行判断的
-    - 文件位置：src/compiler/codegen/index.js
-  - ( 模版 template ) 最终会被编译为 ( render 函数 )
-    - v-for 在编译时会被编译成 ( \_l 函数 )，即 renderList 方法
-    - v-if 在编译时会被编译成 ( 三元表达式 )；不命中的情况会创建一个空的 vnode 即 ( 没有文本的注释节点 )
-- 具体被编译结果如下
+- **注意：在 vue3 中修改了优先级顺序，v-if > v-for 了，所以不能写在同一个标签上，但无论 vue3 还是 vue2 都不要把 v-if 和 v-for 写在同一个元素上**，
+- 问题
+  - 问题: 为什么不要把 v-for 和 v-if 写在同一个元素上？
+  - 回答: 因为 vue2 源码中是先遍历在进行判断，即使我们只渲染列表中一小部分元素，当 v-if 改变值，导致重渲染的时，就会遍历整个列表，这会比较浪费
+  - 扩展: vue3 中则完全相反，v-if 的优先级高于 v-for，所以 v-if 执行时，它调用的变量还不存在，就会导致异常
+  - 如何解决: 1.将 v-if 提升到外部 2.计算属性，过滤后在渲染
+- 处理时机
+  - ( v-if,v-for ) 指令的处理发生在 ( 模版编译阶段 )
+- 优先级
+  - vue2: 当 v-if 和 v-for 一起使用时，优先级 ( v-for > v-if )
+  - vue3: v-if > v-for
+  - 原因
+    - 因为
+      - 在源码中，在进行 if 判断的时候，v-for 是比 v-if 先进行判断的
+      - 文件位置：src/compiler/codegen/index.js
+    - ( 模版 template ) 最终会被编译为 ( render 函数 )
+      - v-for 在编译时会被编译成 ( \_l 函数 )，即 renderList 方法
+      - v-if 在编译时会被编译成 ( 三元表达式 )；不命中的情况会创建一个空的 vnode 即 ( 没有文本的注释节点 )
+  - 具体被编译结果如下
 
 ```
 1. template
@@ -467,13 +475,13 @@ target.addEventListener(type, listener|具有handleEvent方法的对象[, useCap
 - 扩展
   - 问题：vue 传递数据的方式
   - 回答：
-    - props $attrs $listeners $slots/$scopedSlots
+    - props $attrs $listeners $slots $scopedSlots
     - vm.$emit
-    - provide/inject -------- 不是响应式的
-    - context
+    - provide/inject -------- 不保证是响应式的
     - vuex router
+    - eventbus 数据总线，比如原型链继承
     - $parent --------------- 父实例 - ( 例子:本项目/test-vue/test-$parent-$children.html )
-    - $children ------------- 当前实例的直接子组件(数组) - (数组中的直接子组件)不能保证顺序，不是响应式
+    - $children ------------- 当前实例的直接子组件(数组) - (数组中的直接子组件)不能保证顺序，不是响应式 - ( 注意在vue3中$children 已经被删除，可以用 Template Refs 获取 )
 
 ### (14) 为什么大 Vue 不使用 class 而是使用构造函数呢？
 
@@ -596,6 +604,21 @@ provide 和 inject 注意点
 解决方案: provide的属性值用 computed 进行包装
 官网说明: https://cn.vuejs.org/guide/components/provide-inject.html#working-with-reactivity
 ```
+
+### (20) v-model 和 .sync 的区别？
+
+- v-model
+  - 相当于 <my-component :value="value" @input="value = $event.target.value" >
+- .sync
+  - 相当于 <my-component :value="msg" @update:value="(val) => value = val" >
+- 两者的区别
+  - v-model 主要用于 input，textarea，并且一个组件只能有一个 v-model
+  - .sync 一个组件可以有多个 .sync
+- 资料
+  - https://juejin.cn/post/6943488981703065614
+  - vue3 中使用 v-model https://www.jianshu.com/p/df114269d751
+  - vue2 官网 https://v2.cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6
+  - vue3 中有变化
 
 # 相关链接
 
