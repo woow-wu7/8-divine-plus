@@ -620,6 +620,10 @@ provide 和 inject 注意点
   - vue2 官网 https://v2.cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6
   - vue3 中有变化
 
+### (21) v-permission 自定义指令实现
+
+- 链接: https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/VUE/v-permission-directive.html
+
 # 相关链接
 
 - https:github.com/woow-wu7/7-vue2-source-code-analysis/blob/main/src/core/observer/watcher.js

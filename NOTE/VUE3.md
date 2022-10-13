@@ -71,16 +71,19 @@ Fragment
 - $children
   - vue3中删除了$children，可以使用 template Refs 代替
 
-7
-其他
-- 更好的代码管理方式: monorepo
-- 类型系统: typescript
+7 其他api的变化
 - compositionAPI 和 optionsAPI
   - compositionAPI 来取代 mixin 复用逻辑优势明显
 - v-model: 在 api 写法上的变化也要注意
-  - 用于组件上-默认: v-model="aaa" props->modelValue emit->update:modelValue
-  - 用于组件上-自定义属性: v-model:aaa="xxx" props->aaa emit->update:aaa
+  - 变化
+    - 用于组件上-modelValue-默认: v-model="aaa" props->modelValue emit->update:modelValue
+    - 用于组件上-aaa-自定义属性: v-model:aaa="xxx" props->aaa emit->update:aaa
+  - 扩展
+    - vue2.0 时 v-model 和 .sync 的区别？
 - 生命周期钩子命名上的变化
+  - options api 中生命周期钩子
+  - composition api 中的 setup 中的钩子命名
+  - 自定义指令 directive 生命周期钩子命名的变化
 - provide和inject
   - vue2只能在option-api中通过配置项的方式使用
   - vue3还可以直接从vue中获取 provide 和 inject 函数
@@ -89,10 +92,27 @@ Fragment
 - watch watchEffect(callback)
 
 8
+其他
+- 更好的代码管理方式: monorepo
+- 类型系统: typescript
+
+9
 资料
 - https://juejin.cn/post/6844904199726055437#heading-3
 - https://www.bilibili.com/video/BV1ke411W7WB?spm_id_from=333.337.search-card.all.click&vd_source=a8374ac38c77856369542fc154a1e043
 ```
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
 
 # (二) setup 和 created 谁先执行？
 
