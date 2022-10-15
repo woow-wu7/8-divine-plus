@@ -288,7 +288,7 @@ Object.defineProperty 的缺点
 
 
 1. html处理为
-- 添加自定义属性 data-v-hash值
+- 添加自定义属性 data-v-hash 值
 <div data-v-ffa58c1c class="loading">
 
 2. css处理为
