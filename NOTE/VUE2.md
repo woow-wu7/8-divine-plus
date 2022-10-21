@@ -213,6 +213,11 @@ Object.defineProperty 的缺点
   - latest recently used 最近最少使用
 - 源码
   - src/core/components/keep-alive.js
+- 扩展: 常见的缓存策略
+  - LRU 最近最少使用 - 强调访问时间
+  - LFU 最不经常使用 - 强调访问次数
+  - FIFO 先进先出
+  - 链接: [常见的缓存策略](https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/JS/20-%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5/%E5%B8%B8%E8%A7%81%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.md)
 
 ### (7) diff 算法
 
