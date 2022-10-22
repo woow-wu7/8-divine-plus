@@ -57,7 +57,7 @@ onMounted(() => {
 .container {
   border: 1px solid red;
   padding: 10px;
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
 .out-wrap {

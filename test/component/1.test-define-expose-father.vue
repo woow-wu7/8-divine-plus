@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import TestDefinePropsChild from "./test-define-expose-child.vue";
+import TestDefinePropsChild from "./1.test-define-expose-child.vue";
 
 const ChildComponentRef = ref<any>();
 

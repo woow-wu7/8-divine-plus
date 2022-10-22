@@ -3,12 +3,14 @@
     <h1>APP</h1>
     <TestDefineExposeFather />
     <TestScrollTop />
+    <TestRecursiveComponent />
   </section>
 </template>
 
 <script setup>
-import TestDefineExposeFather from "./component/test-define-expose-father.vue";
-import TestScrollTop from "./component/test-scroll-top.vue";
+import TestDefineExposeFather from "./component/1.test-define-expose-father.vue";
+import TestScrollTop from "./component/2.test-scroll-top.vue";
+import TestRecursiveComponent from "./component/3.test-recursive-component.vue";
 </script>
 
 <style lang="scss" scoped>
