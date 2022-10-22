@@ -16,6 +16,8 @@
 // - 树形组件
 // - 菜单
 // - 多级表格
+// 2
+// 仓库地址: https://github.com/woow-wu7/8-divine-plus/blob/main/test/component/3.recursive-component.vue
 export default {
   name: "Recursive",
 };
