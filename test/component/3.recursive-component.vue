@@ -10,10 +10,17 @@
 </template>
 
 <script>
+// vue 递归组件
+// 1
+// 应用场景
+// - 树形组件
+// - 菜单
+// - 多级表格
 export default {
   name: "Recursive",
 };
 </script>
+
 <script setup>
 defineProps({
   list: {
