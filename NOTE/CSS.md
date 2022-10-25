@@ -172,13 +172,14 @@ transform: rotate(45deg)
 
 ## (8) block inline inline-block 三者的区别 ?
 
+- 本项目/2-FRONTEND/CSS/7-block-inline.html
 - 常见的 block 元素 --------- 设置 width 和 height 有效
   - form
   - table
   - p
   - div
   - h1-h6
-  - ul li
+  - ul ol li
 - 常见的 inline 元素 -------- 设置 width 和 height 无效
   - span
   - a
@@ -187,6 +188,7 @@ transform: rotate(45deg)
   - textarea
   - select
   - img
+  - button
 
 ## (9) css 选择器
 
@@ -280,7 +282,7 @@ transform: rotate(45deg)
   - time
   - email
   - url
-  - search。
+  - search
 
 ## (12) pointer-events 用 css 方式设置 ( 事件穿透 )
 
@@ -324,15 +326,22 @@ transform
   - 分析原因：因为transform的操作，默认的 ( 原点 ) 是 ( 正中心位置 )
   - 如何解决：transform-origin: left;
   - 扩展: 结合13中 ( transform-origin ) 改变原点来学习
-- 额外知识
+- 扩展知识
   - 描述：transform 是 ( 不会 ) 引起 ( reflow回流 ) 的，只会 ( repaint重绘 )
   - 原因：
     - 浏览器渲染会经过 parseHTML -> parseStylesheet -> evaluateScript -> layout -> paint -> composite
     - 分层
-      - transform ------------ 是在 composite合成层
+      - transform ------------ 是在 composite 合成层
       - width，left，margin --- 是在 layout 层，不在同一层
       - 分层的目的: 是为了减少重绘制的时间
     - GPU加速: transform还能开启 GPU 加速
+- 扩展知识
+  - 问题：还有哪些属性会开启 GPU 加速？
+  - 回答
+    - transform
+    - opacity
+    - filter
+    - will-change --- 本项目/2-FRONTEND/CSS/29-will-change.html
 ```
 
 ## (15) 单行省略号 和 多行省略号
@@ -406,6 +415,7 @@ display: -webkit-box;
   - transform
   - opacity
   - filter
+  - will-change
   - 所以动画最好使用 transform opacity 等属性来实现，结合 32 一起看
 
 ## (20) sticky-footer 效果
@@ -509,7 +519,7 @@ main ------> min-height: calc(100% - footer 的高度) // 这里一定要注意�
 - title
   - title 可以作为标签，也可以作为标签的属性
   - 标签: title 作为标签，用在 head 标签中，表示 ( 网页的标题 )
-  - 属性: title 作为属性，在 `<a title="">` 标签中表示 ( hover 时的文字说明 )
+  - 属性: title 作为属性，在 `<a title="">` 标签中表示 ( hover 时的文字说明 )，注意是 a 标签
 - alt
   - alt 只能作为标签属性
   - 用于 ( img input textarea )，表示 ( 标签加载失败后的 文字说明 )
@@ -543,6 +553,7 @@ drop-shadow(offset-x offset-y blur-radius spread-radius color)
 - 表示让图表更亮或者更暗
 - filter: brightness(amount)
   - 参数 amount 是数量的意思，是一个数值
+- 详见: woow-wu7/6-penetrate/2-FRONTEND/CSS/19-filter:brightness().html
 
 ## (28) 图片等比例放大缩小
 
@@ -602,7 +613,7 @@ word-break: break-all; 单词内换行
   - ( 绝对定位 ) 虽然可以脱离文档流，但是没有新建图层，所以会 reflow
   - 结合 19 一起看
 - 扩展
-  - 还有哪些属性不会引起 reflow 和 repaint
+  - 还有哪些属性不会引起 reflow
     - transform
     - opacity
     - filter
@@ -653,19 +664,18 @@ NodeList 和 HTMLCollection 的区别？
 ### (35) html 和 xml 的区别 ?
 
 ```
-html和xml的区别
+html和xml的区别 ?
 ---
 
 1. html中不区分大小写，xml中严格区分大小写
 2. html中属性可以不带值，xml中属性必须有值
 3. html中的标签是预定义的固有标签，不可扩展，xml中的标签不是固定的，可以自定义，可以扩展
-4. html是用来显示数据结构的，xml是用来描述数据，存储数据的
-
+4. html是用来显示数据的，xml是用来描述数据结构，存储数据的
 ```
 
 ### (36) 【HTML 的 img 标签的 srcset 属性】 和 【css 的 image-set()】
 
-- [链接](https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/CSS/README.md)
+- 链接 本项目/2-FRONTEND/CSS/26-img-srcset.html
 - [链接](https://juejin.cn/post/6844903702810066958)
 
 ```
@@ -703,7 +713,7 @@ body {
   - 1. 在按钮 hover 1s 后触发一些事件，不到 1s 不触发
   - 2. 在按钮 长按:active 1s 后触发一些事件，不到 1s 不触发
   - 3. 轮播图的滚动和暂停
-  - 本项目/2-FRONTEND/CSS/27-transitionend.html
+  - 地址: https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/CSS/27-transitionend.html
 - 资料: https://juejin.cn/post/7143051955810598926
 - 资料: transition 小技巧 https://juejin.cn/post/7149531766045278244
 
@@ -733,7 +743,7 @@ var(变量名, 默认值)
 - 第二个参数: 表示如何变量名不存在，就使用默认值
 ```
 
-### (39) ios Safari 浏览器 100vh 遇到的问题
+### (38) ios Safari 浏览器 100vh 遇到的问题
 
 - 问题描述: 当整个页面的根元素设置了 height: 100vh 后，底部的内容被底部工具栏所遮挡
 - 原因: 因为 ios safari 浏览器的 100vh 是包含 ( 可视区域 + 地址栏 + 底部工具栏 ) 的，所以 100vh 容器的底部才会被底部的工具栏所遮挡
@@ -743,5 +753,51 @@ var(变量名, 默认值)
   - https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
   - https://www.jianshu.com/p/662039030e7e
   - https://juejin.cn/post/7096050514105729061
-- 案例地址
-  - https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/CSS/28-ios-100vh.html
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      html, body, .wrap { padding: 0; margin: 0; }
+
+      /* 文档根元素 */
+      :root {
+        --global-bg-color: red;
+      }
+
+      .wrap {
+        height: 100vh; /* 給 Safari 以外的浏览器读取，保证兼容性 */
+        height: calc(var(--vh), 100vh); /* 使用css变量 --vh，不存在就使用100vh默认值 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="wrap" ref="wrap">
+        <div>这是内容</div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        mounted() {
+          this.vhHack()
+        },
+        methods: {
+          vhHack() {
+            const height = window.innerHeight;
+            this.$refs.wrap.style.setProperty('--vh', height + 'px'); // 在 wrap 类中声明css变量 --vh
+
+            // 窗口变化
+            window.addEventListener('resize', function() {
+              window.document.querySelector('.wrap').style.setProperty('--vh', height + 'px');
+            });
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
+```
