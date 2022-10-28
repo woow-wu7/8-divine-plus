@@ -18,9 +18,11 @@ type 类型别名 VS interface 接口
 4. 鼠标hover时
    - type会显示具体的类型
    - interface则会显示是接口，具体的类型还需要通过在接口中查看
+
+尽量使用 interface
 ```
 
-# (二) 范型-工具类型
+# (二) 范型工具类型
 
 ### (1) Record
 
@@ -32,7 +34,7 @@ Record
   - type: 表示对象的属性 - 值
   - 用于将 ( 一种类型属性 ) 映射到 ( 另一种类型 )
 - Record的实现
-  - type Record<K extends keyof any, T> = { [P in K]: T; };
+  - type Record<K extends Key's any, T> = { [P in K]: T; };
 ---
 
 例1
@@ -204,8 +206,7 @@ type Person {
 
 # (三) keyof 索引类型查询操作符
 
-- keyof 是 ( 索引类型查询操作符 )，返回 ( 已知公共属性名的联合 )
-- 注意: 返回的是 公共 属性名 的 联合类型
+- keyof 是 ( 索引类型查询操作符 )，返回 ( 已知的公共属性名的联合 )
 - 扩展：接着可以使用 [k in keyof T] 来进行遍历
 
 ```
@@ -275,7 +276,7 @@ let strings: string[] = pluck(person, ['name']); // ok, string[]
 # (五) in
 
 - in 运算符作用主要有两个
-  - 在类型中使用: **可以用来遍历枚举类型**
+  - 在类型中使用: **可以用来遍历 联合类型 和 枚举类型**
   - 在值中使用: 判断对象中是否存在某个 key 注意包括 ( 自身属性 ) 和 ( 继承属性 )
 
 ```
@@ -286,7 +287,19 @@ type T = 'name' | 'age';
 type Obj = {
   [k in T]: any
 }
-// 1. in 用来遍历枚举类型 -> type Obj = { name: any, age: any}
+// 1. in 用来遍历联合类型 -> type Obj = { name: any, age: any}
+
+
+---
+enum City {
+  BEIJING = 2,
+  SHANGHAI,
+  GUANGZHOU,
+}
+type City3 = {
+  [key in City]: string;
+};
+// 2. in 用来遍历枚举类型 -> type City3 = { 2: string; 3: string; 4: string; }
 
 
 ---
@@ -295,7 +308,7 @@ const obj: Obj = {
   age: 20
 }
 console.log('name' in obj)
-// 2. in 用来判断 obj 对象中是否存在 name 属性，缺点是不能识别 ( 自身属性 ) 还是 ( 继承属性 )
+// 3. in 用来判断 obj 对象中是否存在 name 属性，缺点是不能识别 ( 自身属性 ) 还是 ( 继承属性 )
 
 var obj = {};
 'toString' in obj // true，即非自身属性时，继承的属性也会返回true
