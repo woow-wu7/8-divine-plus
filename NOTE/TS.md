@@ -313,3 +313,36 @@ console.log('name' in obj)
 var obj = {};
 'toString' in obj // true，即非自身属性时，继承的属性也会返回true
 ```
+
+# (六) public private protected 的区别？
+
+- public 公有属性
+- private 私有属性 ------- 不能在声明它的类的外部使用，比如 ( 子类 或 实例 或 子类实例 都不能访问 )
+- protected 保护属性 ----- 实例不能访问，子类实例不能访问，但是子类可以访问
+- 实战 https://github.com/woow-wu7/6-penetrate/blob/main/2-FRONTEND/TS/index.ts
+
+```
+// public private protected
+class Test {
+  public pub: string = "public";
+  private pri: string = "private"; // private不能在声明它的类的外部使用，( 实例 和 子类 都不能访问 )
+  protected pro: string = "protected"; // protected ( 实例不能访问 )，但是 ( 子类能访问 )
+}
+
+const testInstance = new Test();
+console.log("testInstance.pub", testInstance.pub);
+console.log("testInstance.pri", testInstance.pri); // 报错
+console.log("testInstance.pro", testInstance.pro); // 报错
+
+class TestChild extends Test {
+  constructor() {
+    super()
+    console.log('super.pri', super.pri) // 报错
+    console.log('super.pro', super.pro) // 可以访问，因为 protected 不能在子类实例访问，但是 ( 可以在子类中访问 )
+  }
+}
+const testChildInstance = new TestChild();
+console.log("testChildInstance.pub", testChildInstance.pub);
+console.log("testChildInstance.pri", testChildInstance.pri); // 报错
+console.log("testChildInstance.pro", testChildInstance.pro); // 报错
+```
