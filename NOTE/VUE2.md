@@ -1,5 +1,7 @@
 # vue2
 
+- [vue2 官网链接](https://v2.cn.vuejs.org/)
+
 ### (1) vue 的生命周期
 
 - mount 阶段
@@ -89,24 +91,24 @@ computedWatcher
 ### (4) watch
 
 - watch 对象的 key 对应的 value 的类型
-  - function --- 表示 key 变化时执行的函数
-  - string ----- 表示 ( 方法名 ) 或 ('a.b') -> data.a 对象 .b 属性
-  - object ----- 对象中一定要有 handler 方法，{ handler, immediate, deep, sync }
+  - function --- 表示 key 变化时执行的函数 ------------------------------------------------- a: function (val, oldVal) {}
+  - string ----- 表示 ( 方法名 ) 或 ('a.b') -> data.a 对象 .b 属性 ------------------------- b: 'someMethod' 或 'e.f': function (v,ov){}
+  - object ----- 对象中一定要有 handler 方法，{ handler, immediate, deep, sync } ----------- c: { handler: function (v, oldV) {}, deep: true}
   - array ------ 以上的组合
   - 最终都会把不同类型的 handler 转换成函数，然后执行 vm.$watch(expOrFn, handler, options)
   - 官网说明：https:cn.vuejs.org/v2/api/#watch
 - watch 对象的 value 是对象时，支持的属性
-  - handler: watch 的回调函数，参数是 newValue, oldValue
-  - deep：表示深度监听
-  - immediate：表示立即执行 callback，不用等到 key 变化时才去执行
-  - sync：表示 ( 同步 watch 对象中的 handler 先执行 )，( 普通的 watch 对象的 handler 后执行 )
+  - **handler**: watch 的回调函数，参数是 newValue, oldValue
+  - **deep**: 表示深度监听
+  - **immediate**: 表示立即执行 callback，不用等到 key 变化时才去执行
+  - **sync**: 表示 ( 同步 watch 对象中的 handler 先执行 )，( 普通的 watch 对象的 handler 后执行 )
 - **watch 注意点**
   - 2022-10-06
   - 遇到问题: **当 watch 的值是一个嵌套的对象时，修改改对象的属性，watch 的回调是不会执行的**
   - 如何解决:
     - 1. 可以使用 watch 的对象模式，并设置 deep:true
-    - 2. 在设置 watch 对象的 key 时，直接 a.b.c 取到需要改变的属性
-  - 扩展: **data 的响应式不受嵌套对象深度的影响，即嵌套多深修改属性都会响应式**
+    - 2. 在设置 watch 对象的 key 时，直接 a.b.c 取到需要监听改变对象的具体属性
+    - 扩展: **data 的响应式不受嵌套对象深度的影响，即嵌套多深修改属性都会响应式**
 
 ```
 watch 注意点
@@ -209,8 +211,9 @@ Object.defineProperty 的缺点
   - activated
   - deactivated
 - 缓存策略
-  - LRU
+  - **LRU**
   - latest recently used 最近最少使用
+  - [LRU 最近最少使用 和 LFU 最不经常使用 和 FIFO 先进先出](https://github.com/woow-wu7/6-penetrate/tree/main/2-FRONTEND/JS/BB-%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5)
 - 源码
   - src/core/components/keep-alive.js
 - 扩展: 常见的缓存策略
