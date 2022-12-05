@@ -4,6 +4,7 @@
     <TestDefineExposeFather />
     <TestScrollTop />
     <TestRecursiveComponent />
+    <TestWatchFlushOntrackOnTrigger/>
   </section>
 </template>
 
@@ -11,6 +12,7 @@
 import TestDefineExposeFather from "./component/1.test-define-expose-father.vue";
 import TestScrollTop from "./component/2.test-scroll-top.vue";
 import TestRecursiveComponent from "./component/3.test-recursive-component.vue";
+import TestWatchFlushOntrackOnTrigger from './component/4.test-watch-flush-onTrack-onTrigger.vue';
 </script>
 
 <style lang="scss" scoped>

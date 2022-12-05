@@ -3,6 +3,7 @@
     <h4>测试 scrollTop</h4>
 
     <main class="out-wrap" ref="outWrap">
+      <p>请滚动鼠标</p>
       <p>test</p>
       <p>test</p>
       <p>test</p>
@@ -62,7 +63,7 @@ onMounted(() => {
 
 .out-wrap {
   height: 300px;
-  background: yellow;
+  border: 1px solid #88aef4;
   overflow: auto;
 }
 .in-wrap {

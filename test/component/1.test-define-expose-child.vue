@@ -19,15 +19,17 @@ const add = () => {
   state.doubleCount *= 2;
 };
 
+// 导出 count 和 state，未导出 add
 defineExpose({
   count,
   state,
+  // add
 });
 </script>
 
 <style lang="scss" scoped>
 .define-expose-child {
-  border: 1px solid red;
+  border: 1px solid 	#6495ED;
   padding: 10px;
   margin: 10px 0;
 }
