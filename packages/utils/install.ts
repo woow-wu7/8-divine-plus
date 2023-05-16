@@ -6,7 +6,7 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 // component
 // 注意：
-// - 这里没用 @ 是因为 vuepress2使用文档中没法配置 client 端的别名
+// - 这里没用 @ 是因为 vuepress2 使用文档中没法配置 client 端的别名
 // - 核心原因是本库基于了两套构建工具 webpack 和 vite ，会有不兼容的情况
 import Divider from "../components/divider/index.vue";
 import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
@@ -23,7 +23,7 @@ import Badge from "../components/badge/index.vue";
 import Backtop from "../components/backtop/index.vue";
 
 // 注意
-// 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context只在webpack环境中存在
+// 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
 // - 1. docs，使用 vite 构建
 // - 2. examples，使用 webpack 构建
 // import { requireComps } from "./requireContext";

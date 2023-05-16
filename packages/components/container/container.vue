@@ -11,13 +11,13 @@ export default {
 </script>
 <script setup lang="ts">
 import { PropType, useSlots, computed } from "vue";
-import { useNamespace } from "../../hooks/useNamespace";
+import { useNamespace } from "@/hooks/useNamespace";
 import type { PropsDirectionType } from "./constant";
 import type { VNode, Component } from "vue";
 
 const ns = useNamespace("container");
 
-const slots: any = useSlots();
+const slots = useSlots();
 
 const props = defineProps({
   direction: {
@@ -32,6 +32,7 @@ const isVertical = computed(() => {
     return false;
   }
 
+  // 当子元素中包含 <el-header> 或 <el-footer> 时，全部子元素会垂直上下排列， 否则会水平左右排列
   if (slots && slots.default) {
     const vNodes: VNode[] = slots.default();
 

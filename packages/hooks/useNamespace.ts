@@ -26,6 +26,7 @@ const _bem = (
 
 // unref
 // - 是一个语法糖
+// - 如果参数是 ref，则返回内部值，否则返回参数本身
 // - 相当于：val = isRef(val) ? val.value : val
 
 // useNamespace
@@ -61,7 +62,8 @@ export const useNamespace = (block: string) => {
 
   // is
   // - 只有一个参数:
-  //    - 比如 ns.is(contentPosition) 是 ns.is('center') 时，结果就是 ( is-center )
+  //    - 比如 ns.is(contentPosition)
+  //    - ns.is('center') 时，结果就是 ( is-center )
   // - 有两个以上的参数:
   //    - 比如 ns.is('vertical', isVertical)
   //    - 第一个参数是 modifier ---> is-modifier

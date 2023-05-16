@@ -11,6 +11,6 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { useNamespace } from "../../hooks/useNamespace";
+import { useNamespace } from "@/hooks/useNamespace";
 const ns = useNamespace("main");
 </script>
