@@ -1,34 +1,56 @@
 # 构建过程
 
+- [7-compiler-webpack 打包源码](https://github.com/woow-wu7/7-compiler)
+- [7-compiler.js](https://github.com/woow-wu7/7-compiler/blob/main/7-compiler.js)
+- [[源码-webpack01-前置知识] AST 抽象语法树](https://juejin.im/post/6844904115265339406)
+- [[源码-webpack02-前置知识] Tapable](https://juejin.im/post/6844904115269550087)
+- [[源码-webpack03] 手写 webpack - compiler 简单编译流程](https://juejin.im/post/6844903973002936327)
+- [[深入 16] webpack](https://juejin.im/post/6844904070201753608)
+
 ### (1) 安装依赖
 
 ```安装依赖
-npm init -y // -y 可以生成默认的package.json配置
-npm install vue -D // 这里 -D 是因为是 vue 组件库并不是vue项目，安装默认是 v3 版本
+npm init -y // ------------------------------------------------- y 可以生成默认的package.json配置
+
+npm install vue -D //------------------------------------------- -D因为是组件库，不是vue项目; 这里还要注意 vue 中使用 ts，需要配置 ts-loader 的 appendTsSuffixTo: [/\.vue$/]
+npm install vue-loader vue-template-compiler -D // ------------- vue组件处理
 
 npm install webpack -D
 npm install webpack-cli -D
 npm install webpack-dev-server -D
-npm install webpack-merge -D // 合并 webpack 配置
+npm install webpack-merge -D // -------------------------------- 合并 webpack 配置，记得一个一个装，一起装有时候会不成功
 
-npm install vue-loader vue-template-compiler html-webpack-plugin -D // -- vue组件处理 和 html模版处理
-npm install file-loader url-loader -D // ------------------------------- 文件处理，url-loader通过limit处理成base64的图片
-npm install style-loader css-loader -D // ------------------------------ 样式处理
-npm install sass sass-loader node-sass -D // --------------------------- sass相关
-npm install mini-css-extract-plugin -D // ------------------------------ 单独抽离成css文件，以便引入组件库的css，因为css和组件时单独打包的
-npm install postcss-loader autoprefixer - D //-------------------------- 添加浏览器的前缀，可单独配置 postcss.config.js；autoprefixer需要在package.json中设置 browserslist
-npm install html-loader markdown-loader -D // -------------------------- md 转成 html
+npm install typescript ts-loader -D // ------------------------- ts相关
+npm install babel-loader @babel/core @babel/preset-env -D // --- babel可以把es6转成es5
 
-npm install typescript ts-loader -D // --------------------------------- ts相关
-npm install babel-loader @babel/core @babel/preset-env -D // ----------- babel可以把es6转成es5
+npm install html-webpack-plugin -D // -------------------------- html模版处理
+npm install html-loader markdown-loader -D // ------------------ md 转成 html
+npm install file-loader url-loader -D // ----------------------- 图片/文件处理，url-loader通过limit处理成base64的图片，file-loader在打包后的html中引用打包后的图片路径
+
+npm install style-loader css-loader -D // ---------------------- css样式处理
+npm install sass sass-loader node-sass -D // ------------------- sass相关
+npm install mini-css-extract-plugin -D // ---------------------- 单独抽离成css文件，以便引入组件库的css，因为css和组件时单独打包的
+npm install postcss-loader autoprefixer -D // ------------------ 添加浏览器的前缀，可单独配置 postcss.config.js；autoprefixer需要在package.json中设置 browserslist
+// 样式相关注意点
+// 1. 使用 mini-css-extract-plugin 后就不需要 style-loader 了
+// 2. 顺序: sass-loader > postcss-loader > css-loader > style-loader
+// 3. autoprefixer 需要在 package.json 中设置 browserslist
+
+npm install clean-webpack-plugin -D ---------------------------- 删除打包后的文件夹，默认是删除 output.path 指定的文件夹，用在再次打包时先删除之间生成的包
+npm install eslint eslint-loader -D ---------------------------- lint工具，在 .eslintrc.js 中配置规则
+
+Webpack内置组件
+- webpack.DefinePlugin() --------------------------------------- 定义浏览器环境变量
+- webpack.HotModuleReplacementPlugin() ------------------------- 热更新
+- webpack.DllPlugin -------------------------------------------- 生成第三方库的动态链接库 manifest.json
+- webpack.DllReferencePlugin ----------------------------------- 引用动态链接库，不存在再进行打包
 
 npm install cross-env -D
-npm install @types/node -D // 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
-
+npm install @types/node -D // ---------------------------------- 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 
 ---
 npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
-npm install vue-router@4 -S // router,用于 breadcrumb
+npm install vue-router@4 -S // router, 用于 breadcrumb
 npm install @vueuse/core -D // hooks
 ```
 

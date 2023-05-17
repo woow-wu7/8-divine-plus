@@ -8,3 +8,9 @@ dist
 docs/.vuepress/.temp/
 docs/.vuepress/.cache/
 docs/.vuepress/dist/
+
+# debug
+npminstall-debug.json
+
+# yarn
+yarn.lock

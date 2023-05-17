@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
     "Backtop",
+    "chunkhash",
+    "cnpm",
     "docsearch",
     "eventbus",
     "highlightjs",
@@ -11,9 +13,11 @@
     "rgba",
     "srcset",
     "stackoverflow",
+    "Tapable",
     "transitionend",
     "unplugin",
     "vuepress",
-    "vueuse"
+    "vueuse",
+    "woow"
   ]
 }

@@ -1,6 +1,23 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+// vue
+// 1. 安装
+// - vue
+// - vue-loader
+// - vue-template-compiler
+// - html-webpack-plugin
+// 2. 配置:
+// - 配置vue相关需要配置几个地方
+// - 1. vue-loader
+// - 2. VueLoaderPlugin
+// - 3. 需要把 entry 设置为 vue 项目的入口文件 main.js
+// - 4. devServer
+// - 5. vue 中使用 ts 需要配置 ts-loader 中的 appendTsSuffixTo: [/\.vue$/]
+// - 6. 热更新配置: new webpack.HotModuleReplacementPlugin() + devServer.hot
+// 3. 扩展
+// - 如果是开发 vue3组件库 ，我们生产打包时，是不打包vue的，所以要配置 webpack.config.js 中的  externals: { vue: "vue" }
+
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
@@ -50,6 +67,7 @@ module.exports = {
   ],
 
   externals: {
+    // 不打包 vue 依赖，因为本项目并不是vue项目
     vue: "vue",
   },
 };
@@ -69,3 +87,4 @@ module.exports = {
 // - 报错：打包后使用组件库报错 Uncaught TypeError: Cannot read properties of null (reading 'isCE')
 // - 解决：通过 webpack 构建时，通过 externals 不打包 vue
 // - vite 同理
+// - 英语: external 外部的adj 外部n

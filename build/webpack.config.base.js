@@ -2,6 +2,24 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+// vue
+// 1. 安装
+// - vue
+// - vue-loader
+// - vue-template-compiler
+// - html-webpack-plugin
+// 2. 配置:
+// - 配置vue相关需要配置几个地方
+// - 1. vue-loader
+// - 2. VueLoaderPlugin
+// - 3. 需要把 entry 设置为 vue 项目的入口文件 main.js
+// - 4. devServer
+// - 5. vue 中使用 ts 需要配置 ts-loader 中的 appendTsSuffixTo: [/\.vue$/]
+// - 6. 热更新配置: new webpack.HotModuleReplacementPlugin() + devServer.hot
+// 3. 扩展
+// - 如果是开发 vue3组件库 ，我们生产打包时，是不打包vue的，所以要配置 webpack.config.js 中的  externals: { vue: "vue" }
 
 // 0
 // const VueLoaderPlugin = require("vue-loader/lib/plugin"); // 注意：这样的写法会抱错，需要改成最新的下面的写法
@@ -21,8 +39,11 @@ const { VueLoaderPlugin } = require("vue-loader");
 // - 具体：
 //   - 1. package.json 中的 script 属性中，设置为："cross-env NODE_ENV=development webpack serve --config webpack.config.js"
 //   - 2. 在 webpack.config.js 中就可以通过 process.env.NODE_ENV 访问到 1 中定义的 NODE_ENV 的值
+// - 环境
+//   - 浏览器环境: vue项目的入口 main.ts 等前端业务页组件中都满足
+//   - node环境: webpack.config.js
 // - 问题：
-//    - 问题：如果同步 ( 浏览器环境 ) 和 ( node环境 ) 中的环境变量
+//    - 问题：如何同步 ( 浏览器环境 ) 和 ( node环境 ) 中的环境变量
 //    - 回答：
 //        - aa. 在 1 的基础上，在 webpack.config.js 中设置 ( mode: process.env.NODE_ENV )，因为 ( mode 的作用是设置 浏览器环境中的环境变量 )
 //        - bb. -> 或者 webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) })
@@ -95,7 +116,7 @@ module.exports = {
           {
             loader: "ts-loader",
             options: {
-              appendTsSuffixTo: [/\.vue$/],
+              appendTsSuffixTo: [/\.vue$/], // vue 单文件组件中假如使用了lang="ts"，ts-loader需要配置appendTsSuffixTo: [/\.vue$/]，用来给.vue文件添加个.ts后缀用于编译
             },
           },
         ],
@@ -156,6 +177,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "css/main.css", // 指定被打包后的文件夹，和文件名
+      // filename: "[name].[hash].css", // 指定被打包后的文件夹，和文件名
       // filename: 'main.css', 抽离出来的css文件名
     }),
     new VueLoaderPlugin(),
@@ -163,6 +185,7 @@ module.exports = {
       "process.env.HOST_ENV": JSON.stringify(process.env.HOST_ENV), // 同步 node 和 browser 中的 HOST_ENV 环境变量
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
   ],
   optimization: {
     moduleIds: "named",
