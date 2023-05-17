@@ -3,6 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { MyCleanWebpackPlugin } = require("./plugin/MyCleanWebpackPlugin");
 
 // vue
 // 1. 安装
@@ -185,7 +186,9 @@ module.exports = {
       "process.env.HOST_ENV": JSON.stringify(process.env.HOST_ENV), // 同步 node 和 browser 中的 HOST_ENV 环境变量
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(),
+
+    // new CleanWebpackPlugin(),
+    new MyCleanWebpackPlugin(),
   ],
   optimization: {
     moduleIds: "named",

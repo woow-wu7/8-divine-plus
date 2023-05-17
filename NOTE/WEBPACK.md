@@ -7,7 +7,7 @@
 - run --------------------- 在 Compiler.run() 执行后调用
 - compile ----------------- 在打包函数 compile 执行前调用
 - afterCompile ------------ 在打包函数 compile 执行后调用
-- emit -------------------- 在把文件写入到 webpack.config.js 的 output 文件夹后执行
+- emit -------------------- 在把文件写入到 webpack.config.js 的 output 文件夹 (前) 执行
 - done -------------------- 打包总流程执行完后调用
 
 ### (2) babel 处理 AST 的过程
