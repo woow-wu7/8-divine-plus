@@ -45,6 +45,8 @@ Webpack内置组件
 - webpack.DllPlugin -------------------------------------------- 生成第三方库的动态链接库 manifest.json
 - webpack.DllReferencePlugin ----------------------------------- 引用动态链接库，不存在再进行打包
 
+npm install loader-utils -D ------------------------------------ loader工具，用来获取loader中的options对象
+
 npm install cross-env -D
 npm install @types/node -D // ---------------------------------- 解决ts环境在模块中访问 process 时变量不存在的问题，详见 (3)-2
 

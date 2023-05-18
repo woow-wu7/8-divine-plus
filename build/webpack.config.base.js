@@ -3,7 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { MyCleanWebpackPlugin } = require("./plugin/MyCleanWebpackPlugin");
+const { MyCleanWebpackPlugin } = require("./plugins/MyCleanWebpackPlugin");
 
 // vue
 // 1. 安装
@@ -81,6 +81,10 @@ module.exports = {
     },
     extensions: [".ts", ".js", ".css", ".less", "*"], // import时省略后缀时，先找.js文件，再找.css文件 注意：'*' 表示所有类型的文件
   },
+  resolveLoader: {
+    // 表示在寻找loader时，先去node_modules中找，再去loaders文件夹中找，loaders文件夹中有我们自己写的loader
+    modules: ["node_modules", path.resolve(__dirname, "./loaders/")],
+  },
   devtool: "source-map",
   module: {
     noParse: /jquery|lodash/, // module.noParse 不去解析jquery或lodash的依赖关系，因为它们俩都没有依赖其他库，从而提高构建速度
@@ -109,6 +113,12 @@ module.exports = {
               ],
             },
           },
+          {
+            loader: "myReplace-loader",
+            options: {
+              name: "####",
+            },
+          },
         ],
       },
       {
@@ -118,6 +128,12 @@ module.exports = {
             loader: "ts-loader",
             options: {
               appendTsSuffixTo: [/\.vue$/], // vue 单文件组件中假如使用了lang="ts"，ts-loader需要配置appendTsSuffixTo: [/\.vue$/]，用来给.vue文件添加个.ts后缀用于编译
+            },
+          },
+          {
+            loader: "myReplace-loader",
+            options: {
+              name: "####",
             },
           },
         ],

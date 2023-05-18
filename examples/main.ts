@@ -26,6 +26,8 @@ import hljsVuePlugin from "@highlightjs/vue-plugin";
 
 hljs.registerLanguage("javascript", javascript);
 
+console.log("hello");
+
 // vue
 // 1. 安装
 // - vue
