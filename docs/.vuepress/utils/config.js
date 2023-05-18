@@ -66,6 +66,7 @@ const theme = defaultTheme({
   home: "/",
   navbar,
   sidebar,
+  logo: "/img/logo.png", // 注意: 这里默认时 Public 文件路径
 });
 
 const plugins = [
@@ -108,11 +109,11 @@ const bundler = viteBundler({
         },
       }),
     ],
-    // resolve: {
-    //   alias: {
-    //     "@": "../../../packages/components",
-    //   },
-    // },
+    resolve: {
+      alias: {
+        "@": "../../../packages/",
+      },
+    },
   },
   vuePluginOptions: {},
 });

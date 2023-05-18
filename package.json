@@ -34,6 +34,7 @@
     "build": "cnpm run build:js && cnpm run build:scss",
 
     "test:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.dev.js --mode=development",
+
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },

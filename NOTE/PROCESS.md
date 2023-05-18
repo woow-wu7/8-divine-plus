@@ -9,6 +9,8 @@
 
 ### (1) 安装依赖
 
+#### 1.1 安装依赖
+
 ```安装依赖
 npm init -y // ------------------------------------------------- y 可以生成默认的package.json配置
 
@@ -55,6 +57,8 @@ npm install @element-plus/icons-vue -S // icons，用于 breadcrumb
 npm install vue-router@4 -S // router, 用于 breadcrumb
 npm install @vueuse/core -D // hooks
 ```
+
+#### 1.2 说明文档
 
 ```说明文档
 组件库说明文档相关
