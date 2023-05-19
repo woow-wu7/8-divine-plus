@@ -44,6 +44,9 @@ console.log("hello");
 // - 6. 热更新配置: new webpack.HotModuleReplacementPlugin() + devServer.hot
 // 3. 扩展
 // - 如果是开发 vue3组件库 ，我们生产打包时，是不打包vue的，所以要配置 webpack.config.js 中的  externals: { vue: "vue" }
+
+// app
+// app 上具有 ( component,config,mixin,directive,provide,use,mount,unmount ) 等属性
 const app = createApp(App);
 
 app.use(DivinePlus); // 注册插件

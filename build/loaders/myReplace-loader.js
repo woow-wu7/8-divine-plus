@@ -20,7 +20,7 @@ function myReplaceLoader(source) {
   setTimeout(function () {
     const result = source.replace("hello", options.name); // 将 hello 字符串 转成 ####
     callback(null, result);
-  }, 1000);
+  });
 }
 
 module.exports = myReplaceLoader;

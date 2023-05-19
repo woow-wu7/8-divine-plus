@@ -24,6 +24,7 @@
   "scripts": {
     "#build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js --mode=production这里页可以指定mode，但是没必要，因为我们在webpack配置文件中已经设置了mode",
 
+    "server": "cnpm run dev",
     "serve": "cnpm run dev",
     "start": "cnpm run dev",
     "dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js",

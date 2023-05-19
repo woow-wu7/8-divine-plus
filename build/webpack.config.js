@@ -144,12 +144,12 @@ module.exports = {
               ],
             },
           },
-          {
-            loader: "myReplace-loader",
-            options: {
-              name: "####",
-            },
-          },
+          // {
+          //   loader: "myReplace-loader",
+          //   options: {
+          //     name: "####",
+          //   },
+          // },
         ],
         exclude: "/node-modules/",
       },
@@ -164,12 +164,12 @@ module.exports = {
               // suffix 后缀
             },
           },
-          {
-            loader: "myReplace-loader",
-            options: {
-              name: "####",
-            },
-          },
+          // {
+          //   loader: "myReplace-loader",
+          //   options: {
+          //     name: "####",
+          //   },
+          // },
         ],
         exclude: "/node-modules/",
       },
