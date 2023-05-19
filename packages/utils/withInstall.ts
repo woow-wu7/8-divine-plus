@@ -6,10 +6,7 @@ type SFCInstallWithContext<T> = SFCWithInstall<T> & {
   _context: AppContext | null;
 };
 
-export const withInstall = <T, E extends Record<string, any>>(
-  main: T,
-  extra?: E
-) => {
+const withInstall = <T, E extends Record<string, any>>(main: T, extra?: E) => {
   (main as SFCWithInstall<T>).install = (app: App) => {
     for (const comp of [main, ...Object.values(extra ?? {})]) {
       app.component(comp.name, comp);
@@ -24,12 +21,14 @@ export const withInstall = <T, E extends Record<string, any>>(
   return main as SFCWithInstall<T> & E; // 将 T 断言为具体的类型 T & plugin & Record<string, any>
 };
 
-export const withInstallFunction = <T>(fn: T, name: string) => {
+const withInstallFunction = <T>(fn: T, name: string) => {
   (fn as SFCWithInstall<T>).install = (app: App) => {
     (fn as SFCInstallWithContext<T>)._context = app._context;
     app.config.globalProperties[name] = fn;
   };
 };
+
+export { withInstall, withInstallFunction };
 
 // 1
 // withInstall
@@ -44,7 +43,7 @@ export const withInstallFunction = <T>(fn: T, name: string) => {
 // withInstallFunction
 // - 作用
 //   - 1.当 组件 是 函数类型 时 ( 比如Message )，注册为Vue插件
-//   - 2.把 该组件 册能够被应用内所有组件实例访问到的 全局属性的对象 上，在任意 ( 组件模版 ) 和 ( 组件实例 ) 上都能访问到
+//   - 2.把 该组件 注册到 能够被应用内所有组件实例访问到的 全局属性的对象 上，在任意 ( 组件模版 ) 和 ( 组件实例 ) 上都能访问到
 // - app.config.globalProperties
 //   - 一个用于注册能够被应用内所有组件实例访问到的全局属性的对象
 //   - 这是对 Vue 2 中 Vue.prototype 使用方式的一种替代，此写法在 Vue 3 已经不存在了

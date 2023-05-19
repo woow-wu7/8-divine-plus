@@ -31,6 +31,7 @@
 
 - plugin
   - 执行时机：在 webpack.Compiler.constructor 中去执行 plugin 中的 apply 方法的
+  - 调用时机: 在 compiler 生命周期的各个阶段进行调用
   - 扩展：
     - 插件的注册：webpack 的每个 plugin 都有一个 apply 方法，apply 方法会对插件进行 tapable 的 ----- ( tap 注册 )
     - 插件的调用：然后在不同的方法执行时去 ------------------------------------------------------- ( call 调用 )
@@ -40,13 +41,14 @@
 ### (4) loader
 
 - 特点
-  - 1. loader 就是一个函数，函数的第一个参数就是 ( 上一个 loader 产生的结果-源码字符串 )
+  - 1. loader 是一个函数，函数第一个参数是 所匹配资源的 ( 源码字符串 ) 或 ( 上一个 loader 产生的结果, 因为同一个资源可以用多个 loader 来处理 )
   - 2. loader 执行是有顺序的，从右到左，从下到上 ( 比如: 先 sass-loader > postcss-loader > css-loader > style-loader )
   - 3. loader 函数不能是箭头函数，因为 loader 函数内部需要使用 this 获取很多配置数据
        - this.getOptions()
        - this.query
        - this.callback()
        - this.async()
+  - 4. loader 的执行时机是在 Compiler -> run -> buildModules -> getSource
 - 参数
   - content: 源文件的内容
   - map: 可以被 https://github.com/mozilla/source-map 使用的 SourceMap 数据
