@@ -1,6 +1,6 @@
 <template>
   <section class="component-wrap">
-    <header v-if="slots?.title || slot?.subtitle">
+    <header v-if="slots?.title || slots?.subtitle">
       <div class="header__title">
         <slot name="title"> </slot>
       </div>
@@ -19,13 +19,13 @@
         <component
           :is="ArrowRight"
           :class="['arrow', { 'is-down': visible }]"
-        ></component>
+        />
       </div>
       <div class="footer__code" v-if="visible">
         <template v-if="hasMd">
           <slot name="md"></slot>
         </template>
-        <div v-else v-html="md"></div>
+        <div v-else v-html="md" />
       </div>
     </footer>
   </section>

@@ -221,6 +221,10 @@ tree
  - 1. npm install @types/webpack-env -D
  - 2. 在 tsconfig.json 中 types 数组中添加 "webpack-env" 去自动引入 "@types/webpack-env" 包
  - 3. 在 tsconfig.json 中 include 数组中添加 webpack语法所在的 ts 文件
+
+ 8
+ 说明文档启动报错: Cannot read properties of null (reading 'parent')
+ 解决: 删除 docs/.vuepress/.cache 和 .temp 两个呃文件夹，然后重新 npm run docs:dev
 ```
 
 # 资料

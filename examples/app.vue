@@ -3,17 +3,22 @@
   <div class="app">
     <section class="block">
       <h4>Divider测试</h4>
-      <DvDivider direction="horizontal">
+      <DvDivider direction="horizontal" style="width: auto">
         <template v-slot:default>center</template>
       </DvDivider>
       <DvDivider
         direction="horizontal"
         contentPosition="left"
         borderStyle="dashed"
+        style="width: auto"
       >
         <template v-slot:default>left</template>
       </DvDivider>
-      <DvDivider direction="horizontal" contentPosition="right">
+      <DvDivider
+        direction="horizontal"
+        contentPosition="right"
+        style="width: auto"
+      >
         <template v-slot:default>right</template>
       </DvDivider>
       <div>divider测试</div>
@@ -140,6 +145,12 @@
       <p>test</p>
       <p>test</p>
       <dv-backtop :target="app"></dv-backtop>
+    </section>
+
+    <section class="block">
+      <h4>Empty 测试</h4>
+      <dv-empty description="description" />
+      <dv-empty :image-size="40" description="description" />
     </section>
 
     <!-- 测试 transition 内置组件 -->
@@ -270,9 +281,11 @@ function onLeaveCancelled(el) {}
   overflow: auto;
 }
 .block {
-  border: 1px solid red;
-  padding: 20px;
   margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid red;
+  display: block;
 }
 // container
 .header,

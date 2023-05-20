@@ -59,6 +59,7 @@ const sidebar = {
     "/components/tag.md",
     "/components/divider.md",
     "/components/backtop.md",
+    "/components/empty.md",
   ],
 };
 
