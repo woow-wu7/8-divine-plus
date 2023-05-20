@@ -7,7 +7,7 @@
 - [[源码-webpack03] 手写 webpack - compiler 简单编译流程](https://juejin.im/post/6844903973002936327)
 - [[深入 16] webpack](https://juejin.im/post/6844904070201753608)
 
-### (1) 安装依赖
+### (一) 安装依赖
 
 #### 1.1 安装依赖
 
@@ -89,7 +89,7 @@ npm install @highlightjs/vue-plugin -D
   - npm install html-loader markdown-loader -D // ---- 将 md 转成 html
 ```
 
-### (2) 目录结构
+### (二) 目录结构
 
 ```
 .
@@ -131,7 +131,7 @@ npm install @highlightjs/vue-plugin -D
 └── yarn-error.log
 ```
 
-### (3) vue3 和 webpack5 和 ts 遇到的一些问题
+### (三) vue3 和 webpack5 和 ts 遇到的一些问题
 
 ```
 [1]
