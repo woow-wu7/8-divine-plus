@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
+    "adduser",
     "Backtop",
     "chunkhash",
     "cnpm",
@@ -23,6 +24,7 @@
     "Tapable",
     "transitionend",
     "unplugin",
+    "unpublish",
     "unshift",
     "vant",
     "vmax",
