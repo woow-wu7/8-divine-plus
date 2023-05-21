@@ -26,7 +26,7 @@ export interface InstallationOptions {
 
 export const version: string;
 
-export function install(vue: App, options: InstallationOptions): void;
+export function install(vue: App, options?: InstallationOptions): void;
 
 export type Component = DivinePlusComponent;
 
