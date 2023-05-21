@@ -43,6 +43,8 @@
   },
   "keywords": [
     "vue3",
+    "vue-components",
+    "vue3-components",
     "typescript",
     "webpack5",
     "vuepress2"
