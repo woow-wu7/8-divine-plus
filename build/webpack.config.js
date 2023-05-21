@@ -33,6 +33,7 @@ const { VueLoaderPlugin } = require("vue-loader");
 // 2
 // path.resolve()
 // - 将多个路径解析为一个规范化的 ( 绝对路径 )
+// - 详见 6
 
 // 3
 // cross-env

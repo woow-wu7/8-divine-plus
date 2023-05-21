@@ -1,7 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { MyCleanWebpackPlugin } = require("./plugins/MyCleanWebpackPlugin");
 
@@ -113,12 +115,12 @@ module.exports = {
               ],
             },
           },
-          {
-            loader: "myReplace-loader",
-            options: {
-              name: "####",
-            },
-          },
+          // {
+          //   loader: "myReplace-loader",
+          //   options: {
+          //     name: "####",
+          //   },
+          // },
         ],
       },
       {
@@ -130,12 +132,12 @@ module.exports = {
               appendTsSuffixTo: [/\.vue$/], // vue 单文件组件中假如使用了lang="ts"，ts-loader需要配置appendTsSuffixTo: [/\.vue$/]，用来给.vue文件添加个.ts后缀用于编译
             },
           },
-          {
-            loader: "myReplace-loader",
-            options: {
-              name: "####",
-            },
-          },
+          // {
+          //   loader: "myReplace-loader",
+          //   options: {
+          //     name: "####",
+          //   },
+          // },
         ],
         exclude: "/node-modules/",
       },
@@ -205,6 +207,15 @@ module.exports = {
 
     // new CleanWebpackPlugin(),
     new MyCleanWebpackPlugin(),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "../typings"),
+          to: "./typings",
+        },
+      ],
+    }),
   ],
   optimization: {
     moduleIds: "named",

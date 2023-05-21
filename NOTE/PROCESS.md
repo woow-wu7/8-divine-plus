@@ -38,7 +38,8 @@ npm install postcss-loader autoprefixer -D // ------------------ 添加浏览器
 // 2. 顺序: sass-loader > postcss-loader > css-loader > style-loader
 // 3. autoprefixer 需要在 package.json 中设置 browserslist
 
-npm install clean-webpack-plugin -D ---------------------------- 删除打包后的文件夹，默认是删除 output.path 指定的文件夹，用在再次打包时先删除之间生成的包
+npm install clean-webpack-plugin -D ---------------------------- 删除打包后的文件夹，默认是删除 output.path 文件夹，用在打包时先删除之间生成的包
+npm install copy-webpack-plugin -D ----------------------------- 拷贝文件，用来拷贝 global.d.ts 到 output
 npm install eslint eslint-loader -D ---------------------------- lint工具，在 .eslintrc.js 中配置规则
 
 Webpack内置组件

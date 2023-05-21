@@ -1,6 +1,6 @@
 {
   "name": "divine-plus",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "vue3-ui",
   "author": "woow_wu7",
   "homepage": "http://120.53.220.141:8090/",
@@ -14,8 +14,10 @@
     },
     "./css/index.css": "./dist/css/index.css"
   },
+  "typings": "typings/index.d.ts",
   "files": [
-    "dist/*"
+    "dist/*",
+    "typings"
   ],
   "#main": "指定了项目的入口文件，即使用组件库时 import xxx from 'xxxx' 使用的文件，一般是打包后的入口文件，即编译后的包文件，可用于browser环境和node环境",
   "#keywords": "关键字数组，可以通过关键字来搜索npm包",
@@ -29,13 +31,13 @@
     "start": "cnpm run dev",
     "dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js",
     "build:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack --config build/webpack.config.js",
-    
+
     "build:js": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js",
     "build:scss": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.scss.prod.js",
     "build": "cnpm run build:js && cnpm run build:scss",
 
     "test:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.dev.js --mode=development",
-
+    
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -61,6 +63,7 @@
     "@vueuse/core": "^9.1.0",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "divine-plus": "^1.1.4",
