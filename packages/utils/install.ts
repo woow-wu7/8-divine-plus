@@ -22,6 +22,7 @@ import Tag from "../components/tag/index.vue";
 import Badge from "../components/badge/index.vue";
 import Backtop from "../components/backtop/index.vue";
 import Empty from "../components/empty/empty.vue";
+import WaterMark from "../components/watermark/watermark.vue";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
@@ -49,10 +50,18 @@ const components = [
   Badge,
   Backtop,
   Empty,
+  WaterMark,
 ];
 
+// 1
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册
+
+// 2
+// app.component()
+// 1.如果同时传递一个 ( 组件名字符串 )，( 及其定义 )，则 ( 注册一个全局组件 ) ---- 存
+// 2.如果 ( 只传递一个名字 )，则会返回用该名字注册的组件 (如果存在的话) ---------- 取
+
 export const installComponents = (app: App) => {
   components.forEach((comp: Component) => {
     app.component(comp.name as string, comp);
