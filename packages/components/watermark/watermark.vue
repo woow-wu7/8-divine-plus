@@ -71,7 +71,7 @@ function paint() {
 
   div.style.position = "absolute";
   div.style.inset = 0;
-  div.style.zIndex = props.zIndex;
+  div.style.zIndex = Number(props.zIndex);
 
   watermarkRef.value.appendChild(div);
 }

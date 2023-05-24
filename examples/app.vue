@@ -265,7 +265,6 @@ import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";
 import icon2 from "./images/2.png";
-console.log("icon2", icon2);
 
 const state = reactive({
   showTestTransition: false,
