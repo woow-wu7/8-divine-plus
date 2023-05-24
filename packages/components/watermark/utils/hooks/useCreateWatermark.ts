@@ -54,7 +54,7 @@ export const useCreateWatermark = (
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate((Math.PI / 180) * -45); // 弧度 = ( 2 * Math.PI / 360) * -45
 
-    const font = `oblique ${fontsize} serif, Arial, sans-serif`;
+    const font = `${fontsize} serif, Arial, sans-serif`;
     ctx.font = font;
     ctx.fillStyle = fontcolor;
     ctx.textAlign = "center";

@@ -2,11 +2,12 @@
 
 水印组件
 
-## 基本用法
+## 水印文字
 
 <Watermark/>
 
 ## 水印图片
+
 <WatermarkImg />
 
 ## Watermark 组件属性
