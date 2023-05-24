@@ -1,8 +1,6 @@
 <template>
   <section :class="ns.b()" ref="watermarkRef">
     <slot></slot>
-
-    {{ content }}
   </section>
 </template>
 
@@ -13,88 +11,68 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
-import { watchEffect, ref, reactive, onMounted } from "vue";
+import { useCreateWatermark, watermarkProps } from "./utils";
 
+const props = defineProps(watermarkProps);
+
+const watermarkRef = ref<HTMLElement>();
 const ns = useNamespace("watermark");
-const watermarkRef = ref<any>();
+const state = useCreateWatermark(props);
 let div: any;
-
-const props = defineProps({
-  content: {
-    type: String,
-    default() {
-      return "";
-    },
-  },
-  fontsize: {
-    type: Number,
-    default() {
-      return 16;
-    },
-  },
-  gap: {
-    type: Number,
-    default() {
-      return 10;
-    },
-  },
-});
-
-const state = reactive({
-  bg: {
-    base64: "",
-    size: 0,
-    styleSize: 0,
-  },
-});
-
-const createWatermark = (args: typeof props) => {
-  const { content, fontsize, gap } = args;
-
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
-
-  // const devicePixelRatio = window.devicePixelRatio;
-  const font = `${fontsize} serif`;
-
-  const { width } = ctx.measureText(content);
-  const canvasSize = Math.max(100, width) + gap;
-  canvas.width = canvasSize;
-  canvas.height = canvasSize;
-
-  ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.rotate((-45 / 180) * Math.PI);
-  ctx.fillStyle = "rgba(0,0,0,0.5)";
-  ctx.font = font;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(content, 0, 0);
-
-  state.bg = {
-    base64: canvas.toDataURL("image/png"),
-    size: canvasSize,
-    styleSize: canvasSize / devicePixelRatio,
-  };
-};
+let observer: any;
 
 onMounted(() => {
-  createWatermark(props);
+  initObserver();
+});
+onUnmounted(() => {
+  observer.disconnect();
 });
 
-watchEffect(() => {
+watch(
+  () => [state.watermark.base64, watermarkRef.value],
+  () => paint(),
+  {
+    immediate: true,
+  }
+);
+
+const initObserver = () => {
+  const callback = (mutationsList: MutationRecord[]) => {
+    const [mutation] = mutationsList;
+    // 删除
+    for (let i = 0; i < mutation.removedNodes.length; i++) {
+      if (mutation.removedNodes[i] === div) {
+        paint();
+      }
+    }
+    // 属性修改
+    if (mutation.target === div) {
+      paint();
+    }
+  };
+  observer = new MutationObserver(callback);
+  watermarkRef.value &&
+    observer.observe(watermarkRef.value, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
+};
+
+function paint() {
   if (!watermarkRef.value) return;
   if (div) div.remove();
 
   div = document.createElement("div");
-  div.style.backgroundImage = `url(${state.bg.base64})`;
-  div.style.backgroundSize = `${state.bg.styleSize} ${state.bg.styleSize}`;
+  div.style.backgroundImage = `url(${state.watermark.base64})`;
+  div.style.backgroundSize = `${state.watermark.width} ${state.watermark.height}`;
 
   div.style.position = "absolute";
   div.style.inset = 0;
-  div.style.zIndex = -1;
+  div.style.zIndex = props.zIndex;
 
-  console.log("watermarkRef", watermarkRef);
   watermarkRef.value.appendChild(div);
-});
+}
 </script>

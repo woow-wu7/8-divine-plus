@@ -156,7 +156,16 @@
     <section class="block">
       <h4>Watermark 测试</h4>
 
-      <dv-watermark content="水印效果" fontsize="20px" :gap="10">
+      <dv-watermark
+        content="水印效果"
+        fontsize="20px"
+        fontcolor="#FFB6C1"
+        z-index="-1"
+        gap="20"
+        :imgSrc="icon2"
+        imgWidth="10"
+        imgHeight="10"
+      >
         <div>
           <p>文字内容1</p>
           <p>文字内容3</p>
@@ -255,6 +264,8 @@ import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";
+import icon2 from "./images/2.png";
+console.log("icon2", icon2);
 
 const state = reactive({
   showTestTransition: false,
