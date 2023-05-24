@@ -17,6 +17,7 @@ import { DvEmpty } from "./packages/empty";
 import { DvBacktop } from "./packages/backtop";
 import { DvTag } from "./packages/tag";
 import { DvBadge } from "./packages/badge";
+import { DvWatermark } from "./packages/watermark";
 
 export interface InstallationOptions {
   locale: any;
@@ -42,6 +43,7 @@ export const Col: DvCol;
 export const Breadcrumb: DvBreadcrumb;
 export const BreadcrumbItem: DvBreadcrumbItem;
 
+export const Watermark: DvWatermark;
 export const Empty: DvEmpty;
 export const Backtop: DvBacktop;
 export const Tag: DvTag;

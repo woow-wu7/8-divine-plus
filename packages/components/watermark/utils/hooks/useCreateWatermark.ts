@@ -36,7 +36,7 @@ export const useCreateWatermark = (
     img.referrerPolicy = "no-referrer";
     img.src = imgSrc;
     img.onload = () => {
-      ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
+      ctx.drawImage(img, 0, 0, Number(imgWidth), Number(imgHeight));
       state.watermark = {
         base64: canvas.toDataURL("image/png"),
         width: canvas.width,

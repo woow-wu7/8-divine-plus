@@ -36,11 +36,11 @@ export const watermarkProps = {
     },
   },
   imgWidth: {
-    type: Number,
+    type: [Number, String],
     default: 120,
   },
   imgHeight: {
-    type: Number,
+    type: [Number, String],
     default: 64,
   },
 };
