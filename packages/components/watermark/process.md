@@ -47,9 +47,10 @@
 ### 一些单词
 
 ```
-  illegal 非法的
-  extract 提取 摘录
-  inset 小图 插入
+watermark 水印
+illegal 非法的
+extract 提取 摘录
+inset 小图 插入
 ```
 
 ### (1) canvas
