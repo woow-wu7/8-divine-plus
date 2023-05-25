@@ -23,6 +23,8 @@ import Badge from "../components/badge/index.vue";
 import Backtop from "../components/backtop/index.vue";
 import Empty from "../components/empty/empty.vue";
 import WaterMark from "../components/watermark/watermark.vue";
+import Timeline from "../components/timeline/timeline.vue";
+import TimelineItem from "../components/timeline/timeline-item.vue";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
@@ -51,6 +53,9 @@ const components = [
   Backtop,
   Empty,
   WaterMark,
+
+  Timeline,
+  TimelineItem,
 ];
 
 // 1
