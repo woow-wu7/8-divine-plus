@@ -31,6 +31,15 @@
   - 监听: 水印的删除操作，属性修改等
   - 生成: 当监听到上面的操作后，删除水印，再重新生成新的水印
   - api: MutationObserver
+
+ 5
+ 清除: 组件卸载时，需要停止观察 MutationObserver
+ - 一些清除工作不要忘记
+
+ 6
+ 移动端: 移动端存在2/3倍屏
+ - window.devicePixelRatio
+ - 根据 window.devicePixelRatio 来动态修改水印的大小即可
 ```
 
 # 前置知识

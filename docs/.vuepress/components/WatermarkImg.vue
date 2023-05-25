@@ -6,10 +6,10 @@
           :imgSrc="icon2"
           imgWidth="40"
           imgHeight="40"
-          z-index="99"
+          z-index="1"
           gap="60"
         >
-          <div>
+          <div style="z-index: 2; position: relative">
             <p>文字内容1</p>
             <p>文字内容2</p>
             <p>文字内容3</p>

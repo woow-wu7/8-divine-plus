@@ -11,7 +11,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from "vue";
+import { onMounted, onUnmounted, ref, watch, reactive } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { useCreateWatermark, watermarkProps } from "./utils";
 
@@ -19,19 +19,25 @@ const props = defineProps(watermarkProps);
 
 const watermarkRef = ref<HTMLElement>();
 const ns = useNamespace("watermark");
-const state = useCreateWatermark(props);
-let div: any;
-let observer: any;
+const watermarkState = useCreateWatermark(props);
+
+const state = reactive<{
+  div: HTMLDivElement | null;
+  observer: MutationObserver | null;
+}>({
+  div: null,
+  observer: null,
+});
 
 onMounted(() => {
   initObserver();
 });
 onUnmounted(() => {
-  observer.disconnect();
+  state.observer?.disconnect();
 });
 
 watch(
-  () => [state.watermark.base64, watermarkRef.value],
+  () => [watermarkState.watermark.base64, watermarkRef.value],
   () => paint(),
   {
     immediate: true,
@@ -43,18 +49,18 @@ const initObserver = () => {
     const [mutation] = mutationsList;
     // 删除
     for (let i = 0; i < mutation.removedNodes.length; i++) {
-      if (mutation.removedNodes[i] === div) {
+      if (mutation.removedNodes[i] === state.div) {
         paint();
       }
     }
     // 属性修改
-    if (mutation.target === div) {
+    if (mutation.target === state.div) {
       paint();
     }
   };
-  observer = new MutationObserver(callback);
+  state.observer = new MutationObserver(callback);
   watermarkRef.value &&
-    observer.observe(watermarkRef.value, {
+    state.observer.observe(watermarkRef.value, {
       attributes: true,
       childList: true,
       subtree: true,
@@ -63,16 +69,16 @@ const initObserver = () => {
 
 function paint() {
   if (!watermarkRef.value) return;
-  if (div) div.remove();
+  if (state.div) state.div.remove();
 
-  div = document.createElement("div");
-  div.style.backgroundImage = `url(${state.watermark.base64})`;
-  div.style.backgroundSize = `${state.watermark.width} ${state.watermark.height}`;
+  state.div = document.createElement("div");
+  state.div.style.backgroundImage = `url(${watermarkState.watermark.base64})`;
+  state.div.style.backgroundSize = `${watermarkState.watermark.width} ${watermarkState.watermark.height}`;
 
-  div.style.position = "absolute";
-  div.style.inset = 0;
-  div.style.zIndex = Number(props.zIndex);
+  state.div.style.position = "absolute";
+  state.div.style.inset = "0";
+  state.div.style.zIndex = String(props.zIndex);
 
-  watermarkRef.value.appendChild(div);
+  watermarkRef.value.appendChild(state.div);
 }
 </script>

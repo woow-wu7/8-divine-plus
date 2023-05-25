@@ -6,10 +6,10 @@
           content="水印效果"
           fontsize="16px"
           fontcolor="#FFB6C1"
-          z-index="99"
+          z-index="1"
           gap="10"
         >
-          <div>
+          <div style="z-index: 2; position: relative">
             <p>文字内容1</p>
             <p>文字内容2</p>
             <p>文字内容3</p>
