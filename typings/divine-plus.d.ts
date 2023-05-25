@@ -19,6 +19,9 @@ import { DvTag } from "./packages/tag";
 import { DvBadge } from "./packages/badge";
 import { DvWatermark } from "./packages/watermark";
 
+import { DvTimeline } from "./packages/timeline";
+import { DvTimelineItem } from "./packages/timeline-item";
+
 export interface InstallationOptions {
   locale: any;
   i18n: any;
@@ -48,3 +51,6 @@ export const Empty: DvEmpty;
 export const Backtop: DvBacktop;
 export const Tag: DvTag;
 export const Badge: DvBadge;
+
+export const Timeline: DvTimeline;
+export const TimelineItem: DvTimelineItem;
