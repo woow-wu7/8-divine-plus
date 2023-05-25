@@ -60,6 +60,7 @@ const sidebar = {
     "/components/divider.md",
     "/components/backtop.md",
     "/components/empty.md",
+    "/components/timeline.md",
     "/components/watermark.md",
   ],
 };
