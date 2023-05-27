@@ -2,7 +2,7 @@ import { App, Plugin, AppContext } from "vue";
 
 type SFCWithInstall<T> = T & Plugin;
 
-type SFCInstallWithContext<T> = SFCWithInstall<T> & {
+export type SFCInstallWithContext<T> = SFCWithInstall<T> & {
   _context: AppContext | null;
 };
 
@@ -26,6 +26,8 @@ const withInstallFunction = <T>(fn: T, name: string) => {
     (fn as SFCInstallWithContext<T>)._context = app._context;
     app.config.globalProperties[name] = fn;
   };
+
+  return fn as SFCInstallWithContext<T>;
 };
 
 export { withInstall, withInstallFunction };

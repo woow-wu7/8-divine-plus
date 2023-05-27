@@ -214,6 +214,19 @@
       </dv-timeline>
     </section>
 
+    <section class="block">
+      <h4>Message 测试</h4>
+      <button @click="showMessage">触发Message</button>
+      <div style="font-size: 20px">
+        <!-- 由于SVG图标默认不携带任何属性 -->
+        <!-- 你需要直接提供它们 -->
+        <Edit style="width: 1em; height: 1em; margin-right: 8px" />
+        <Share style="width: 1em; height: 1em; margin-right: 8px" />
+        <Delete style="width: 1em; height: 1em; margin-right: 8px" />
+        <Search style="width: 1em; height: 1em; margin-right: 8px" />
+      </div>
+    </section>
+
     <div>
       ----------------------------------------- 分割线
       -----------------------------------------
@@ -304,12 +317,13 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted, getCurrentInstance } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";
 import icon2 from "./images/2.png";
+import { DvMessage } from "../packages/components/index";
 
 const state = reactive({
   showTestTransition: false,
@@ -317,6 +331,25 @@ const state = reactive({
 
 const app = ref();
 const off = ref(false);
+
+const showMessage = () => {
+  // DvMessage.success({
+  //   message: "this is a string options",
+  //   type: "success",
+  // });
+
+  DvMessage.error({
+    message: "this is a string options",
+    type: "success",
+    duration: 0,
+    showClose: true,
+  });
+};
+
+onMounted(() => {
+  const instance = getCurrentInstance();
+  console.log("$message", instance.appContext.config.globalProperties.$message);
+});
 
 const onOff = () => {
   console.log("off");

@@ -1,5 +1,9 @@
 import { App } from "vue";
-import { installComponents, installIcons } from "../utils/index";
+import {
+  installComponents,
+  installFunctions,
+  installIcons,
+} from "../utils/index";
 
 // 1
 // 使用方式
@@ -14,7 +18,9 @@ import { installComponents, installIcons } from "../utils/index";
 const install = (app: App, router?: any) => {
   // !router && installRouter(app);
   installComponents(app);
+  installFunctions(app);
   installIcons(app);
 };
 
+export * from "../utils/install";
 export default install;

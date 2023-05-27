@@ -1,4 +1,4 @@
-# 组件设计
+# Watermark 组件设计
 
 ```
 我们在实现 Watermark 组件时，需要考虑以下问题？
@@ -79,14 +79,14 @@ if (!canvas.getContext) {
 - context.drawImage(img, x, y, width, height) // ------ 在canvas上绘制图片
 - context.drawImage(img图片, x：在画布上放置图像的 x 坐标, y, width图像的宽度, height)
 3.2 font
-- font: font-style font-variant font-weight font-sizet font-family
+- font: font-style font-variant font-weight font-size font-family
 - font-style: normal|italic斜体|oblique斜体|inherit;
 3.3 toDataURL()
 - canvas.toDataURL(type, encoderOptions) // ----------- 返回一个包含图片展示的URI
 - type：图片的类型 `image/png`
 3.4 fillText
 - context.fillText(text,x,y,maxWidth) // -------------- 在画布上绘制填色的文本
-- tetx 文本
+- text 文本
 - xy 坐标
 3.5 measure.text(text)
 - const text = context.measureText("生成"); // --------- 测量文字的宽度
@@ -277,6 +277,45 @@ MutationObserver
   </body>
 </html>
 ```
+
+### (3) 需要用到的 vue3 api
+
+    1
+    createVNode
+    creaetVNode(type, props, chilren, patchFlag, dynamicProps, isBlockNode)
+    作用: 用来创建一个 VNode
+    --
+
+    签名
+    declare function _createVNode(
+      type: VNodeTypes | ClassComponent | typeof NULL_DYNAMIC_COMPONENT,
+      props?: (Data & VNodeProps) | null,
+      children?: unknown,
+      patchFlag?: number,
+      dynamicProps?: string[] | null,
+      isBlockNode?: boolean
+    ): VNode;
+
+<!---->
+
+    2
+    render
+    render(vnode, container, isSVG)
+    ---
+
+    签名
+    1.export declare const render: RootRenderFunction<Element | ShadowRoot>;
+    2.export declare type RootRenderFunction<HostElement = RendererElement> = (
+      vnode: VNode | null,
+      container: HostElement,
+      isSVG?: boolean
+    ) => void;
+
+<!---->
+
+    3
+    设置: createApp().config.globalProperties.xxx = xxx
+    获取: getCurrentInstance().appContext.globalProperties.xxx
 
 # 资料
 

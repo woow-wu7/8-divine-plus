@@ -1,10 +1,10 @@
-import type { App, Component } from "vue";
+import type { App, Component, AppContext } from "vue";
 
 // icons
 // - 用于 breadcrumb 组件的 separator-icon
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
-// component
+// components
 // 注意：
 // - 这里没用 @ 是因为 vuepress2 使用文档中没法配置 client 端的别名
 // - 核心原因是本库基于了两套构建工具 webpack 和 vite ，会有不兼容的情况
@@ -25,6 +25,9 @@ import Empty from "../components/empty/empty.vue";
 import WaterMark from "../components/watermark/watermark.vue";
 import Timeline from "../components/timeline/timeline.vue";
 import TimelineItem from "../components/timeline/timeline-item.vue";
+
+// functions
+import Message from "../components/message/message";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
@@ -58,6 +61,14 @@ const components = [
   TimelineItem,
 ];
 
+const functions: {
+  (): void;
+  $name: string;
+  name: string;
+  _context: AppContext;
+  type?: any;
+}[] = [Message];
+
 // 1
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册
@@ -73,6 +84,13 @@ export const installComponents = (app: App) => {
   });
 };
 
+export const installFunctions = (app: App) => {
+  functions.forEach((func) => {
+    func._context = app._context;
+    app.config.globalProperties[func.$name] = func;
+  });
+};
+
 export const installIcons = (app: App) => {
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);
@@ -82,3 +100,24 @@ export const installIcons = (app: App) => {
 // export const installRouter = (app: App) => {
 //   app.use(router);
 // };
+
+export {
+  Message as DvMessage,
+  Divider as DvDivider,
+  Breadcrumb as DvBreadcrumb,
+  BreadcrumbItem as DvBreadcrumbItem,
+  Container as DvContainer,
+  Header as DvHeader,
+  Footer as DvFooter,
+  Aside as DvAside,
+  Main as DvMain,
+  Row as DvRow,
+  Col as DvCol,
+  Tag as DvTag,
+  Badge as DvBadge,
+  Backtop as DvBacktop,
+  Empty as DvEmpty,
+  WaterMark as DvWaterMark,
+  Timeline as DvTimeline,
+  TimelineItem as DvTimelineItem,
+};
