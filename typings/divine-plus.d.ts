@@ -57,4 +57,5 @@ export const Badge: DvBadge;
 export const Timeline: DvTimeline;
 export const TimelineItem: DvTimelineItem;
 
+export const DvMessage: DvMessage;
 export const Message: DvMessage;

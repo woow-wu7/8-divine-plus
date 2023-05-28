@@ -4,6 +4,7 @@ import {
   installFunctions,
   installIcons,
 } from "../utils/index";
+import DvMessage from "./message/index";
 
 // 1
 // 使用方式
@@ -22,5 +23,5 @@ const install = (app: App, router?: any) => {
   installIcons(app);
 };
 
-export * from "../utils/install";
+export { DvMessage };
 export default install;
