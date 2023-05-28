@@ -62,6 +62,7 @@ const sidebar = {
     "/components/empty.md",
     "/components/timeline.md",
     "/components/watermark.md",
+    "/components/message.md",
   ],
 };
 

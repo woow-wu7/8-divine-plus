@@ -4,7 +4,7 @@ import { instances } from "./instances";
 import type { MessageContext } from "./instances";
 
 let seed = 1;
-let zIndex = 1;
+let zIndex = 77;
 
 const closeMessage = (instance: MessageContext) => {
   const idx = instances.indexOf(instance);
