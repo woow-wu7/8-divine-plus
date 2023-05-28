@@ -1,8 +1,10 @@
 ```
 <template>
   <section class="block">
-    <button @click="showMessage">基本用法</button> &nbsp;
-    <button @click="showMessageCustom">不会消失，需要手动关系</button> &nbsp;
+    <button @click="showSuccess">成功</button> &nbsp;
+    <button @click="showWarning">警告</button> &nbsp;
+    <button @click="showError">错误</button> &nbsp;
+    <button @click="showInfo">消息</button> &nbsp;
   </section>
 </template>
 
