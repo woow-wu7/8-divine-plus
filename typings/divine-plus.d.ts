@@ -22,6 +22,8 @@ import { DvWatermark } from "./packages/watermark";
 import { DvTimeline } from "./packages/timeline";
 import { DvTimelineItem } from "./packages/timeline-item";
 
+import { DvMessage } from "./packages/message";
+
 export interface InstallationOptions {
   locale: any;
   i18n: any;
@@ -54,3 +56,5 @@ export const Badge: DvBadge;
 
 export const Timeline: DvTimeline;
 export const TimelineItem: DvTimelineItem;
+
+export const Message: DvMessage;
