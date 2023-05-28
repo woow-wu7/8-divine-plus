@@ -333,15 +333,12 @@ const app = ref();
 const off = ref(false);
 
 const showMessage = () => {
-  // DvMessage.success({
-  //   message: "this is a string options",
-  //   type: "success",
-  // });
+  // DvMessage.success("this is a string options");
 
   DvMessage.error({
     message: "this is a string options",
     type: "success",
-    duration: 0,
+    duration: 1000,
     showClose: true,
   });
 };

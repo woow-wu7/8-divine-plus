@@ -48,6 +48,7 @@ console.log("hello");
 // app
 // app 上具有 ( component,config,mixin,directive,provide,use,mount,unmount ) 等属性
 const app = createApp(App);
+console.log("app====", app);
 
 app.use(DivinePlus); // 注册插件
 // app.use(ElementPlus);

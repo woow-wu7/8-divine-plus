@@ -1,37 +1,73 @@
 import { createVNode, render } from "vue";
 import Message from "./message.vue";
+import { instances } from "./instances";
+import type { MessageContext } from "./instances";
 
 let seed = 1;
+let zIndex = 1;
+
+const closeMessage = (instance: MessageContext) => {
+  const idx = instances.indexOf(instance);
+  if (idx === -1) return;
+
+  instances.splice(idx, 1);
+  const { handler } = instance;
+  handler.close();
+};
 
 const createMessage = (options: any) => {
+  const id = `message_${seed++}`;
+  const userOnClose = options.onClose;
+
   if (typeof options === "string") {
     options = {
       message: options,
     };
   }
-  const id = `message_${seed++}`;
-  const userOnClose = options.onClose;
 
   const props = {
     ...options,
     id,
+    zIndex: zIndex++,
     onClose: () => {
       userOnClose?.();
-      // closeMessage(instance);
+      closeMessage(instance);
     },
-    onDestroy: () => {
+    onDestroy: (p: boolean) => {
+      console.log("p", p);
       render(null, container);
     },
   };
+
   const vnode = createVNode(Message, props);
   const container = document.createElement("div");
   render(vnode, container);
-  document.body.appendChild(container);
+  document.body.appendChild(container?.firstElementChild!);
+
+  const vm = vnode.component!.proxy as any;
+  const handler = {
+    close: () => {
+      vm.visible = false;
+    },
+  };
+
+  const instance: MessageContext = {
+    id,
+    vnode,
+    vm,
+    handler,
+    props: (vnode.component as any).props,
+  };
+
+  return instance;
 };
 
 // DvMessage
-const DvMessage = (options: any = {}) => {
-  createMessage(options);
+const DvMessage = (options = {}) => {
+  const instance = createMessage(options);
+
+  instances.push(instance);
+  return instance.handler;
 };
 DvMessage.$name = "$message";
 DvMessage._context = null as any;

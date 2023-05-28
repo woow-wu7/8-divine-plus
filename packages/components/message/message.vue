@@ -1,12 +1,23 @@
 <template>
-  <transition name="dv-message">
+  <transition
+    name="dv-message"
+    @before-leave="onClose"
+    @after-leave="$emit('destroy', true)"
+  >
     <section
       v-show="state.visible"
+      :id="id"
       :class="[ns.b(), { [ns.m(type)]: type }, ns.is('show-close', showClose)]"
+      :style="customStyle"
     >
       {{ message }}
 
-      <img :src="closeIconSvg" alt="" :class="ns.e('closeBtn')" />
+      <img
+        v-if="showClose"
+        :src="closeIconSvg"
+        @click="onCloseMessage"
+        :class="ns.e('closeBtn')"
+      />
     </section>
   </transition>
 </template>
@@ -18,23 +29,24 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, computed } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
-import { definePropType } from "@/utils/index";
+import { definePropType } from "../../utils/definePropType";
 import closeIconSvg from "./static/close.svg";
+import { getLastOffset } from "./instances";
+import type { CSSProperties } from "vue";
 
 const ns = useNamespace("message");
 
 const props = defineProps({
   message: String || Object,
-  // type: {
-  //   type: String,
-  //   values: ["success", "warning", "info", "error"],
-  //   default: "info",
-  // },
   type: {
-    type: definePropType<"success" | "warning" | "info" | "error">(String),
-    default: "info",
+    type: definePropType<"primary" | "success" | "warning" | "danger" | "info">(
+      String
+    ),
+    default() {
+      return "danger";
+    },
   },
   duration: {
     type: Number,
@@ -44,16 +56,41 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  id: {
+    type: String,
+    default: 1,
+  },
+  zIndex: {
+    type: Number,
+    default: 1,
+  },
+  offset: {
+    type: Number,
+    default: 16,
+  },
+  onClose: {
+    type: definePropType<() => void>(Function),
+    required: false,
+  },
 });
 
 const state = reactive({
   visible: false,
+  height: 0,
 });
 
 onMounted(() => {
   show();
   runTimer();
 });
+
+const lastOffset = computed<number>(() => getLastOffset(props.id));
+const offset = computed<number>(() => props.offset + lastOffset.value);
+const bottom = computed<number>(() => state.height + offset.value + 50);
+const customStyle = computed<CSSProperties>(() => ({
+  top: `${offset.value}px`,
+  zIndex: props.zIndex,
+}));
 
 const show = () => (state.visible = true);
 const close = () => (state.visible = false);
@@ -64,4 +101,14 @@ const runTimer = () => {
     close();
   }, props.duration);
 };
+
+const onCloseMessage = close;
+
+defineEmits(["destroy"]);
+
+defineExpose({
+  visible: state.visible,
+  bottom,
+  close,
+});
 </script>
