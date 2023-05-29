@@ -47,6 +47,24 @@
     vue3全局属性设置: createApp().config.globalProperties.xxx = xxx
     vue3全局属性获取: getCurrentInstance().appContext.globalProperties.xxx
 
+<!---->
+
+    4
+    vue2 和 vue3 在 message 组件实现上的差异
+    ---
+
+    vue2
+    - let MessageConstructor = Vue.extend(Message);
+    - instance = new MessageConstructor({ data: options });
+    - instance.$mount()
+    - document.body.appendChild(instance.$el)
+
+    vue3
+    - const vnode = createVNode(Message, props);
+    - const container = document.createElement("div");
+    - render(vnode, container);
+    - document.body.appendChild(container?.firstElementChild!);
+
 # 资料
 
 - https://github.com/ecaps1038/yike-design/blob/master/components/message/Message.ts
