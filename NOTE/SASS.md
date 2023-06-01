@@ -1,6 +1,32 @@
 # 组件库需要用到的 Sass 知识点
 
 ### (1) 知识点
+```
+2023-06-01 补充
+---
+
+-1
+@use和@import的区别
+- 被移除: 尽量使用 @use 代替 @impprt，因为@import以后会被移除
+- @use
+  - 1. 带有命名空间
+      - 1. @use 'a' ----------- 使用: body: { color: a.$color }
+      - 2. @use 'a' as y ------ 使用: body: { color: y.$color }
+      - 3. @use 'a' as * ------ 使用: body: { color: $color }
+           - `as *`将模块添加到根名称空间，因此不需要前缀
+           - 如果模块文件命名是 "_a.scss"，引入时是 @use 'a'; 表示私有模块，只是为了给其他模块使用，而不是编译成最终的css
+  - 2. 被不同模块多次引入，只会引入一次；比如 b引入a，c引入a，不会存在两份a代码
+  - 3. 内置模块
+      - `math`, `color`, `string`, `list`, `map`, `selector`和`meta` ，
+      - 这些模块必须在使用之前显式地导入到文件中
+      - 比如: @use 'sass:math'; -- 使用: $half: math.percentage(1/2);
+- @import
+  - 如果多次`@import`相同的文件，它会降低编译速度，导致覆盖冲突，并生成重复的输出
+  - 所有东西都在全局命名空间中，包括第三方包——所以我的`color()`函数可能会覆盖你现有的`color()`函数，反之亦然
+  - 当你使用像`color()`这样的函数时，很难确切地知道它是在哪定义的。它来自哪个`@import`
+- 资料
+  - https://zhuanlan.zhihu.com/p/112768701
+```
 
 ```!default
 1
