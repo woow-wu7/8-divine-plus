@@ -1,13 +1,14 @@
 # 组件库需要用到的 Sass 知识点
 
 ### (1) 知识点
+
 ```
 2023-06-01 补充
 ---
 
--1
-@use和@import的区别
-- 被移除: 尽量使用 @use 代替 @impprt，因为@import以后会被移除
+1
+@use 和 @import 的区别
+- 被移除: 尽量使用 @use 代替 @import，因为 @import 以后会被移除
 - @use
   - 1. 带有命名空间
       - 1. @use 'a' ----------- 使用: body: { color: a.$color }
@@ -26,6 +27,13 @@
   - 当你使用像`color()`这样的函数时，很难确切地知道它是在哪定义的。它来自哪个`@import`
 - 资料
   - https://zhuanlan.zhihu.com/p/112768701
+
+
+2
+@forward 和 @use 的区别？
+- @use: 是将其他模块 引入 到当前模块来使用
+- @forward: 该模块并不需要使用@forward的模块，只是转发，即 传给未来的导入操作
+- @import = @use + @forward
 ```
 
 ```!default
