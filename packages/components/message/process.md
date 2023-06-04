@@ -23,6 +23,16 @@
       isBlockNode?: boolean
     ): VNode;
 
+    案例
+    const props = {
+        ...options,
+        id,
+        zIndex: zIndex++,
+        onClose: () => {},
+        onDestroy: () => {}
+    };
+    const vnode = createVNode(Message//组件, props//组件的props);
+
 <!---->
 
     2
@@ -37,6 +47,11 @@
       container: HostElement,
       isSVG?: boolean
     ) => void;
+
+    案例
+    const vnode = createVNode(Message, props);
+    const container = document.createElement("div");
+    render(vnode, container);
 
 <!---->
 
@@ -64,6 +79,18 @@
     - const container = document.createElement("div");
     - render(vnode, container);
     - document.body.appendChild(container?.firstElementChild!);
+
+<!---->
+
+    5
+    vue 中动态渲染组件的根标签的方式？
+    ---
+
+    render 函数
+    - const view = h( tag, { class, style, ref }, slots.default );
+
+    component 内置组件
+    - <component :is="tag" />
 
 # 资料
 
