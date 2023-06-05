@@ -68,6 +68,22 @@ const scrollbarStyle = computed(() => [
 ]);
 
 const onScroll = () => {
+  if (!refWrap.value) return;
+
+  const scrollTop = refWrap?.value?.scrollTop!;
+
+  const isBottom =
+    scrollTop >= refWrap?.value!.scrollHeight! - refWrap?.value!.offsetHeight!;
+
+  if (isBottom) {
+    refWrap.value.scrollTop =
+      refWrap?.value!.scrollHeight! - refWrap?.value!.offsetHeight!;
+  }
+
+  if (scrollTop <= 2 || isBottom) {
+    return;
+  }
+
   const top = refWrap?.value?.scrollTop! / state.ratio.ratioY;
   refBar.value.refVThumb.refThumbVertical.style.transform = `translateY(${top}px)`;
 };

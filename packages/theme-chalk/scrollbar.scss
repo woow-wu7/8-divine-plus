@@ -22,7 +22,6 @@
     padding-right: 18px;
     padding-bottom: 18px;
     overflow: auto;
-    border: 3px solid red;
     box-sizing: border-box;
 
     @include e(thumb) {
@@ -34,8 +33,9 @@
         top: 0;
         width: 10px;
         height: 100px;
-        background: red;
+        background: rgb(200, 200, 200);
         z-index: 9999;
+        border-radius: 100px;
       }
 
       @include when(horizontal) {
