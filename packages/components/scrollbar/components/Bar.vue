@@ -14,16 +14,9 @@ const ns = useNamespace("scrollbar");
 const refHThumb = ref();
 const refVThumb = ref();
 const refWrap = inject<Ref<HTMLDivElement>>("refWrap");
-const state = reactive({ ratio: 0 });
 
-onMounted(() => {
-  processRatio();
+defineExpose({
+  refHThumb,
+  refVThumb,
 });
-
-const processRatio = () => {
-  state.ratio =
-    (refWrap?.value.scrollHeight! - refWrap?.value.offsetHeight!) /
-    (refWrap?.value.offsetHeight! -
-      refVThumb?.value.refThumbVertical.offsetHeight!);
-};
 </script>
