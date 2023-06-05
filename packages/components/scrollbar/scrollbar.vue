@@ -1,12 +1,13 @@
 <template>
   <section :class="ns.b()" :style="scrollbarStyle">
-    <div v-if="!native" :class="ns.e('container')">
-      <div :class="ns.e('view')">
-        <Bar> <slot></slot> </Bar>
+    <div :class="ns.e('wrap-out')" v-if="!native">
+      <div :class="ns.e('wrap-in')" ref="refWrap">
+        <slot></slot>
+        <Bar></Bar>
       </div>
     </div>
 
-    <div v-if="native" :class="ns.e('native')">
+    <div :class="ns.e('native')" v-if="native">
       <slot></slot>
     </div>
   </section>
@@ -19,7 +20,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, provide } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { scrollbarProps } from "./utils/constant";
 import { processUnit } from "@/utils";
@@ -27,6 +28,9 @@ import Bar from "./components/Bar.vue";
 
 const ns = useNamespace("scrollbar");
 const props = defineProps(scrollbarProps);
+
+const refWrap = ref<HTMLDivElement>();
+provide("refWrap", refWrap);
 
 const scrollbarStyle = computed(() => [
   {

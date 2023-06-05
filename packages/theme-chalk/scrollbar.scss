@@ -2,48 +2,50 @@
 @import "common/var";
 
 @include b(scrollbar) {
-  position: relative;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 
-  @include e(container) {
+  @include e(wrap-out) {
     position: relative;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
-  @include e(view) {
+  @include e(wrap-in) {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
+    bottom: -18px;
     right: -18px;
-    overflow: auto;
-    box-sizing: border-box;
     padding-right: 18px;
+    padding-bottom: 18px;
+    overflow: auto;
+    border: 3px solid red;
+    box-sizing: border-box;
 
-    @include e(bar) {
+    @include e(thumb) {
       position: relative;
 
-      @include e(thumb) {
-        position: relative;
+      @include when(vertical) {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 10px;
+        height: 100px;
+        background: red;
+        z-index: 9999;
+      }
 
-        @include when(vertical) {
-          position: absolute;
-          right: -18px;
-          top: 0;
-          width: 10px;
-          height: 200px;
-          background: red;
-          z-index: 9999;
-        }
-
-        // @include when(horizontal) {
-        //   with: 200px;
-        //   height: 10px;
-        //   background: red;
-        // }
+      @include when(horizontal) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: 10px;
+        background: red;
+        z-index: 9999;
       }
     }
   }

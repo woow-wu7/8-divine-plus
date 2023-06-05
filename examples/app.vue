@@ -229,8 +229,8 @@
 
     <section class="block">
       <h4>Scrollbar 测试</h4>
-      <dv-scrollbar height="300" style="background: yellow">
-        <div v-for="value in 30">
+      <dv-scrollbar height="300" style="background: yellow" :native="false">
+        <div v-for="value in 30" style="width: 900px">
           测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar
         </div>
       </dv-scrollbar>
