@@ -20,11 +20,11 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed, ref, provide, onMounted, reactive, nextTick } from "vue";
-import { useNamespace } from "@/hooks/useNamespace";
-import { scrollbarProps } from "./utils/constant";
-import { processUnit } from "@/utils";
 import Bar from "./components/Bar.vue";
+import { computed, ref, provide, onMounted, reactive, nextTick } from "vue";
+import { scrollbarProps } from "./utils/constant";
+import { useNamespace } from "@/hooks/useNamespace";
+import { processUnit } from "@/utils";
 
 const ns = useNamespace("scrollbar");
 const props = defineProps(scrollbarProps);
@@ -33,14 +33,26 @@ const refBar = ref();
 const refWrap = ref<HTMLDivElement>();
 provide("refWrap", refWrap);
 
-const state = reactive({ ratio: { ratioX: 0, ratioY: 0 } });
+const state = reactive({
+  ratio: { ratioX: 0, ratioY: 0 },
+  prevY: 0,
+  isGoDown: false,
+});
 
 onMounted(async () => {
   await nextTick();
-  processRatio();
+  getRatio();
 });
 
-const processRatio = () => {
+const scrollbarStyle = computed(() => [
+  {
+    height: processUnit(props.height),
+    maxHeight: processUnit(props.maxHeight),
+  },
+  props.wrapStyle,
+]);
+
+const getRatio = () => {
   if (!refWrap.value) return;
 
   const ratioY =
@@ -59,31 +71,32 @@ const processRatio = () => {
   };
 };
 
-const scrollbarStyle = computed(() => [
-  {
-    height: processUnit(props.height),
-    maxHeight: processUnit(props.maxHeight),
-  },
-  props.wrapStyle,
-]);
-
 const onScroll = () => {
   if (!refWrap.value) return;
 
-  const scrollTop = refWrap?.value?.scrollTop!;
+  const scrollTopWrap = refWrap.value.scrollTop!;
 
-  const isBottom =
-    scrollTop >= refWrap?.value!.scrollHeight! - refWrap?.value!.offsetHeight!;
+  getScrollDirection(scrollTopWrap);
 
-  if (isBottom) {
-    refWrap.value.scrollTop =
-      refWrap?.value!.scrollHeight! - refWrap?.value!.offsetHeight!;
+  const isBottomWrap =
+    scrollTopWrap >=
+    refWrap.value.scrollHeight - refWrap.value.offsetHeight - 5;
+
+  if (state.isGoDown && isBottomWrap) return;
+  if (!state.isGoDown && scrollTopWrap <= 2) return;
+  setScrollbarPosition();
+};
+
+const getScrollDirection = (scrollTopWrap: number) => {
+  if (scrollTopWrap > state.prevY) {
+    state.isGoDown = true;
+  } else {
+    state.isGoDown = false;
   }
+  state.prevY = scrollTopWrap;
+};
 
-  if (scrollTop <= 2 || isBottom) {
-    return;
-  }
-
+const setScrollbarPosition = () => {
   const top = refWrap?.value?.scrollTop! / state.ratio.ratioY;
   refBar.value.refVThumb.refThumbVertical.style.transform = `translateY(${top}px)`;
 };
