@@ -1,5 +1,5 @@
-import Watermark from "./watermark.vue";
+import Scrollbar from "./scrollbar.vue";
 import { withInstall } from "@/utils/withInstall";
 
-const DvWatermark = withInstall(Watermark);
-export default DvWatermark;
+const DvScrollbar = withInstall(Scrollbar);
+export default DvScrollbar;

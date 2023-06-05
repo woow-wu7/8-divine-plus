@@ -25,6 +25,7 @@ import Empty from "../components/empty/empty.vue";
 import WaterMark from "../components/watermark/watermark.vue";
 import Timeline from "../components/timeline/timeline.vue";
 import TimelineItem from "../components/timeline/timeline-item.vue";
+import Scrollbar from "../components/scrollbar/scrollbar.vue";
 
 // functions
 import Message from "../components/message/message";
@@ -56,6 +57,7 @@ const components = [
   Backtop,
   Empty,
   WaterMark,
+  Scrollbar,
 
   Timeline,
   TimelineItem,
@@ -120,4 +122,5 @@ export {
   WaterMark as DvWaterMark,
   Timeline as DvTimeline,
   TimelineItem as DvTimelineItem,
+  Scrollbar as DvScrollbar,
 };
