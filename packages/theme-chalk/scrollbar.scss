@@ -26,6 +26,10 @@
 
     @include e(thumb) {
       position: relative;
+      opacity: 0.8;
+      background: rgb(167, 167, 167);
+      cursor: pointer;
+      visibility: hidden;
 
       @include when(vertical) {
         position: absolute;
@@ -33,7 +37,6 @@
         top: 0;
         width: 10px;
         height: 100px;
-        background: rgb(200, 200, 200);
         z-index: 9999;
         border-radius: 100px;
       }
@@ -44,7 +47,6 @@
         left: 0;
         width: 100px;
         height: 10px;
-        background: red;
         z-index: 9999;
       }
     }

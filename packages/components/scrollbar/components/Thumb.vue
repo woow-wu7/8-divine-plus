@@ -3,12 +3,12 @@
     <div
       v-if="direction === 'vertical'"
       :class="[ns.e('thumb'), ns.is('vertical', direction === 'vertical')]"
-      ref="refThumbVertical"
+      ref="refVThumbRoot"
     ></div>
     <div
       v-else
       :class="[ns.e('thumb'), ns.is('horizontal', direction === 'horizontal')]"
-      ref="refThumbHorizontal"
+      ref="refHThumbRoot"
     ></div>
   </div>
 </template>
@@ -20,11 +20,11 @@ import { thumbProps } from "../utils/constant";
 
 const ns = useNamespace("scrollbar");
 const props = defineProps(thumbProps);
-const refThumbVertical = ref<HTMLDivElement>();
-const refThumbHorizontal = ref<HTMLDivElement>();
+const refVThumbRoot = ref<HTMLDivElement>();
+const refHThumbRoot = ref<HTMLDivElement>();
 
 defineExpose({
-  refThumbVertical,
-  refThumbHorizontal,
+  refVThumbRoot,
+  refHThumbRoot,
 });
 </script>
