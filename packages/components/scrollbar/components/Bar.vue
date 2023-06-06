@@ -12,8 +12,9 @@ import Thumb from "./Thumb.vue";
 
 const refHThumb = ref();
 const refVThumb = ref();
+
+const ratio = inject<Ref<{ ratioY: number; ratioX: number }>>("ratio");
 const refWrap = inject<Ref<HTMLDivElement>>("refWrap");
-const ratio = inject<any>("ratio");
 const scrollbarProps =
   inject<ExtractPropTypes<typeof scrollbarPropsType>>("scrollbarProps");
 
@@ -24,13 +25,13 @@ const state = reactive({
   mouseHOffset: 0,
 });
 
-const onMouseVDown = (e: any) => {
+const onMouseVDown = (e: MouseEvent) => {
   state.isDown = true;
   state.mouseVOffset =
     e.clientY - refVThumb.value?.refVThumbRoot.getBoundingClientRect().top;
 };
 
-const onMouseHDown = (e: any) => {
+const onMouseHDown = (e: MouseEvent) => {
   state.isRight = true;
   state.mouseHOffset =
     e.clientX - refHThumb.value?.refHThumbRoot.getBoundingClientRect().left;
@@ -41,7 +42,7 @@ onMounted(() => {
   document.addEventListener("mouseup", onMouseUp, false);
 });
 
-const onMouseMove = (e: any) => {
+const onMouseMove = (e: MouseEvent) => {
   processVMove(e);
   processHMove(e);
 };
@@ -51,7 +52,7 @@ const onMouseUp = () => {
   state.isRight = false;
 };
 
-const processVMove = (e: any) => {
+const processVMove = (e: MouseEvent) => {
   if (!refWrap?.value || !refVThumb.value?.refVThumbRoot) return;
 
   if (state.isDown) {
@@ -69,16 +70,16 @@ const processVMove = (e: any) => {
       return;
     }
 
-    refWrap.value.scrollTop = barScrollDistance * ratio.value?.ratioY!;
+    refWrap.value.scrollTop = barScrollDistance * ratio?.value?.ratioY!;
     refVThumb.value.refVThumbRoot.style.transform = `translateY(${barScrollDistance}px)`;
   }
 };
 
-const processHMove = (e: any) => {
+const processHMove = (e: MouseEvent) => {
   if (
     !refWrap?.value ||
     !refHThumb.value?.refHThumbRoot ||
-    scrollbarProps?.showHorizontalBar
+    !scrollbarProps?.showHorizontalBar
   )
     return;
 
@@ -96,7 +97,7 @@ const processHMove = (e: any) => {
       return;
     }
 
-    refWrap.value.scrollLeft = barScrollDistance * ratio.value?.ratioX!;
+    refWrap.value.scrollLeft = barScrollDistance * ratio?.value?.ratioX!;
     refHThumb.value.refHThumbRoot.style.transform = `translateX(${barScrollDistance}px)`;
   }
 };

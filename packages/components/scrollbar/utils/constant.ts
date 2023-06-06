@@ -1,4 +1,4 @@
-import { definePropType } from "@/utils/definePropType";
+import { definePropType } from "../../../utils/definePropType";
 
 export const scrollbarProps = {
   height: {

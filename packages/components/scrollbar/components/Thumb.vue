@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { ref, inject, computed } from "vue";
 import type { ExtractPropTypes } from "vue";
-import { useNamespace } from "@/hooks/useNamespace";
+import { useNamespace } from "../../../hooks/useNamespace";
 import {
   thumbProps,
   scrollbarProps as scrollbarPropsType,

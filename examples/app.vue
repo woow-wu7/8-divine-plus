@@ -234,10 +234,11 @@
         style="background: yellow"
         :native="false"
         :barStyle="{
-          height: '30px',
+          height: '130px',
           width: '8px',
           background: 'red',
         }"
+        showHorizontalBar
       >
         <div v-for="value in 40" style="width: 900px">
           测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar

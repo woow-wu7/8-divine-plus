@@ -63,6 +63,7 @@ const sidebar = {
     "/components/timeline.md",
     "/components/watermark.md",
     "/components/message.md",
+    "/components/scrollbar.md",
   ],
 };
 
