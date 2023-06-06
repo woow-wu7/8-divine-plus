@@ -30,6 +30,7 @@
       background: rgb(167, 167, 167);
       cursor: pointer;
       visibility: hidden;
+      transition: all 0.1s;
 
       @include when(vertical) {
         position: absolute;

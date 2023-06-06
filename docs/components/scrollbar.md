@@ -4,6 +4,7 @@
 
 ## 基本用法
 
+- hover 显示滚动条
 - 支持 滚动 和 拖动
 - 支持 显示原生滚动条
 
@@ -15,6 +16,12 @@
 - 总是显示滚动条
 
 <ScrollbarHorizontal />
+
+## 自定义滚动条
+
+- barStyle
+
+<ScrollbarManual />
 
 ## Scrollbar 组件属性
 
