@@ -17,6 +17,18 @@ export const scrollbarProps = {
     type: Boolean,
     default: false,
   },
+  always: {
+    type: Boolean,
+    default: false,
+  },
+  showHorizontalBar: {
+    type: Boolean,
+    default: false,
+  },
+  barStyle: {
+    type: [Object],
+    default: "",
+  },
 };
 
 export const thumbProps = {

@@ -37,8 +37,8 @@
         top: 0;
         width: 10px;
         height: 100px;
-        z-index: 9999;
         border-radius: 100px;
+        z-index: 9999;
       }
 
       @include when(horizontal) {
@@ -47,6 +47,7 @@
         left: 0;
         width: 100px;
         height: 10px;
+        border-radius: 100px;
         z-index: 9999;
       }
     }

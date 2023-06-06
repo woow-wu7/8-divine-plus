@@ -1,10 +1,5 @@
 <template>
-  <section
-    :class="ns.b()"
-    :style="scrollbarStyle"
-    @mouseenter="onMouseEnter"
-    @mouseleave="onMouseLeave"
-  >
+  <section :class="ns.b()" :style="scrollbarStyle" ref="refScrollBar">
     <div :class="ns.e('wrap-out')" v-if="!native">
       <div :class="ns.e('wrap-in')" ref="refWrap" @scroll="onScroll">
         <slot></slot>
@@ -40,15 +35,23 @@ const state = reactive({
   isGoDown: false,
 });
 
-const refBar = ref();
+const refScrollBar = ref<HTMLElement>();
 const refWrap = ref<HTMLDivElement>();
+
 provide("refWrap", refWrap);
 provide(
   "ratio",
   computed(() => state.ratio)
 );
+provide("scrollbarProps", props);
+
+const refBar = ref();
+const thumbVRootDOM = computed(() => refBar.value.refVThumb.refVThumbRoot);
+const thumbHRootDOM = computed(() => refBar.value.refHThumb.refHThumbRoot);
 
 onMounted(async () => {
+  isAlwaysShowThumb();
+  bindEvent();
   await nextTick();
   getRatio();
 });
@@ -61,13 +64,30 @@ const scrollbarStyle = computed(() => [
   props.wrapStyle,
 ]);
 
+const isAlwaysShowThumb = () => {
+  if (!props.always) return;
+
+  if (thumbVRootDOM.value) {
+    thumbVRootDOM.value.style.visibility = props.always ? "visible" : "hidden";
+  }
+
+  if (thumbHRootDOM.value && props.showHorizontalBar) {
+    thumbHRootDOM.value.style.visibility = props.always ? "visible" : "hidden";
+  }
+};
+
+const bindEvent = () => {
+  if (!refScrollBar.value || props.always) return;
+  refScrollBar.value.addEventListener("mouseenter", onMouseEnter, false);
+  refScrollBar.value.addEventListener("mouseleave", onMouseLeave, false);
+};
+
 const getRatio = () => {
-  if (!refWrap.value || !refBar.value) return;
+  if (!refWrap.value || !refBar.value || !thumbVRootDOM.value) return;
 
   const ratioY =
     (refWrap.value.scrollHeight - refWrap.value.offsetHeight) /
-    (refWrap.value.offsetHeight -
-      refBar.value.refVThumb.refVThumbRoot.offsetHeight);
+    (refWrap.value.offsetHeight - thumbVRootDOM.value.offsetHeight);
 
   const ratioX =
     (refWrap.value.scrollWidth - refWrap.value.offsetWidth) /
@@ -110,14 +130,22 @@ const getScrollDirection = (scrollTopWrap: number) => {
 
 const setScrollbarPosition = () => {
   const top = refWrap?.value?.scrollTop! / state.ratio.ratioY;
-  refBar.value.refVThumb.refVThumbRoot.style.transform = `translateY(${top}px)`;
+  thumbVRootDOM.value.style.transform = `translateY(${top}px)`;
 };
 
 const onMouseEnter = () => {
-  refBar.value.refVThumb.refVThumbRoot.style.visibility = "visible";
+  thumbVRootDOM.value.style.visibility = "visible";
+
+  if (props.showHorizontalBar) {
+    thumbHRootDOM.value.style.visibility = "visible";
+  }
 };
 
 const onMouseLeave = () => {
-  refBar.value.refVThumb.refVThumbRoot.style.visibility = "hidden";
+  thumbVRootDOM.value.style.visibility = "hidden";
+
+  if (props.showHorizontalBar) {
+    thumbHRootDOM.value.style.visibility = "hidden";
+  }
 };
 </script>
