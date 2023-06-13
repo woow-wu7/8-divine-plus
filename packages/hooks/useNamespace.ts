@@ -24,6 +24,9 @@ const _bem = (
   return cls;
 };
 
+// prefix 前缀
+// suffix 后缀
+
 // unref
 // - 是一个语法糖
 // - 如果参数是 ref，则返回内部值，否则返回参数本身

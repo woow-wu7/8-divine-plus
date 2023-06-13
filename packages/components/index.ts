@@ -4,7 +4,9 @@ import {
   installFunctions,
   installIcons,
 } from "../utils/index";
+
 import DvMessage from "./message/index";
+import DvLoading from "./loading/index";
 
 // 1
 // 使用方式
@@ -21,7 +23,10 @@ const install = (app: App, router?: any) => {
   installComponents(app);
   installFunctions(app);
   installIcons(app);
+
+  DvLoading.install(app);
 };
 
 export { DvMessage };
+export { DvLoading };
 export default install;

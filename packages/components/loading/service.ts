@@ -1,0 +1,3 @@
+const LoadingService = {};
+
+export { LoadingService };

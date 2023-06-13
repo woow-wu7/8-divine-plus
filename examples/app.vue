@@ -246,6 +246,16 @@
       </dv-scrollbar>
     </section>
 
+    <section class="block">
+      <h4>v-loading 测试</h4>
+      <div v-loading="state.loading">
+        <p>v-loading</p>
+        <p>v-loading</p>
+        <p>v-loading</p>
+        <p>v-loading</p>
+      </div>
+    </section>
+
     <div>
       ----------------------------------------- 分割线
       -----------------------------------------
@@ -346,6 +356,7 @@ import { DvMessage } from "../packages/components/index";
 
 const state = reactive({
   showTestTransition: false,
+  loading: false,
 });
 
 const app = ref();
@@ -365,6 +376,10 @@ const showMessage = () => {
 onMounted(() => {
   const instance = getCurrentInstance();
   console.log("$message", instance.appContext.config.globalProperties.$message);
+
+  setInterval(() => {
+    state.loading = !state.loading;
+  }, 3000);
 });
 
 const onOff = () => {
