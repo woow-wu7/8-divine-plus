@@ -8,6 +8,7 @@ const createInstance = (options: LoadingOptions) => {
   const props = {
     ...options,
     visible: true,
+    fullscreen: true,
     onDestroy: () => {
       render(null, body);
     },
