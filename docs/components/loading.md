@@ -13,8 +13,13 @@
 ## loading 服务方式调用
 
 - 通过函数调用，默认全屏
+- 可以通过 target 指定 loading 需要插入的 DOM 元素
 
 <LoadingService />
+
+## loading 直接引入调用
+
+<LoadingServiceImmediate />
 
 ## Loading 配置属性
 

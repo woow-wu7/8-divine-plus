@@ -17,7 +17,7 @@ export type LoadingOptionsResolved = {
 };
 export type LoadingOptions = Partial<
   Omit<LoadingOptionsResolved, "parent" | "target"> & {
-    target: HTMLElement | string;
+    target: HTMLElement | MaybeRef<HTMLElement>;
     body: boolean;
   }
 >;

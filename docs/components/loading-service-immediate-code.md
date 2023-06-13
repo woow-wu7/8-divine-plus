@@ -14,6 +14,7 @@
 
 <script setup>
 import { getCurrentInstance, reactive, ref } from "vue";
+import { DvLoading } from "../../../packages/components/index.ts";
 
 const refLoading = ref();
 
@@ -24,7 +25,7 @@ const state = reactive({
 const instance = getCurrentInstance();
 
 const onShow = () => {
-  state.loadingInstance = instance.appContext.config.globalProperties.$loading({
+  state.loadingInstance = DvLoading.service({
     target: refLoading.value,
     text: "loading...",
     background: "rgba(255,182,193,0.2)",

@@ -1,21 +1,25 @@
 import Loading from "./loading.vue";
 import { createVNode, render } from "vue";
+import { processPosition } from "./utils/index";
 import type { LoadingOptions } from "./utils/type";
 
 const createInstance = (options: LoadingOptions) => {
-  const body = document.body;
+  const target: any = options.target ?? document.body;
+  processPosition(target);
+
+  const isFullscreen = target === document.body;
 
   const props = {
     ...options,
     visible: true,
-    fullscreen: true,
+    fullscreen: isFullscreen,
     onDestroy: () => {
-      render(null, body);
+      render(null, target);
     },
   };
 
   const vnode = createVNode(Loading, props);
-  render(vnode, body);
+  render(vnode, target);
 
   const vm = vnode.component!.proxy as any;
   const handler = {

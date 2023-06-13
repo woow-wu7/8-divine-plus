@@ -17,9 +17,10 @@
 
 <script setup>
 import { getCurrentInstance, reactive, ref } from "vue";
+import { DvLoading } from "../../../packages/components/index.ts";
 
 import Wrap from "../theme/ComponentWrap.vue";
-import { html } from "../../components/loading-server-code.md";
+import { html } from "../../components/loading-service-immediate-code.md";
 
 const refLoading = ref();
 
@@ -30,7 +31,7 @@ const state = reactive({
 const instance = getCurrentInstance();
 
 const onShow = () => {
-  state.loadingInstance = instance.appContext.config.globalProperties.$loading({
+  state.loadingInstance = DvLoading.service({
     target: refLoading.value,
     text: "loading...",
     background: "rgba(255,182,193,0.2)",

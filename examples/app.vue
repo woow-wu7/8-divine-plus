@@ -258,6 +258,17 @@
         <p>v-loading</p>
         <p>v-loading</p>
       </div>
+
+      <div>
+        <button @click="onShow">show loading</button>
+        <button @click="onHide">hide loading</button>
+        <div ref="refLoading">
+          <p>v-loading</p>
+          <p>v-loading</p>
+          <p>v-loading</p>
+          <p>v-loading</p>
+        </div>
+      </div>
     </section>
 
     <div>
@@ -360,11 +371,15 @@ import { DvMessage } from "../packages/components/index";
 
 const state = reactive({
   showTestTransition: false,
+
   loading: false,
+  instance: null,
+  loadingInstance: null,
 });
 
 const app = ref();
 const off = ref(false);
+const refLoading = ref();
 
 const showMessage = () => {
   // DvMessage.success("this is a string options");
@@ -378,8 +393,8 @@ const showMessage = () => {
 };
 
 onMounted(() => {
-  const instance = getCurrentInstance();
-
+  let instance = (state.instance = getCurrentInstance());
+  console.log("instance0000000", instance);
   MessageComponentTest(instance);
   LoadingComponentTest(instance);
 });
@@ -394,20 +409,28 @@ const Loading_directive = () => {
   }, 3000);
 };
 
-const Loading_server = (instance) => {
-  const loadingInstance = instance.appContext.config.globalProperties.$loading({
-    text: "loading...",
-    background: "black",
-  });
+const Loading_server = () => {
+  const loadingInstance = (state.loadingInstance =
+    state.instance.appContext.config.globalProperties.$loading({
+      target: refLoading.value,
+      text: "loading...",
+      background: "black",
+    }));
 
-  setTimeout(() => {
-    loadingInstance.close();
-  }, 3000);
+  // setTimeout(() => {
+  //   loadingInstance.close();
+  // }, 1000);
 };
 
-const LoadingComponentTest = (instance) => {
+const onHide = () => {
+  state.loadingInstance.close();
+};
+
+const onShow = () => {
+  Loading_server();
+};
+const LoadingComponentTest = () => {
   Loading_directive();
-  // Loading_server(instance);
 };
 
 const onOff = () => {
