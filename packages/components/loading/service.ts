@@ -1,7 +1,8 @@
 import Loading from "./loading.vue";
 import { createVNode, render } from "vue";
+import type { LoadingOptions } from "./utils/type";
 
-const createInstance = (options: any) => {
+const createInstance = (options: LoadingOptions) => {
   const body = document.body;
 
   const props = {
@@ -30,7 +31,7 @@ const createInstance = (options: any) => {
   return instance;
 };
 
-const LoadingService = (options: any) => {
+const LoadingService = (options: LoadingOptions) => {
   const instance = createInstance(options);
   return instance.handler;
 };

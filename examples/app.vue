@@ -248,7 +248,11 @@
 
     <section class="block">
       <h4>v-loading 测试</h4>
-      <div v-loading.fullscreen="state.loading">
+      <div
+        v-loading="state.loading"
+        dv-loading-text="Loading"
+        dv-loading-background-color="rgba(255,182,193,0.2)"
+      >
         <p>v-loading</p>
         <p>v-loading</p>
         <p>v-loading</p>
