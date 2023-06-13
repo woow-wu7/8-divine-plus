@@ -246,15 +246,15 @@
       </dv-scrollbar>
     </section>
 
-    <!-- <section class="block">
+    <section class="block">
       <h4>v-loading 测试</h4>
-      <div v-loading="state.loading">
+      <div v-loading.fullscreen="state.loading">
         <p>v-loading</p>
         <p>v-loading</p>
         <p>v-loading</p>
         <p>v-loading</p>
       </div>
-    </section> -->
+    </section>
 
     <div>
       ----------------------------------------- 分割线
@@ -391,8 +391,10 @@ const Loading_directive = () => {
 };
 
 const Loading_server = (instance) => {
-  const loadingInstance =
-    instance.appContext.config.globalProperties.$loading();
+  const loadingInstance = instance.appContext.config.globalProperties.$loading({
+    text: "loading...",
+    background: "black",
+  });
 
   setTimeout(() => {
     loadingInstance.close();
@@ -401,7 +403,7 @@ const Loading_server = (instance) => {
 
 const LoadingComponentTest = (instance) => {
   Loading_directive();
-  Loading_server(instance);
+  // Loading_server(instance);
 };
 
 const onOff = () => {

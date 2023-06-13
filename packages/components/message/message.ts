@@ -34,7 +34,6 @@ const createMessage = (options: any) => {
       closeMessage(instance);
     },
     onDestroy: (p: boolean) => {
-      console.log("p", p);
       render(null, container);
     },
   };

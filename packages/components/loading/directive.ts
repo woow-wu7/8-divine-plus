@@ -26,7 +26,9 @@ const LoadingDirective = {
   updated(el: any, binding: any) {
     createInstance(el, binding);
   },
-  unmounted(el: any) {},
+  unmounted(el: any) {
+    render(null, el);
+  },
 };
 
 export { LoadingDirective };
