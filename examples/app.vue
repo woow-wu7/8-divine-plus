@@ -246,7 +246,7 @@
       </dv-scrollbar>
     </section>
 
-    <section class="block">
+    <!-- <section class="block">
       <h4>v-loading 测试</h4>
       <div v-loading="state.loading">
         <p>v-loading</p>
@@ -254,7 +254,7 @@
         <p>v-loading</p>
         <p>v-loading</p>
       </div>
-    </section>
+    </section> -->
 
     <div>
       ----------------------------------------- 分割线
@@ -375,12 +375,34 @@ const showMessage = () => {
 
 onMounted(() => {
   const instance = getCurrentInstance();
-  console.log("$message", instance.appContext.config.globalProperties.$message);
 
+  MessageComponentTest(instance);
+  LoadingComponentTest(instance);
+});
+
+const MessageComponentTest = (instance) => {
+  console.log("$message", instance.appContext.config.globalProperties.$message);
+};
+
+const Loading_directive = () => {
   setInterval(() => {
     state.loading = !state.loading;
   }, 3000);
-});
+};
+
+const Loading_server = (instance) => {
+  const loadingInstance =
+    instance.appContext.config.globalProperties.$loading();
+
+  setTimeout(() => {
+    loadingInstance.close();
+  }, 3000);
+};
+
+const LoadingComponentTest = (instance) => {
+  Loading_directive();
+  Loading_server(instance);
+};
 
 const onOff = () => {
   console.log("off");

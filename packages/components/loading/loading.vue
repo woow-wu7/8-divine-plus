@@ -1,7 +1,7 @@
 <template>
   <transition name="dv-loading-fade" @after-leave="handleAfterLeave">
     <div
-      v-show="visible"
+      v-show="state.loading"
       :style="{ backgroundColor: background || '' }"
       :class="[ns.b('mask'), customClass, { 'is-fullscreen': fullscreen }]"
     >
@@ -20,17 +20,35 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, watch, watchEffect } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
+
 const ns = useNamespace("loading");
 
 const props = defineProps<{
-  text: any; // 显示在加载图标下方的加载文案
-  spinner: any; // 自定义加载图标类名
+  text: any;
+  spinner: any;
   background: any;
   fullscreen: boolean;
   visible: boolean;
-  customClass: ""; // 	Loading 的自定义类名
+  customClass: "";
 }>();
 
+const state = reactive({
+  loading: false,
+});
+
+watchEffect(() => {
+  state.loading = props.visible;
+});
+
 const handleAfterLeave = () => {};
+
+const close = () => {
+  state.loading = false;
+};
+
+defineExpose({
+  close,
+});
 </script>
