@@ -24,6 +24,7 @@ import { DvTimelineItem } from "./packages/timeline-item";
 import { DvMessage } from "./packages/message";
 import { DvScrollbar } from "./packages/scrollbar";
 import { DvLoading } from "./packages/loading";
+
 export interface InstallationOptions {
   locale: any;
   i18n: any;
