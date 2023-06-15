@@ -7,6 +7,7 @@
 - v-loading
 - dv-loading-text: loading 的文字
 - dv-loading-background-color: loading 的背景颜色
+- 全屏: 事件修饰符可配置全屏 v-loading.fullscreen=""
 
 <LoadingBase/>
 

@@ -23,6 +23,7 @@ import { DvTimeline } from "./packages/timeline";
 import { DvTimelineItem } from "./packages/timeline-item";
 import { DvMessage } from "./packages/message";
 import { DvScrollbar } from "./packages/scrollbar";
+import { DvLoading } from "./packages/loading";
 export interface InstallationOptions {
   locale: any;
   i18n: any;
@@ -59,3 +60,4 @@ export const TimelineItem: DvTimelineItem;
 export const DvMessage: DvMessage;
 export const Message: DvMessage;
 export const Scrollbar: DvScrollbar;
+export const Loading: DvLoading;
