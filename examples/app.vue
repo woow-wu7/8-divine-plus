@@ -394,8 +394,7 @@ const showMessage = () => {
 
 onMounted(() => {
   let instance = (state.instance = getCurrentInstance());
-  console.log("instance0000000", instance);
-  console.log("instance.proxy1111", instance.proxy.$loading);
+
   MessageComponentTest(instance);
   LoadingComponentTest(instance);
 });
@@ -410,26 +409,19 @@ const Loading_directive = () => {
   }, 3000);
 };
 
-const Loading_server = () => {
-  const loadingInstance = (state.loadingInstance =
-    state.instance.appContext.config.globalProperties.$loading({
-      target: refLoading.value,
-      text: "loading...",
-      background: "black",
-    }));
-
-  // setTimeout(() => {
-  //   loadingInstance.close();
-  // }, 1000);
+const onShow = () => {
+  state.loadingInstance = state.instance.proxy.$loading({
+    target: refLoading.value,
+    text: "loading...",
+    background: "black",
+  });
 };
 
 const onHide = () => {
+  console.log("33333", state.loadingInstance);
   state.loadingInstance.close();
 };
 
-const onShow = () => {
-  Loading_server();
-};
 const LoadingComponentTest = () => {
   Loading_directive();
 };

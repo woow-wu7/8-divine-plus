@@ -30,7 +30,7 @@ const state = reactive({
 const instance = getCurrentInstance();
 
 const onShow = () => {
-  state.loadingInstance = instance.appContext.config.globalProperties.$loading({
+  state.loadingInstance = instance.proxy.$loading({
     target: refLoading.value,
     text: "loading...",
     background: "rgba(255,182,193,0.2)",

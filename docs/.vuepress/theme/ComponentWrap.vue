@@ -21,12 +21,14 @@
           :class="['arrow', { 'is-down': visible }]"
         />
       </div>
-      <div class="footer__code" v-if="visible">
-        <template v-if="hasMd">
-          <slot name="md"></slot>
-        </template>
-        <div v-else v-html="md" />
-      </div>
+      <transition name="fade">
+        <div class="footer__code" v-if="visible">
+          <template v-if="hasMd">
+            <slot name="md"></slot>
+          </template>
+          <div v-else v-html="md" />
+        </div>
+      </transition>
     </footer>
   </section>
 </template>
@@ -82,6 +84,8 @@ defineProps({
     }
     .footer__code {
       background: #141414;
+      overflow: hidden;
+      margin-top: 20px;
     }
   }
 
@@ -95,5 +99,16 @@ defineProps({
   .is-down {
     transform: rotate(90deg);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  max-height: 1000px;
+  transition: all 0.3s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  max-height: 0;
 }
 </style>
