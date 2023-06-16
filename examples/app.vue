@@ -395,6 +395,7 @@ const showMessage = () => {
 onMounted(() => {
   let instance = (state.instance = getCurrentInstance());
   console.log("instance0000000", instance);
+  console.log("instance.proxy1111", instance.proxy.$loading);
   MessageComponentTest(instance);
   LoadingComponentTest(instance);
 });

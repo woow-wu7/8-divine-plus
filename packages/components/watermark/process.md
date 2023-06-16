@@ -77,7 +77,7 @@
         onClose: () => {},
         onDestroy: () => {}
     };
-    const vnode = createVNode(Message//组件, props//组件的props);
+    const vnode = createVNode(Message, props); // Message组件，props组件的props
 
 <!---->
 
@@ -107,7 +107,8 @@
     vue2全局属性获取: this.xxx
 
     vue3全局属性设置: createApp().config.globalProperties.xxx = xxx
-    vue3全局属性获取: getCurrentInstance().appContext.globalProperties.xxx
+    vue3全局属性获取: getCurrentInstance().appContext.config.globalProperties.xxx
+    vue3全局属性获取(开发/生产): getCurrentInstance().proxy
 
 <!---->
 
@@ -178,6 +179,26 @@
         automatically inherited because component renders fragment or text root nodes. If the
         listener is intended to be a component custom event listener only, declare it using the
         "emits" option.
+
+<!---->
+
+    8
+    getCurrentInstance
+    - 作用：访问组件内部实例，可以作为在组合式api中获取this的替代方案
+    - 注意：getCurrentInstance只能在 ( setup 或 生命周期钩子 ) 中使用
+    - 应用：
+      - 获取 router
+      - getCurrentInstance().appContext.config.globalProperties.$router
+    - 问题：
+      - 问题：如果要在除了 ( setup 和 生命周期钩子 ) 外使用 ( getCurrentInstance ) 怎么弄？
+      - 回答：可以现在 ( setup 中通过 getCurrentInstance() 获取实例，然后再使用 )
+    - 官网说明：https://v3.cn.vuejs.org/api/composition-api.html#getcurrentinstance
+    ---
+
+
+    1.1 获取router
+    const instance = getCurrentInstance();
+    const router = instance?.appContext.config.globalProperties.$router;
 
 ### (3) Canvas
 
