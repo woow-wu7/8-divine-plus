@@ -68,7 +68,7 @@ const onEnter = (el: RendererElement) => {
   el.style.height = "0px";
   el.offsetHeight;
   el.style.height = height + "px";
-  el.style.transition = "all 0.3s";
+  el.style.transition = "all 0.2s";
 };
 const onLeave = (el: RendererElement) => {
   el.style.height = "0px";

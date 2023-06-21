@@ -26,6 +26,7 @@ import WaterMark from "../components/watermark/watermark.vue";
 import Timeline from "../components/timeline/timeline.vue";
 import TimelineItem from "../components/timeline/timeline-item.vue";
 import Scrollbar from "../components/scrollbar/scrollbar.vue";
+import Collapse from "../components/collapse/collapse.vue";
 
 // functions
 import Message from "../components/message/message";
@@ -58,6 +59,7 @@ const components = [
   Empty,
   WaterMark,
   Scrollbar,
+  Collapse,
 
   Timeline,
   TimelineItem,

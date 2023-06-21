@@ -1,4 +1,4 @@
-import { App, Plugin, AppContext } from "vue";
+import type { App, Plugin, AppContext } from "vue";
 
 type SFCWithInstall<T> = T & Plugin;
 
