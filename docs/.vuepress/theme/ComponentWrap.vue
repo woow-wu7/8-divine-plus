@@ -14,15 +14,20 @@
     </main>
 
     <footer>
-      <div class="footer__tool" v-if="true" @click="visible = !visible">
+      <div class="footer__tool" v-if="true" @click="toggle">
         <span>查看代码</span>
         <component
           :is="ArrowRight"
           :class="['arrow', { 'is-down': visible }]"
         />
       </div>
-      <transition name="fade">
-        <div class="footer__code" v-if="visible">
+      <transition
+        name="fade"
+        @before-enter="onBeforeEnter"
+        @enter="onEnter"
+        @leave="onLeave"
+      >
+        <div class="footer__code" v-show="visible" ref="refCode">
           <template v-if="hasMd">
             <slot name="md"></slot>
           </template>
@@ -36,8 +41,10 @@
 <script setup lang="ts">
 import { ref, useSlots, computed } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
+import type { RendererElement } from "@vue/runtime-core";
 
 const visible = ref(false);
+const refCode = ref();
 const slots = useSlots();
 const hasMd = computed(() => slots?.md?.()?.length);
 
@@ -45,6 +52,27 @@ defineProps({
   code: String,
   md: String,
 });
+
+const toggle = () => {
+  visible.value = !visible.value;
+};
+
+const onBeforeEnter = (el: RendererElement) => {
+  el.style.height = "0px";
+};
+const onEnter = (el: RendererElement) => {
+  el.style.transition = "none";
+  el.style.height = "auto";
+  const height = el.offsetHeight;
+
+  el.style.height = "0px";
+  el.offsetHeight;
+  el.style.height = height + "px";
+  el.style.transition = "all 0.3s";
+};
+const onLeave = (el: RendererElement) => {
+  el.style.height = "0px";
+};
 </script>
 
 <style lang="scss" scoped>
@@ -57,6 +85,9 @@ defineProps({
   footer {
     border-top: 1px solid #f0f0f0;
     padding: 20px;
+  }
+  footer {
+    padding-bottom: 0px;
   }
 
   header {
@@ -81,11 +112,12 @@ defineProps({
       cursor: pointer;
       display: flex;
       align-items: center;
+      user-select: none;
+      margin-bottom: 20px;
     }
     .footer__code {
       background: #141414;
       overflow: hidden;
-      margin-top: 20px;
     }
   }
 
@@ -101,14 +133,14 @@ defineProps({
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  max-height: 1000px;
-  transition: all 0.3s;
-}
+// .fade-enter-active,
+// .fade-leave-active {
+//   max-height: 1000px;
+//   transition: all 0.3s;
+// }
 
-.fade-enter-from,
-.fade-leave-to {
-  max-height: 0;
-}
+// .fade-enter-from,
+// .fade-leave-to {
+//   max-height: 0;
+// }
 </style>
