@@ -6,6 +6,33 @@
 
 ```
 collapse 折叠
+accordion 手风琴
+```
+
+### (2) div 的 tabindex 和 focus/blur 事件的关系
+
+```
+div 的 tabindex 和 focus/blur 事件的关系
+---
+
+1
+div是否支持 focus/blur 事件
+- div不支持: 不带 tabindex 属性的 div 不支持 focus/blur 事件
+- input/a支持: input/a 默认支持 focus/blur
+
+
+2
+tabindex
+- 作用: tabindex属性表示其元素是否可以聚焦，以及它是否/在何处参与顺序键盘导航（通常使用Tab键，因此得名）
+- 值:
+ - tabindex=负数: 可以聚焦，可以 tab 键访问
+ - tabindex=0: 可以聚焦，可以 tab 键访问，顺序由 DOM结构决定
+ - tabindex=正数: 可以聚焦，可以 tab 键访问，顺序由 tabindex数字大小决定
+
+3
+扩展
+- vue3 中 collapse 组件的实现: 展开和隐藏需要用到focus/blur事件
+- 详见 `https://github.com/woow-wu7/8-penetrate/commit/8dfbc32a2da9bec4908e5cbb5946233706df6771`
 ```
 
 ### (2) Transition 内置组件
