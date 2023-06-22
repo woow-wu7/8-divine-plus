@@ -7,6 +7,7 @@
 ```
 collapse 折叠
 accordion 手风琴
+keyboard 键盘
 ```
 
 ### (2) div 的 tabindex 和 focus/blur 事件的关系
@@ -35,7 +36,29 @@ tabindex
 - 详见 `https://github.com/woow-wu7/8-penetrate/commit/8dfbc32a2da9bec4908e5cbb5946233706df6771`
 ```
 
-### (2) Transition 内置组件
+### (3) 键盘事件
+
+```
+键盘事件
+- keydown: 按下键盘时触发
+- keypress: 按下有值键时触发，即按下 Ctrl、Alt、Shift、Meta 这样无值的键不会触发
+- keyup: 松开键盘时触发
+---
+
+1
+keydown 和 keypress 的先后顺序
+- 当按下有值键时，先触发 keydown，再出发 keypress
+
+2
+连续触发
+- 如果用户一直按键不松开，就会连续触发键盘事件
+
+3
+回车键
+div.addEventListener("keydown", (e) => { if (e.keyCode == 13) { } }, false );
+```
+
+### (4) Transition 内置组件
 
 - 官网 https://cn.vuejs.org/guide/built-ins/transition.html
 
@@ -103,3 +126,7 @@ const onLeave = (el: RendererElement) => {
   el.style.height = "0px";
 };
 ```
+
+# 资料
+
+- [collapse-transition 到底写了什么](https://juejin.cn/post/6904560856210620429)
