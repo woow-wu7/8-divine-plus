@@ -273,10 +273,16 @@
 
     <section class="block">
       <h4>Collapse 测试</h4>
-      <DvCollapse>
-        <DvCollapseItem>collapse-item</DvCollapseItem>
-        <DvCollapseItem>collapse-item2</DvCollapseItem>
-        <DvCollapseItem>collapse-item2</DvCollapseItem>
+      <DvCollapse v-model="state.collapse">
+        <DvCollapseItem name="1" title="collapse-item1"
+          >collapse-item</DvCollapseItem
+        >
+        <DvCollapseItem name="2" title="collapse-item2"
+          >collapse-item2</DvCollapseItem
+        >
+        <DvCollapseItem name="3" title="collapse-item3"
+          >collapse-item2</DvCollapseItem
+        >
       </DvCollapse>
     </section>
 
@@ -384,6 +390,8 @@ const state = reactive({
   loading: false,
   instance: null,
   loadingInstance: null,
+
+  collapse: ["1"],
 });
 
 const app = ref();

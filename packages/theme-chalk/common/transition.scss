@@ -79,12 +79,15 @@
 }
 
 .collapse-transition {
-  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out,
-    0.3s padding-bottom ease-in-out;
+  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
 }
 .horizontal-collapse-transition {
-  transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out,
-    0.3s padding-right ease-in-out;
+  transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out, 0.3s padding-right ease-in-out;
+}
+
+.dv-collapse-transition-leave-active,
+.dv-collapse-transition-enter-active {
+  transition: all 0.3s ease-in-out;
 }
 
 .dv-list-enter-active,

@@ -10,7 +10,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import { provide, reactive } from "vue";
+import { computed, provide, reactive, watch } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { COLLAPSE } from "./utils";
 import type { ICollapseState } from "./utils";
@@ -27,7 +27,7 @@ const props = defineProps({
 
 const state = reactive<ICollapseState>({ activeNames: [...props.modelValue] });
 
-const setExpandNames = (currentActiveNames: string[]) => {
+const setActiveNames = (currentActiveNames: string[]) => {
   state.activeNames = currentActiveNames;
   emits("update:modelValue", currentActiveNames);
   emits("change", currentActiveNames);
@@ -35,6 +35,9 @@ const setExpandNames = (currentActiveNames: string[]) => {
 
 const onClickItem = (name: string) => {
   if (props.accordion) {
+    setActiveNames([
+      state.activeNames[0] && state.activeNames[0] === name ? "" : name,
+    ]);
   } else {
     const currentActiveNames = [...state.activeNames];
     const index = currentActiveNames.findIndex((value) => value === name);
@@ -45,14 +48,29 @@ const onClickItem = (name: string) => {
       currentActiveNames.push(name);
     }
 
-    setExpandNames(currentActiveNames);
+    setActiveNames(currentActiveNames);
   }
 };
+
+watch(
+  () => props.modelValue,
+  () => {
+    state.activeNames = Array.isArray(props.modelValue)
+      ? props.modelValue
+      : [props.modelValue];
+  },
+  { deep: true }
+);
 
 const emits = defineEmits(["update:modelValue", "change"]);
 
 provide(COLLAPSE, {
-  activeNames: state.activeNames,
+  activeNames: computed(() => state.activeNames),
   onClickItem,
+});
+
+defineExpose({
+  activeNames: state.activeNames,
+  setActiveNames,
 });
 </script>
