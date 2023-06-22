@@ -36,7 +36,7 @@
         :aria-labelledby="`dv-collapse-head-${state.id}`"
         :id="`dv-collapse-content-${state.id}`"
       >
-        <div class="dv-collapse-item__content">
+        <div :class="ns.e('content')">
           <slot></slot>
         </div>
       </div>
@@ -54,11 +54,15 @@ import { computed, inject, reactive } from "vue";
 import DvCollapseTransition from "./collapse-transition.vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { COLLAPSE } from "./utils";
+import type { ICollapseProvider } from "./utils";
 
 const ns = useNamespace("collapse-item");
 
 const props = defineProps({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -68,7 +72,7 @@ const props = defineProps({
 
 const state = reactive({ id: +new Date() });
 
-const collapse = inject(COLLAPSE) as any;
+const collapse = inject<ICollapseProvider>(COLLAPSE)!;
 
 const isActive = computed(() =>
   collapse.activeNames.value.includes(props.name)
@@ -79,5 +83,8 @@ const onHeaderClick = () => {
   collapse.onClickItem(props.name);
 };
 
-const onEnterClick = () => {};
+const onEnterClick = () => {
+  if (props.disabled) return;
+  collapse.onClickItem(props.name);
+};
 </script>

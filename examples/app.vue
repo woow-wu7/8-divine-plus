@@ -273,10 +273,13 @@
 
     <section class="block">
       <h4>Collapse 测试</h4>
-      <DvCollapse v-model="state.collapse">
-        <DvCollapseItem name="1" title="collapse-item1"
-          >collapse-item</DvCollapseItem
-        >
+      <DvCollapse v-model="state.collapse" accordion>
+        <DvCollapseItem name="1" title="collapse-item1">
+          <div>collapse-item</div>
+          <div>collapse-item</div>
+          <div>collapse-item</div>
+          <div>collapse-item</div>
+        </DvCollapseItem>
         <DvCollapseItem name="2" title="collapse-item2"
           >collapse-item2</DvCollapseItem
         >

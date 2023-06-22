@@ -57,6 +57,7 @@
   }
 
   @include e(content) {
+    padding-top: 8px;
     padding-bottom: 25px;
     font-size: $--collapse-content-font-size;
     color: $--collapse-content-font-color;

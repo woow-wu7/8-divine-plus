@@ -1,9 +1,7 @@
+import type { ComputedRef } from "vue";
 export const COLLAPSE = Symbol("collapse");
 
-export interface ICollapseProps {
-  moduleValue: string[];
-}
-
-export interface ICollapseState {
-  activeNames: string[];
+export interface ICollapseProvider {
+  activeNames: ComputedRef<string[]>;
+  onClickItem: (name: string) => void;
 }

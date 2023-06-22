@@ -1,7 +1,5 @@
 <template>
-  <transition :name="ns.b()" v-on="on">
-    <slot />
-  </transition>
+  <transition :name="ns.b()" v-on="on"> <slot></slot> </transition>
 </template>
 
 <script lang="ts">

@@ -28,6 +28,7 @@ import TimelineItem from "../components/timeline/timeline-item.vue";
 import Scrollbar from "../components/scrollbar/scrollbar.vue";
 import Collapse from "../components/collapse/collapse.vue";
 import CollapseItem from "../components/collapse/collapse-item.vue";
+import CollapseTransition from "../components/collapse/collapse-transition.vue";
 
 // functions
 import Message from "../components/message/message";
@@ -40,11 +41,6 @@ import Message from "../components/message/message";
 // const components = requireComps();
 
 const components = [
-  Divider,
-
-  Breadcrumb,
-  BreadcrumbItem,
-
   Container,
   Header,
   Footer,
@@ -54,6 +50,7 @@ const components = [
   Row,
   Col,
 
+  Divider,
   Tag,
   Badge,
   Backtop,
@@ -61,11 +58,15 @@ const components = [
   WaterMark,
   Scrollbar,
 
+  Breadcrumb,
+  BreadcrumbItem,
+
   Timeline,
   TimelineItem,
 
   Collapse,
   CollapseItem,
+  CollapseTransition,
 ];
 
 const functions: {

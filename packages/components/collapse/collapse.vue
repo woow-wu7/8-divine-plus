@@ -13,7 +13,6 @@ export default {
 import { computed, provide, reactive, watch } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { COLLAPSE } from "./utils";
-import type { ICollapseState } from "./utils";
 
 const ns = useNamespace("collapse");
 
@@ -25,7 +24,7 @@ const props = defineProps({
   },
 });
 
-const state = reactive<ICollapseState>({ activeNames: [...props.modelValue] });
+const state = reactive({ activeNames: [...props.modelValue] });
 
 const setActiveNames = (currentActiveNames: string[]) => {
   state.activeNames = currentActiveNames;
