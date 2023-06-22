@@ -54,7 +54,7 @@ app.mount("#app");
 
 - [element-plus 源码分析-仓库](https://github.com/woow-wu7/8-element-plus-source-code-analysis)
 
-# 其他源码
+## Other Source Code Analysis
 
 #### (1) redux 和 react-redux 源码分析 [redux^4.0.5]
 

@@ -1,0 +1,7 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(collapse) {
+  border-top: 1px solid $--collapse-border-color;
+  border-bottom: 1px solid $--collapse-border-color;
+}

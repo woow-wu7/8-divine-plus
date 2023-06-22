@@ -273,7 +273,11 @@
 
     <section class="block">
       <h4>Collapse 测试</h4>
-      <DvCollapse />
+      <DvCollapse>
+        <DvCollapseItem>collapse-item</DvCollapseItem>
+        <DvCollapseItem>collapse-item2</DvCollapseItem>
+        <DvCollapseItem>collapse-item2</DvCollapseItem>
+      </DvCollapse>
     </section>
 
     <div>
