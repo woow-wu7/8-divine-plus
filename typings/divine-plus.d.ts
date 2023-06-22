@@ -10,20 +10,24 @@ import { DvMain } from "./packages/main";
 import { DvRow } from "./packages/row";
 import { DvCol } from "./packages/col";
 
-import { DvBreadcrumb } from "./packages/breadcrumb";
-import { DvBreadcrumbItem } from "./packages/breadcrumb-item";
-
 import { DvEmpty } from "./packages/empty";
 import { DvBacktop } from "./packages/backtop";
 import { DvTag } from "./packages/tag";
 import { DvBadge } from "./packages/badge";
 
 import { DvWatermark } from "./packages/watermark";
-import { DvTimeline } from "./packages/timeline";
-import { DvTimelineItem } from "./packages/timeline-item";
 import { DvMessage } from "./packages/message";
 import { DvScrollbar } from "./packages/scrollbar";
 import { DvLoading } from "./packages/loading";
+
+import { DvTimeline } from "./packages/timeline";
+import { DvTimelineItem } from "./packages/timeline-item";
+
+import { DvBreadcrumb } from "./packages/breadcrumb";
+import { DvBreadcrumbItem } from "./packages/breadcrumb-item";
+
+import { DvCollapse } from "./packages/collapse";
+import { DvCollapseItem } from "./packages/collapse-item";
 
 export interface InstallationOptions {
   locale: any;
@@ -62,3 +66,6 @@ export const DvMessage: DvMessage;
 export const Message: DvMessage;
 export const Scrollbar: DvScrollbar;
 export const Loading: DvLoading;
+
+export const Collapse: DvCollapse;
+export const CollapseItem: DvCollapseItem;
