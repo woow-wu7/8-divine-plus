@@ -66,6 +66,7 @@ const sidebar = {
     "/components/scrollbar.md",
     "/components/loading.md",
     "/components/collapse.md",
+    "/components/progress.md",
   ],
 };
 
