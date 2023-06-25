@@ -2,7 +2,7 @@
   <div
     :class="[
       ns.b(),
-      ns.e(type),
+      ns.m(type),
       ns.is(status),
       {
         [ns.m('without-text')]: !showText,
@@ -24,11 +24,40 @@
       </div>
     </div>
 
+    <div
+      :class="ns.b('circle')"
+      :style="{
+        height: props.circleWidth + 'px',
+        width: props.circleWidth + 'px',
+      }"
+      v-else
+    >
+      <svg viewBox="0 0 100 100">
+        <path
+          :class="ns.be('circle', 'track')"
+          :d="trackPath"
+          :stroke="backColor"
+          :stroke-width="relativeStrokeWidth"
+          fill="none"
+          :style="trailPathStyle"
+        ></path>
+        <path
+          :class="ns.be('circle', 'path')"
+          :d="trackPath"
+          :stroke="stroke"
+          fill="none"
+          :stroke-linecap="strokeLinecap"
+          :stroke-width="percent ? relativeStrokeWidth : 0"
+          :style="circlePathStyle"
+        ></path>
+      </svg>
+    </div>
+
     <!-- 1. line 末尾 text -->
     <div
-      :class="ns.e('text')"
+      :class="[ns.e('text'), ns.e('circle-text')]"
       v-if="showText && !textInside"
-      :style="{ fontSize: progressTextSize + 'px' }"
+      :style="{ fontSize: progressTextSize + 'px', color: textColor }"
     >
       <span>{{ content }}</span>
     </div>
@@ -42,7 +71,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { CSSProperties, computed } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { isArray } from "./utils";
 import type { TColor, TColorArray, TStatus, TType } from "./utils";
@@ -65,6 +94,14 @@ const props = defineProps({
     type: Number,
     default: 6,
   },
+  strokeLinecap: {
+    type: String,
+    default: "round",
+  },
+  circleWidth: {
+    type: Number,
+    default: 126,
+  },
   status: {
     type: String,
     default: "",
@@ -74,6 +111,13 @@ const props = defineProps({
   color: {
     type: [String, Array, Function],
     default: "",
+  },
+  backColor: {
+    type: String,
+    default: "#e5e9f2",
+  },
+  textColor: {
+    type: String,
   },
   showText: {
     type: Boolean,
@@ -87,9 +131,11 @@ const props = defineProps({
 });
 
 const isLineType = computed(() => props.type === "line");
+const isCircle = computed(() => props.type === "circle");
+const isDashboard = computed(() => props.type === "dashboard");
 
 const barStyle = computed(() => {
-  const style: any = {};
+  const style: CSSProperties = {};
   style.width = props.percent + "%";
   style.backgroundColor = getCurrentColor(props.percent);
   return style;
@@ -109,7 +155,7 @@ const progressTextSize = computed(() => {
     : 1 * 0.111111 + 2;
 });
 
-const getCurrentColor = (percent: any) => {
+const getCurrentColor = (percent: number) => {
   if (typeof props.color === "function") {
     return props.color(percent);
   } else if (typeof props.color === "string") {
@@ -121,7 +167,7 @@ const getCurrentColor = (percent: any) => {
   }
 };
 
-const getLevelColor = (percent: any) => {
+const getLevelColor = (percent: number) => {
   const colorArray = getColorArray().sort(
     (a: TColor, b: TColor) => a.percent - b.percent
   );
@@ -148,4 +194,91 @@ const getColorArray = () => {
     return currentColor;
   });
 };
+
+const relativeStrokeWidth = computed(() => {
+  // strokeWidth: 进度条的宽度，单位 px
+  // circleWidth: 环形进度条画布宽度（只在 type 为 circle 或 dashboard 时可用）
+  return ((props.strokeWidth / props.circleWidth) * 100).toFixed(1);
+});
+
+// 半径
+const radius = computed(() => {
+  if (isCircle.value || isDashboard.value) {
+    return parseInt(String(50 - parseFloat(relativeStrokeWidth.value) / 2), 10);
+  } else {
+    return 0;
+  }
+});
+
+const trackPath = computed(() => {
+  const _radius = radius.value;
+  const _isDashboard = isDashboard.value;
+  return `
+          M 50 50
+          m 0 ${_isDashboard ? "" : "-"}${_radius}
+          a ${_radius} ${_radius} 0 1 1 0 ${_isDashboard ? "-" : ""}${
+    _radius * 2
+  }
+          a ${_radius} ${_radius} 0 1 1 0 ${_isDashboard ? "" : "-"}${
+    _radius * 2
+  }
+          `;
+});
+
+const stroke = computed(() => {
+  let ret;
+  if (props.color) {
+    ret = getCurrentColor(props.percent);
+  } else {
+    switch (props.status) {
+      case "success":
+        ret = "#13ce66";
+        break;
+      case "exception":
+        ret = "#ff4949";
+        break;
+      case "warning":
+        ret = "#e6a23c";
+        break;
+      default:
+        ret = "#20a0ff";
+    }
+  }
+
+  console.log(ret);
+  return ret;
+});
+
+// 周长
+const perimeter = computed(() => {
+  return 2 * Math.PI * radius.value;
+});
+
+const rate = computed(() => {
+  // dashboard 模式下 - 周长 = 3/4 总周长
+  return isDashboard.value ? 0.75 : 1;
+});
+
+// 偏移
+const strokeDashoffset = computed(() => {
+  const offset = (-1 * perimeter.value * (1 - rate.value)) / 2;
+  return `${offset}px`;
+});
+
+const circlePathStyle = computed(() => {
+  return {
+    strokeDasharray: `${
+      perimeter.value * rate.value * (props.percent / 100)
+    }px, ${perimeter.value}px`,
+    strokeDashoffset: strokeDashoffset.value,
+    transition: "stroke-dasharray 0.6s ease 0s, stroke 0.6s ease",
+  };
+});
+
+const trailPathStyle = computed(() => {
+  return {
+    strokeDasharray: `${perimeter.value * rate.value}px, ${perimeter.value}px`,
+    strokeDashoffset: strokeDashoffset.value,
+  };
+});
 </script>

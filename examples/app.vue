@@ -325,6 +325,17 @@
 
       <br />
 
+      <dv-progress type="circle" :percent="25"></dv-progress>
+      <dv-progress
+        type="circle"
+        :percent="25"
+        backColor="black"
+        textColor="red"
+      ></dv-progress>
+      <dv-progress type="circle" :percent="100" status="success"></dv-progress>
+
+      <br />
+
       <dv-progress
         :percent="progressState.percent"
         :color="progressState.customColor"
