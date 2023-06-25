@@ -1,6 +1,5 @@
 ```
 <template>
-  <h4>Progress 测试</h4>
   <dv-progress :percent="50"></dv-progress>
   <dv-progress :percent="100" :format="format"></dv-progress>
   <dv-progress :percent="70" status="success"></dv-progress>

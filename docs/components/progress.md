@@ -21,9 +21,24 @@
 
 <ProgressLine />
 
-## 不同状态
+## 内嵌文字
 
-<MessageType/>
+- 文字内嵌: 通过 `textInside` 设置文字显示在进度条内
+- 高度: 通过 `strokeWidth` 设置进度条的高度
+
+<ProgressInside />
+
+## 环形进度条
+
+- 背景修改: 通过 `backColor` 修改背景颜色
+- 前景修改: 通过 `color` 修改背景颜色
+- 文字颜色: 通过 `textColor` 修改文字颜色
+
+<ProgressCircle />
+
+## Dashboard 进度条
+
+<ProgressDashboard />
 
 ## Empty 组件属性
 
