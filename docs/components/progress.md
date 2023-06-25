@@ -14,6 +14,11 @@
 
 ## 基本用法
 
+- 值: 通过 `percent` 执行值，范围是 0-100
+- 默认类型: 没有指定类型 `type` 时，默认是 `line` 模式
+- 状态: 通过 `status` 指定状态，分别是 `默认-primary`，`success`，`warning`，`error`
+- 格式化: 通过 `format` 函数可以修改后面的 `百分数文字`
+
 <ProgressLine />
 
 ## 不同状态

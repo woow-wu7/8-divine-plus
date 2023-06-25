@@ -245,7 +245,6 @@ const stroke = computed(() => {
     }
   }
 
-  console.log(ret);
   return ret;
 });
 

@@ -4,17 +4,17 @@
 
 ## 基本用法
 
-- 数据源: module-value 或者 v-module
-- 模式: 支持手风琴模式
-- 禁用: CollapseItem 支持禁用模式
+- 数据源: `module-value` 或者 `v-module`
+- 模式: 支持手风琴模式 `accordion`
+- 禁用: CollapseItem 支持禁用模式 `disabled`
 
 <Collapse />
 
 ## 手风琴模式
 
 - 手风琴模式开启方式
-  - 1. v-module 的值是 string 类型的响应式数据
-  - 2. 在 Collapse 组件中添加 accordion 属性
+  - 1. `v-module` 的值是 string 类型的响应式数据
+  - 2. 在 Collapse 组件中添加 `accordion` 属性
 
 <CollapseAccordion />
 
