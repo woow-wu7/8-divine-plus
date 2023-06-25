@@ -289,6 +289,59 @@
       </DvCollapse>
     </section>
 
+    <section class="block">
+      <h4>Progress 测试</h4>
+      <dv-progress :percent="50"></dv-progress>
+      <dv-progress :percent="100" :format="format"></dv-progress>
+      <dv-progress :percent="800" status="success"></dv-progress>
+      <dv-progress :percent="60" status="warning"></dv-progress>
+      <dv-progress :percent="50" status="error"></dv-progress>
+
+      <br />
+
+      <dv-progress
+        :text-inside="true"
+        :stroke-width="26"
+        :percent="60"
+      ></dv-progress>
+      <dv-progress
+        :text-inside="true"
+        :stroke-width="24"
+        :percent="100"
+        status="success"
+      ></dv-progress>
+      <dv-progress
+        :text-inside="true"
+        :stroke-width="22"
+        :percent="80"
+        status="warning"
+      ></dv-progress>
+      <dv-progress
+        :text-inside="true"
+        :stroke-width="20"
+        :percent="30"
+        status="error"
+      ></dv-progress>
+
+      <br />
+
+      <dv-progress
+        :percent="progressState.percent"
+        :color="progressState.customColor"
+      ></dv-progress>
+      <dv-progress
+        :percent="progressState.percent"
+        :color="customColorMethod"
+      ></dv-progress>
+      <dv-progress
+        :percent="progressState.percent"
+        :color="progressState.customColors"
+      ></dv-progress>
+
+      <button @click="decrease">-</button>
+      <button @click="increase">+</button>
+    </section>
+
     <div>
       ----------------------------------------- 分割线
       -----------------------------------------
@@ -396,6 +449,45 @@ const state = reactive({
 
   collapse: ["1"],
 });
+
+const progressState = reactive({
+  percent: 20,
+  customColor: "#409eff",
+  customColors: [
+    { color: "#f56c6c", percent: 20 },
+    { color: "#e6a23c", percent: 40 },
+    { color: "#5cb87a", percent: 60 },
+    { color: "#1989fa", percent: 80 },
+    { color: "#6f7ad3", percent: 100 },
+  ],
+});
+
+const format = (percent) => {
+  return percent === 100 ? "满" : `${percent}%`;
+};
+
+const customColorMethod = (percent) => {
+  if (percent < 30) {
+    return "#909399";
+  } else if (percent < 70) {
+    return "#e6a23c";
+  } else {
+    return "#67c23a";
+  }
+};
+
+const increase = () => {
+  progressState.percent += 10;
+  if (progressState.percent > 100) {
+    progressState.percent = 100;
+  }
+};
+const decrease = () => {
+  progressState.percent -= 10;
+  if (progressState.percent < 0) {
+    progressState.percent = 0;
+  }
+};
 
 const app = ref();
 const off = ref(false);

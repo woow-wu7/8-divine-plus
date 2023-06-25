@@ -9,8 +9,6 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 // - 这里没用 @ 是因为 vuepress2 使用文档中没法配置 client 端的别名
 // - 核心原因是本库基于了两套构建工具 webpack 和 vite ，会有不兼容的情况
 import Divider from "../components/divider/index.vue";
-import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
-import BreadcrumbItem from "../components/breadcrumb/breadcrumb-item.vue";
 import Container from "../components/container/container.vue";
 import Header from "../components/container/header.vue";
 import Footer from "../components/container/footer.vue";
@@ -23,9 +21,15 @@ import Badge from "../components/badge/index.vue";
 import Backtop from "../components/backtop/index.vue";
 import Empty from "../components/empty/empty.vue";
 import WaterMark from "../components/watermark/watermark.vue";
+import Scrollbar from "../components/scrollbar/scrollbar.vue";
+import Progress from "../components/progress/progress.vue";
+
+import Breadcrumb from "../components/breadcrumb/breadcrumb.vue";
+import BreadcrumbItem from "../components/breadcrumb/breadcrumb-item.vue";
+
 import Timeline from "../components/timeline/timeline.vue";
 import TimelineItem from "../components/timeline/timeline-item.vue";
-import Scrollbar from "../components/scrollbar/scrollbar.vue";
+
 import Collapse from "../components/collapse/collapse.vue";
 import CollapseItem from "../components/collapse/collapse-item.vue";
 import CollapseTransition from "../components/collapse/collapse-transition.vue";
@@ -57,6 +61,7 @@ const components = [
   Empty,
   WaterMark,
   Scrollbar,
+  Progress,
 
   Breadcrumb,
   BreadcrumbItem,

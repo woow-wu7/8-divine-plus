@@ -3,6 +3,11 @@
   "version": "1.1.23",
   "description": "vue3-ui",
   "author": "woow_wu7",
+  "contributors": [{
+    "name": "woow_wu7",
+    "email": "woow.wu7@gmail.com",
+    "url": "https://github.com/woow-wu7"
+  }],
   "homepage": "http://120.53.220.141:8090/",
   "main": "dist/divine-plus.js",
   "module": "dist/divine-plus.js",

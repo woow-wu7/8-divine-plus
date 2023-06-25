@@ -37,8 +37,10 @@ export const useNamespace = (block: string) => {
   const namespace = ref(defaultNamespace);
 
   // b e m
+  // _bem(namespace, block, suffixBlock, element, modifier)
+  // 参数分别是: namespace block suffixBlock element modifier
   const b = (blockSuffix = "") =>
-    _bem(unref(namespace), block, blockSuffix, "", ""); // 参数分别是：namespace block suffixBlock element modifier
+    _bem(unref(namespace), block, blockSuffix, "", "");
 
   const e = (element?: string) =>
     element ? _bem(unref(namespace), block, "", element, "") : "";
@@ -85,7 +87,7 @@ export const useNamespace = (block: string) => {
   };
 
   // for css var
-  // --el-xxx: value;
+  // --dv-xxx: value;
   const cssVar = (object: Record<string, string>) => {
     const styles: Record<string, string> = {};
     for (const key in object) {

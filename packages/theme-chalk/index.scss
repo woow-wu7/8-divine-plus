@@ -1,10 +1,6 @@
 @import "./mixins/config.scss";
 
 @import "./divider.scss";
-
-@import "./breadcrumb.scss";
-@import "./breadcrumb-item.scss";
-
 @import "./container.scss";
 @import "./header.scss";
 @import "./footer.scss";
@@ -22,6 +18,10 @@
 @import "./scrollbar.scss";
 @import "./loading.scss";
 @import "./collapse.scss";
+@import "./progress.scss";
+
+@import "./breadcrumb.scss";
+@import "./breadcrumb-item.scss";
 
 @import "./timeline.scss";
 @import "./timeline-item.scss";
