@@ -19,6 +19,7 @@ import { DvWatermark } from "./packages/watermark";
 import { DvMessage } from "./packages/message";
 import { DvScrollbar } from "./packages/scrollbar";
 import { DvLoading } from "./packages/loading";
+import { DvProgress } from "./packages/progress";
 
 import { DvTimeline } from "./packages/timeline";
 import { DvTimelineItem } from "./packages/timeline-item";
@@ -58,6 +59,7 @@ export const Empty: DvEmpty;
 export const Backtop: DvBacktop;
 export const Tag: DvTag;
 export const Badge: DvBadge;
+export const Progress: DvProgress;
 
 export const Timeline: DvTimeline;
 export const TimelineItem: DvTimelineItem;
