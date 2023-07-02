@@ -1,7 +1,8 @@
+import { App } from "vue";
+
 export * from "./directives";
 export * from "./hooks";
 
-import { App } from "vue";
 import {
   installComponents,
   installFunctions,

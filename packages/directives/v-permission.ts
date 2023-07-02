@@ -1,9 +1,5 @@
-import type { ObjectDirective, DirectiveBinding } from "vue";
-
-export type TVPermission = {
-  name: string;
-  options: ObjectDirective;
-};
+import type { DirectiveBinding } from "vue";
+import type { TVPermission } from "./utils/index";
 
 type TMiddleware = (...args: any[]) => any;
 

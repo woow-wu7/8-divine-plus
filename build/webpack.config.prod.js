@@ -22,7 +22,7 @@ const base = require("./webpack.config.base");
 module.exports = merge(base, {
   mode: process.env.NODE_ENV,
   entry: {
-    main: path.resolve(__dirname, "../packages/components/index.ts"),
+    main: path.resolve(__dirname, "../packages/index.ts"),
   }, // 组件库入口
   output: {
     path: path.resolve(process.cwd(), "dist"), // 等价于 path: path.resolve(__dirname, "../dist")

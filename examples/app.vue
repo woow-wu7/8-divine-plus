@@ -404,6 +404,16 @@
       </button>
     </section>
 
+    <section class="block">
+      <h4>v-lazy 测试</h4>
+      <img
+        alt=""
+        width="200"
+        height="200"
+        v-dvLazy="'https://api.yimian.xyz/img?type=wallpaper'"
+      />
+    </section>
+
     <!-- 测试 transition 内置组件 -->
     <section class="block">
       <h4>test transition</h4>

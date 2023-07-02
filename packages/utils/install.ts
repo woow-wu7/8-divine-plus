@@ -1,5 +1,5 @@
 import type { App, Component, AppContext } from "vue";
-import type { TVPermission } from "../directives";
+import type { TVPermission } from "../directives/utils";
 
 // components
 // 注意：
@@ -35,7 +35,7 @@ import CollapseTransition from "../components/collapse/collapse-transition.vue";
 import Message from "../components/message/message";
 
 // directives
-import { vDvPermission } from "../directives";
+import { vDvPermission, vDvLazy } from "../directives";
 
 // icons
 // - 用于 breadcrumb 组件的 separator-icon
@@ -86,7 +86,7 @@ const functions: {
   type?: any;
 }[] = [Message];
 
-const directives = [vDvPermission];
+const directives = [vDvPermission, vDvLazy];
 
 // 1
 // 插件声明：声明所有插件
