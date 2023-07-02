@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./app.vue";
 
-import DivinePlus from "../packages/components/index";
+import DivinePlus from "../packages";
 import "../packages/theme-chalk/index.scss";
 
 // import DivinePlus from "divine-plus";

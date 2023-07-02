@@ -348,7 +348,16 @@
         :percent="progressState.percent"
         :color="progressState.customColors"
       ></dv-progress>
+      <button @click="decrease">-</button>
+      <button @click="increase">+</button>
 
+      <br />
+
+      <dv-progress
+        type="dashboard"
+        :percent="progressState.percent"
+        :color="progressState.customColors"
+      ></dv-progress>
       <button @click="decrease">-</button>
       <button @click="increase">+</button>
     </section>
@@ -384,6 +393,16 @@
     <!-- ----------------------------------------- 分割线 ----------------------------------------- -->
     <!-- ----------------------------------------- 分割线 ----------------------------------------- -->
     <!-- ----------------------------------------- 分割线 ----------------------------------------- -->
+
+    <section class="block">
+      <h4>v-permission 测试</h4>
+      <button v-dvPermission="{ target: [1, 2, 3], current: [1] }">
+        按钮1-测试v-dvPermission
+      </button>
+      <button v-dvPermission="{ target: [1, 2, 3], current: [4] }">
+        按钮2-测试v-dvPermission
+      </button>
+    </section>
 
     <!-- 测试 transition 内置组件 -->
     <section class="block">
@@ -449,7 +468,7 @@ import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";
 import icon2 from "./images/2.png";
-import { DvMessage } from "../packages/components/index";
+import { DvMessage } from "../packages/index";
 
 const state = reactive({
   showTestTransition: false,

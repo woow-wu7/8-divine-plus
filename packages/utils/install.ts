@@ -1,8 +1,5 @@
 import type { App, Component, AppContext } from "vue";
-
-// icons
-// - 用于 breadcrumb 组件的 separator-icon
-import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+import type { TVPermission } from "../directives";
 
 // components
 // 注意：
@@ -36,6 +33,13 @@ import CollapseTransition from "../components/collapse/collapse-transition.vue";
 
 // functions
 import Message from "../components/message/message";
+
+// directives
+import { vDvPermission } from "../directives";
+
+// icons
+// - 用于 breadcrumb 组件的 separator-icon
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
@@ -82,6 +86,8 @@ const functions: {
   type?: any;
 }[] = [Message];
 
+const directives = [vDvPermission];
+
 // 1
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册
@@ -101,6 +107,12 @@ export const installFunctions = (app: App) => {
   functions.forEach((func) => {
     func._context = app._context;
     app.config.globalProperties[func.$name] = func;
+  });
+};
+
+export const installDirectives = (app: App) => {
+  directives.forEach((directive: TVPermission) => {
+    app.directive(directive.name, directive.options);
   });
 };
 
