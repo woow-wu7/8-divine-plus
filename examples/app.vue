@@ -396,10 +396,10 @@
 
     <section class="block">
       <h4>v-permission 测试</h4>
-      <button v-dvPermission="{ target: [1, 2, 3], current: [1] }">
+      <button v-dv-permission="{ target: [1, 2, 3], current: [1] }">
         按钮1-测试v-dvPermission
       </button>
-      <button v-dvPermission="{ target: [1, 2, 3], current: [4] }">
+      <button v-dv-permission="{ target: [1, 2, 3], current: [4] }">
         按钮2-测试v-dvPermission
       </button>
     </section>
@@ -410,7 +410,7 @@
         alt=""
         width="200"
         height="200"
-        v-dvLazy="'https://api.yimian.xyz/img?type=wallpaper'"
+        v-dv-lazy="'https://api.yimian.xyz/img?type=wallpaper'"
       />
     </section>
 

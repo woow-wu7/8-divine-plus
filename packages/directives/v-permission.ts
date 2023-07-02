@@ -34,7 +34,7 @@ function validate(el: HTMLElement, binding: DirectiveBinding) {
 }
 
 export const vDvPermission: TVPermission = {
-  name: "dvPermission",
+  name: "DvPermission",
   options: {
     mounted(el, binding) {
       validate(el, binding);

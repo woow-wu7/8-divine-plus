@@ -1,8 +1,5 @@
 import { App } from "vue";
 
-export * from "./directives";
-export * from "./hooks";
-
 import {
   installComponents,
   installFunctions,
@@ -33,6 +30,9 @@ const install = (app: App, router?: any) => {
 
   DvLoading.install(app);
 };
+
+export * from "./directives";
+export * from "./hooks";
 
 export { DvMessage };
 export { DvLoading };

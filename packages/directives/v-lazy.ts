@@ -1,7 +1,7 @@
 import type { TVPermission } from "./utils";
 
 export const vDvLazy: TVPermission = {
-  name: "dvLazy",
+  name: "DvLazy",
   options: {
     mounted(el, binding) {
       // if (el.tagName !== "IMG") return;
