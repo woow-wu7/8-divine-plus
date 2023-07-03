@@ -20,6 +20,7 @@ import { DvMessage } from "./packages/message";
 import { DvScrollbar } from "./packages/scrollbar";
 import { DvLoading } from "./packages/loading";
 import { DvProgress } from "./packages/progress";
+import { DvInfiniteScroll } from "./packages/infinite-scroll";
 
 import { DvTimeline } from "./packages/timeline";
 import { DvTimelineItem } from "./packages/timeline-item";
@@ -68,6 +69,7 @@ export const DvMessage: DvMessage;
 export const Message: DvMessage;
 export const Scrollbar: DvScrollbar;
 export const Loading: DvLoading;
+export const InfiniteScroll: DvInfiniteScroll;
 
 export const Collapse: DvCollapse;
 export const CollapseItem: DvCollapseItem;
