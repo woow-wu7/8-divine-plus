@@ -1,6 +1,5 @@
-import { nextTick } from "vue";
+import { ComponentPublicInstance, nextTick } from "vue";
 import { isClient } from "@vueuse/core";
-import type { ComponentPublicInstance, ObjectDirective } from "vue";
 import type { TDirective } from "./utils";
 
 const INFINITE_SCROLL = "INFINITE_SCROLL";
@@ -26,6 +25,16 @@ const infiniteScrollOptions = {
 
 type TAttrs = typeof infiniteScrollOptions;
 type TScrollOptions = { [K in keyof TAttrs]: TAttrs[K]["default"] };
+type TContainer = HTMLElement & {
+  [INFINITE_SCROLL]: {
+    cb: (...args: any) => any;
+    instance: ComponentPublicInstance<any>;
+    scroll: (...args: any) => any;
+    onScroll: (...args: any) => any;
+    container: HTMLElement;
+    delay: number;
+  };
+};
 
 const canScroll = (container: HTMLElement) => {
   const style = window.getComputedStyle(container);
@@ -45,7 +54,6 @@ const getScrollContainer = (el: HTMLElement) => {
       return window;
     }
 
-    console.log("canScroll(container)--+++", canScroll(container));
     if (canScroll(container)) {
       return container;
     }
@@ -56,22 +64,17 @@ const getScrollContainer = (el: HTMLElement) => {
   return container;
 };
 
-const getScrollOptions = (
-  el: HTMLElement,
-  instance: ComponentPublicInstance
-) => {
+const getScrollOptions = (el: HTMLElement) => {
   return Object.entries(infiniteScrollOptions).reduce(
     (options, [name, option]) => {
-      const { type, default: defaultValue } = option;
+      const { default: defaultValue } = option;
 
       const attributeValue = el.getAttribute(name);
 
-      let value =
-        (instance as any)[attributeValue as string] ??
-        attributeValue ??
-        defaultValue;
-
-      value = typeof value === "string" ? Number(value) : value;
+      let value = attributeValue ?? defaultValue;
+      value = ["distance", "delay"].includes(name) ? Number(value) : value;
+      value = value === "false" ? false : value;
+      value = value === "true" ? true : value;
 
       options[name] = value;
 
@@ -81,25 +84,35 @@ const getScrollOptions = (
   );
 };
 
-const onScroll = (container: any, el: any) => {
-  let hasLoad = false;
+const getBorderBottom = (container: HTMLElement) => {
+  const borderBottom = Number(
+    window.getComputedStyle(container).borderBottom.match(/(\d+)/)?.[0] ?? 0
+  );
+  return borderBottom;
+};
+
+const onScroll = (el: TContainer) => {
+  const { container } = el[INFINITE_SCROLL];
+
+  const { disabled, distance } = getScrollOptions(el);
+
+  if (disabled) return;
+
+  let canTrigger = false;
 
   if (el === container) {
-    hasLoad = el.scrollHeight - el.clientHeight - el.scrollTop <= 20;
+    canTrigger = el.scrollHeight - el.clientHeight - el.scrollTop <= distance;
   } else if (el !== container) {
-    hasLoad =
-      el.getBoundingClientRect().top -
-        container.getBoundingClientRect().top +
-        el.offsetHeight -
+    canTrigger =
+      el.offsetHeight +
+        el.getBoundingClientRect().top -
+        container.getBoundingClientRect().top -
         container.offsetHeight -
-        Number(
-          window.getComputedStyle(container).borderBottom.match(/(\d+)/)?.[0] ??
-            0
-        ) <=
-      20;
+        getBorderBottom(container) <=
+      distance;
   }
 
-  if (hasLoad) {
+  if (canTrigger) {
     el[INFINITE_SCROLL].cb();
   }
 };
@@ -119,16 +132,29 @@ export const vDvInfiniteScroll: TDirective = {
       await nextTick();
 
       const container = getScrollContainer(el)!;
-      const options = getScrollOptions(el, instance!);
+      const { immediate, delay } = getScrollOptions(el);
+      const scroll = () => onScroll(el);
 
-      el[INFINITE_SCROLL] = { cb, instance, onScroll, container, options };
+      el[INFINITE_SCROLL] = {
+        cb,
+        instance,
+        onScroll,
+        container,
+        delay,
+        scroll,
+      };
 
-      container.addEventListener(
+      if (immediate) {
+      }
+
+      container.addEventListener("scroll", scroll, false);
+    },
+    unmounted(el) {
+      el[INFINITE_SCROLL].container.removeEventListener(
         "scroll",
-        () => onScroll(container, el),
+        scroll,
         false
       );
     },
-    unmounted(el) {},
   },
 };

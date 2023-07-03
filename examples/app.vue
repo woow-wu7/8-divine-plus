@@ -317,6 +317,7 @@
       <img alt="" width="200" height="200" v-dv-lazy="'https://api.yimian.xyz/img?type=wallpaper'" />
     </section>
 
+    <!-- 无限滚动测试 -->
     <section class="block">
       <h4>v-infinite-scroll 测试</h4>
       <h4>el === container</h4>
@@ -326,16 +327,17 @@
       </ul>
     </section>
 
+    <!-- 无限滚动测试 -->
     <section class="block">
       <h4>v-infinite-scroll 测试</h4>
       <h4>el !== container</h4>
 
       <div style="height: 200px; overflow: auto; marginBottom: 100px">
-        <ul v-dv-infinite-scroll="fetchData2" style="background: red">
+        <ul v-dv-infinite-scroll="fetchData2" style="background: red" :disabled="disabled">
           <li v-for="item in infiniteScrollState.count2">{{ item }}</li>
         </ul>
-        <div>加载中</div>
-        <div>没有更多</div>
+        <p v-if="infiniteScrollState.loading">加载中...</p>
+        <p v-if="noMore">没有更多了</p>
       </div>
     </section>
 
@@ -389,7 +391,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, onMounted, getCurrentInstance } from "vue";
+import { reactive, ref, onMounted, getCurrentInstance, computed } from "vue";
 import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
@@ -421,15 +423,24 @@ const progressState = reactive({
 
 const infiniteScrollState = reactive({
   count: 10,
+
   count2: 10,
+  loading: false
 });
 
 const fetchData = () => {
   infiniteScrollState.count = infiniteScrollState.count + 2;
 };
 const fetchData2 = () => {
-  infiniteScrollState.count2 = infiniteScrollState.count2 + 2;
+  infiniteScrollState.loading = true
+  setTimeout(() => {
+    infiniteScrollState.count2 = infiniteScrollState.count2 + 2;
+    infiniteScrollState.loading = false
+
+  }, 2000)
 };
+const noMore = computed(() => infiniteScrollState.count2 > 30);
+const disabled = computed(() => infiniteScrollState.loading || noMore.value);
 
 const format = (percent) => {
   return percent === 100 ? "满" : `${percent}%`;
