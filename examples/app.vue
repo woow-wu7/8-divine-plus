@@ -6,19 +6,10 @@
       <DvDivider direction="horizontal" style="width: auto">
         <template v-slot:default>center</template>
       </DvDivider>
-      <DvDivider
-        direction="horizontal"
-        contentPosition="left"
-        borderStyle="dashed"
-        style="width: auto"
-      >
+      <DvDivider direction="horizontal" contentPosition="left" borderStyle="dashed" style="width: auto">
         <template v-slot:default>left</template>
       </DvDivider>
-      <DvDivider
-        direction="horizontal"
-        contentPosition="right"
-        style="width: auto"
-      >
+      <DvDivider direction="horizontal" contentPosition="right" style="width: auto">
         <template v-slot:default>right</template>
       </DvDivider>
       <div>divider测试</div>
@@ -53,10 +44,18 @@
     <section class="block">
       <h4>Row,Col 测试</h4>
       <dv-row :gutter="20" class="layout-flex">
-        <dv-col :span="6"><div class="grid-content bg-purple" /></dv-col>
-        <dv-col :span="6"><div class="grid-content bg-purple" /></dv-col>
-        <dv-col :span="6"><div class="grid-content bg-purple" /></dv-col>
-        <dv-col :span="6"><div class="grid-content bg-purple" /></dv-col>
+        <dv-col :span="6">
+          <div class="grid-content bg-purple" />
+        </dv-col>
+        <dv-col :span="6">
+          <div class="grid-content bg-purple" />
+        </dv-col>
+        <dv-col :span="6">
+          <div class="grid-content bg-purple" />
+        </dv-col>
+        <dv-col :span="6">
+          <div class="grid-content bg-purple" />
+        </dv-col>
       </dv-row>
     </section>
 
@@ -89,29 +88,14 @@
       <dv-tag type="success" class="dvTagStyle">标签二</dv-tag>
       <dv-tag type="info" class="dvTagStyle">标签三</dv-tag>
       <dv-tag type="warning" class="dvTagStyle">标签四</dv-tag>
-      <dv-tag
-        type="danger"
-        closable
-        class="dvTagStyle"
-        @close="onOff"
-        v-if="!off"
-        >可关闭</dv-tag
-      >
-      <dv-tag type="primary" backgroundColor="black" class="dvTagStyle"
-        >自定义背景颜色</dv-tag
-      >
+      <dv-tag type="danger" closable class="dvTagStyle" @close="onOff" v-if="!off">可关闭</dv-tag>
+      <dv-tag type="primary" backgroundColor="black" class="dvTagStyle">自定义背景颜色</dv-tag>
       <dv-tag type="success" class="dvTagStyle" hit>是否带有边框描边</dv-tag>
-      <dv-tag type="success" class="dvTagStyle" hit size="small"
-        >size/small</dv-tag
-      >
+      <dv-tag type="success" class="dvTagStyle" hit size="small">size/small</dv-tag>
 
       <div style="margin: 20px 0">
-        <dv-tag type="success" class="dvTagStyle" theme="dark"
-          >主题/dark</dv-tag
-        >
-        <dv-tag type="success" class="dvTagStyle" them="plain"
-          >主题/plain</dv-tag
-        >
+        <dv-tag type="success" class="dvTagStyle" theme="dark">主题/dark</dv-tag>
+        <dv-tag type="success" class="dvTagStyle" them="plain">主题/plain</dv-tag>
       </div>
     </section>
 
@@ -156,16 +140,8 @@
     <section class="block">
       <h4>Watermark 测试</h4>
 
-      <dv-watermark
-        content="水印效果"
-        fontsize="20px"
-        fontcolor="#FFB6C1"
-        z-index="-1"
-        gap="20"
-        :imgSrc="icon2"
-        imgWidth="10"
-        imgHeight="10"
-      >
+      <dv-watermark content="水印效果" fontsize="20px" fontcolor="#FFB6C1" z-index="-1" gap="20" :imgSrc="icon2" imgWidth="10"
+        imgHeight="10">
         <div>
           <p>文字内容1</p>
           <p>文字内容3</p>
@@ -179,36 +155,19 @@
 
       <dv-timeline>
         <dv-timeline-item timestamp="2022-01-11">内容1</dv-timeline-item>
-        <dv-timeline-item timestamp="2022-02-22" type="primary"
-          >内容2</dv-timeline-item
-        >
-        <dv-timeline-item timestamp="2022-02-22" type="success"
-          >内容3</dv-timeline-item
-        >
-        <dv-timeline-item timestamp="2022-02-22" type="warning"
-          >内容4</dv-timeline-item
-        >
-        <dv-timeline-item timestamp="2022-02-22" type="danger"
-          >内容5</dv-timeline-item
-        >
-        <dv-timeline-item timestamp="2022-02-22" type="info"
-          >内容6</dv-timeline-item
-        >
-        <dv-timeline-item timestamp="2022-02-22" type="primary" position="top"
-          >内容7 - 时间戳在上面</dv-timeline-item
-        >
+        <dv-timeline-item timestamp="2022-02-22" type="primary">内容2</dv-timeline-item>
+        <dv-timeline-item timestamp="2022-02-22" type="success">内容3</dv-timeline-item>
+        <dv-timeline-item timestamp="2022-02-22" type="warning">内容4</dv-timeline-item>
+        <dv-timeline-item timestamp="2022-02-22" type="danger">内容5</dv-timeline-item>
+        <dv-timeline-item timestamp="2022-02-22" type="info">内容6</dv-timeline-item>
+        <dv-timeline-item timestamp="2022-02-22" type="primary" position="top">内容7 - 时间戳在上面</dv-timeline-item>
         <dv-timeline-item timestamp="2022-02-22" type="primary" position="top">
           <div>内容8 - 自定义dot插槽</div>
           <template #dot>
             <div style="width: 14px; height: 14px; background: red"></div>
           </template>
         </dv-timeline-item>
-        <dv-timeline-item
-          timestamp="2022-02-22"
-          type="primary"
-          position="top"
-          hideTimestamp
-        >
+        <dv-timeline-item timestamp="2022-02-22" type="primary" position="top" hideTimestamp>
           <div>内容9 - 不显示时间戳</div>
         </dv-timeline-item>
       </dv-timeline>
@@ -229,17 +188,11 @@
 
     <section class="block">
       <h4>Scrollbar 测试</h4>
-      <dv-scrollbar
-        height="300"
-        style="background: yellow"
-        :native="false"
-        :barStyle="{
-          height: '130px',
-          width: '8px',
-          background: 'red',
-        }"
-        showHorizontalBar
-      >
+      <dv-scrollbar height="300" style="background: yellow" :native="false" :barStyle="{
+        height: '130px',
+        width: '8px',
+        background: 'red',
+      }" showHorizontalBar>
         <div v-for="value in 40" style="width: 900px">
           测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar测试scrollbar
         </div>
@@ -248,11 +201,7 @@
 
     <section class="block">
       <h4>v-loading 测试</h4>
-      <div
-        v-loading="state.loading"
-        dv-loading-text="Loading"
-        dv-loading-background-color="rgba(255,182,193,0.2)"
-      >
+      <div v-loading="state.loading" dv-loading-text="Loading" dv-loading-background-color="rgba(255,182,193,0.2)">
         <p>v-loading</p>
         <p>v-loading</p>
         <p>v-loading</p>
@@ -280,12 +229,8 @@
           <div>collapse-item</div>
           <div>collapse-item</div>
         </DvCollapseItem>
-        <DvCollapseItem name="2" title="collapse-item2"
-          >collapse-item2</DvCollapseItem
-        >
-        <DvCollapseItem name="3" title="collapse-item3"
-          >collapse-item2</DvCollapseItem
-        >
+        <DvCollapseItem name="2" title="collapse-item2">collapse-item2</DvCollapseItem>
+        <DvCollapseItem name="3" title="collapse-item3">collapse-item2</DvCollapseItem>
       </DvCollapse>
     </section>
 
@@ -299,65 +244,28 @@
 
       <br />
 
-      <dv-progress
-        :text-inside="true"
-        :stroke-width="26"
-        :percent="60"
-      ></dv-progress>
-      <dv-progress
-        :text-inside="true"
-        :stroke-width="24"
-        :percent="100"
-        status="success"
-      ></dv-progress>
-      <dv-progress
-        :text-inside="true"
-        :stroke-width="22"
-        :percent="80"
-        status="warning"
-      ></dv-progress>
-      <dv-progress
-        :text-inside="true"
-        :stroke-width="20"
-        :percent="30"
-        status="error"
-      ></dv-progress>
+      <dv-progress :text-inside="true" :stroke-width="26" :percent="60"></dv-progress>
+      <dv-progress :text-inside="true" :stroke-width="24" :percent="100" status="success"></dv-progress>
+      <dv-progress :text-inside="true" :stroke-width="22" :percent="80" status="warning"></dv-progress>
+      <dv-progress :text-inside="true" :stroke-width="20" :percent="30" status="error"></dv-progress>
 
       <br />
 
       <dv-progress type="circle" :percent="25"></dv-progress>
-      <dv-progress
-        type="circle"
-        :percent="25"
-        backColor="black"
-        textColor="red"
-      ></dv-progress>
+      <dv-progress type="circle" :percent="25" backColor="black" textColor="red"></dv-progress>
       <dv-progress type="circle" :percent="100" status="success"></dv-progress>
 
       <br />
 
-      <dv-progress
-        :percent="progressState.percent"
-        :color="progressState.customColor"
-      ></dv-progress>
-      <dv-progress
-        :percent="progressState.percent"
-        :color="customColorMethod"
-      ></dv-progress>
-      <dv-progress
-        :percent="progressState.percent"
-        :color="progressState.customColors"
-      ></dv-progress>
+      <dv-progress :percent="progressState.percent" :color="progressState.customColor"></dv-progress>
+      <dv-progress :percent="progressState.percent" :color="customColorMethod"></dv-progress>
+      <dv-progress :percent="progressState.percent" :color="progressState.customColors"></dv-progress>
       <button @click="decrease">-</button>
       <button @click="increase">+</button>
 
       <br />
 
-      <dv-progress
-        type="dashboard"
-        :percent="progressState.percent"
-        :color="progressState.customColors"
-      ></dv-progress>
+      <dv-progress type="dashboard" :percent="progressState.percent" :color="progressState.customColors"></dv-progress>
       <button @click="decrease">-</button>
       <button @click="increase">+</button>
     </section>
@@ -406,12 +314,29 @@
 
     <section class="block">
       <h4>v-lazy 测试</h4>
-      <img
-        alt=""
-        width="200"
-        height="200"
-        v-dv-lazy="'https://api.yimian.xyz/img?type=wallpaper'"
-      />
+      <img alt="" width="200" height="200" v-dv-lazy="'https://api.yimian.xyz/img?type=wallpaper'" />
+    </section>
+
+    <section class="block">
+      <h4>v-infinite-scroll 测试</h4>
+      <h4>el === container</h4>
+
+      <ul v-dv-infinite-scroll="fetchData" class="infinite-scroll">
+        <li v-for="item in infiniteScrollState.count">{{ item }}</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h4>v-infinite-scroll 测试</h4>
+      <h4>el !== container</h4>
+
+      <div style="height: 200px; overflow: auto; marginBottom: 100px">
+        <ul v-dv-infinite-scroll="fetchData2" style="background: red">
+          <li v-for="item in infiniteScrollState.count2">{{ item }}</li>
+        </ul>
+        <div>加载中</div>
+        <div>没有更多</div>
+      </div>
     </section>
 
     <!-- 测试 transition 内置组件 -->
@@ -420,17 +345,9 @@
 
       <div class="transition">
         <p>css-transition</p>
-        <transition
-          name="side"
-          @before-enter="onBeforeEnter"
-          @enter="onEnter"
-          @after-enter="onAfterEnter"
-          @enter-cancelled="onEnterCancelled"
-          @before-leave="onBeforeLeave"
-          @leave="onLeave"
-          @after-leave="onAfterLeave"
-          @leave-cancelled="onLeaveCancelled"
-        >
+        <transition name="side" @before-enter="onBeforeEnter" @enter="onEnter" @after-enter="onAfterEnter"
+          @enter-cancelled="onEnterCancelled" @before-leave="onBeforeLeave" @leave="onLeave" @after-leave="onAfterLeave"
+          @leave-cancelled="onLeaveCancelled">
           <p v-if="state.showTestTransition">test transition</p>
         </transition>
       </div>
@@ -501,6 +418,18 @@ const progressState = reactive({
     { color: "#6f7ad3", percent: 100 },
   ],
 });
+
+const infiniteScrollState = reactive({
+  count: 10,
+  count2: 10,
+});
+
+const fetchData = () => {
+  infiniteScrollState.count = infiniteScrollState.count + 2;
+};
+const fetchData2 = () => {
+  infiniteScrollState.count2 = infiniteScrollState.count2 + 2;
+};
 
 const format = (percent) => {
   return percent === 100 ? "满" : `${percent}%`;
@@ -612,7 +541,7 @@ const onEnterCancelled = (el) => {
 };
 // 在 leave 钩子之前调用
 // 大多数时候，你应该只会用到 leave 钩子
-function onBeforeLeave(el) {}
+function onBeforeLeave(el) { }
 // 在离开过渡开始时调用
 // 用这个来开始离开动画
 function onLeave(el, done) {
@@ -623,10 +552,10 @@ function onLeave(el, done) {
 
 // 在离开过渡完成、
 // 且元素已从 DOM 中移除时调用
-function onAfterLeave(el) {}
+function onAfterLeave(el) { }
 
 // 仅在 v-show 过渡中可用
-function onLeaveCancelled(el) {}
+function onLeaveCancelled(el) { }
 </script>
 
 <style lang="scss" scoped>
@@ -634,6 +563,7 @@ function onLeaveCancelled(el) {}
   height: 100%;
   overflow: auto;
 }
+
 .block {
   margin: 20px;
   padding: 20px;
@@ -641,6 +571,7 @@ function onLeaveCancelled(el) {}
   border: 1px solid red;
   display: block;
 }
+
 // container
 .header,
 .footer,
@@ -650,20 +581,25 @@ function onLeaveCancelled(el) {}
   justify-content: center;
   align-items: center;
 }
+
 .header {
   background: #c6e2ff;
 }
+
 .footer {
   background: #c6e2ff;
 }
+
 .main {
   height: 160px;
   background: #ecf5ff;
 }
+
 .aside {
   height: 160px;
   background: #d9ecff;
 }
+
 .item {
   margin-right: 30px;
 }
@@ -674,9 +610,11 @@ function onLeaveCancelled(el) {}
 .layout-flex {
   height: 100px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
@@ -689,30 +627,37 @@ function onLeaveCancelled(el) {}
   background-color: yellow;
   margin: 10px;
 }
+
 .side-enter-active,
 .side-leave-active {
   transition: all 1s;
 }
+
 .side-enter-from {
   transform: translateX(-20px);
   opacity: 0;
 }
+
 .side-leave-to {
   transform: translateX(20px);
   opacity: 0;
 }
+
 // ------
 .animation-side-enter-active,
 .animation-side-leave-active {
   animation: s 1s;
 }
+
 @keyframes s {
   0% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1.25);
   }
+
   100% {
     transform: scale(1);
   }
@@ -722,6 +667,11 @@ function onLeaveCancelled(el) {}
 <style lang="scss">
 .backtop {
   height: 500px;
+  overflow: auto;
+}
+
+.infinite-scroll {
+  height: 200px;
   overflow: auto;
 }
 </style>

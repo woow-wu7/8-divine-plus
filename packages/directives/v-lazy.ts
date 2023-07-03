@@ -1,6 +1,6 @@
-import type { TVPermission } from "./utils";
+import type { TDirective } from "./utils";
 
-export const vDvLazy: TVPermission = {
+export const vDvLazy: TDirective = {
   name: "DvLazy",
   options: {
     mounted(el, binding) {

@@ -1,5 +1,5 @@
 import type { DirectiveBinding } from "vue";
-import type { TVPermission } from "./utils/index";
+import type { TDirective } from "./utils/index";
 
 type TMiddleware = (...args: any[]) => any;
 
@@ -33,7 +33,7 @@ function validate(el: HTMLElement, binding: DirectiveBinding) {
   compose(isRemove, hasPermission)(values);
 }
 
-export const vDvPermission: TVPermission = {
+export const vDvPermission: TDirective = {
   name: "DvPermission",
   options: {
     mounted(el, binding) {

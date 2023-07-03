@@ -1,6 +1,6 @@
 import type { ObjectDirective } from "vue";
 
-export type TVPermission = {
+export type TDirective = {
   name: string;
   options: ObjectDirective;
 };

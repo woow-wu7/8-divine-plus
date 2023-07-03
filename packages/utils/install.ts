@@ -1,5 +1,5 @@
 import type { App, Component, AppContext } from "vue";
-import type { TVPermission } from "../directives/utils";
+import type { TDirective } from "../directives/utils";
 
 // components
 // 注意：
@@ -35,7 +35,7 @@ import CollapseTransition from "../components/collapse/collapse-transition.vue";
 import Message from "../components/message/message";
 
 // directives
-import { vDvPermission, vDvLazy } from "../directives";
+import { vDvPermission, vDvLazy, vDvInfiniteScroll } from "../directives";
 
 // icons
 // - 用于 breadcrumb 组件的 separator-icon
@@ -86,7 +86,7 @@ const functions: {
   type?: any;
 }[] = [Message];
 
-const directives = [vDvPermission, vDvLazy];
+const directives = [vDvPermission, vDvLazy, vDvInfiniteScroll];
 
 // 1
 // 插件声明：声明所有插件
@@ -111,7 +111,7 @@ export const installFunctions = (app: App) => {
 };
 
 export const installDirectives = (app: App) => {
-  directives.forEach((directive: TVPermission) => {
+  directives.forEach((directive: TDirective) => {
     app.directive(directive.name, directive.options);
   });
 };
