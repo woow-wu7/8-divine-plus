@@ -1,6 +1,6 @@
 import { defineClientConfig } from "@vuepress/client";
 
-import DivinePlus from "../../packages/components/index";
+import DivinePlus from "../../packages/index";
 import "../../packages/theme-chalk/index.scss";
 
 // hightlight.js

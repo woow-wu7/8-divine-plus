@@ -19,7 +19,7 @@ const infiniteScrollOptions = {
   },
   immediate: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 };
 
@@ -29,10 +29,11 @@ type TContainer = HTMLElement & {
   [INFINITE_SCROLL]: {
     cb: (...args: any) => any;
     instance: ComponentPublicInstance<any>;
-    scroll: (...args: any) => any;
-    onScroll: (...args: any) => any;
+    onScroll: (el: TContainer) => void;
+    scroll: () => typeof onScroll;
     container: HTMLElement;
     delay: number;
+    io: MutationObserver;
   };
 };
 
@@ -144,17 +145,22 @@ export const vDvInfiniteScroll: TDirective = {
         scroll,
       };
 
+      if (!container) return;
+
       if (immediate) {
+        const io = new MutationObserver(scroll);
+        io.observe(container as Node, { childList: true, subtree: true });
+        el[INFINITE_SCROLL].io = io;
+        scroll();
       }
 
       container.addEventListener("scroll", scroll, false);
     },
     unmounted(el) {
-      el[INFINITE_SCROLL].container.removeEventListener(
-        "scroll",
-        scroll,
-        false
-      );
+      const { container, scroll, io } = el[INFINITE_SCROLL];
+      container.removeEventListener("scroll", scroll, false);
+
+      io?.disconnect();
     },
   },
 };

@@ -17,7 +17,7 @@
 
 <script setup>
 import { getCurrentInstance, reactive, ref } from "vue";
-import { DvLoading } from "../../../packages/components/index.ts";
+import { DvLoading } from "../../../packages/index.ts";
 
 import Wrap from "../theme/ComponentWrap.vue";
 import { html } from "../../components/loading-service-immediate-code.md";

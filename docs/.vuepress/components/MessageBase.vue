@@ -13,7 +13,7 @@
 import Wrap from "../theme/ComponentWrap.vue";
 import { html } from "../../components/message-base-code.md";
 
-import { DvMessage } from "../../../packages/components/index";
+import { DvMessage } from "../../../packages/index";
 import { getCurrentInstance } from "vue";
 
 const instance = getCurrentInstance();

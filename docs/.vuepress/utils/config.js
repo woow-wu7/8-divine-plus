@@ -64,6 +64,7 @@ const sidebar = {
     "/components/watermark.md",
     "/components/message.md",
     "/components/scrollbar.md",
+    "/components/infinite-scroll.md",
     "/components/loading.md",
     "/components/collapse.md",
     "/components/progress.md",

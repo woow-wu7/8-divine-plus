@@ -13,7 +13,7 @@
 <script setup>
 import Wrap from "../theme/ComponentWrap.vue";
 import { html } from "../../components/message-type-code.md";
-import { DvMessage } from "../../../packages/components/index";
+import { DvMessage } from "../../../packages/index";
 
 const showSuccess = () => {
   DvMessage({
