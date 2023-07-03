@@ -321,7 +321,7 @@
       <h4>v-infinite-scroll 测试</h4>
       <h4>el === container</h4>
 
-      <ul v-dv-infinite-scroll="fetchData" class="infinite-scroll">
+      <ul v-dv-infinite-scroll="fetchData" class="infinite-scroll" distance="20">
         <li v-for="item in infiniteScrollState.count">{{ item }}</li>
       </ul>
     </section>
