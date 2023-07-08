@@ -20,7 +20,7 @@ export const vDvLazy: TDirective = {
       observerInstance.observe(el);
     },
     unmounted(el) {
-      el.observerInstance.disconnect();
+      el?.observerInstance.disconnect();
     },
   },
 };

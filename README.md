@@ -33,6 +33,22 @@ app.mount("#app");
 
 ![8-divine-plus](docs/.vuepress/public/img/usage.png)
 
+## Download Test
+
+```
+1
+下载
+git clone git@github.com:woow-wu7/8-divine-plus.git
+
+2
+本地测试
+npm run dev // or npm run test:dev
+
+3
+文档
+npm run docs:dev
+```
+
 ## Discussions
 
 [GitHub Discussions - 讨论区链接](https://github.com/woow-wu7/8-divine-plus/discussions)
