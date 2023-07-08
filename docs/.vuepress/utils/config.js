@@ -34,7 +34,11 @@ const navbar = [
   },
   {
     text: "组件",
-    link: "/components",
+    link: "/components/",
+  },
+  {
+    text: "指令",
+    link: "/directives",
   },
   {
     text: "GitHub",
@@ -69,7 +73,12 @@ const sidebar = {
     "/components/collapse.md",
     "/components/progress.md",
   ],
-};
+  "/directives/": [
+    "/directives/",
+    "/directives/v-dv-permission.md",
+    "/directives/v-dv-infinite-scroll.md",
+  ],
+};  
 
 const theme = defaultTheme({
   home: "/",
@@ -89,6 +98,9 @@ const plugins = [
       components: {
         ComponentWrap: path.resolve(__dirname, "../theme/ComponentWrap.vue"),
       },
+    }),
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, "../directives"),
     }),
     docsearchPlugin({
       apiKey: "<API_KEY>",
