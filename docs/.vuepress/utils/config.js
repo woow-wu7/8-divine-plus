@@ -77,8 +77,9 @@ const sidebar = {
     "/directives/",
     "/directives/v-dv-permission.md",
     "/directives/v-dv-infinite-scroll.md",
+    "/directives/v-dv-lazy.md",
   ],
-};  
+};
 
 const theme = defaultTheme({
   home: "/",
