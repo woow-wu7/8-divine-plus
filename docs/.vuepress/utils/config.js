@@ -34,11 +34,15 @@ const navbar = [
   },
   {
     text: "组件",
-    link: "/components/",
+    link: "/components",
   },
   {
     text: "指令",
     link: "/directives",
+  },
+  {
+    text: " Hooks",
+    link: "/hooks",
   },
   {
     text: "GitHub",
@@ -79,6 +83,7 @@ const sidebar = {
     "/directives/v-dv-infinite-scroll.md",
     "/directives/v-dv-lazy.md",
   ],
+  "/hooks/": ["/hooks/", "/hooks/useThrottle.md"],
 };
 
 const theme = defaultTheme({
@@ -102,6 +107,9 @@ const plugins = [
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, "../directives"),
+    }),
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, "../hooks"),
     }),
     docsearchPlugin({
       apiKey: "<API_KEY>",

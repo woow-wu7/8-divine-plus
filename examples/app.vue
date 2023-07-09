@@ -388,6 +388,11 @@
     <h3>provide 和 inject</h3>
     <ProviderTest></ProviderTest>
   </section>
+
+  <section class="block">
+    <h3>测试 useThrottle</h3>
+    <button @click="onThrottle">useThrottle</button>
+  </section>
 </template>
 
 <script setup>
@@ -398,6 +403,7 @@ import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";
 import icon2 from "./images/2.png";
 import { DvMessage } from "../packages/index";
+import { useThrottle } from '../packages/index'
 
 const state = reactive({
   showTestTransition: false,
@@ -568,6 +574,8 @@ function onAfterLeave(el) { }
 
 // 仅在 v-show 过渡中可用
 function onLeaveCancelled(el) { }
+
+const onThrottle = useThrottle(() => console.log('1', 1), { delay: 1000 })
 </script>
 
 <style lang="scss" scoped>
