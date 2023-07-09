@@ -3,20 +3,31 @@ import { ref, unref } from "vue";
 type TOptions = {
   delay: number;
   responsive?: boolean;
+  immediate?: boolean;
 };
 type TUseThrottle = (fn: (...args: any[]) => any, options: TOptions) => any;
 
 export const useThrottle: TUseThrottle = (fn, options) => {
-  const { delay, responsive = false } = options;
+  let { delay, responsive = false, immediate = false } = options;
 
-  let startTimer = responsive ? ref(+new Date()) : +new Date();
+  const getTimer = () => (responsive ? ref(+new Date()) : +new Date());
 
-  return (...args: any[]) => {
-    let currentTimer = responsive ? ref(+new Date()) : +new Date();
+  let startTimer = getTimer();
+
+  const callback = (...args: any[]) => {
+    if (immediate) {
+      fn(...args);
+      immediate = false;
+      return;
+    }
+
+    let currentTimer = getTimer();
 
     if (unref(currentTimer) - unref(startTimer) >= delay) {
       fn(...args);
       startTimer = currentTimer;
     }
   };
+
+  return callback;
 };

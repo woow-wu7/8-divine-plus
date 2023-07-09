@@ -429,6 +429,7 @@ const infiniteScrollState = reactive({
 });
 
 const fetchData = () => {
+  console.log('1111', 1111)
   infiniteScrollState.count = infiniteScrollState.count + 2;
 };
 const fetchData2 = () => {

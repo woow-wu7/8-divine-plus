@@ -93,10 +93,7 @@ const getBorderBottom = (container: HTMLElement) => {
   return borderBottom;
 };
 
-let a = 1;
 const onScroll = (el: TContainer) => {
-  a++;
-  console.log("a", a);
   const { container } = el[INFINITE_SCROLL];
 
   const { disabled, distance } = getScrollOptions(el);
@@ -138,7 +135,10 @@ export const vDvInfiniteScroll: TDirective = {
 
       const container = getScrollContainer(el)!;
       const { immediate, delay } = getScrollOptions(el);
-      const scrollThrottle = useThrottle(() => onScroll(el), { delay: 80 });
+      const scrollThrottle = useThrottle(() => onScroll(el), {
+        delay: 80,
+        immediate: false,
+      });
 
       el[INFINITE_SCROLL] = {
         cb,
