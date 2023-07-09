@@ -1,5 +1,6 @@
 import { ComponentPublicInstance, nextTick } from "vue";
 import { isClient } from "@vueuse/core";
+import { useThrottle } from "../hooks";
 import type { TDirective } from "./utils";
 
 const INFINITE_SCROLL = "INFINITE_SCROLL";
@@ -92,7 +93,10 @@ const getBorderBottom = (container: HTMLElement) => {
   return borderBottom;
 };
 
+let a = 1;
 const onScroll = (el: TContainer) => {
+  a++;
+  console.log("a", a);
   const { container } = el[INFINITE_SCROLL];
 
   const { disabled, distance } = getScrollOptions(el);
@@ -134,7 +138,7 @@ export const vDvInfiniteScroll: TDirective = {
 
       const container = getScrollContainer(el)!;
       const { immediate, delay } = getScrollOptions(el);
-      const scroll = () => onScroll(el);
+      const scrollThrottle = useThrottle(() => onScroll(el), { delay: 80 });
 
       el[INFINITE_SCROLL] = {
         cb,
@@ -142,23 +146,23 @@ export const vDvInfiniteScroll: TDirective = {
         onScroll,
         container,
         delay,
-        scroll,
+        scrollThrottle,
       };
 
       if (!container) return;
 
       if (immediate) {
-        const io = new MutationObserver(scroll);
+        const io = new MutationObserver(scrollThrottle);
         io.observe(container as Node, { childList: true, subtree: true });
         el[INFINITE_SCROLL].io = io;
-        scroll();
+        scrollThrottle();
       }
 
-      container.addEventListener("scroll", scroll, false);
+      container.addEventListener("scroll", scrollThrottle, false);
     },
     unmounted(el) {
-      const { container, scroll, io } = el[INFINITE_SCROLL];
-      container.removeEventListener("scroll", scroll, false);
+      const { container, scrollThrottle, io } = el[INFINITE_SCROLL];
+      container.removeEventListener("scroll", scrollThrottle, false);
 
       io?.disconnect();
     },
