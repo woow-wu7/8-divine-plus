@@ -9,6 +9,7 @@ import {
 
 import DvMessage from "./components/message/index";
 import DvLoading from "./components/loading/index";
+import DvFullscreen from "./components/fullscreen/index";
 
 // 1
 // 使用方式
@@ -29,6 +30,7 @@ const install = (app: App, router?: any) => {
   installIcons(app);
 
   DvLoading.install(app);
+  DvFullscreen.install(app);
 };
 
 export * from "./directives";
