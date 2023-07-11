@@ -53,6 +53,12 @@ npm run docs:dev
 
 [GitHub Discussions - 讨论区链接](https://github.com/woow-wu7/8-divine-plus/discussions)
 
+## 贡献者
+
+<a href="https://github.com/woow-wu7/8-divine-plus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=woow-wu7/8-divine-plus" />
+</a>
+
 ## Blog
 
 [[封装 01-设计模式] 设计原则 和 工厂模式(简单抽象方法) 适配器模式 装饰器模式](https://juejin.cn/post/6950958974854234119)  
@@ -141,9 +147,3 @@ npm run docs:dev
 #### (14) Diff-virtualDOM
 
 - [手写 diff 算法-snabbdom](https://github.com/woow-wu7/7-vue2-source-code-snabbdom)
-
-#贡献者
-
-<a href="https://github.com/woow-wu7/8-divine-plus/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=woow-wu7/8-divine-plus" />
-</a>
