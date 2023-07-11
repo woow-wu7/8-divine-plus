@@ -272,13 +272,22 @@
 
 
     <section class="block">
-      <h4>DvFullscreen 测试</h4>
+      <h4>DvFullscreen 组件 测试</h4>
       <DvFullscreen>
         <div>
           <h1>这是要全屏的 标题</h1>
           <div>这是要全屏的 内容</div>
         </div>
       </DvFullscreen>
+    </section>
+
+
+    <section class="block" v-dv-fullscreen>
+      <h4>DvFullscreen 指令 测试</h4>
+      <div>
+        <h1>这是要全屏的 标题</h1>
+        <div>这是要全屏的 内容</div>
+      </div>
     </section>
 
 

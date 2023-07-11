@@ -1,7 +1,7 @@
 <template>
-  <section :class="ns.b()">
+  <span :class="[ns.b(), ns.is('directive', !Boolean($slots.default))]" ref="refFullscreen">
 
-    <div :class="ns.e('zoom-out')">
+    <div v-if="!isFullscreen" :class="ns.e('zoom')" @click="onMax">
       <svg t="1689072802809" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
         p-id="4187" width="20" height="20">
         <path
@@ -10,9 +10,16 @@
       </svg>
     </div>
 
-
+    <div v-else :class="ns.e('zoom')" @click="onMin">
+      <svg t="1689076614077" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="6996" width="20" height="20">
+        <path
+          d="M366.2 181.8c-1-8-10.8-11.4-16.5-5.7l-53.1 53.1L134.2 67c-3.8-3.8-10-3.8-13.7 0L69 118.3c-3.8 3.8-3.8 10 0 13.7l162.4 162.4-53.3 53.3c-5.7 5.7-2.3 15.5 5.7 16.5l194.6 23c6.2 0.7 11.5-4.5 10.8-10.8l-23-194.6z m12.3 453.3l-194.7 23c-8 1-11.4 10.8-5.7 16.5l53.3 53.3L69 890.1c-3.8 3.8-3.8 10 0 13.7l51.5 51.4c3.8 3.8 10 3.8 13.7 0l162.4-162.3 53.1 53.1c5.7 5.7 15.5 2.3 16.5-5.7l23-194.4c0.7-6.3-4.5-11.5-10.7-10.8z m269.4-248l194.7-23c8-1 11.4-10.8 5.7-16.5L795 294.4l162.4-162.3c3.8-3.8 3.8-10 0-13.7L905.9 67c-3.8-3.8-10-3.8-13.7 0L729.7 229.2l-53.1-53.1c-5.7-5.7-15.6-2.3-16.5 5.7l-23 194.5c-0.6 6.3 4.6 11.5 10.8 10.8zM795 727.8l53.3-53.3c5.7-5.7 2.3-15.5-5.7-16.5L648 635c-6.2-0.7-11.5 4.5-10.8 10.8l23 194.6c1 8 10.8 11.4 16.5 5.7l53.1-53.1 162.4 162.3c3.8 3.8 10 3.8 13.7 0l51.5-51.4c3.8-3.8 3.8-10 0-13.7L795 727.8z m0 0"
+          p-id="6997"></path>
+      </svg>
+    </div>
     <slot></slot>
-  </section>
+  </span>
 </template>
 
 <script lang="ts">
@@ -23,9 +30,35 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useNamespace } from "@/hooks/useNamespace";
 
 const ns = useNamespace("fullscreen");
+
+const refFullscreen = ref();
+const isFullscreen = ref(false)
+
+const onMax = () => {
+  const target: any = refFullscreen.value
+  if (target.requestFullscreen) {
+    target.requestFullscreen();
+  } else if (target.webkitRequestFullScreen) {
+    target.webkitRequestFullScreen();
+  } else if (target.mozRequestFullScreen) {
+    target.mozRequestFullScreen();
+  } else if (target.msRequestFullscreen) {
+    target.msRequestFullscreen();
+  }
+  isFullscreen.value = true
+}
+
+const onMin = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  }
+
+  isFullscreen.value = false
+}
 </script>
 
 <style scoped lang = 'scss' ></style>
