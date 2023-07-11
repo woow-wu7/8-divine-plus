@@ -30,16 +30,25 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useSlots, useAttrs } from 'vue';
 import { useNamespace } from "@/hooks/useNamespace";
+
+const props = defineProps({ container: Object })
 
 const ns = useNamespace("fullscreen");
 
 const refFullscreen = ref();
 const isFullscreen = ref(false)
 
+const slots = useSlots()
+const attrs: {
+  onZoomOut?: () => void;
+  onZoomIn?: () => void;
+} = useAttrs()
+
 const onMax = () => {
-  const target: any = refFullscreen.value
+  const target: any = slots.default ? refFullscreen.value : props.container;
+
   if (target.requestFullscreen) {
     target.requestFullscreen();
   } else if (target.webkitRequestFullScreen) {
@@ -49,7 +58,9 @@ const onMax = () => {
   } else if (target.msRequestFullscreen) {
     target.msRequestFullscreen();
   }
+
   isFullscreen.value = true
+  attrs?.onZoomOut?.();
 }
 
 const onMin = () => {
@@ -58,8 +69,6 @@ const onMin = () => {
   }
 
   isFullscreen.value = false
+  attrs?.onZoomIn?.();
 }
 </script>
-
-<style scoped lang = 'scss' ></style>
-

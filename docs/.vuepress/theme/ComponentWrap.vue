@@ -16,17 +16,9 @@
     <footer>
       <div class="footer__tool" v-if="true" @click="toggle">
         <span>查看代码</span>
-        <component
-          :is="ArrowRight"
-          :class="['arrow', { 'is-down': visible }]"
-        />
+        <component :is="ArrowRight" :class="['arrow', { 'is-down': visible }]" />
       </div>
-      <transition
-        name="fade"
-        @before-enter="onBeforeEnter"
-        @enter="onEnter"
-        @leave="onLeave"
-      >
+      <transition name="fade" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
         <div class="footer__code" v-show="visible" ref="refCode">
           <template v-if="hasMd">
             <slot name="md"></slot>
@@ -79,13 +71,16 @@ const onLeave = (el: RendererElement) => {
 .component-wrap {
   margin: 10px 0px;
   border: 1px solid #f0f0f0;
+  box-sizing: border-box;
 
   header,
   main,
   footer {
     border-top: 1px solid #f0f0f0;
     padding: 20px;
+    box-sizing: border-box;
   }
+
   footer {
     padding-bottom: 0px;
   }
@@ -98,6 +93,7 @@ const onLeave = (el: RendererElement) => {
       font-weight: 700;
       color: #3eaf7c;
     }
+
     .header__subtitle {
       margin-top: 20px;
     }
@@ -105,6 +101,7 @@ const onLeave = (el: RendererElement) => {
 
   main {
     border-top: 0;
+    height: auto;
   }
 
   footer {
@@ -115,6 +112,7 @@ const onLeave = (el: RendererElement) => {
       user-select: none;
       margin-bottom: 20px;
     }
+
     .footer__code {
       background: #141414;
       overflow: hidden;

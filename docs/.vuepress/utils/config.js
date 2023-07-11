@@ -76,12 +76,15 @@ const sidebar = {
     "/components/loading.md",
     "/components/collapse.md",
     "/components/progress.md",
+    "/components/fullscreen.md",
   ],
   "/directives/": [
     "/directives/",
     "/directives/v-dv-permission.md",
     "/directives/v-dv-infinite-scroll.md",
     "/directives/v-dv-lazy.md",
+    "/directives/v-dv-loading.md",
+    "/directives/v-dv-fullscreen.md",
   ],
   "/hooks/": ["/hooks/", "/hooks/useThrottle.md"],
 };
