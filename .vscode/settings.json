@@ -25,6 +25,7 @@
     "persistedstate",
     "Pinia",
     "rgba",
+    "snabbdom",
     "srcset",
     "stackoverflow",
     "Tapable",

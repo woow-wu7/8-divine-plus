@@ -53,7 +53,10 @@
     "vue3-components",
     "typescript",
     "webpack5",
-    "vuepress2"
+    "vuepress2",
+    "hooks",
+    "vue组件库",
+    "vue3组件库"
   ],
   "license": "ISC",
   "devDependencies": {

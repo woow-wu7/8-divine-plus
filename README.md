@@ -35,7 +35,7 @@ app.mount("#app");
 
 ## Test
 
-```shell
+```Shell
 1
 Download
 git clone git@github.com:woow-wu7/8-divine-plus.git
@@ -141,3 +141,9 @@ npm run docs:dev
 #### (14) Diff-virtualDOM
 
 - [手写 diff 算法-snabbdom](https://github.com/woow-wu7/7-vue2-source-code-snabbdom)
+
+#贡献者
+
+<a href="https://github.com/woow-wu7/8-divine-plus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=woow-wu7/8-divine-plus" />
+</a>
