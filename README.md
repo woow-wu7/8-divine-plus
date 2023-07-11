@@ -33,19 +33,19 @@ app.mount("#app");
 
 ![8-divine-plus](docs/.vuepress/public/img/usage.png)
 
-## Download Test
+## Test
 
-```
+```shell
 1
-下载
+Download
 git clone git@github.com:woow-wu7/8-divine-plus.git
 
 2
-本地测试
+Local Testing
 npm run dev // or npm run test:dev
 
 3
-文档
+Document
 npm run docs:dev
 ```
 
