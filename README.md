@@ -53,7 +53,7 @@ npm run docs:dev
 
 [GitHub Discussions - 讨论区链接](https://github.com/woow-wu7/8-divine-plus/discussions)
 
-## 贡献者
+## Contributors
 
 <a href="https://github.com/woow-wu7/8-divine-plus/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=woow-wu7/8-divine-plus" />
