@@ -34,15 +34,15 @@ const navbar = [
   },
   {
     text: "组件",
-    link: "/components",
+    link: "/components/",
   },
   {
     text: "指令",
-    link: "/directives",
+    link: "/directives/",
   },
   {
     text: " Hooks",
-    link: "/hooks",
+    link: "/hooks/",
   },
   {
     text: "GitHub",
