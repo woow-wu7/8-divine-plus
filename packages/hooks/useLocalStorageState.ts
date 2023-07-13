@@ -32,16 +32,17 @@ const createUseLocalStorageState = (_storage: Storage | null) => {
     }
 
     function setStorageValue(value: any | undefined) {
-      console.log("1111222", 1111222);
       if (value === undefined) {
         storage.removeItem(key);
         state.value = undefined;
+      } else if (isFunction(value)) {
+        const newState = (value as (preState: T) => T)(state.value);
+        storage.setItem(key, JSON.stringify(newState));
+        state.value = newState;
       } else {
         storage.setItem(key, JSON.stringify(value));
         state.value = value;
       }
-
-      console.log("state.value", state.value);
     }
 
     return [state, setStorageValue];
