@@ -1,13 +1,17 @@
 import { ref } from "vue";
 
 type TIsFunction = (fn: any) => boolean;
+type TTseStorageStateReturn<T> = [T, (value: T | ((preState: T) => T)) => void];
 
 const isFunction: TIsFunction = (fn: any) => {
   return typeof fn === "function";
 };
 
 const createUseLocalStorageState = (_storage: Storage | null) => {
-  function useStorageState<T>(key: string, defaultValue: T | (() => T)) {
+  function useStorageState<T>(
+    key: string,
+    defaultValue: T | (() => T)
+  ): TTseStorageStateReturn<T> {
     const storage = _storage as Storage;
 
     const state = ref(getStorageValue());

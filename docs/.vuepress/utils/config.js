@@ -86,7 +86,11 @@ const sidebar = {
     "/directives/v-dv-loading.md",
     "/directives/v-dv-fullscreen.md",
   ],
-  "/hooks/": ["/hooks/", "/hooks/useThrottle.md"],
+  "/hooks/": [
+    "/hooks/",
+    "/hooks/useThrottle.md",
+    "/hooks/useLocalStorageState.md",
+  ],
 };
 
 const theme = defaultTheme({
