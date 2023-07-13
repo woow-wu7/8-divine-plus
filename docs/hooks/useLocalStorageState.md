@@ -7,13 +7,13 @@
 
 ```javascript
 useLocalStorageState<T>(key:string, defaultValue: T | (() => T)):
-[T, (value: T | ((preState: T) => T)) => void];
+[T, (value: T | undefined | ((preState: T) => T)) => void];
 
 参数:
 - key: string // 变量名
 - defaultValue: T | (() => T) // 任意类型，或者 返回任意类型的函数
 返回值:
-- 一个数组
+- [T, (value: T | undefined | ((preState: T) => T)) => void]
 - 第一个成员: 响应式 ref 数据
 - 第二个成员: setter 函数，用于修改 ref 响应式数据 // setter的参数可以是一个 值 或 函数
 ```

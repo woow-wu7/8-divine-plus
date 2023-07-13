@@ -1,7 +1,10 @@
 import { ref } from "vue";
 
 type TIsFunction = (fn: any) => boolean;
-type TTseStorageStateReturn<T> = [T, (value: T | ((preState: T) => T)) => void];
+type TTseStorageStateReturn<T> = [
+  T,
+  (value: T | undefined | ((preState: T) => T)) => void
+];
 
 const isFunction: TIsFunction = (fn: any) => {
   return typeof fn === "function";
@@ -35,7 +38,7 @@ const createUseLocalStorageState = (_storage: Storage | null) => {
       return defaultValue;
     }
 
-    function setStorageValue(value: any | undefined) {
+    function setStorageValue<T>(value: (T | undefined) | ((preValue: T) => T)) {
       if (value === undefined) {
         storage.removeItem(key);
         state.value = undefined;
