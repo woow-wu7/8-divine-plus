@@ -534,6 +534,13 @@
   </section>
 
   <section class="block">
+    <h3>测试 useState 测试</h3>
+    <div>{{ stateA }}</div>
+
+    <button @click="onUseState">useState</button>
+  </section>
+
+  <section class="block">
     <h3>测试 useLocalStorageState 测试</h3>
     <div>'stateLocal - 基本数据类型' {{ stateLocal }}</div>
     <div>'stateLocal2 - 引用数据类型' {{ stateLocal2 }}</div>
@@ -559,6 +566,7 @@ import icon2 from "./images/2.png";
 import { DvMessage } from "../packages/index";
 import { useThrottle } from "../packages/index";
 import { useLocalStorageState } from "../packages/index";
+import { useState } from "../packages/index";
 
 const state = reactive({
   showTestTransition: false,
@@ -588,6 +596,11 @@ const infiniteScrollState = reactive({
   count2: 10,
   loading: false,
 });
+
+const [stateA, setStateA] = useState({ count: 1 });
+const onUseState = () => {
+  setStateA({ count: 2, num: "22" });
+};
 
 const [stateLocal, setStateLocal] = useLocalStorageState("local", 1);
 const [stateLocal2, setStateLocal2] = useLocalStorageState("local2", { a: 10 });
