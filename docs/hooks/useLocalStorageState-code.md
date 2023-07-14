@@ -19,7 +19,7 @@
 <script setup>
 import Wrap from "../theme/ComponentWrap.vue";
 import { html } from "../../hooks/useThrottle-code.md";
-import { useLocalStorageState } from "../../../packages/hooks";
+import { useLocalStorageState } from "divine-plus";
 
 const [stateLocal, setStateLocal] = useLocalStorageState("local", 1);
 const [stateLocal2, setStateLocal2] = useLocalStorageState("local2", { a: 10 });

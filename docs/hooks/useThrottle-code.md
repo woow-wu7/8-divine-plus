@@ -10,7 +10,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useThrottle } from '../../../packages'
+import { useThrottle } from 'divine-plus'
 
 const count = ref(0)
 

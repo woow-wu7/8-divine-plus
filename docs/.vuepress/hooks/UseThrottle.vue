@@ -3,24 +3,28 @@
     <template v-slot:components>
       <section class="block">
         <h3>测试 useThrottle</h3>
-        <button @click="onThrottle">useThrottle</button>
 
-        {{ count }}
+        <div>
+          {{ count }}
+        </div>
+        <button @click="onThrottle">useThrottle</button>
       </section>
     </template>
   </Wrap>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 import Wrap from "../theme/ComponentWrap.vue";
 import { html } from "../../hooks/useThrottle-code.md";
-import { useThrottle } from '../../../packages'
+import { useThrottle } from "../../../packages";
 
-const count = ref(0)
+const count = ref(0);
 
-const onThrottle = useThrottle(() => {
-  count.value++
-}, { delay: 1000 })
+const onThrottle = useThrottle(
+  () => {
+    count.value++;
+  },
+  { delay: 1000 }
+);
 </script>
-
