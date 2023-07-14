@@ -554,6 +554,12 @@
     <button @click="onUseLocalStorageStateParams">setter函数参数</button>
     <button @click="onUseLocalStorageStateClear2">clear</button>
   </section>
+
+  <section class="block">
+    <h3>测试 useClickAway 测试</h3>
+    {{ useClickAwayState }}
+    <button ref="RefUseClickAway">useClickAway</button>
+  </section>
 </template>
 
 <script setup>
@@ -567,6 +573,7 @@ import { DvMessage } from "../packages/index";
 import { useThrottle } from "../packages/index";
 import { useLocalStorageState } from "../packages/index";
 import { useState } from "../packages/index";
+import { useClickAway } from "../packages/index";
 
 const state = reactive({
   showTestTransition: false,
@@ -596,6 +603,12 @@ const infiniteScrollState = reactive({
   count2: 10,
   loading: false,
 });
+
+const RefUseClickAway = ref();
+const useClickAwayState = ref(1);
+useClickAway(() => {
+  useClickAwayState.value = useClickAwayState.value + 1;
+}, RefUseClickAway);
 
 const [stateA, setStateA] = useState({ count: 1 });
 const onUseState = () => {
