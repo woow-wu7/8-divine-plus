@@ -1,6 +1,6 @@
 # useThrottle 截流函数
 
-## 函数签名
+### 函数签名
 
 - useThrottle(fn, options)
   - 参数
@@ -10,7 +10,7 @@
       - responsive: 是否响应式数据
       - immediate: 是否立执行
 
-```
+```typescript
 type TOptions = {
   delay: number;
   responsive?: boolean;
@@ -20,6 +20,6 @@ type TOptions = {
 type TUseThrottle = (fn: (...args: any[]) => any, options: TOptions) => any;
 ```
 
-## 基本用法
+### 基本用法
 
 <UseThrottle />

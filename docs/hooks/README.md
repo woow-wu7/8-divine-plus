@@ -8,7 +8,7 @@
 
 ### 使用
 
-```
+```typescript
 // example
-import { useThrottle } from 'divine-plus';
+import { useThrottle } from "divine-plus";
 ```

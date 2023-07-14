@@ -5,7 +5,7 @@
 
 ### 函数签名
 
-```javascript
+```typescript
 useLocalStorageState<T>(key:string, defaultValue: T | (() => T)):
 [T, (value: T | undefined | ((preState: T) => T)) => void];
 
@@ -20,11 +20,11 @@ useLocalStorageState<T>(key:string, defaultValue: T | (() => T)):
 
 ### 基本用法
 
-```
+```javascript
 const [state, setState] = useLocalStorageState("key", 1);
 
-setState(1)
-setState((preState) => ({...preState, other: 1}))
+setState(1);
+setState((preState) => ({ ...preState, other: 1 }));
 ```
 
 ### 具体示例

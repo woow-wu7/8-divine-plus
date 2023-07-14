@@ -89,6 +89,7 @@ const sidebar = {
   "/hooks/": [
     "/hooks/",
     "/hooks/useThrottle.md",
+    "/hooks/useClickAway.md",
     "/hooks/useLocalStorageState.md",
   ],
 };
