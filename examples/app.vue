@@ -557,8 +557,13 @@
 
   <section class="block">
     <h3>测试 useClickAway 测试</h3>
-    {{ useClickAwayState }}
+    <div>
+      {{ useClickAwayState }}
+    </div>
     <button ref="RefUseClickAway">useClickAway</button>
+    <br />
+    <br />
+    <button ref="RefUseClickAway2">useClickAway2</button>
   </section>
 </template>
 
@@ -605,10 +610,15 @@ const infiniteScrollState = reactive({
 });
 
 const RefUseClickAway = ref();
+const RefUseClickAway2 = ref();
 const useClickAwayState = ref(1);
-useClickAway(() => {
-  useClickAwayState.value = useClickAwayState.value + 1;
-}, RefUseClickAway);
+useClickAway(
+  () => {
+    useClickAwayState.value = useClickAwayState.value + 1;
+  },
+  [RefUseClickAway, RefUseClickAway2],
+  ["click", "contextmenu"]
+);
 
 const [stateA, setStateA] = useState({ count: 1 });
 const onUseState = () => {

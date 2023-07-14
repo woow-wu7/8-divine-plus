@@ -28,7 +28,7 @@ export const useClickAway: TUseClickAway = (
   const handler = (e: any) => {
     const isChild = targetList.some((targetItem) => {
       const target = getTarget(targetItem);
-      return target && target.contains(e.target);
+      return !target || target?.contains(e.target);
     });
 
     if (isChild) return;
