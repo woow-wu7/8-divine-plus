@@ -1,4 +1,4 @@
-import { isRef } from "vue";
+import { isRef, onUnmounted } from "vue";
 import type { Ref } from "vue";
 
 type TTarget = Ref<HTMLElement> | HTMLElement;
@@ -38,5 +38,11 @@ export const useClickAway: TUseClickAway = (
 
   eventsList.forEach((eventType) => {
     document.addEventListener(eventType, handler, false);
+  });
+
+  onUnmounted(() => {
+    eventsList.forEach((eventType) => {
+      document.removeEventListener(eventType, handler, false);
+    });
   });
 };
