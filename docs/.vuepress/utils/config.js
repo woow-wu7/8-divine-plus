@@ -85,6 +85,7 @@ const sidebar = {
     "/directives/v-dv-lazy.md",
     "/directives/v-dv-loading.md",
     "/directives/v-dv-fullscreen.md",
+    "/directives/v-dv-click-away.md",
   ],
   "/hooks/": [
     "/hooks/",

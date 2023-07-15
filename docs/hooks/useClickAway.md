@@ -1,6 +1,7 @@
 # useClickAway 监听元素外点击
 
 - 用于监听元素外的鼠标点击事件
+- 本库同时支持 `指令方式-监听元素外的点击事件` `v-dv-click-away`，详见 [directives](http://120.53.220.141:8090/directives/)
 
 ### 函数签名
 
