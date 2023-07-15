@@ -10,5 +10,5 @@
 
 ```typescript
 // example
-import { useThrottle } from "divine-plus";
+import { useLocalStorageState, useClickAway, useTitle } from "divine-plus";
 ```
