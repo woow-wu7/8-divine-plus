@@ -1,13 +1,15 @@
 {
   "name": "divine-plus",
-  "version": "1.1.27",
+  "version": "1.1.30",
   "description": "vue3-ui",
   "author": "woow_wu7",
-  "contributors": [{
-    "name": "woow_wu7",
-    "email": "woow.wu7@gmail.com",
-    "url": "https://github.com/woow-wu7"
-  }],
+  "contributors": [
+    {
+      "name": "woow_wu7",
+      "email": "woow.wu7@gmail.com",
+      "url": "https://github.com/woow-wu7"
+    }
+  ],
   "homepage": "http://120.53.220.141:8090/",
   "main": "dist/divine-plus.js",
   "module": "dist/divine-plus.js",
@@ -31,19 +33,15 @@
   "#files": "npm包作为依赖安装时要包括的文件，格式是文件正则的数组, [*]表示所有文件",
   "scripts": {
     "#build": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js --mode=production这里页可以指定mode，但是没必要，因为我们在webpack配置文件中已经设置了mode",
-
     "server": "cnpm run dev",
     "serve": "cnpm run dev",
     "start": "cnpm run dev",
     "dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.js",
     "build:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack --config build/webpack.config.js",
-
     "build:js": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.prod.js",
     "build:scss": "cross-env NODE_ENV=production HOST_ENV=prod webpack --config build/webpack.config.scss.prod.js",
     "build": "cnpm run build:js && cnpm run build:scss",
-
     "test:dev": "cross-env NODE_ENV=development HOST_ENV=dev webpack serve --config build/webpack.config.dev.js --mode=development",
-    
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
@@ -89,6 +87,7 @@
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
     "url-loader": "^4.1.1",

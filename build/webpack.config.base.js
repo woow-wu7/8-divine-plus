@@ -116,7 +116,7 @@ module.exports = {
             },
           },
           // {
-          //   loader: "myReplace-loader",
+          //   loader: "myReplace-loader", // 通过 webpack.config.js 中的 resolveLoader 配置项，指定 loader 的寻找
           //   options: {
           //     name: "####",
           //   },

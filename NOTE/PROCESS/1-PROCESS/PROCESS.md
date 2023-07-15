@@ -42,11 +42,16 @@ npm install clean-webpack-plugin -D ---------------------------- 删除打包后
 npm install copy-webpack-plugin -D ----------------------------- 拷贝文件，用来拷贝 global.d.ts 到 output
 npm install eslint eslint-loader -D ---------------------------- lint工具，在 .eslintrc.js 中配置规则
 
-Webpack内置组件
+Webpack内置插件
 - webpack.DefinePlugin() --------------------------------------- 定义浏览器环境变量
 - webpack.HotModuleReplacementPlugin() ------------------------- 热更新
 - webpack.DllPlugin -------------------------------------------- 生成第三方库的动态链接库 manifest.json
 - webpack.DllReferencePlugin ----------------------------------- 引用动态链接库，不存在再进行打包
+
+Webpack插件
+- npm install clean-webpack-plugin -D -------------------------- 打包之前，删除之前的output文件夹所有内容
+- npm install copy-webpack-plugin -D --------------------------- 复制文件
+- npm install terser-webpack-plugin -D ------------------------- 压缩，删除console等 // terse 是简洁的意思 // 详见: 本项目/build/webpack.config.prod.js
 
 npm install loader-utils -D ------------------------------------ loader工具，用来获取loader中的options对象
 

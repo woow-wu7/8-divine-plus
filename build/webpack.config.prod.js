@@ -1,4 +1,5 @@
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 const { merge } = require("webpack-merge");
 const base = require("./webpack.config.base");
 
@@ -40,6 +41,23 @@ module.exports = merge(base, {
   externals: {
     // 不打包 vue 依赖，因为本项目并不是vue项目
     vue: "vue",
+  },
+
+  optimization: {
+    minimize: true,
+    minimizer: [
+      // TerserPlugin
+      //- https://webpack.docschina.org/plugins/terser-webpack-plugin/
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            comments: false, // 删除注释
+            drop_console: true, // 默认值就是true，即默认就会删除console，如需要保留设置 drop_console: false
+          },
+        },
+        extractComments: false, // 不创建单独的主食文件
+      }),
+    ],
   },
 });
 

@@ -2,6 +2,17 @@
 // - this.getOptions() 来代替 loader-utils 插件，我们就不需要添加
 // const loaderUtils = require("loader-utils");
 
+// 1
+// loader
+// - 特点
+//   - loader 就是一个函数，函数的第一个参数就是 ( 源码字符串 )
+// - 注意点
+//   - loader 不能写成 ( 箭头函数 )，因为函数内部需要使用 ( this ) 来获取更多的 api
+//   - 比如: this.query this.async this.callback this.getOptions()
+//   - 扩展:
+//     - webpack5 自带 this.getOptions
+//     - this.getOptions() 来代替 loader-utils 插件，用来获取 module: { rules: [{test, use: [ { loader, options } ]}] } 中的 options 对象
+
 function myReplaceLoader(source) {
   const options = this.getOptions() || {};
   const callback = this.async();
@@ -73,7 +84,7 @@ module.exports = myReplaceLoader;
 // // 一共有两种方法
 // // 方法1
 // // - 在 webpack.config.js 中使用 resolveLoader 配置项来配置
-// // - 然后在module.rules 中使用
+// // - 然后在 module.rules 中使用
 // resolveLoader: {
 //   // 表示在寻找loader时，先去node_modules中找，再去loaders文件夹中找
 //   modules: ["node_modules", path.resolve(__dirname, "./loaders/")],
