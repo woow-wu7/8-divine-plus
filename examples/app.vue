@@ -556,7 +556,7 @@
   </section>
 
   <section class="block">
-    <h3>测试 useClickAway 测试</h3>
+    <h3>测试 useClickAway hooks 测试</h3>
     <div>
       {{ useClickAwayState }}
     </div>
@@ -564,6 +564,14 @@
     <br />
     <br />
     <button ref="RefUseClickAway2">useClickAway2</button>
+  </section>
+
+  <section class="block">
+    <h3>测试 useClickAway 指令 测试</h3>
+    <div>
+      {{ useClickAwayState2 }}
+    </div>
+    <button v-dv-click-away="useClickAwayObj">useClickAway</button>
   </section>
 </template>
 
@@ -612,6 +620,7 @@ const infiniteScrollState = reactive({
 const RefUseClickAway = ref();
 const RefUseClickAway2 = ref();
 const useClickAwayState = ref(1);
+const useClickAwayState2 = ref(1);
 useClickAway(
   () => {
     useClickAwayState.value = useClickAwayState.value + 1;
@@ -619,6 +628,14 @@ useClickAway(
   [RefUseClickAway, RefUseClickAway2],
   ["click", "contextmenu"]
 );
+
+const useClickAwayObj = [
+  () => {
+    useClickAwayState2.value = useClickAwayState2.value + 1;
+  },
+  [RefUseClickAway, RefUseClickAway2],
+  ["click", "contextmenu"],
+];
 
 const [stateA, setStateA] = useState({ count: 1 });
 const onUseState = () => {

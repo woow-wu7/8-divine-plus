@@ -35,7 +35,12 @@ import CollapseTransition from "../components/collapse/collapse-transition.vue";
 import Message from "../components/message/message";
 
 // directives
-import { vDvPermission, vDvLazy, vDvInfiniteScroll } from "../directives";
+import {
+  vDvPermission,
+  vDvLazy,
+  vDvInfiniteScroll,
+  vDvClickAway,
+} from "../directives";
 
 // icons
 // - 用于 breadcrumb 组件的 separator-icon
@@ -86,7 +91,7 @@ const functions: {
   type?: any;
 }[] = [Message];
 
-const directives = [vDvPermission, vDvLazy, vDvInfiniteScroll];
+const directives = [vDvPermission, vDvLazy, vDvInfiniteScroll, vDvClickAway];
 
 // 1
 // 插件声明：声明所有插件
