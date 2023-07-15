@@ -567,11 +567,18 @@
   </section>
 
   <section class="block">
-    <h3>测试 useClickAway 指令 测试</h3>
+    <h3>测试 v-dv-click-away 指令 测试</h3>
     <div>
       {{ useClickAwayState2 }}
     </div>
     <button v-dv-click-away="useClickAwayObj">useClickAway</button>
+  </section>
+
+  <section class="block">
+    <button @click="onDestroy">卸载/挂载组件</button>
+    <span v-if="isShowTitle">
+      <UserTitleTest />
+    </span>
   </section>
 </template>
 
@@ -587,6 +594,7 @@ import { useThrottle } from "../packages/index";
 import { useLocalStorageState } from "../packages/index";
 import { useState } from "../packages/index";
 import { useClickAway } from "../packages/index";
+import UserTitleTest from "./components/UserTitleTest.vue";
 
 const state = reactive({
   showTestTransition: false,
@@ -616,6 +624,11 @@ const infiniteScrollState = reactive({
   count2: 10,
   loading: false,
 });
+
+const isShowTitle = ref(true);
+const onDestroy = () => {
+  isShowTitle.value = !isShowTitle.value;
+};
 
 const RefUseClickAway = ref();
 const RefUseClickAway2 = ref();
