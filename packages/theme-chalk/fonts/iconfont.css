@@ -1,27 +1,18 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4169159 */
-  src:
-    url("//at.alicdn.com/t/c/font_4169159_bh5sfaphb96.woff2?t=1689498616200") format("woff2"),
-    url("//at.alicdn.com/t/c/font_4169159_bh5sfaphb96.woff?t=1689498616200") format("woff"),
-    url("//at.alicdn.com/t/c/font_4169159_bh5sfaphb96.ttf?t=1689498616200") format("truetype");
+  src: url('iconfont.woff2?t=1689498659550') format('woff2'),
+       url('iconfont.woff?t=1689498659550') format('woff'),
+       url('iconfont.ttf?t=1689498659550') format('truetype');
 }
 
-[class*="dv-icon"],
-[class^="dv-icon"],
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
-
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  vertical-align: baseline;
-  display: inline-block;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .dv-icon-shezhi:before {
   content: "\e70f";
 }
@@ -61,3 +52,4 @@
 .dv-icon-youjiantou:before {
   content: "\e612";
 }
+

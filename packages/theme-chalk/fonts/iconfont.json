@@ -1,0 +1,79 @@
+{
+  "id": "4169159",
+  "name": "DivinePlus",
+  "font_family": "iconfont",
+  "css_prefix_text": "dv-icon-",
+  "description": "DivinePlus vue3组件库",
+  "glyphs": [
+    {
+      "icon_id": "3456457",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e70f",
+      "unicode_decimal": 59151
+    },
+    {
+      "icon_id": "4611765",
+      "name": "对勾",
+      "font_class": "duigou",
+      "unicode": "ebe6",
+      "unicode_decimal": 60390
+    },
+    {
+      "icon_id": "4766293",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "5485616",
+      "name": "错误",
+      "font_class": "cuowu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "8106217",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "11249856",
+      "name": "star",
+      "font_class": "star1",
+      "unicode": "e859",
+      "unicode_decimal": 59481
+    },
+    {
+      "icon_id": "29947",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "10246127",
+      "name": "star",
+      "font_class": "star",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "13743965",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "1638283",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}
