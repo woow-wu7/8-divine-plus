@@ -22,6 +22,8 @@ ul {
   flex-flow: wrap;
 
   border: 1px solid #eaecef;
+  border-top: none;
+  border-bottom: none;
   box-sizing: border-box;
 }
 
@@ -35,6 +37,7 @@ li {
   align-items: center;
   padding: 10px 0;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 li:hover {
@@ -46,11 +49,22 @@ li:hover {
   }
 }
 
+li:nth-child(4n) {
+  border-right: none;
+}
+li:nth-child(4 + n) {
+  border-right: none;
+}
+
 .dv-icon__iconfont {
   font-size: 40px;
 }
 .dv-icon-class-name {
   color: #99a9bf;
   font-size: 14px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

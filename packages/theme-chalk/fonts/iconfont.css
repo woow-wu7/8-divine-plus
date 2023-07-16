@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4169159 */
-  src: url('iconfont.woff2?t=1689498659550') format('woff2'),
-       url('iconfont.woff?t=1689498659550') format('woff'),
-       url('iconfont.ttf?t=1689498659550') format('truetype');
+  src: url('iconfont.woff2?t=1689500233843') format('woff2'),
+       url('iconfont.woff?t=1689500233843') format('woff'),
+       url('iconfont.ttf?t=1689500233843') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,62 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.dv-icon-goodnight:before {
+  content: "\e6eb";
+}
+
+.dv-icon-goods:before {
+  content: "\e82c";
+}
+
+.dv-icon-shanchu:before {
+  content: "\e629";
+}
+
+.dv-icon-shuaxin:before {
+  content: "\e62b";
+}
+
+.dv-icon-suoxiao:before {
+  content: "\e62c";
+}
+
+.dv-icon-xiazai:before {
+  content: "\e62e";
+}
+
+.dv-icon-jianhao:before {
+  content: "\eaf5";
+}
+
+.dv-icon-jianshao:before {
+  content: "\e8b1";
+}
+
+.dv-icon-add:before {
+  content: "\e664";
+}
+
+.dv-icon-hongjiu:before {
+  content: "\10121";
+}
+
+.dv-icon-naika:before {
+  content: "\10122";
+}
+
+.dv-icon-kafei:before {
+  content: "\10123";
+}
+
+.dv-icon-shouye:before {
+  content: "\10124";
+}
+
+.dv-icon-jieping:before {
+  content: "\e6d1";
 }
 
 .dv-icon-shezhi:before {

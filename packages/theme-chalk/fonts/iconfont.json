@@ -6,6 +6,104 @@
   "description": "DivinePlus vue3组件库",
   "glyphs": [
     {
+      "icon_id": "12865674",
+      "name": "good night",
+      "font_class": "goodnight",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "34452863",
+      "name": "goods",
+      "font_class": "goods",
+      "unicode": "e82c",
+      "unicode_decimal": 59436
+    },
+    {
+      "icon_id": "29786278",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "29786299",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "29786301",
+      "name": "缩小",
+      "font_class": "suoxiao",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "29786315",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "5387532",
+      "name": "减号",
+      "font_class": "jianhao",
+      "unicode": "eaf5",
+      "unicode_decimal": 60149
+    },
+    {
+      "icon_id": "11372671",
+      "name": "减少",
+      "font_class": "jianshao",
+      "unicode": "e8b1",
+      "unicode_decimal": 59569
+    },
+    {
+      "icon_id": "15838424",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "36403816",
+      "name": "红酒",
+      "font_class": "hongjiu",
+      "unicode": "10121",
+      "unicode_decimal": 65825
+    },
+    {
+      "icon_id": "36403819",
+      "name": "奶咖",
+      "font_class": "naika",
+      "unicode": "10122",
+      "unicode_decimal": 65826
+    },
+    {
+      "icon_id": "36403832",
+      "name": "咖啡",
+      "font_class": "kafei",
+      "unicode": "10123",
+      "unicode_decimal": 65827
+    },
+    {
+      "icon_id": "36403837",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "10124",
+      "unicode_decimal": 65828
+    },
+    {
+      "icon_id": "36411741",
+      "name": "截屏",
+      "font_class": "jieping",
+      "unicode": "e6d1",
+      "unicode_decimal": 59089
+    },
+    {
       "icon_id": "3456457",
       "name": "设置",
       "font_class": "shezhi",
