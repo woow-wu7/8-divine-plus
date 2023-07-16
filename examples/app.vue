@@ -580,6 +580,13 @@
       <UserTitleTest />
     </span>
   </section>
+
+  <section class="block">
+    <h3>dv-icon 测试</h3>
+    <i class="dv-icon-star"></i>
+
+    <dv-icon name="star" />
+  </section>
 </template>
 
 <script setup>

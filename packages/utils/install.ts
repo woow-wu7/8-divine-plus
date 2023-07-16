@@ -5,6 +5,8 @@ import type { TDirective } from "../directives/utils";
 // 注意：
 // - 这里没用 @ 是因为 vuepress2 使用文档中没法配置 client 端的别名
 // - 核心原因是本库基于了两套构建工具 webpack 和 vite ，会有不兼容的情况
+import DvIcon from "../components/icon/icon.vue";
+
 import Divider from "../components/divider/index.vue";
 import Container from "../components/container/container.vue";
 import Header from "../components/container/header.vue";
@@ -13,6 +15,7 @@ import Aside from "../components/container/aside.vue";
 import Main from "../components/container/main.vue";
 import Row from "../components/row/index.vue";
 import Col from "../components/col/index.vue";
+
 import Tag from "../components/tag/index.vue";
 import Badge from "../components/badge/index.vue";
 import Backtop from "../components/backtop/index.vue";
@@ -54,6 +57,8 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 // const components = requireComps();
 
 const components = [
+  DvIcon,
+
   Container,
   Header,
   Footer,
