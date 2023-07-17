@@ -12,9 +12,9 @@
     >
       {{ message }}
 
-      <img
+      <DvIcon
+        name="cuowu"
         v-if="showClose"
-        :src="closeIconSvg"
         @click="onCloseMessage"
         :class="ns.e('closeBtn')"
       />
@@ -32,9 +32,9 @@ export default {
 import { onMounted, reactive, computed } from "vue";
 import { useNamespace } from "@/hooks/useNamespace";
 import { definePropType } from "../../utils/definePropType";
-import closeIconSvg from "./static/close.svg";
 import { getLastOffset } from "./instances";
 import type { CSSProperties } from "vue";
+import DvIcon from "@/components/icon/icon.vue";
 
 const ns = useNamespace("message");
 

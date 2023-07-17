@@ -126,10 +126,10 @@ const onLeave = (el: RendererElement) => {
   .arrow {
     margin-left: 10px;
     margin-bottom: 2px;
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
     transition: all 0.3s;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .is-down {

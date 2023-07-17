@@ -91,9 +91,9 @@
     transform: translateY(-50%);
     cursor: pointer;
     color: $--message-close-icon-color;
-    font-size: $--message-close-size;
-    width: 16px;
-    height: 16px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
 
     &:focus {
       outline-width: 0;
