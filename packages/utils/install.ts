@@ -46,8 +46,7 @@ import {
 } from "../directives";
 
 // icons
-// - 用于 breadcrumb 组件的 separator-icon
-import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+// - 用于 breadcrumb 组件的 separator-
 
 // 注意
 // 这里不使用 require.context 是因为本项目使用了两套构建方式，require.context 只在webpack环境中存在
@@ -124,12 +123,6 @@ export const installDirectives = (app: App) => {
   directives.forEach((directive: TDirective) => {
     app.directive(directive.name, directive.options);
   });
-};
-
-export const installIcons = (app: App) => {
-  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-    app.component(key, component);
-  }
 };
 
 // export const installRouter = (app: App) => {

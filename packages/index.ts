@@ -4,7 +4,6 @@ import {
   installComponents,
   installFunctions,
   installDirectives,
-  installIcons,
 } from "./utils/index";
 
 import DvMessage from "./components/message/index";
@@ -27,7 +26,6 @@ const install = (app: App, router?: any) => {
   installComponents(app);
   installFunctions(app);
   installDirectives(app);
-  installIcons(app);
 
   DvLoading.install(app);
   DvFullscreen.install(app);
