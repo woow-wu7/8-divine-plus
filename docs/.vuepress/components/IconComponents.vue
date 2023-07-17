@@ -74,8 +74,7 @@ li:hover .dv-icon-class-name {
   color: #409eff;
 }
 
-li:nth-child(4n),
-li:nth-child(4 + n) {
+li:nth-child(4n) {
   border-right: none;
 }
 
