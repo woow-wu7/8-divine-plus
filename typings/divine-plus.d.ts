@@ -10,6 +10,8 @@ import { DvMain } from "./packages/main";
 import { DvRow } from "./packages/row";
 import { DvCol } from "./packages/col";
 
+import { DvIcon } from "./packages/icon";
+
 import { DvEmpty } from "./packages/empty";
 import { DvBacktop } from "./packages/backtop";
 import { DvTag } from "./packages/tag";
@@ -51,6 +53,8 @@ export const Main: DvMain;
 
 export const Row: DvRow;
 export const Col: DvCol;
+
+export const Icon: DvIcon;
 
 export const Breadcrumb: DvBreadcrumb;
 export const BreadcrumbItem: DvBreadcrumbItem;
