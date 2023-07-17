@@ -583,9 +583,10 @@
 
   <section class="block">
     <h3>dv-icon 测试</h3>
-    <i class="dv-icon-star"></i>
+    <i class="dv-icon-star" style="color: blueviolet; fontsize: 30px"></i>
 
-    <dv-icon name="star" />
+    <dv-icon name="star" color="red" size="30" />
+    <dv-icon name="star" class="star" />
   </section>
 </template>
 
@@ -952,5 +953,10 @@ const onThrottle = useThrottle(() => console.log("1", 1), { delay: 1000 });
 <style>
 .dvTagStyle {
   margin-right: 10px;
+}
+
+.star {
+  color: blue;
+  font-size: 60px !important;
 }
 </style>

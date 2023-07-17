@@ -15,7 +15,10 @@
   transform: translateX(-50%);
 
   background-color: $--message-background-color; // $--message-background-color: #edf2fc !default;
-  transition: opacity 0.3s, transform 0.4s, top 0.4s;
+  transition:
+    opacity 0.3s,
+    transform 0.4s,
+    top 0.4s;
   overflow: hidden;
   padding: $--message-padding; // $--message-padding: 15px 15px 15px 20px !default;
   display: flex;
@@ -89,7 +92,7 @@
     cursor: pointer;
     color: $--message-close-icon-color;
     font-size: $--message-close-size;
-    with: 16px;
+    width: 16px;
     height: 16px;
 
     &:focus {

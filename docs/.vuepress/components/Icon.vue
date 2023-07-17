@@ -7,8 +7,8 @@
         <i class="dv-icon-star" style="color: red; font-size: 30px"></i> &nbsp;
         <i class="dv-icon-loading loading-animate"></i> &nbsp;
 
-        <dv-icon name="star" /> &nbsp;
-        <dv-icon name="search" />
+        <dv-icon name="star" color="red" size="20" /> &nbsp;
+        <dv-icon name="search" class="search" />
       </section>
     </template>
   </Wrap>
@@ -32,5 +32,10 @@ import { html } from "../../components/icon-code.md";
   color: blueviolet;
   font-size: 30px;
   animation: round 1s ease-in-out 0s infinite;
+}
+
+.search {
+  color: blue;
+  font-size: 30px !important;
 }
 </style>

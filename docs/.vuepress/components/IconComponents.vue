@@ -1,7 +1,12 @@
 <template>
   <ul>
-    <li v-for="item in IconJson.glyphs">
-      <dv-icon :name="item.font_class" class="dv-icon__iconfont"></dv-icon>
+    <li v-for="item in IconJson.glyphs" @click="onCopy(item)">
+      <dv-icon
+        :name="item.font_class"
+        class="dv-icon__iconfont"
+        useClass
+      ></dv-icon>
+
       <div class="dv-icon-class-name">dv-icon-{{ item.font_class }}</div>
     </li>
   </ul>
@@ -9,6 +14,25 @@
 
 <script setup>
 import IconJson from "../../../packages/theme-chalk/fonts/iconfont.json";
+import { copy } from "../../../packages/utils";
+import { DvMessage } from "../../../packages";
+
+const onCopy = (item) => {
+  try {
+    const icon = `<i class="dv-icon-${item.font_class}"></i>`;
+    copy(icon);
+
+    DvMessage({
+      message: `${icon} 复制成功`,
+      showClose: true,
+      type: "success",
+      duration: 1000,
+      onClose: () => {
+        console.log("close");
+      },
+    });
+  } catch (e) {}
+};
 </script>
 
 <style scoped>
@@ -44,10 +68,10 @@ li {
 li:hover {
   color: #409eff;
   cursor: pointer;
+}
 
-  .dv-icon-class-name {
-    color: #409eff;
-  }
+li:hover .dv-icon-class-name {
+  color: #409eff;
 }
 
 li:nth-child(4n),

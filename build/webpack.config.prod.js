@@ -51,7 +51,7 @@ module.exports = merge(base, {
       new TerserPlugin({
         terserOptions: {
           compress: {
-            comments: false, // 删除注释
+            // comments: false, // 删除注释
             drop_console: true, // 默认值就是true，即默认就会删除console，如需要保留设置 drop_console: false
           },
         },
