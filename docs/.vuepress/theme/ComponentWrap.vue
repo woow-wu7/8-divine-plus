@@ -16,9 +16,14 @@
     <footer>
       <div class="footer__tool" v-if="true" @click="toggle">
         <span>查看代码</span>
-        <component :is="ArrowRight" :class="['arrow', { 'is-down': visible }]" />
+        <dv-icon name="youjiantou" :class="['arrow', { 'is-down': visible }]" />
       </div>
-      <transition name="fade" @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+      <transition
+        name="fade"
+        @before-enter="onBeforeEnter"
+        @enter="onEnter"
+        @leave="onLeave"
+      >
         <div class="footer__code" v-show="visible" ref="refCode">
           <template v-if="hasMd">
             <slot name="md"></slot>
@@ -32,7 +37,6 @@
 
 <script setup lang="ts">
 import { ref, useSlots, computed } from "vue";
-import { ArrowRight } from "@element-plus/icons-vue";
 import type { RendererElement } from "@vue/runtime-core";
 
 const visible = ref(false);
@@ -121,9 +125,11 @@ const onLeave = (el: RendererElement) => {
 
   .arrow {
     margin-left: 10px;
-    height: 16px;
-    width: 16px;
+    margin-bottom: 2px;
+    height: 18px;
+    width: 18px;
     transition: all 0.3s;
+    font-size: 18px;
   }
 
   .is-down {

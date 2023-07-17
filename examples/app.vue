@@ -26,7 +26,7 @@
 
     <section class="block">
       <h4>Breadcrumb测试</h4>
-      <DvBreadcrumb :separator-icon="ArrowRight">
+      <DvBreadcrumb separator-icon="youjiantou">
         <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
         <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
         <DvBreadcrumbItem>详情</DvBreadcrumbItem>
@@ -592,7 +592,6 @@
 
 <script setup>
 import { reactive, ref, onMounted, getCurrentInstance, computed } from "vue";
-import { ArrowRight } from "@element-plus/icons-vue";
 import ContainerMd from "../docs/components/container-code.md";
 import VModelTestFather from "./components/v-model-test-father.vue";
 import ProviderTest from "./components/provide-test.vue";

@@ -26,17 +26,8 @@
 //     - background: mix(red, white, 70%);
 // ```
 
-@mixin genTheme(
-  $backgroundColorWeight,
-  $borderColorWeight,
-  $fontColorWeight,
-  $hoverColorWeight
-) {
-  background-color: mix(
-    $--tag-primary-color,
-    $--color-white,
-    $backgroundColorWeight
-  );
+@mixin genTheme($backgroundColorWeight, $borderColorWeight, $fontColorWeight, $hoverColorWeight) {
+  background-color: mix($--tag-primary-color, $--color-white, $backgroundColorWeight);
   border-color: mix($--tag-primary-color, $--color-white, $borderColorWeight);
   color: mix($--tag-primary-color, $--color-white, $fontColorWeight);
 
@@ -48,20 +39,12 @@
     color: mix($--tag-primary-color, $--color-white, $fontColorWeight);
     &:hover {
       color: $--color-white;
-      background-color: mix(
-        $--tag-primary-color,
-        $--color-white,
-        $hoverColorWeight
-      );
+      background-color: mix($--tag-primary-color, $--color-white, $hoverColorWeight);
     }
   }
 
   &.dv-tag--info {
-    background-color: mix(
-      $--tag-info-color,
-      $--color-white,
-      $backgroundColorWeight
-    );
+    background-color: mix($--tag-info-color, $--color-white, $backgroundColorWeight);
     border-color: mix($--tag-info-color, $--color-white, $borderColorWeight);
     color: mix($--tag-info-color, $--color-white, $fontColorWeight);
 
@@ -73,21 +56,13 @@
       color: mix($--tag-info-color, $--color-white, $fontColorWeight);
       &:hover {
         color: $--color-white;
-        background-color: mix(
-          $--tag-info-color,
-          $--color-white,
-          $hoverColorWeight
-        );
+        background-color: mix($--tag-info-color, $--color-white, $hoverColorWeight);
       }
     }
   }
 
   &.dv-tag--success {
-    background-color: mix(
-      $--tag-success-color,
-      $--color-white,
-      $backgroundColorWeight
-    );
+    background-color: mix($--tag-success-color, $--color-white, $backgroundColorWeight);
     border-color: mix($--tag-success-color, $--color-white, $borderColorWeight);
     color: mix($--tag-success-color, $--color-white, $fontColorWeight);
 
@@ -99,21 +74,13 @@
       color: mix($--tag-success-color, $--color-white, $fontColorWeight);
       &:hover {
         color: $--color-white;
-        background-color: mix(
-          $--tag-success-color,
-          $--color-white,
-          $hoverColorWeight
-        );
+        background-color: mix($--tag-success-color, $--color-white, $hoverColorWeight);
       }
     }
   }
 
   &.dv-tag--warning {
-    background-color: mix(
-      $--tag-warning-color,
-      $--color-white,
-      $backgroundColorWeight
-    );
+    background-color: mix($--tag-warning-color, $--color-white, $backgroundColorWeight);
     border-color: mix($--tag-warning-color, $--color-white, $borderColorWeight);
     color: mix($--tag-warning-color, $--color-white, $fontColorWeight);
 
@@ -125,21 +92,13 @@
       color: mix($--tag-warning-color, $--color-white, $fontColorWeight);
       &:hover {
         color: $--color-white;
-        background-color: mix(
-          $--tag-warning-color,
-          $--color-white,
-          $hoverColorWeight
-        );
+        background-color: mix($--tag-warning-color, $--color-white, $hoverColorWeight);
       }
     }
   }
 
   &.dv-tag--danger {
-    background-color: mix(
-      $--tag-danger-color,
-      $--color-white,
-      $backgroundColorWeight
-    );
+    background-color: mix($--tag-danger-color, $--color-white, $backgroundColorWeight);
     border-color: mix($--tag-danger-color, $--color-white, $borderColorWeight);
     color: mix($--tag-danger-color, $--color-white, $fontColorWeight);
 
@@ -151,11 +110,7 @@
       color: mix($--tag-danger-color, $--color-white, $fontColorWeight);
       &:hover {
         color: $--color-white;
-        background-color: mix(
-          $--tag-danger-color,
-          $--color-white,
-          $hoverColorWeight
-        );
+        background-color: mix($--tag-danger-color, $--color-white, $hoverColorWeight);
       }
     }
   }
@@ -181,7 +136,7 @@
     text-align: center;
     position: relative;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     height: 16px;
     width: 16px;
     line-height: 16px;

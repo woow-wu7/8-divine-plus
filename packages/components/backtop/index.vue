@@ -2,11 +2,12 @@
   <transition :class="`${ns.namespace.value}-fade-in`">
     <section v-if="state.visible" :class="[ns.b()]" :style="styles">
       <slot>
-        <component
-          :is="CaretTop"
-          :class="ns.e('icon')"
+        <DvIcon
+          name="youjiantou"
+          style="transform: rotate(-90deg)"
+          size="50"
           @click.stop="handleClick"
-        ></component>
+        />
       </slot>
     </section>
   </transition>
@@ -21,7 +22,7 @@ export default {
 <script setup lang="ts">
 import { computed, watch, reactive, onMounted } from "vue";
 import { useEventListener, useThrottleFn } from "@vueuse/core";
-import { CaretTop } from "@element-plus/icons-vue";
+import DvIcon from "@/components/icon/icon.vue";
 import { useNamespace } from "../../hooks/useNamespace";
 import { definePropType } from "../../utils/definePropType";
 import { easeInOutCubic } from "./utils";

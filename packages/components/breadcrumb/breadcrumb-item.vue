@@ -4,7 +4,7 @@
       <slot></slot>
     </span>
     <span v-if="separatorIcon" :class="ns.e('separator')">
-      <component :is="separatorIcon" :class="ns.e('component')"></component>
+      <DvIcon :name="separatorIcon" :class="ns.e('component')" />
     </span>
     <span v-else :class="ns.e('separator')">{{ separator }}</span>
   </span>
@@ -21,6 +21,7 @@ import { inject, toRefs, getCurrentInstance } from "vue";
 import { useNamespace } from "../../hooks/useNamespace";
 import { breadcrumbKey } from "./constant";
 import type { Router } from "vue-router";
+import DvIcon from "@/components/icon/icon.vue";
 
 const ns = useNamespace("breadcrumb");
 

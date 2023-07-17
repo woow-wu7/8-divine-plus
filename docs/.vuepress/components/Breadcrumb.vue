@@ -1,7 +1,7 @@
 <template>
   <Wrap :md="html">
     <template v-slot:components>
-      <DvBreadcrumb :separator-icon="ArrowRight">
+      <DvBreadcrumb separator-icon="youjiantou">
         <DvBreadcrumbItem :to="{ path: '/home' }">主页</DvBreadcrumbItem>
         <DvBreadcrumbItem><a href="/">列表</a></DvBreadcrumbItem>
         <DvBreadcrumbItem>详情</DvBreadcrumbItem>
@@ -22,7 +22,6 @@
 
 <script setup lang="ts">
 import Wrap from "../theme/ComponentWrap.vue";
-import { ArrowRight } from "@element-plus/icons-vue";
 import { html } from "../../components/breadcrumb-code.md";
 </script>
 <style>

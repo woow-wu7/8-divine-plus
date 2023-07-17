@@ -8,11 +8,12 @@
     <span :class="ns.e('content')">
       <slot></slot>
     </span>
-    <component
-      v-if="closable"
-      :is="Close"
+    <DvIcon
+      name="cuowu"
       :class="[ns.e('close'), 'dv-icon-close']"
       @click.stop="handleClose"
+      size="120"
+      v-if="closable"
     />
   </section>
 
@@ -21,11 +22,12 @@
       <span :class="ns.e('content')">
         <slot />
       </span>
-      <component
-        v-if="closable"
-        :is="Close"
+
+      <DvIcon
+        name="cuowu"
         :class="[ns.e('close'), 'dv-icon-close']"
         @click.stop="handleClose"
+        v-if="closable"
       />
     </section>
   </transition>
@@ -39,9 +41,9 @@ export default {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { Close } from "@element-plus/icons-vue";
-import { useNamespace } from "../../hooks/useNamespace";
-import { definePropType } from "../../utils/definePropType";
+import DvIcon from "@/components/icon/icon.vue";
+import { useNamespace } from "@/hooks/useNamespace";
+import { definePropType } from "@/utils/definePropType";
 
 const ns = useNamespace("tag");
 const emit = defineEmits(["close", "click"]);
