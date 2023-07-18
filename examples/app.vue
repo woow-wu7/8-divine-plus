@@ -592,7 +592,15 @@
   <section class="block" ref="RefRateRoot">
     <h3>dv-rate 测试</h3>
 
-    <dv-rate :max="5" v-model="stars" @clickOutside="clickOutside" />
+    <dv-rate
+      :max="5"
+      v-model="stars"
+      @clickOutside="clickOutside"
+      iconName="search"
+      :texts="['极差', '差', '一般', '良好', '优秀']"
+      showScore
+      allowClear
+    />
   </section>
 </template>
 

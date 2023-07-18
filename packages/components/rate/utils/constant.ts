@@ -13,12 +13,26 @@ export const rateProps = {
   },
   texts: {
     type: Array,
-    default: ["terrible", "bad", "normal", "good", "wonderful"],
+    default: [],
   },
+  showScore: {
+    type: Boolean,
+    default: false,
+  },
+  allowClear: {
+    type: Boolean,
+    default: false,
+  },
+  iconName: String,
   eventBoundary: Object,
 };
 
+export type TMax = {
+  count: number;
+  isHover?: boolean;
+};
+
 export type TState = {
-  max: Array<any>;
+  max: TMax[];
   hoverIndex: number;
 };

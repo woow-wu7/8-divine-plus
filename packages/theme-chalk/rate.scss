@@ -26,8 +26,11 @@
     color: $--rate-icon-color;
     transition: 0.3s;
 
-    &.is-hover {
+    &:hover {
       transform: scale(1.15);
+    }
+
+    &.is-hover {
       color: red;
     }
 
