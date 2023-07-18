@@ -23,6 +23,10 @@ export const rateProps = {
     type: Boolean,
     default: false,
   },
+  allowHalf: {
+    type: Boolean,
+    default: false,
+  },
   iconName: String,
   eventBoundary: Object,
 };

@@ -596,11 +596,24 @@
       :max="5"
       v-model="stars"
       @clickOutside="clickOutside"
-      iconName="search"
+      iconName="star1"
       :texts="['极差', '差', '一般', '良好', '优秀']"
-      showScore
       allowClear
     />
+
+    <i class="dv-icon-star1" style="position: relative">
+      <i
+        class="dv-icon-star1"
+        style="
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: red;
+          width: 50%;
+          overflow: hidden;
+        "
+      ></i>
+    </i>
   </section>
 </template>
 

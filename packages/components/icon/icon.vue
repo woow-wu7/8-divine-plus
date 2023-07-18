@@ -1,5 +1,7 @@
 <template>
-  <i :class="ns.b(name)" :style="styles"></i>
+  <i :class="ns.b(name)" :style="styles">
+    <slot></slot>
+  </i>
 </template>
 
 <script lang="ts">

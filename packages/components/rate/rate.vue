@@ -5,14 +5,23 @@
       :key="item.count"
       ref="RefStars"
       :class="ns.e('item')"
-      @mousemove="onMouseMove(item)"
+      @mousemove="onMouseMove(item, $event)"
       @mouseleave="onMouseLeave"
       @click="onSelect(item)"
     >
       <dv-icon
         :name="iconNames(item)"
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
-      ></dv-icon>
+        data-icon-father
+      >
+        <dv-icon
+          name="star1"
+          :class="[ns.e('decimal'), ns.is('hover', item.isHover)]"
+          style="color: blue"
+          data-icon-child
+        >
+        </dv-icon>
+      </dv-icon>
     </span>
 
     <span v-if="showTail" :class="ns.e('text')">{{ getText }}</span>
@@ -91,11 +100,26 @@ watch(
   }
 );
 
-const onMouseMove = (item: TState["max"][number]) => {
+const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   if (props.readonly) return;
 
-  state.hoverIndex = item.count - 1;
-  setMax(item.count);
+  const target = event.target as any;
+  console.log(
+    'target?.hasAttribute("data-icon-child")',
+    target?.hasAttribute("data-icon-child")
+  );
+
+  if (props.allowHalf) {
+    if (target?.hasAttribute("data-icon-child")) {
+      console.log("半星");
+    }
+    if (target?.hasAttribute("data-icon-father")) {
+      console.log("全星");
+    }
+  } else {
+    state.hoverIndex = item.count - 1;
+    setMax(item.count);
+  }
 };
 
 const onMouseLeave = () => {
