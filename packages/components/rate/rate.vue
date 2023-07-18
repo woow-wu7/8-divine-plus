@@ -13,14 +13,8 @@
         :name="iconNames(item)"
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
         data-icon-father
+        :style="{ width: item.isHalf ? '46%' : '100%', overflow: 'hidden' }"
       >
-        <dv-icon
-          name="star1"
-          :class="[ns.e('decimal'), ns.is('hover', item.isHover)]"
-          style="color: blue"
-          data-icon-child
-        >
-        </dv-icon>
       </dv-icon>
     </span>
 
@@ -47,8 +41,11 @@ const emits = defineEmits(["update:modelValue", "clickOutside", "change"]);
 const RefStars = ref();
 
 const state = reactive<TState>({
-  max: new Array(props.max).fill(0).map((_, index) => ({ count: index + 1 })),
+  max: new Array(props.max)
+    .fill(0)
+    .map((_, index) => ({ count: index + 1, isHalf: false })),
   hoverIndex: props.modelValue,
+  isHalf: false,
 });
 
 onMounted(() => {
@@ -80,11 +77,12 @@ const getText = computed(() => {
   }
 });
 
-const setMax = (count: number) => {
+const setMax = (count: number, isHalf: boolean) => {
   state.max = state.max.map((_item) => {
     return {
       ..._item,
       isHover: _item.count <= count,
+      isHalf: _item.count === count && isHalf,
     };
   });
 };
@@ -93,7 +91,7 @@ watch(
   () => props.modelValue,
   () => {
     state.hoverIndex = props.modelValue - 1;
-    setMax(props.modelValue as number);
+    setMax(props.modelValue as number, false);
   },
   {
     immediate: true,
@@ -104,6 +102,7 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   if (props.readonly) return;
 
   const target = event.target as any;
+  let isHalf = false;
   console.log(
     'target?.hasAttribute("data-icon-child")',
     target?.hasAttribute("data-icon-child")
@@ -115,18 +114,22 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
     }
     if (target?.hasAttribute("data-icon-father")) {
       console.log("全星");
+
+      isHalf = event.offsetX * 2 <= target.clientWidth;
     }
   } else {
+    isHalf = false;
     state.hoverIndex = item.count - 1;
-    setMax(item.count);
   }
+
+  setMax(item.count, isHalf);
 };
 
 const onMouseLeave = () => {
   if (props.readonly) return;
 
   state.hoverIndex = props.modelValue - 1;
-  setMax(props.modelValue as number);
+  setMax(props.modelValue as number, false);
 };
 
 const onSelect = (item: TMax) => {

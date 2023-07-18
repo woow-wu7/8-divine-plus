@@ -34,9 +34,11 @@ export const rateProps = {
 export type TMax = {
   count: number;
   isHover?: boolean;
+  isHalf: boolean;
 };
 
 export type TState = {
   max: TMax[];
   hoverIndex: number;
+  isHalf: boolean;
 };
