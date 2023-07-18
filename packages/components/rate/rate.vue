@@ -1,7 +1,7 @@
 <template>
   <section :class="ns.b()">
     <span
-      v-for="item in state.max"
+      v-for="(item, index) in state.max"
       :key="item.count"
       ref="RefStars"
       :class="ns.e('item')"
@@ -14,6 +14,7 @@
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
       ></dv-icon>
     </span>
+    <span :class="ns.e('text')">{{ texts[state.hoverIndex] }}</span>
   </section>
 </template>
 
@@ -37,11 +38,13 @@ const RefStars = ref();
 
 const state = reactive<TState>({
   max: new Array(props.max).fill(0).map((_, index) => ({ count: index + 1 })),
+  hoverIndex: props.modelValue,
 });
 
 onMounted(() => {
   useClickAway(
     () => {
+      if (props.readonly) return;
       emits("clickOutside");
     },
     RefStars.value,
@@ -63,6 +66,7 @@ const setMax = (count: number) => {
 watch(
   () => props.modelValue,
   () => {
+    state.hoverIndex = props.modelValue - 1;
     setMax(props.modelValue as number);
   },
   {
@@ -71,14 +75,22 @@ watch(
 );
 
 const onMouseMove = (item: any) => {
+  if (props.readonly) return;
+
+  state.hoverIndex = item.count - 1;
   setMax(item.count);
 };
 
 const onMouseLeave = () => {
+  if (props.readonly) return;
+
+  state.hoverIndex = props.modelValue - 1;
   setMax(props.modelValue as number);
 };
 
 const onSelect = (item: any) => {
+  if (props.readonly) return;
+
   emits("update:modelValue", item.count);
 };
 </script>
