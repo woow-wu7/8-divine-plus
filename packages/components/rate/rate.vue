@@ -3,6 +3,7 @@
     <span
       v-for="item in state.max"
       :key="item.count"
+      ref="RefStars"
       :class="ns.e('item')"
       @mousemove="onMouseMove(item)"
       @mouseleave="onMouseLeave"
@@ -22,20 +23,32 @@ export default {
 };
 </script>
 <script lang="ts" setup>
-import { reactive, watch } from "vue";
-import { useNamespace } from "@/hooks/useNamespace";
+import { reactive, watch, ref, onMounted } from "vue";
+import { useNamespace, useClickAway } from "@/hooks";
 import { rateProps } from "./utils/constant";
 import type { TState } from "./utils/constant";
 
 const ns = useNamespace("rate");
 
 const props = defineProps(rateProps);
-const emits = defineEmits(["update:modelValue"]);
+const emits = defineEmits(["update:modelValue", "clickOutside", "change"]);
+
+const RefStars = ref();
 
 const state = reactive<TState>({
   max: new Array(props.max).fill(0).map((_, index) => ({ count: index + 1 })),
-  currentValue: props.modelValue,
-  hoverValue: -1,
+});
+
+onMounted(() => {
+  useClickAway(
+    () => {
+      emits("clickOutside");
+    },
+    RefStars.value,
+    {
+      root: (props.eventBoundary as HTMLElement) || document,
+    }
+  );
 });
 
 const setMax = (count: number) => {
@@ -50,8 +63,6 @@ const setMax = (count: number) => {
 watch(
   () => props.modelValue,
   () => {
-    console.log("123", 123);
-    console.log("props.modelValue", props.modelValue);
     setMax(props.modelValue as number);
   },
   {
@@ -60,21 +71,14 @@ watch(
 );
 
 const onMouseMove = (item: any) => {
-  state.currentValue = item.count;
-  state.hoverValue = item.count;
-
   setMax(item.count);
 };
 
 const onMouseLeave = () => {
-  state.currentValue = props.modelValue;
-  state.hoverValue = -1;
-
-  setMax(-1);
+  setMax(props.modelValue as number);
 };
 
 const onSelect = (item: any) => {
-  console.log("item.count", item.count);
   emits("update:modelValue", item.count);
 };
 </script>

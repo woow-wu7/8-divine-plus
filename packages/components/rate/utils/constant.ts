@@ -4,10 +4,9 @@ export const rateProps = {
     default: 5,
   },
   modelValue: Number,
+  eventBoundary: Object,
 };
 
 export type TState = {
-  currentValue: number | undefined;
-  hoverValue: number;
   max: Array<any>;
 };

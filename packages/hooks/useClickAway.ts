@@ -1,24 +1,32 @@
 import { isRef, onUnmounted } from "vue";
 import type { Ref } from "vue";
 
-type TTarget = Ref<HTMLElement> | HTMLElement;
+type TTarget = Ref<HTMLElement> | HTMLElement | Document | Window;
+type TOptions = {
+  events?: TDocumentEventKey | TDocumentEventKey[];
+  root?: TTarget;
+};
 type TDocumentEventKey = keyof DocumentEventMap;
 
 type TUseClickAway = (
   onClickAway: (e: MouseEvent) => void,
   targets: TTarget | TTarget[],
-  events: TDocumentEventKey | TDocumentEventKey[]
+  options?: TOptions
 ) => void;
 
 export const useClickAway: TUseClickAway = (
   onClickAway,
   targets,
-  events = "click"
+  options = {
+    events: "click",
+    root: document,
+  }
 ) => {
   const targetList = Array.isArray(targets) ? targets : [targets];
+  const { events = "click", root = document } = options;
   const eventsList = Array.isArray(events) ? events : [events];
 
-  const getTarget = (target: TTarget): HTMLElement => {
+  const getTarget = (target: TTarget): HTMLElement | Document | Window => {
     if (isRef(target)) {
       return target.value;
     }
@@ -28,7 +36,7 @@ export const useClickAway: TUseClickAway = (
   const handler = (e: any) => {
     const isChild = targetList.some((targetItem) => {
       const target = getTarget(targetItem);
-      return !target || target?.contains(e.target);
+      return !target || (target as HTMLElement)?.contains(e.target);
     });
 
     if (isChild) return;
@@ -37,12 +45,12 @@ export const useClickAway: TUseClickAway = (
   };
 
   eventsList.forEach((eventType) => {
-    document.addEventListener(eventType, handler, false);
+    getTarget(root).addEventListener(eventType, handler, false);
   });
 
   onUnmounted(() => {
     eventsList.forEach((eventType) => {
-      document.removeEventListener(eventType, handler, false);
+      getTarget(root).removeEventListener(eventType, handler, false);
     });
   });
 };

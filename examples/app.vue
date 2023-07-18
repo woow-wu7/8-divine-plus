@@ -589,10 +589,10 @@
     <dv-icon name="star" class="star" />
   </section>
 
-  <section class="block">
+  <section class="block" ref="RefRateRoot">
     <h3>dv-rate 测试</h3>
 
-    <dv-rate :max="5" v-model="stars" />
+    <dv-rate :max="5" v-model="stars" @clickOutside="clickOutside" />
   </section>
 </template>
 
@@ -610,6 +610,10 @@ import { useClickAway } from "../packages/index";
 import UserTitleTest from "./components/UserTitleTest.vue";
 
 const stars = ref(2);
+
+const clickOutside = () => {
+  stars.value = 0;
+};
 
 const state = reactive({
   showTestTransition: false,
@@ -649,13 +653,12 @@ const RefUseClickAway = ref();
 const RefUseClickAway2 = ref();
 const useClickAwayState = ref(1);
 const useClickAwayState2 = ref(1);
-useClickAway(
-  () => {
+
+onMounted(() => {
+  useClickAway(() => {
     useClickAwayState.value = useClickAwayState.value + 1;
-  },
-  [RefUseClickAway, RefUseClickAway2],
-  ["click", "contextmenu"]
-);
+  }, [RefUseClickAway, RefUseClickAway2]);
+});
 
 const useClickAwayObj = [
   () => {
