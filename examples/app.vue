@@ -588,6 +588,12 @@
     <dv-icon name="star" color="red" size="30" />
     <dv-icon name="star" class="star" />
   </section>
+
+  <section class="block">
+    <h3>dv-rate 测试</h3>
+
+    <dv-rate :max="5" v-model="stars" />
+  </section>
 </template>
 
 <script setup>
@@ -602,6 +608,8 @@ import { useLocalStorageState } from "../packages/index";
 import { useState } from "../packages/index";
 import { useClickAway } from "../packages/index";
 import UserTitleTest from "./components/UserTitleTest.vue";
+
+const stars = ref(2);
 
 const state = reactive({
   showTestTransition: false,

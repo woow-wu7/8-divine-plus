@@ -32,7 +32,7 @@
   "include": [
     "packages",
     // 注意:
-    // - 1. 我们设置 别名@ 代表 packages 文件夹时，及其以下的所有所有文件
+    // - 1. 我们设置 别名@ 代表 packages 文件夹，及其以下的所有所有文件
     // - 2. 不能是 packages/*  ------- 这样表示一级目录，不包含二级目录
     // - 3. 可以是 package/**/* ------ 这样表示二级目录
     // 扩展
@@ -49,14 +49,11 @@
 
     // "packages/*", // 通过类型别名 @ 引用组件和方法就会报错，具体请看上面的写法
     // "packages/**/*", // 表示 packages 子目录/子文件 包含 包括子目录下的所有文件和目录
-    "packages/components/*", // 这里必须添加，不然package/components/组件/index.ts中引入组件会报错，找不到模块
-    "packages/components/**/*",
-    "examples/*",
-    "docs/*",
-    "utils/*",
-    "vue.config.js",
-    "packages/index.d.ts",
-    "packages/components/shims-vue.d.ts"
+    // "packages/components/*", // 这里必须添加，不然package/components/组件/index.ts中引入组件会报错，找不到模块
+    "examples",
+    "docs",
+    "utils",
+    "vue.config.js"
   ],
   // 因为: 这里不去用 ts 解析 node_modules 中的文件
   // 所以: node_module 中需要提供 js 文件
