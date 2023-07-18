@@ -12,7 +12,6 @@
       <dv-icon
         :name="iconNames(item)"
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
-        data-icon-father
         :style="{ width: item.isHalf ? '46%' : '100%', overflow: 'hidden' }"
       >
       </dv-icon>
@@ -91,6 +90,7 @@ watch(
   () => props.modelValue,
   () => {
     state.hoverIndex = props.modelValue - 1;
+
     setMax(props.modelValue as number, false);
   },
   {
@@ -101,22 +101,11 @@ watch(
 const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   if (props.readonly) return;
 
-  const target = event.target as any;
   let isHalf = false;
-  console.log(
-    'target?.hasAttribute("data-icon-child")',
-    target?.hasAttribute("data-icon-child")
-  );
 
   if (props.allowHalf) {
-    if (target?.hasAttribute("data-icon-child")) {
-      console.log("半星");
-    }
-    if (target?.hasAttribute("data-icon-father")) {
-      console.log("全星");
-
-      isHalf = event.offsetX * 2 <= target.clientWidth;
-    }
+    const fullWidth = RefStars.value[item.count - 1].clientWidth;
+    isHalf = event.offsetX * 2 <= fullWidth;
   } else {
     isHalf = false;
     state.hoverIndex = item.count - 1;
@@ -135,6 +124,16 @@ const onMouseLeave = () => {
 const onSelect = (item: TMax) => {
   if (props.readonly) return;
 
+  // if (item.isHalf) {
+  //   item.count = item.count - 0.5;
+
+  //   state.max.forEach((_item, index) => {
+  //     if (_item.count !== item.count) {
+  //       _item.count = index + 1;
+  //     }
+  //   });
+  // }
+
   if (props.allowClear) {
     if (props.modelValue !== 0 && props.modelValue === item.count) {
       emits("update:modelValue", 0);
@@ -142,6 +141,7 @@ const onSelect = (item: TMax) => {
     }
   }
 
+  console.log("item.count2222", item.count);
   emits("update:modelValue", item.count);
 };
 </script>
