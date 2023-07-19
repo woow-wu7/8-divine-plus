@@ -28,6 +28,7 @@ export const rateProps = {
     default: false,
   },
   iconName: String,
+  iconStyle: Object,
   eventBoundary: Object,
 };
 

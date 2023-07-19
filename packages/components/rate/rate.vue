@@ -12,7 +12,10 @@
       <dv-icon
         :name="iconNames(item)"
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
-        :style="{ width: item.isHalf ? '46%' : '100%', overflow: 'hidden' }"
+        :style="[
+          { width: item.isHalf ? '44%' : '100%', overflow: 'hidden' },
+          iconStyle,
+        ]"
       >
       </dv-icon>
     </span>

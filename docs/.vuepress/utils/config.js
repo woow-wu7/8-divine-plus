@@ -78,6 +78,7 @@ const sidebar = {
     "/components/collapse.md",
     "/components/progress.md",
     "/components/fullscreen.md",
+    "/components/rate.md",
   ],
   "/directives/": [
     "/directives/",
