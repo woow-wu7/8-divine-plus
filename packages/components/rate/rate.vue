@@ -39,10 +39,20 @@ const emits = defineEmits(["update:modelValue", "clickOutside", "change"]);
 
 const RefStars = ref();
 
+function getFractional(num: number) {
+  return num - Math.trunc(num);
+}
+
+const initMax = () => {
+  const max = new Array(props.max).fill(0).map((_, index) => {
+    return { count: index + 1, isHalf: false };
+  });
+
+  return max;
+};
+
 const state = reactive<TState>({
-  max: new Array(props.max)
-    .fill(0)
-    .map((_, index) => ({ count: index + 1, isHalf: false })),
+  max: initMax(),
   hoverIndex: props.modelValue,
   isHalf: false,
 });
@@ -77,26 +87,43 @@ const getText = computed(() => {
 });
 
 const setMax = (count: number, isHalf: boolean) => {
-  state.max = state.max.map((_item) => {
+  let newCount = count;
+
+  if (getFractional(count) !== 0) {
+    newCount = Math.ceil(count);
+  }
+
+  const newMax = state.max.map((_item) => {
     return {
       ..._item,
-      isHover: _item.count <= count,
-      isHalf: _item.count === count && isHalf,
+      isHover: _item.count <= newCount,
+      isHalf: _item.count === newCount && isHalf,
     };
   });
+
+  state.max = newMax;
 };
 
-watch(
-  () => props.modelValue,
-  () => {
-    state.hoverIndex = props.modelValue - 1;
+const setMax_init_and_leave = () => {
+  state.hoverIndex = props.modelValue - 1;
 
-    setMax(props.modelValue as number, false);
-  },
-  {
-    immediate: true,
-  }
-);
+  const isHalf =
+    props.allowHalf &&
+    getFractional(props.modelValue) <= 0.5 &&
+    getFractional(props.modelValue) !== 0;
+
+  setMax(props.modelValue as number, isHalf);
+};
+
+watch(() => props.modelValue, setMax_init_and_leave, {
+  immediate: true,
+  deep: true,
+});
+
+const onMouseLeave = () => {
+  if (props.readonly) return;
+  setMax_init_and_leave();
+};
 
 const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   if (props.readonly) return;
@@ -104,7 +131,7 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   let isHalf = false;
 
   if (props.allowHalf) {
-    const fullWidth = RefStars.value[item.count - 1].clientWidth;
+    const fullWidth = RefStars.value[item.count - 1]?.clientWidth;
     isHalf = event.offsetX * 2 <= fullWidth;
   } else {
     isHalf = false;
@@ -114,25 +141,14 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   setMax(item.count, isHalf);
 };
 
-const onMouseLeave = () => {
-  if (props.readonly) return;
-
-  state.hoverIndex = props.modelValue - 1;
-  setMax(props.modelValue as number, false);
-};
-
 const onSelect = (item: TMax) => {
   if (props.readonly) return;
 
-  // if (item.isHalf) {
-  //   item.count = item.count - 0.5;
+  let newCount = item.count;
 
-  //   state.max.forEach((_item, index) => {
-  //     if (_item.count !== item.count) {
-  //       _item.count = index + 1;
-  //     }
-  //   });
-  // }
+  if (item.isHalf) {
+    newCount = item.count - 0.5;
+  }
 
   if (props.allowClear) {
     if (props.modelValue !== 0 && props.modelValue === item.count) {
@@ -141,7 +157,6 @@ const onSelect = (item: TMax) => {
     }
   }
 
-  console.log("item.count2222", item.count);
-  emits("update:modelValue", item.count);
+  emits("update:modelValue", newCount);
 };
 </script>

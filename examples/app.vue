@@ -631,11 +631,9 @@ import { useState } from "../packages/index";
 import { useClickAway } from "../packages/index";
 import UserTitleTest from "./components/UserTitleTest.vue";
 
-const stars = ref(2);
+const stars = ref(1);
 
-const clickOutside = () => {
-  stars.value = 0;
-};
+const clickOutside = () => {};
 
 const state = reactive({
   showTestTransition: false,
