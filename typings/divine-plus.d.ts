@@ -11,6 +11,7 @@ import { DvRow } from "./packages/row";
 import { DvCol } from "./packages/col";
 
 import { DvIcon } from "./packages/icon";
+import { DvRate } from "./packages/rate";
 
 import { DvEmpty } from "./packages/empty";
 import { DvBacktop } from "./packages/backtop";
@@ -55,6 +56,7 @@ export const Row: DvRow;
 export const Col: DvCol;
 
 export const Icon: DvIcon;
+export const Rate: DvRate;
 
 export const Breadcrumb: DvBreadcrumb;
 export const BreadcrumbItem: DvBreadcrumbItem;
