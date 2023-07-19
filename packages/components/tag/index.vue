@@ -74,13 +74,13 @@ const props = defineProps({
   size: {
     type: definePropType<"large" | "default" | "small">(String),
     default() {
-      return false;
+      return "default";
     },
   },
   theme: {
     type: definePropType<"dark" | "light" | "plain">(String),
     default() {
-      return false;
+      return "light";
     },
   },
 });

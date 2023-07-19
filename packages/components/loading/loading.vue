@@ -23,14 +23,14 @@ import { useNamespace } from "@/hooks/useNamespace";
 
 const ns = useNamespace("loading");
 
-const props = defineProps<{
-  text: string;
-  spinner: string;
-  background: string;
-  fullscreen: boolean;
-  visible: boolean;
-  customClass: string;
-}>();
+const props = defineProps({
+  text: String,
+  spinner: String,
+  background: String,
+  fullscreen: Boolean,
+  visible: Boolean,
+  customClass: String,
+});
 
 const state = reactive({
   loading: false,

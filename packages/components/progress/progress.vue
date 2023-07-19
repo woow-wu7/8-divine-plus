@@ -105,8 +105,6 @@ const props = defineProps({
   status: {
     type: String,
     default: "",
-    validator: (status: TStatus) =>
-      ["success", "error", "warning"].includes(status),
   },
   color: {
     type: [String, Array, Function],
@@ -234,7 +232,7 @@ const stroke = computed(() => {
       case "success":
         ret = "#13ce66";
         break;
-      case "exception":
+      case "error":
         ret = "#ff4949";
         break;
       case "warning":

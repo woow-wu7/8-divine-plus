@@ -5,8 +5,8 @@ import type { TDirective } from "../directives/utils";
 // 注意：
 // - 这里没用 @ 是因为 vuepress2 使用文档中没法配置 client 端的别名
 // - 核心原因是本库基于了两套构建工具 webpack 和 vite ，会有不兼容的情况
-import DvIcon from "@/components/icon/icon.vue";
-import DvRate from "@/components/rate/rate.vue";
+import DvIcon from "../components/icon/icon.vue";
+import DvRate from "../components/rate/rate.vue";
 
 import Divider from "../components/divider/index.vue";
 import Container from "../components/container/container.vue";

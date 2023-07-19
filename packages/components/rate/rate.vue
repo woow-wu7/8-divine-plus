@@ -26,6 +26,7 @@ export default {
   name: "DvRate",
 };
 </script>
+
 <script lang="ts" setup>
 import { reactive, watch, ref, onMounted, computed } from "vue";
 import { useNamespace, useClickAway } from "@/hooks";
@@ -153,10 +154,12 @@ const onSelect = (item: TMax) => {
   if (props.allowClear) {
     if (props.modelValue !== 0 && props.modelValue === item.count) {
       emits("update:modelValue", 0);
+      emits("change", 0);
       return;
     }
   }
 
   emits("update:modelValue", newCount);
+  emits("change", newCount);
 };
 </script>
