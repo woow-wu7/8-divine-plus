@@ -600,6 +600,7 @@
       :texts="['极差', '差', '一般', '良好', '优秀']"
       allowClear
       allowHalf
+      :iconHoverStyle="{ color: 'blue' }"
     />
 
     <i class="dv-icon-star1" style="position: relative">

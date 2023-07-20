@@ -13,7 +13,10 @@
         :name="iconNames(item)"
         :class="[ns.e('icon'), ns.is('hover', item.isHover)]"
         :style="[
-          { width: item.isHalf ? '44%' : '100%', overflow: 'hidden' },
+          {
+            width: item.isHalf ? '44%' : '100%',
+            overflow: 'hidden',
+          },
           iconStyle,
         ]"
       >
@@ -31,7 +34,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { reactive, watch, ref, onMounted, computed } from "vue";
+import { reactive, watch, ref, onMounted, computed, watchEffect } from "vue";
 import { useNamespace, useClickAway } from "@/hooks";
 import { rateProps } from "./utils/constant";
 import type { TState, TMax } from "./utils/constant";
@@ -122,6 +125,13 @@ const setMax_init_and_leave = () => {
 watch(() => props.modelValue, setMax_init_and_leave, {
   immediate: true,
   deep: true,
+});
+
+watchEffect(() => {
+  const aa: any = props.iconHoverStyle;
+
+  const root: any = document.querySelector(":root");
+  root.style.setProperty("--rate-icon-hover-color", aa.color);
 });
 
 const onMouseLeave = () => {
