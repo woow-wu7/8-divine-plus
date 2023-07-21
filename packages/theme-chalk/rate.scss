@@ -1,9 +1,6 @@
 @import "mixins/mixins";
 @import "common/var";
-
-:root {
-  --rate-icon-hover-color: #fadb14;
-}
+@import "common/root-var.scss";
 
 @include b(rate) {
   height: $--rate-height;
@@ -35,8 +32,9 @@
     }
 
     &.is-hover {
-      color: var(--rate-icon-hover-color, "#fadb14");
       transform: scale(1);
+      color: var(--rate-icon-selected-color, "#fadb14") !important;
+      font-size: var(--rate-icon-selected-size, "18px") !important;
     }
 
     .path2 {

@@ -37,7 +37,7 @@ export default {
 import { reactive, watch, ref, onMounted, computed, watchEffect } from "vue";
 import { useNamespace, useClickAway } from "@/hooks";
 import { rateProps } from "./utils/constant";
-import type { TState, TMax } from "./utils/constant";
+import type { TState, TMax, TIconSelectStyle } from "./utils/constant";
 
 const ns = useNamespace("rate");
 
@@ -64,7 +64,7 @@ const state = reactive<TState>({
   isHalf: false,
 });
 
-onMounted(() => {
+const initUseClickAway = () => {
   useClickAway(
     () => {
       if (props.readonly) return;
@@ -75,6 +75,31 @@ onMounted(() => {
       root: (props.eventBoundary as HTMLElement) || document,
     }
   );
+};
+
+const runIconSelectStyle = () => {
+  const iconSelectedStyle = props.iconSelectedStyle as TIconSelectStyle;
+
+  const root = document.querySelector(":root") as HTMLElement;
+
+  if (iconSelectedStyle?.color) {
+    root.style.setProperty(
+      "--rate-icon-selected-color",
+      iconSelectedStyle.color
+    );
+  }
+
+  if (iconSelectedStyle?.fontSize) {
+    root.style.setProperty(
+      "--rate-icon-selected-size",
+      iconSelectedStyle.fontSize
+    );
+  }
+};
+
+onMounted(() => {
+  initUseClickAway();
+  runIconSelectStyle();
 });
 
 const iconNames = computed(() => (item: TMax) => {
@@ -125,13 +150,6 @@ const setMax_init_and_leave = () => {
 watch(() => props.modelValue, setMax_init_and_leave, {
   immediate: true,
   deep: true,
-});
-
-watchEffect(() => {
-  const aa: any = props.iconHoverStyle;
-
-  const root: any = document.querySelector(":root");
-  root.style.setProperty("--rate-icon-hover-color", aa.color);
 });
 
 const onMouseLeave = () => {

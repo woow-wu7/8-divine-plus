@@ -29,7 +29,7 @@ export const rateProps = {
   },
   iconName: String,
   iconStyle: Object,
-  iconHoverStyle: Object,
+  iconSelectedStyle: Object,
   eventBoundary: Object,
 };
 
@@ -43,4 +43,9 @@ export type TState = {
   max: TMax[];
   hoverIndex: number;
   isHalf: boolean;
+};
+
+export type TIconSelectStyle = {
+  color?: string;
+  fontSize?: string;
 };

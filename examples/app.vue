@@ -596,11 +596,12 @@
       :max="5"
       v-model="stars"
       @clickOutside="clickOutside"
-      iconName="star1"
+      iconName="star"
       :texts="['极差', '差', '一般', '良好', '优秀']"
       allowClear
       allowHalf
-      :iconHoverStyle="{ color: 'blue' }"
+      :iconStyle="{ color: 'blue' }"
+      :iconSelectedStyle="{ color: 'red', fontSize: '30px' }"
     />
 
     <i class="dv-icon-star1" style="position: relative">
