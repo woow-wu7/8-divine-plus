@@ -7,7 +7,7 @@
       :class="ns.e('item')"
       @mousemove="onMouseMove(item, $event)"
       @mouseleave="onMouseLeave()"
-      @click="onSelect(item, $event)"
+      @click="onSelect(item)"
     >
       <dv-icon
         :name="iconNames(item)"
@@ -189,7 +189,7 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   setMax(item.count, isHalf);
 };
 
-const onSelect = (item: TMax, event: any) => {
+const onSelect = (item: TMax) => {
   if (props.readonly) return;
 
   let newCount = item.count;
