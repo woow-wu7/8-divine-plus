@@ -1,5 +1,10 @@
 import { DivinePlusComponent } from "../component";
 
+type TStyle = {
+  color?: string;
+  fontSize?: string;
+};
+
 export declare class DvRate extends DivinePlusComponent {
   vModel: number;
   max: number;
@@ -9,4 +14,6 @@ export declare class DvRate extends DivinePlusComponent {
   texts: string[];
   showScore: boolean;
   iconName: string;
+  iconStyle: TStyle;
+  iconSelectedStyle: TStyle;
 }
