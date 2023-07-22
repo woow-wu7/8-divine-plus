@@ -6,6 +6,34 @@
   "description": "DivinePlus vue3组件库",
   "glyphs": [
     {
+      "icon_id": "36270900",
+      "name": "parent",
+      "font_class": "parent",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "36270907",
+      "name": "select",
+      "font_class": "select",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "36270910",
+      "name": "polygon",
+      "font_class": "polygon",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "36567824",
+      "name": "star-selected",
+      "font_class": "star2",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
       "icon_id": "12865674",
       "name": "good night",
       "font_class": "goodnight",

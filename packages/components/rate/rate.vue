@@ -107,7 +107,7 @@ onMounted(() => {
 const iconNames = computed(() => (item: TMax) => {
   if (props.iconName) return props.iconName;
   else {
-    return item.isHover ? "star1" : "star";
+    return item.isHover ? "star2" : "star";
   }
 });
 
