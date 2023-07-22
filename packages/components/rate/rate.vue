@@ -6,8 +6,8 @@
       ref="RefStars"
       :class="ns.e('item')"
       @mousemove="onMouseMove(item, $event)"
-      @mouseleave="onMouseLeave"
-      @click="onSelect(item)"
+      @mouseleave="onMouseLeave()"
+      @click="onSelect(item, $event)"
     >
       <dv-icon
         :name="iconNames(item)"
@@ -18,6 +18,7 @@
             overflow: 'hidden',
           },
           iconStyle,
+          customIconSelectedStyle(item.isHover),
         ]"
       >
       </dv-icon>
@@ -77,29 +78,30 @@ const initUseClickAway = () => {
   );
 };
 
-const runIconSelectStyle = () => {
-  const iconSelectedStyle = props.iconSelectedStyle as TIconSelectStyle;
-
-  const root = document.querySelector(":root") as HTMLElement;
-
-  if (iconSelectedStyle?.color) {
-    root.style.setProperty(
-      "--rate-icon-selected-color",
-      iconSelectedStyle.color
-    );
-  }
-
-  if (iconSelectedStyle?.fontSize) {
-    root.style.setProperty(
-      "--rate-icon-selected-size",
-      iconSelectedStyle.fontSize
-    );
-  }
-};
+// const runIconSelectStyle = () => {
+//   const iconSelectedStyle = props.iconSelectedStyle as TIconSelectStyle;
+//   const root = document.querySelector(":root") as HTMLElement;
+//   if (iconSelectedStyle?.color) {
+//     root.style.setProperty(
+//       "--scoped-rate-icon-selected-color",
+//       iconSelectedStyle.color
+//     );
+//   }
+//   if (iconSelectedStyle?.fontSize) {
+//     root.style.setProperty(
+//       "--scoped-rate-icon-selected-size",
+//       iconSelectedStyle.fontSize
+//     );
+//   }
+// };
 
 onMounted(() => {
   initUseClickAway();
-  runIconSelectStyle();
+  // runIconSelectStyle(); // 这样会影响到所有rate组件，采用js事件动态设置行内style代替
+
+  //     root.style.setProperty(
+  //       "--scoped-rate-icon-selected-color",
+  //       iconSelectedStyle.color
 });
 
 const iconNames = computed(() => (item: TMax) => {
@@ -107,6 +109,20 @@ const iconNames = computed(() => (item: TMax) => {
   else {
     return item.isHover ? "star1" : "star";
   }
+});
+
+const customIconSelectedStyle = computed(() => (isHover: any) => {
+  const { color, fontSize } =
+    (props.iconSelectedStyle as TIconSelectStyle) || {};
+
+  if (isHover) {
+    return {
+      color: color ? `${color} !important` : "",
+      fontSize: fontSize ? `${fontSize} !important` : "",
+    };
+  }
+
+  return undefined;
 });
 
 const showTail = computed(() => props.showScore || props.texts.length);
@@ -173,7 +189,7 @@ const onMouseMove = (item: TState["max"][number], event: MouseEvent) => {
   setMax(item.count, isHalf);
 };
 
-const onSelect = (item: TMax) => {
+const onSelect = (item: TMax, event: any) => {
   if (props.readonly) return;
 
   let newCount = item.count;

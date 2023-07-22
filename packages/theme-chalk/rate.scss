@@ -33,8 +33,12 @@
 
     &.is-hover {
       transform: scale(1);
-      color: var(--rate-icon-selected-color, "#fadb14") !important;
-      font-size: var(--rate-icon-selected-size, "18px") !important;
+
+      // 注意
+      // - 问题: 这里不能使用 css 变量的方式 来修改每个rate组件的单独的hover时的样式设置，因为这样会改变所有 rate 组件的样式
+      // - 解决: 我们通过 mouseover mouseleave click 事件来动态修改 行内样式style
+      color: var(--rate-icon-selected-color, "#fadb14");
+      font-size: var(--rate-icon-selected-size, "18px");
     }
 
     .path2 {

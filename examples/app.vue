@@ -601,9 +601,8 @@
       allowClear
       allowHalf
       :iconStyle="{ color: 'blue' }"
-      :iconSelectedStyle="{ color: 'red', fontSize: '30px' }"
+      :iconSelectedStyle="{ color: 'red', fontSize: '30px', width: '100px' }"
     />
-
     <i class="dv-icon-star1" style="position: relative">
       <i
         class="dv-icon-star1"

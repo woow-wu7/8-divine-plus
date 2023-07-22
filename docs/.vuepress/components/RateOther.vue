@@ -6,6 +6,7 @@
         v-model="stars"
         iconName="search"
         :iconStyle="iconStyle"
+        :iconSelectedStyle="iconSelectedStyle"
       />
     </template>
   </Wrap>
@@ -19,6 +20,12 @@ import { html } from "../../components/rate-other-code.md";
 const stars = ref(3);
 
 const iconStyle = {
-  fontSize: "24px !important",
+  color: "blue",
+  fontSize: "20px",
+};
+
+const iconSelectedStyle = {
+  color: "red",
+  fontSize: "24px",
 };
 </script>
