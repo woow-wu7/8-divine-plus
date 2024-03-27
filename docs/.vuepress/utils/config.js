@@ -63,6 +63,7 @@ const sidebar = {
     "/components/container.md",
     "/components/layout.md",
     "/components/icon.md",
+    "/components/input.md",
     "/components/breadcrumb.md",
     "/components/badge.md",
     "/components/tag.md",

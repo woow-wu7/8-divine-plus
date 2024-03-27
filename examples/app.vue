@@ -617,6 +617,11 @@
       ></i>
     </i>
   </section>
+
+  <section class="block">
+    <h3>dv-switch 测试</h3>
+    <dv-switch v-model="state.switchValue" activeText="前" inactiveText="后" />
+  </section>
 </template>
 
 <script setup>
@@ -644,6 +649,8 @@ const state = reactive({
   loadingInstance: null,
 
   collapse: ["1"],
+
+  switchValue: false,
 });
 
 const progressState = reactive({

@@ -5,10 +5,10 @@
 ## 基本组件
 
 - Container
-  - Header
-  - Footer
-  - Aside
-  - Main
+- Header
+- Footer
+- Aside
+- Main
 
 ## 基本用法
 

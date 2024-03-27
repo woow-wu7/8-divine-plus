@@ -35,6 +35,8 @@ import Collapse from "../components/collapse/collapse.vue";
 import CollapseItem from "../components/collapse/collapse-item.vue";
 import CollapseTransition from "../components/collapse/collapse-transition.vue";
 
+import Switch from '../components/switch/switch.vue';
+
 // functions
 import Message from "../components/message/message";
 
@@ -87,6 +89,8 @@ const components = [
   Collapse,
   CollapseItem,
   CollapseTransition,
+
+  Switch,
 ];
 
 const functions: {
@@ -151,4 +155,5 @@ export {
   Timeline as DvTimeline,
   TimelineItem as DvTimelineItem,
   Scrollbar as DvScrollbar,
+  Switch as DvSwitch
 };
