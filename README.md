@@ -1,8 +1,8 @@
 # Divine-Plus
 
-基于 vue3 + webpack5 + ts + vuepress2 构建的组件库
+基于 vue3 + webpack5 + ts + vuepress2 构建的组件库.
 
-包含了 `组件` `指令` `hooks` 等效率工具
+包含了 `组件` `指令` `hooks` 等效率工具.
 
 ![8-divine-plus](docs/.vuepress/public//img/divine.jpg)
 
