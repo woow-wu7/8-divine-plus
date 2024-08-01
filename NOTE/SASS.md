@@ -108,7 +108,7 @@ $var: red;
 @mixin 和 @include 和 @content
 - @mixin aa -----> 定义一个混合器aa
 - @include aa ---> 使用混合器aa
-- @content; ------> 将 @include aa 中定义的样式引入到 @mixin 中
+- @content; ------> 将 @include aa 中定义的样式引入到 @mixin 中的 @content 位置处
 ---
 扩展: 注意 @mixin 和 @extends 的区别
 ---
