@@ -1,4 +1,8 @@
-# Collapse 折叠面板
+## Collapse 折叠面板
+
+## 简单实现
+
+- [link-8-penetrate](https://github.com/woow-wu7/8-penetrate/blob/main/1-FRONTEND/7-CSS/1-Animation/2-collapse-%E6%8A%98%E5%8F%A0%E9%9D%A2%E6%9D%BF/collapse-%E4%BC%98%E5%8C%96.html)
 
 ## 前置知识
 

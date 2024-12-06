@@ -1,7 +1,9 @@
-FROM node:17.6
-MAINTAINER woow_wu7
-COPY . /app/
-WORKDIR /app
+FROM node
+LABEL maintainer="woow_wu7"
+LABEL version="1.0"
+ENV WORK_PATH /app
+COPY . $WORK_PATH
+WORKDIR $WORK_PATH
 RUN npm install
 RUN npm run docs:build
 
